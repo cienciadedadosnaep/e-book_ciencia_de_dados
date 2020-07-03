@@ -1,0 +1,131 @@
+# Métodos {#metodos}
+
+
+Alguns detalhes como colocar uma `{#label}`
+para se referir de forma automática 
+a uma seção ou capítulo 
+é feito de maneira de forma simples. 
+Depois de incluída a *label*
+podemos citar a referida seção ou capítulo 
+do comando pelo comando \@ref(intro).
+
+Figuras e tabelas com títulos podem 
+ser inseridas pelos respectivos ambientes
+ `figure` e `table`.  
+
+```{r eval=FALSE,echo=FALSE}
+
+```
+
+```{r nice-fig, fig.cap='Comportamento da pressão.', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+A forma de se referir pela figura é através 
+do *label* do *chunck* no qual foi produzida
+com prefixo `fig:`, e.g., ver Figura \@ref(fig:nice-fig). De forma similar, 
+você pode se referir a tabelas geradas por `knitr::kable()`, e.g., ver Tabela \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+Você pode fazer citações, nós estamos usando o pacote **bookdown** [@R-bookdown] neste livro de amostra, o qual foi compilado por R Markdown e **knitr** [@xie2015].
+
+
+
+## Analisando o uso de chunks
+
+
+
+
+
+### Chunk - Condição padrão
+
+A condição *default* do *rmarkdown*
+é a execução do código, apresentação do 
+código e do resultado do processamento. 
+
+Criaremos inicialmente
+uma função no R markdown:
+
+```{r}
+exps<-function(t,l,k,c){
+ exps <- exp(-l*(k**(1-c))*t)
+}
+```
+.
+
+Em seguida, aplicaremos esta mesma 
+função em um *chunck*:
+
+```{r}
+t<-seq(1,10,0.1)
+l<-1e-5
+c<-0.95
+k<-350
+Rb <- exps(t,l,k,c)
+plot(t,Rb)
+```
+
+
+Como observado acima, os códigos e resultados 
+são apresentados. 
+
+### Aparecer código e sem executá-lo
+
+Nesta seção utilizaremos a opção 
+**eval=FALSE**, assim o código 
+será apresentado sem executá-lo, 
+ou seja, não haverá resultados.
+
+
+```{r eval=FALSE}
+exps<-function(t,l,k,c){
+ exps <- exp(-l*(k**(1-c))*t)
+}
+```
+.
+
+Em seguida, aplicaremos esta mesma 
+função em um *chunck*:
+
+```{r eval=FALSE}
+t<-seq(1,10,0.1)
+l<-1e-5
+c<-0.95
+k<-350
+Rb <- exps(t,l,k,c)
+plot(t,Rb)
+```
+
+
+### Executar código sem apresentá-lo
+Nesta seção utilizaremos a opção 
+**echo=FALSE**, assim o código 
+será apresentado sem executá-lo, 
+ou seja, não haverá resultados.
+
+
+```{r echo=FALSE}
+exps<-function(t,l,k,c){
+ exps <- exp(-l*(k**(1-c))*t)
+}
+```
+.
+
+Em seguida, aplicaremos esta mesma 
+função em um *chunck*:
+
+```{r echo=FALSE}
+t<-seq(1,10,0.1)
+l<-1e-5
+c<-0.95
+k<-350
+Rb <- exps(t,l,k,c)
+plot(t,Rb)
+```

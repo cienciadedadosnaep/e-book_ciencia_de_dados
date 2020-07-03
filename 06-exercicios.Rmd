@@ -1,0 +1,19 @@
+ **Treinar Tidyverse**
+
+Após o treino dos recursos do tidyverse  e 
+especialmente o ggplot apresentados por
+Ícaro Bernardes, por favor, 
+explorem neste ambinte a inclusão dos exercícios. 
+Procurar pasta de capacitação disponível no github
+\url(https://github.com/cienciadedadosnaep) .
+Como recomendado pelo facilitador Ícaro Bernardes, 
+acessar os documentos *Cheat Sheet* no site 
+\url(https://rstudio.com/resources/cheatsheets/).
+
+ **Tidyverse**
+
+* Tidyverse
+
+**Ggplot**
+
+* ggplot
