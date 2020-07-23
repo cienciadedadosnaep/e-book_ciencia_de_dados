@@ -1,6 +1,6 @@
-# Métodos {#metodos}
+# Capítulo 3 - Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
 
-
+teste de commit
 Alguns detalhes como colocar uma `{#label}`
 para se referir de forma automática 
 a uma seção ou capítulo 
