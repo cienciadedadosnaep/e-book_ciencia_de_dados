@@ -1,4 +1,18 @@
-# Capítulo 3 - Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
+
+Como foi visto no \@ref(capitulo-2), tabela é uma forma poderosa de estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos do que por números e é isso que será ensinado no decorrer deste capítulo.
+
+A 
+
+Falar da importância de gráficos aqui ...
+
+ Como objeto de estudo será usado dados de turismo da cidade de Salvador
+
 
 teste de commit
 Alguns detalhes como colocar uma `{#label}`
