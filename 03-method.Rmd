@@ -5,23 +5,15 @@ output:
 ---
 # Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
 
-Como foi visto no \@ref(capitulo-2), tabela é uma forma poderosa de estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos do que por números e é isso que será ensinado no decorrer deste capítulo.
+O capítulo  \@ref(capitulo-2) apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos, conteúdo que será ensinado no decorrer deste capítulo.
 
-A 
+A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois a partir de um bom gráfico podemos extrair ideias, hipóteses ou até conclusões a respeito de um tema. A importância da análise gráfica pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale por mil palavras".
 
-Falar da importância de gráficos aqui ...
+O estudo de alguns tipos de gráficos apresentados neste capítulo utilizaram como objeto de estudo dados de turismo da cidade de Salvador, capital do estado da Bahia.
 
- Como objeto de estudo será usado dados de turismo da cidade de Salvador
+## 
 
 
-teste de commit
-Alguns detalhes como colocar uma `{#label}`
-para se referir de forma automática 
-a uma seção ou capítulo 
-é feito de maneira de forma simples. 
-Depois de incluída a *label*
-podemos citar a referida seção ou capítulo 
-do comando pelo comando \@ref(intro).
 
 Figuras e tabelas com títulos podem 
 ser inseridas pelos respectivos ambientes
