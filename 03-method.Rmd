@@ -7,131 +7,111 @@ output:
 
 O capítulo  \@ref(capitulo-2) apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos, conteúdo que será ensinado no decorrer deste capítulo.
 
-A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois a partir de um bom gráfico podemos extrair ideias, hipóteses ou até conclusões a respeito de um tema. A importância da análise gráfica pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale por mil palavras".
+A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois a partir de um bom gráfico podemos extrair ideias, hipóteses ou até conclusões a respeito de um tema. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale por mil palavras".
 
-O estudo de alguns tipos de gráficos apresentados neste capítulo utilizaram como objeto de estudo dados de turismo da cidade de Salvador, capital do estado da Bahia.
-
-## 
+Neste capítulo será utilizado como objetos de estudo dados de turismo e educação relacionados a cidade de Salvador, capital do estado da Bahia.
 
 
-
-Figuras e tabelas com títulos podem 
-ser inseridas pelos respectivos ambientes
- `figure` e `table`.  
-
-```{r eval=FALSE,echo=FALSE}
+```{r eval=TRUE, echo=FALSE}
+library(reticulate)
+py_run_string("import os as os")
+py_run_string("os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'")
 
 ```
 
-```{r nice-fig, fig.cap='Comportamento da pressão.', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
+
+```{python eval=TRUE,echo=FALSE}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Definir padroes para as figuras que serao geradas
+
 ```
 
-A forma de se referir pela figura é através 
-do *label* do *chunck* no qual foi produzida
-com prefixo `fig:`, e.g., ver Figura \@ref(fig:nice-fig). De forma similar, 
-você pode se referir a tabelas geradas por `knitr::kable()`, e.g., ver Tabela \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-Você pode fazer citações, nós estamos usando o pacote **bookdown** [@R-bookdown] neste livro de amostra, o qual foi compilado por R Markdown e **knitr** [@xie2015].
-
-
-
-## Analisando o uso de chunks
-
-
-
-
-
-### Chunk - Condição padrão
-
-A condição *default* do *rmarkdown*
-é a execução do código, apresentação do 
-código e do resultado do processamento. 
-
-Criaremos inicialmente
-uma função no R markdown:
-
-```{r}
-exps<-function(t,l,k,c){
- exps <- exp(-l*(k**(1-c))*t)
-}
-```
-.
-
-Em seguida, aplicaremos esta mesma 
-função em um *chunck*:
-
-```{r}
-t<-seq(1,10,0.1)
-l<-1e-5
-c<-0.95
-k<-350
-Rb <- exps(t,l,k,c)
-plot(t,Rb)
+```{python eval=TRUE,echo=FALSE}
+# FUNCAO - Fazer anotação dos valores em graficos de barras
+def fazer_anotacao(ax):
+    for p in ax.patches:
+        tamanho_barra = int(p.get_width())
+        anotacao_xy = (p.get_x() + tamanho_barra, p.get_y())
+        ax.annotate(tamanho_barra, anotacao_xy, xytext=(50, -45), 
+                    fontsize=15, color='black', textcoords='offset points', horizontalalignment='right')
 ```
 
 
-Como observado acima, os códigos e resultados 
-são apresentados. 
+```{python eval=TRUE,echo=FALSE}
+# Base de dados - Microdados ENEM 2018 para estudantes de Salvador
 
-### Aparecer código e sem executá-lo
+## Colunas que serao usadas nesse capitulo
+colunas_usadas = ['TP_COR_RACA','TP_ESCOLA', 'TP_SEXO', 'Q024', 'Q025']
 
-Nesta seção utilizaremos a opção 
-**eval=FALSE**, assim o código 
-será apresentado sem executá-lo, 
-ou seja, não haverá resultados.
+## Importar os dados
+df = pd.read_csv('data/salvador_raw_enem_2018.csv',usecols=colunas_usadas)
 
+## Transformar valores a partir do dicionario de microdados
+df['TP_SEXO'].replace({'M':'Masculino','F':'Feminino'},inplace=True)
+df['TP_COR_RACA'].replace({0:'Não declarado',1:'Branca',2:'Preta',3:'Parda',4:'Amarela',5:'Indígena'},inplace=True)
+df['TP_ESCOLA'].replace({1:'Não Respondeu',2:'Pública',3:'Privada',4:'Exterior'},inplace=True)
+df['Q024'].replace({'A':'Não','B':'Sim, um','C':'Sim, dois','D':'Sim, três','E':'Sim, quatro ou mais'},inplace=True)
+df['Q025'].replace({'A':'Não','B':'Sim'},inplace=True)
 
-```{r eval=FALSE}
-exps<-function(t,l,k,c){
- exps <- exp(-l*(k**(1-c))*t)
-}
 ```
-.
+## Bases de dados exploradas neste capítulo
 
-Em seguida, aplicaremos esta mesma 
-função em um *chunck*:
 
-```{r eval=FALSE}
-t<-seq(1,10,0.1)
-l<-1e-5
-c<-0.95
-k<-350
-Rb <- exps(t,l,k,c)
-plot(t,Rb)
+
+## Gráfico de barra
+O **Gráfico de barras** é uma forma bastante comum de visualização na área de ciência de dados sendo bastante utilizado para expressar noções de variáveis categóricas. 
+
+Seguindo uma definição mais formal, trata-se da exibição de barras, igualmente espaçadas e largas, para cada **categoria**. O comprimento, ou seja, a altura de cada barra será proporcional à **frequência** desta categoria. Será através da interpretação destas frequências dispostas que perguntas como "qual a categoria mais dominante dessa variável?" ou "qual categoria apresenta a menor quantidade?" podem ser respondidas. Como exemplo é apresentado o gráfico abaixo:
+
+```{python fig31, fig.cap='xxxx', out.width='80%', fig.asp=.75, fig.align='center'}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10))
+
+# Realizar grafico
+#ax = sns.countplot(y='TP_COR_RACA', data=df, palette=sns.color_palette("Set2"), order = df['TP_COR_RACA'].value_counts().index)
+ax = sns.countplot(y='TP_COR_RACA', data=df, palette=sns.color_palette("Set2"))
+plt.yticks(fontsize=15)
+plt.xticks(fontsize=15)
+plt.xlabel('Quantidade de alunos', fontsize=20, weight = 'bold')
+plt.ylabel('Categorias', fontsize=20, weight = 'bold')
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+fazer_anotacao(ax)
+plt.show()
 ```
 
+A `fig31` apresenta a distinção de estudantes por cor/raça inscritos no ENEM na cidade de Salvador, BA. Através da análise deste gráfico é possível responder as perguntas apresentadas anteriormente como:
+- Qual a categoria mais dominante nesta variável? A categoria "Parda" domina em maior quantidade seguido pela categoria "Preta". Ou seja, em Salvador existem mais estudantes auto declarados pardos. 
 
-### Executar código sem apresentá-lo
-Nesta seção utilizaremos a opção 
-**echo=FALSE**, assim o código 
-será apresentado sem executá-lo, 
-ou seja, não haverá resultados.
+A figura acima 
 
+Abaixo, é apresentado um gráfico de barras referente 
 
-```{r echo=FALSE}
-exps<-function(t,l,k,c){
- exps <- exp(-l*(k**(1-c))*t)
-}
-```
-.
+abordar conceito de frequência relativa e absoluta.
+- exemplo 1 - categorica
+-falar de ordenar o gráfico 
 
-Em seguida, aplicaremos esta mesma 
-função em um *chunck*:
+Vale ressaltar que este estilo de gráfico pode ser também usado para numéricas
+- exemplo 2 - continua
+- o que não fazer e possíveis erros com esse tipo de gráfico
 
-```{r echo=FALSE}
-t<-seq(1,10,0.1)
-l<-1e-5
-c<-0.95
-k<-350
-Rb <- exps(t,l,k,c)
-plot(t,Rb)
-```
+referências: https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras
+
+## Gráfico de pizza
+- o que são? Qual a ideia ele quer transmitir? - abordar variável categórica
+- exemplo 1 - categorica
+- exemplo 2
+- o que não fazer e possíveis erros com esse tipo de gráfico
+
+## Séries temporais e o Gráficos de linha
+- pico e vale
+
+## Gráficos de Dispersão
+
+## Histograma
+
+## Aprimorando suas visualizações ...
+- estratificação dos dados

@@ -24,7 +24,7 @@
 <meta name="author" content="Robson Wilson Silva Pessoa, Ícaro Bernardes e Daniela Almeida" />
 
 
-<meta name="date" content="2020-08-06" />
+<meta name="date" content="2020-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,11 +143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html#citações-de-dois-ou-mais-artigos"><i class="fa fa-check"></i><b>3.2</b> Citações de dois ou mais artigos</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="capitulo-3.html"><a href="capitulo-3.html"><i class="fa fa-check"></i><b>4</b> Visualização e Análise gráfica na Ciência de dados</a><ul>
-<li class="chapter" data-level="4.1" data-path="capitulo-3.html"><a href="capitulo-3.html#analisando-o-uso-de-chunks"><i class="fa fa-check"></i><b>4.1</b> Analisando o uso de chunks</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="capitulo-3.html"><a href="capitulo-3.html#chunk---condição-padrão"><i class="fa fa-check"></i><b>4.1.1</b> Chunk - Condição padrão</a></li>
-<li class="chapter" data-level="4.1.2" data-path="capitulo-3.html"><a href="capitulo-3.html#aparecer-código-e-sem-executá-lo"><i class="fa fa-check"></i><b>4.1.2</b> Aparecer código e sem executá-lo</a></li>
-<li class="chapter" data-level="4.1.3" data-path="capitulo-3.html"><a href="capitulo-3.html#executar-código-sem-apresentá-lo"><i class="fa fa-check"></i><b>4.1.3</b> Executar código sem apresentá-lo</a></li>
-</ul></li>
+<li class="chapter" data-level="4.1" data-path="capitulo-3.html"><a href="capitulo-3.html#bases-de-dados-exploradas-neste-capítulo"><i class="fa fa-check"></i><b>4.1</b> Bases de dados exploradas neste capítulo</a></li>
+<li class="chapter" data-level="4.2" data-path="capitulo-3.html"><a href="capitulo-3.html#gráfico-de-barra"><i class="fa fa-check"></i><b>4.2</b> Gráfico de barra</a></li>
+<li class="chapter" data-level="4.3" data-path="capitulo-3.html"><a href="capitulo-3.html#gráfico-de-pizza"><i class="fa fa-check"></i><b>4.3</b> Gráfico de pizza</a></li>
+<li class="chapter" data-level="4.4" data-path="capitulo-3.html"><a href="capitulo-3.html#séries-temporais-e-o-gráficos-de-linha"><i class="fa fa-check"></i><b>4.4</b> Séries temporais e o Gráficos de linha</a></li>
+<li class="chapter" data-level="4.5" data-path="capitulo-3.html"><a href="capitulo-3.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>4.5</b> Gráficos de Dispersão</a></li>
+<li class="chapter" data-level="4.6" data-path="capitulo-3.html"><a href="capitulo-3.html#histograma"><i class="fa fa-check"></i><b>4.6</b> Histograma</a></li>
+<li class="chapter" data-level="4.7" data-path="capitulo-3.html"><a href="capitulo-3.html#aprimorando-suas-visualizações"><i class="fa fa-check"></i><b>4.7</b> Aprimorando suas visualizações …</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="aplicações.html"><a href="aplicações.html"><i class="fa fa-check"></i><b>5</b> Aplicações</a><ul>
 <li class="chapter" data-level="5.1" data-path="aplicações.html"><a href="aplicações.html#exemplo-1"><i class="fa fa-check"></i><b>5.1</b> Exemplo 1</a><ul>
@@ -184,257 +186,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="capitulo-3" class="section level1">
 <h1><span class="header-section-number">Capítulo 4</span> Visualização e Análise gráfica na Ciência de dados</h1>
-<p>Como foi visto no <a href="#capitulo-2"><strong>??</strong></a>, tabela é uma forma poderosa de estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos do que por números e é isso que será ensinado no decorrer deste capítulo.</p>
-<p>A</p>
-<p>Falar da importância de gráficos aqui …</p>
-<p>Como objeto de estudo será usado dados de turismo da cidade de Salvador</p>
-<p>teste de commit
-Alguns detalhes como colocar uma <code>{#label}</code>
-para se referir de forma automática
-a uma seção ou capítulo
-é feito de maneira de forma simples.
-Depois de incluída a <em>label</em>
-podemos citar a referida seção ou capítulo
-do comando pelo comando <a href="intro.html#intro">2</a>.</p>
-<p>Figuras e tabelas com títulos podem
-ser inseridas pelos respectivos ambientes
-<code>figure</code> e <code>table</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="capitulo-3.html#cb1-1"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
-<span id="cb1-2"><a href="capitulo-3.html#cb1-2"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
-<img src="livro_files/figure-html/nice-fig-1.png" alt="Comportamento da pressão." width="80%" />
+<p>O capítulo <a href="#capitulo-2"><strong>??</strong></a> apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos, conteúdo que será ensinado no decorrer deste capítulo.</p>
+<p>A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois a partir de um bom gráfico podemos extrair ideias, hipóteses ou até conclusões a respeito de um tema. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: “Uma imagem vale por mil palavras”.</p>
+<p>Neste capítulo será utilizado como objetos de estudo dados de turismo e educação relacionados a cidade de Salvador, capital do estado da Bahia.</p>
+<div id="bases-de-dados-exploradas-neste-capítulo" class="section level2">
+<h2><span class="header-section-number">4.1</span> Bases de dados exploradas neste capítulo</h2>
+</div>
+<div id="gráfico-de-barra" class="section level2">
+<h2><span class="header-section-number">4.2</span> Gráfico de barra</h2>
+<p>O <strong>Gráfico de barras</strong> é uma forma bastante comum de visualização na área de ciência de dados sendo bastante utilizado para expressar noções de variáveis categóricas.</p>
+<p>Seguindo uma definição mais formal, trata-se da exibição de barras, igualmente espaçadas e largas, para cada <strong>categoria</strong>. O comprimento, ou seja, a altura de cada barra será proporcional à <strong>frequência</strong> desta categoria. Será através da interpretação destas frequências dispostas que perguntas como “qual a categoria mais dominante dessa variável?” ou “qual categoria apresenta a menor quantidade?” podem ser respondidas. Como exemplo é apresentado o gráfico abaixo:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="capitulo-3.html#cb1-1"></a><span class="co"># Definir tamanho da figura</span></span>
+<span id="cb1-2"><a href="capitulo-3.html#cb1-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb1-3"><a href="capitulo-3.html#cb1-3"></a></span>
+<span id="cb1-4"><a href="capitulo-3.html#cb1-4"></a><span class="co"># Realizar grafico</span></span>
+<span id="cb1-5"><a href="capitulo-3.html#cb1-5"></a><span class="co">#ax = sns.countplot(y=&#39;TP_COR_RACA&#39;, data=df, palette=sns.color_palette(&quot;Set2&quot;), order = df[&#39;TP_COR_RACA&#39;].value_counts().index)</span></span>
+<span id="cb1-6"><a href="capitulo-3.html#cb1-6"></a>ax <span class="op">=</span> sns.countplot(y<span class="op">=</span><span class="st">&#39;TP_COR_RACA&#39;</span>, data<span class="op">=</span>df, palette<span class="op">=</span>sns.color_palette(<span class="st">&quot;Set2&quot;</span>))</span>
+<span id="cb1-7"><a href="capitulo-3.html#cb1-7"></a></span>
+<span id="cb1-8"><a href="capitulo-3.html#cb1-8"></a><span class="co"># Aplicar configuracoes esteticas no grafico</span></span>
+<span id="cb1-9"><a href="capitulo-3.html#cb1-9"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## (array([0, 1, 2, 3, 4, 5]), &lt;a list of 6 Text yticklabel objects&gt;)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="capitulo-3.html#cb3-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## (array([    0.,  5000., 10000., 15000., 20000., 25000., 30000., 35000.,
+##        40000., 45000.]), &lt;a list of 10 Text xticklabel objects&gt;)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="capitulo-3.html#cb5-1"></a>plt.xlabel(<span class="st">&#39;Quantidade de alunos&#39;</span>, fontsize<span class="op">=</span><span class="dv">20</span>, weight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb5-2"><a href="capitulo-3.html#cb5-2"></a>plt.ylabel(<span class="st">&#39;Categorias&#39;</span>, fontsize<span class="op">=</span><span class="dv">20</span>, weight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb5-3"><a href="capitulo-3.html#cb5-3"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-4"><a href="capitulo-3.html#cb5-4"></a>ax.spines[<span class="st">&#39;top&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-5"><a href="capitulo-3.html#cb5-5"></a>fazer_anotacao(ax)</span>
+<span id="cb5-6"><a href="capitulo-3.html#cb5-6"></a>plt.show()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig31"></span>
+<img src="livro_files/figure-html/fig31-1.png" alt="xxxx" width="80%" />
 <p class="caption">
-Figura4.1: Comportamento da pressão.
+Figura4.1: xxxx
 </p>
 </div>
-<p>A forma de se referir pela figura é através
-do <em>label</em> do <em>chunck</em> no qual foi produzida
-com prefixo <code>fig:</code>, e.g., ver Figura <a href="capitulo-3.html#fig:nice-fig">4.1</a>. De forma similar,
-você pode se referir a tabelas geradas por <code>knitr::kable()</code>, e.g., ver Tabela <a href="capitulo-3.html#tab:nice-tab">4.1</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="capitulo-3.html#cb2-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
-<span id="cb2-2"><a href="capitulo-3.html#cb2-2"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb2-3"><a href="capitulo-3.html#cb2-3"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
-<span id="cb2-4"><a href="capitulo-3.html#cb2-4"></a>)</span></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab">Tabela4.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-<p>Você pode fazer citações, nós estamos usando o pacote <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> neste livro de amostra, o qual foi compilado por R Markdown e <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
-<div id="analisando-o-uso-de-chunks" class="section level2">
-<h2><span class="header-section-number">4.1</span> Analisando o uso de chunks</h2>
-<div id="chunk---condição-padrão" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Chunk - Condição padrão</h3>
-<p>A condição <em>default</em> do <em>rmarkdown</em>
-é a execução do código, apresentação do
-código e do resultado do processamento.</p>
-<p>Criaremos inicialmente
-uma função no R markdown:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="capitulo-3.html#cb3-1"></a>exps&lt;-<span class="cf">function</span>(t,l,k,c){</span>
-<span id="cb3-2"><a href="capitulo-3.html#cb3-2"></a> exps &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>l<span class="op">*</span>(k<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>c))<span class="op">*</span>t)</span>
-<span id="cb3-3"><a href="capitulo-3.html#cb3-3"></a>}</span></code></pre></div>
-<p>.</p>
-<p>Em seguida, aplicaremos esta mesma
-função em um <em>chunck</em>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="capitulo-3.html#cb4-1"></a>t&lt;-<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="fl">0.1</span>)</span>
-<span id="cb4-2"><a href="capitulo-3.html#cb4-2"></a>l&lt;-<span class="fl">1e-5</span></span>
-<span id="cb4-3"><a href="capitulo-3.html#cb4-3"></a>c&lt;-<span class="fl">0.95</span></span>
-<span id="cb4-4"><a href="capitulo-3.html#cb4-4"></a>k&lt;-<span class="dv">350</span></span>
-<span id="cb4-5"><a href="capitulo-3.html#cb4-5"></a>Rb &lt;-<span class="st"> </span><span class="kw">exps</span>(t,l,k,c)</span>
-<span id="cb4-6"><a href="capitulo-3.html#cb4-6"></a><span class="kw">plot</span>(t,Rb)</span></code></pre></div>
-<p><img src="livro_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Como observado acima, os códigos e resultados
-são apresentados.</p>
+<p>A figura abaix</p>
+<p>Abaixo, é apresentado um gráfico de barras referente</p>
+<p><strong>Base de dados</strong></p>
+<p>O gráfico de barras é uma forma familiar de visualizar distribuições categóricas. Ele exibe uma barra para cada categoria. As barras são igualmente espaçadas e largas. O comprimento de cada barra é proporcional à frequência da categoria correspondente.</p>
+<p>Desenharemos gráficos de barras com barras horizontais porque é mais fácil rotular as barras dessa forma. O método Tabela é, portanto, denominado barh. Leva dois argumentos: o primeiro é o rótulo da coluna das categorias e o segundo é o rótulo da coluna das frequências.</p>
+<p>O gráfico de barras é um gráfico com barras retangulares e comprimento proporcional aos valores que ele apresenta. As barras podem ser desenhadas na vertical ou na horizontal.</p>
+<p>abordar conceito de frequência relativa e absoluta.
+- exemplo 1 - categorica
+-falar de ordenar o gráfico</p>
+<p>Vale ressaltar que este estilo de gráfico pode ser também usado para numéricas
+- exemplo 2 - continua
+- o que não fazer e possíveis erros com esse tipo de gráfico</p>
+<p>referências: <a href="https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras" class="uri">https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras</a></p>
 </div>
-<div id="aparecer-código-e-sem-executá-lo" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Aparecer código e sem executá-lo</h3>
-<p>Nesta seção utilizaremos a opção
-<strong>eval=FALSE</strong>, assim o código
-será apresentado sem executá-lo,
-ou seja, não haverá resultados.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="capitulo-3.html#cb5-1"></a>exps&lt;-<span class="cf">function</span>(t,l,k,c){</span>
-<span id="cb5-2"><a href="capitulo-3.html#cb5-2"></a> exps &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>l<span class="op">*</span>(k<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>c))<span class="op">*</span>t)</span>
-<span id="cb5-3"><a href="capitulo-3.html#cb5-3"></a>}</span></code></pre></div>
-<p>.</p>
-<p>Em seguida, aplicaremos esta mesma
-função em um <em>chunck</em>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="capitulo-3.html#cb6-1"></a>t&lt;-<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="fl">0.1</span>)</span>
-<span id="cb6-2"><a href="capitulo-3.html#cb6-2"></a>l&lt;-<span class="fl">1e-5</span></span>
-<span id="cb6-3"><a href="capitulo-3.html#cb6-3"></a>c&lt;-<span class="fl">0.95</span></span>
-<span id="cb6-4"><a href="capitulo-3.html#cb6-4"></a>k&lt;-<span class="dv">350</span></span>
-<span id="cb6-5"><a href="capitulo-3.html#cb6-5"></a>Rb &lt;-<span class="st"> </span><span class="kw">exps</span>(t,l,k,c)</span>
-<span id="cb6-6"><a href="capitulo-3.html#cb6-6"></a><span class="kw">plot</span>(t,Rb)</span></code></pre></div>
+<div id="gráfico-de-pizza" class="section level2">
+<h2><span class="header-section-number">4.3</span> Gráfico de pizza</h2>
+<ul>
+<li>o que são? Qual a ideia ele quer transmitir? - abordar variável categórica</li>
+<li>exemplo 1 - categorica</li>
+<li>exemplo 2</li>
+<li>o que não fazer e possíveis erros com esse tipo de gráfico</li>
+</ul>
 </div>
-<div id="executar-código-sem-apresentá-lo" class="section level3">
-<h3><span class="header-section-number">4.1.3</span> Executar código sem apresentá-lo</h3>
-<p>Nesta seção utilizaremos a opção
-<strong>echo=FALSE</strong>, assim o código
-será apresentado sem executá-lo,
-ou seja, não haverá resultados.</p>
-<p>.</p>
-<p>Em seguida, aplicaremos esta mesma
-função em um <em>chunck</em>:</p>
-<p><img src="livro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div id="séries-temporais-e-o-gráficos-de-linha" class="section level2">
+<h2><span class="header-section-number">4.4</span> Séries temporais e o Gráficos de linha</h2>
+<ul>
+<li>pico e vale</li>
+</ul>
+</div>
+<div id="gráficos-de-dispersão" class="section level2">
+<h2><span class="header-section-number">4.5</span> Gráficos de Dispersão</h2>
+</div>
+<div id="histograma" class="section level2">
+<h2><span class="header-section-number">4.6</span> Histograma</h2>
+</div>
+<div id="aprimorando-suas-visualizações" class="section level2">
+<h2><span class="header-section-number">4.7</span> Aprimorando suas visualizações …</h2>
+<ul>
+<li>estratificação dos dados</li>
+</ul>
 
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 </div>
             </section>
