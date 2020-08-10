@@ -3,108 +3,166 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
 
+```{python eval=TRUE,echo=FALSE}
+# SOLUCAO PARA CORRIGIR PROBLEMA COM PLOT DO PYTHON
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'
+```
+
+
+# Visualização e Análise gráfica na Ciência de dados {#capitulo-3}
 O capítulo  \@ref(capitulo-2) apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através de gráficos, conteúdo que será ensinado no decorrer deste capítulo.
 
 A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois a partir de um bom gráfico podemos extrair ideias, hipóteses ou até conclusões a respeito de um tema. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale por mil palavras".
 
-Neste capítulo será utilizado como objetos de estudo dados de turismo e educação relacionados a cidade de Salvador, capital do estado da Bahia.
+Serão abordadas duas bases de dados primordiais para exemplificar os conceitos deste capítulo: os microdados do Exame Nacional do Ensino Médio (ENEM) de 2018 para os estudantes da cidade de Salvador (Bahia) e diversas informações sobre o turismo na capital bahiana. 
 
-
-```{r eval=TRUE, echo=FALSE}
-library(reticulate)
-py_run_string("import os as os")
-py_run_string("os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'")
-
-```
-
+Os microdados do ENEM são publicados pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) em seu site. Já as informações sobre o turismo advém de diversas fontes ligadas ao governo do estado da Bahia, mais precisamente a Secretaria de Turismo do Estado da Bahia (SETUR).
 
 ```{python eval=TRUE,echo=FALSE}
+# Modulos usados
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Definir padroes para as figuras que serao geradas
-
+# Carregar bases de dados processadas capitulo
+dados_enem_alunos = pd.read_csv('data/dados_educacao_enem2018_alunosSalvadorInfo.csv')
+dados_enem_notas = pd.read_csv('data/dados_educacao_enem2018_notasSalvadorMaxMin.csv')
 ```
 
 ```{python eval=TRUE,echo=FALSE}
-# FUNCAO - Fazer anotação dos valores em graficos de barras
-def fazer_anotacao(ax):
-    for p in ax.patches:
-        tamanho_barra = int(p.get_width())
-        anotacao_xy = (p.get_x() + tamanho_barra, p.get_y())
-        ax.annotate(tamanho_barra, anotacao_xy, xytext=(50, -45), 
-                    fontsize=15, color='black', textcoords='offset points', horizontalalignment='right')
+# FUNCAO - Fazer anotação dos valores com frequencia absoluta em graficos de barras
+def fazer_anotacao_frequencia_absoluta(eixo, coord_texto_xy):
+    # Loop em cada barra que existe no gráfico
+    for barra in eixo.patches:
+        tamanho_barra = barra.get_width() # Pegar o tamanho da barra
+        texto_barra = tamanho_barra # Texto que sera anotado referente a barra
+        coord_anotacao_xy = (barra.get_x() + tamanho_barra, barra.get_y()) # Coordenada de onde sera a anotacao no grafico
+        eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=15, color='black',
+                    textcoords='offset points', horizontalalignment='right')
+
+# FUNCAO - Fazer anotação dos valores com frequencia relativa em graficos de barras                   
+def fazer_anotacao_frequencia_relativa(eixo, coord_texto_xy, total_amostras):
+    # Loop em cada barra que existe no gráfico
+    for barra in eixo.patches:
+        tamanho_barra = barra.get_width()  # Pegar o tamanho da barra
+        texto_barra = str(round(100*tamanho_barra/total_amostras, 2)) + ' %' # Texto que sera anotado referente a barra
+        coord_anotacao_xy = (barra.get_x() + tamanho_barra, barra.get_y())
+        eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=15, color='black', 
+                      textcoords='offset points', horizontalalignment='right')
+        
 ```
-
-
-```{python eval=TRUE,echo=FALSE}
-# Base de dados - Microdados ENEM 2018 para estudantes de Salvador
-
-## Colunas que serao usadas nesse capitulo
-colunas_usadas = ['TP_COR_RACA','TP_ESCOLA', 'TP_SEXO', 'Q024', 'Q025']
-
-## Importar os dados
-df = pd.read_csv('data/salvador_raw_enem_2018.csv',usecols=colunas_usadas)
-
-## Transformar valores a partir do dicionario de microdados
-df['TP_SEXO'].replace({'M':'Masculino','F':'Feminino'},inplace=True)
-df['TP_COR_RACA'].replace({0:'Não declarado',1:'Branca',2:'Preta',3:'Parda',4:'Amarela',5:'Indígena'},inplace=True)
-df['TP_ESCOLA'].replace({1:'Não Respondeu',2:'Pública',3:'Privada',4:'Exterior'},inplace=True)
-df['Q024'].replace({'A':'Não','B':'Sim, um','C':'Sim, dois','D':'Sim, três','E':'Sim, quatro ou mais'},inplace=True)
-df['Q025'].replace({'A':'Não','B':'Sim'},inplace=True)
-
-```
-## Bases de dados exploradas neste capítulo
-
-
 
 ## Gráfico de barra
 O **Gráfico de barras** é uma forma bastante comum de visualização na área de ciência de dados sendo bastante utilizado para expressar noções de variáveis categóricas. 
 
-Seguindo uma definição mais formal, trata-se da exibição de barras, igualmente espaçadas e largas, para cada **categoria**. O comprimento, ou seja, a altura de cada barra será proporcional à **frequência** desta categoria. Será através da interpretação destas frequências dispostas que perguntas como "qual a categoria mais dominante dessa variável?" ou "qual categoria apresenta a menor quantidade?" podem ser respondidas. Como exemplo é apresentado o gráfico abaixo:
+Seguindo uma definição mais formal, trata-se da exibição de barras, igualmente espaçadas e largas, para cada categoria. O comprimento, ou seja, o tamanho de cada barra será proporcional à **frequência** desta categoria. Será através da interpretação das frequências dispostas que perguntas como "qual a categoria mais dominante desta variável?" ou "qual categoria apresenta uma menor quantidade?" podem ser respondidas. Como exemplo é apresentado o gráfico abaixo:
 
-```{python fig31, fig.cap='xxxx', out.width='80%', fig.asp=.75, fig.align='center'}
+```{python fig31, fig.cap='Distinção de estudantes por cor/raça da cidade de Salvador inscritos no ENEM 2018', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
 # Definir tamanho da figura
-plt.figure(figsize=(20,10))
+plt.figure(figsize=(20,10));
 
 # Realizar grafico
-#ax = sns.countplot(y='TP_COR_RACA', data=df, palette=sns.color_palette("Set2"), order = df['TP_COR_RACA'].value_counts().index)
-ax = sns.countplot(y='TP_COR_RACA', data=df, palette=sns.color_palette("Set2"))
-plt.yticks(fontsize=15)
-plt.xticks(fontsize=15)
-plt.xlabel('Quantidade de alunos', fontsize=20, weight = 'bold')
-plt.ylabel('Categorias', fontsize=20, weight = 'bold')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-fazer_anotacao(ax)
-plt.show()
+eixo = sns.countplot(y='TP_COR_RACA', data=dados_enem_alunos, palette=sns.color_palette("Set2"));
+plt.yticks(fontsize=25);
+plt.xticks(fontsize=25);
+plt.xlabel('Quantidade de alunos', fontsize=30, weight = 'bold');
+plt.ylabel('Categorias', fontsize=30, weight = 'bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+fazer_anotacao_frequencia_absoluta(eixo, (55, -45));
+plt.tight_layout();
+plt.show();
 ```
 
-A `fig31` apresenta a distinção de estudantes por cor/raça inscritos no ENEM na cidade de Salvador, BA. Através da análise deste gráfico é possível responder as perguntas apresentadas anteriormente como:
-- Qual a categoria mais dominante nesta variável? A categoria "Parda" domina em maior quantidade seguido pela categoria "Preta". Ou seja, em Salvador existem mais estudantes auto declarados pardos. 
+A `fig31` apresenta a distinção de estudantes por cor/raça inscritos no ENEM 2018 na cidade de Salvador (BA), onde os valores a direita das barras indicam a quantidade de alunos pertencentes aquela categoria. Através da análise deste gráfico é possível responder as perguntas apresentadas anteriormente como:
+- "Qual a categoria mais dominante nesta variável?" A categoria `Parda` domina em maior quantidade. Ou seja, em Salvador existem mais estudantes auto declarados pardos.
+- "Qual a categoria apresenta uma menor quantidade?" A categoria `Indígena` apresenta uma baixa representatividade.
 
-A figura acima 
+Note como uma visualização gráfica é melhor em comparação a uma tabela para a mesma informação:
 
-Abaixo, é apresentado um gráfico de barras referente 
+```{python eval=TRUE,echo=FALSE}
+dados_enem_alunos['TP_COR_RACA'].head(100)
+```
 
-abordar conceito de frequência relativa e absoluta.
-- exemplo 1 - categorica
--falar de ordenar o gráfico 
+Ao invés do trabalho repetitivo de contar na tabela quantos estudantes estão em cada categoria, através de uma linguagem de programação com alguns comandos isso é realizado de forma automática!
 
-Vale ressaltar que este estilo de gráfico pode ser também usado para numéricas
-- exemplo 2 - continua
-- o que não fazer e possíveis erros com esse tipo de gráfico
+Apesar do gráfico anterior apresentar informações interessantes, sua construção pode ser aprimorada ainda mais e é isso o que a figura seguinte irá trazer:
 
-referências: https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras
+```{python fig32, fig.cap='Distinção de estudantes por cor/raça da cidade de Salvador inscritos no ENEM 2018 ordenados.', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+eixo = sns.countplot(y='TP_COR_RACA', data=dados_enem_alunos, palette=sns.color_palette("Set2"), order = dados_enem_alunos['TP_COR_RACA'].value_counts().index);
+plt.yticks(fontsize=25);
+plt.xticks(fontsize=25);
+plt.xlabel('Quantidade de alunos', fontsize=30, weight = 'bold');
+plt.ylabel('Categorias', fontsize=30, weight = 'bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+fazer_anotacao_frequencia_absoluta(eixo, (55, -45));
+plt.tight_layout();
+plt.show();
+```
+
+Note como a `fig32` deixa mais claro outra informação subjetiva: ordem. Com as barras ordenadas, fica mais fácil para o leitor verificar em ordem crescente (do menor para o maior) ou decrescente (do maior para o menor) como está distribuída as categorias naquela variável. Fica mais simples e direto verificar, por exemplo, que a quantidade de estudantes **Não declarado** é significamente menor que estudantes na categoria `Pardo` ou `Preta`. 
+
+É importante ressaltar que até o momento foi trabalho apenas com valores absolutos, ou seja, a quantidade total que aquela categoria apareceu naquela variável. Isso é chamado comumente de **frequência absoluta** (FA). Existe outra forma de dispor esses mesmos valores através da **frequência relativa** (FR). A frequência relativa é definida como uma proporção dada por:
+$$FR = {FA \choose T}$$
+Onde $T$ é o tamanho amostral e $FA$ a frequência absoluta. Porém é comum apresenta-la no formato $FR (\%)$ onde "%" indica porcentagem, ou seja, parcela de um todo. Para conseguir essa nova visualização, altera-se a proporção anterior da seguinte forma:
+$$FR (\%) = 100*{FA \choose T}$$
+A análise utilizando a frequência relativa é bastante usada em pesquisas, pois torna a comparação mais significante. Transformando a `fig32` de FA para FR obtém-se:
+
+```{python fig33, fig.cap='Distinção de estudantes por cor/raça da cidade de Salvador inscritos no ENEM 2018 ordenado em frequência relativa.', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+eixo = sns.countplot(y='TP_COR_RACA', data=dados_enem_alunos, palette=sns.color_palette("Set2"), order = dados_enem_alunos['TP_COR_RACA'].value_counts().index);
+plt.yticks(fontsize=25);
+plt.xticks(fontsize=25);
+plt.xlabel('Quantidade de alunos', fontsize=30, weight = 'bold');
+plt.ylabel('Categorias', fontsize=30, weight = 'bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+fazer_anotacao_frequencia_relativa(eixo, (65, -45), len(dados_enem_alunos));
+plt.tight_layout();
+plt.show();
+```
+
+Ao analisar a `fig33` você pode perguntar "Qual é o impacto/diferença em usar FA ou FR?" ou "O que eu ganho realizando minha análise com FR?". Acredito que uma análise comparativa entre `fig32` e `fig33` possa auxiliar na resolução dessas questões:
+- Ao analisar a `fig33` você identificar que mais de 80% dos estudantes inscritos no ENEM 2018 são da categoria `Pardo` ou `Preta`, verificado ao somar as $FR(\%)$.
+- A quantidade de estudantes "Não declarado" é maior do que a quantidade somada de estudantes declarados como `Indígena` ou `Amarela`.
+
+Essa informações expressivas de quantidades não poderiam ser verificadas na `fig32` visto que não fica claro o tamanho amostral na $FA$, apenas na $FR(\%)$.Toda essa análise mostra como um gráfico pode ser aperfeiçoado com o tempo e como um gráfico de barras pode conter tantas informações. Vale ressaltar que inclusive essa predominância de pessoas auto declaradas de cor `Parda` ou `Preta` reflete a realidade da capital mais negra do Brasil segundo o censo de 2018 do Instituto Brasileiro de Geografia e Estatística (IBGE).
+
+Apesar do gráfico de barras estar bastante relacionado com variáveis categóricas, ele pode ser usado também para expressar grandezas numéricas de uma forma visual. Isso é realizado na imagem seguinte:
+```{python fig34, fig.cap='Notas máximas e mínimas no ENEM 2018 para os estudantes de Salvador (BA).', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
+plt.figure(figsize=(20,10));
+eixo = sns.barplot(y='Materia',x='Nota',hue='Tipo',data=dados_enem_notas, palette=sns.color_palette("Set2"));
+fazer_anotacao_frequencia_absoluta(eixo, (50,-30));
+```
+
+A `fig34` apesar de não apresentar variáveis com nenhum teor categórico, pois as notas de provas apresentam um caráter numérico, demonstra a utilização do gráfico de barras para demonstrar a discrepância entre as maiores e menores notas para as diversas provas do ENEM (desconsiderando provas zeradas). A utilização deste tipo de gráfico com esse viés é interessante para ressaltar diferenças principalmente em resultados, fazendo com que o leitor perceba como um valor é superior ou inferior que o outro.
 
 ## Gráfico de pizza
-- o que são? Qual a ideia ele quer transmitir? - abordar variável categórica
-- exemplo 1 - categorica
-- exemplo 2
-- o que não fazer e possíveis erros com esse tipo de gráfico
+
+O **Gráfico de pizza**, também conhecido como gráfico de setores, pode ser visto como uma forma alternativa ao **gráfico de barras** para expressar informações . Neste gráfico, construído exclusivamente para variáveis categóricas, cada fatia referente a uma categoria possui um tamanho proporcional a $FR(\%)$ . Abaixo é apresentado um exemplo desta modalidade:
+```{python fig35, fig.cap='Quantidade de alunos do sexo masculino e feminino inscritos no ENEM 2018.', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
+# Construcao de um gráfico de pizza em python
+categorias = ['Masculino', 'Feminino'];
+qtd_de_amostras_categorias = [dados_enem_alunos['TP_SEXO'].value_counts()[1], dados_enem_alunos['TP_SEXO'].value_counts()[0]];
+figura, eixo = plt.subplots();
+eixo.pie(qtd_de_amostras_categorias, labels=categorias, autopct='%1.1f%%', shadow=True);
+eixo.axis('equal');
+plt.show();
+```
+
+Através da análise da `fig35` é possível identificar que a proporção de estudantes do sexo feminino é maior do que do sexo masculino. Isso é verificado pelo tamanho da $FR(\%)$ e também pela "fatia" dessa categoria. Neste tipo de gráfico, a categoria mais dominante irá apresentar um tamanho maior em comparação as demais, caso isso não ocorra provavelmente existe alguma coisa errada com seu gráfico.
+
+A análise utilizando um gráfico de pizza é interessante quando é estudado uma variável categórica em específico e almeja apresentar possíveis dominâncias entre suas classes. Essa abordagem, todavia, não é recomendado quando o atributo estudado apresenta muitas categorias, pois a visualização se torna mais difícil para o leitor. Neste caso é recomendado a utilização dos gráficos de barras.
 
 ## Séries temporais e o Gráficos de linha
 - pico e vale
@@ -113,5 +171,11 @@ referências: https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras
 
 ## Histograma
 
-## Aprimorando suas visualizações ...
+## Aprimorando suas visualizações
 - estratificação dos dados
+
+## Indo Além ...
+
+## Referências
+https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras
+
