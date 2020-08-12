@@ -107,7 +107,7 @@ plt.tight_layout();
 plt.show();
 ```
 
-Note como a `fig32` deixa mais claro outra informação subjetiva: ordem. Com as barras ordenadas, fica mais fácil para o leitor verificar em ordem crescente (do menor para o maior) ou decrescente (do maior para o menor) como está distribuída as categorias naquela variável. Fica mais simples e direto verificar, por exemplo, que a quantidade de estudantes **Não declarado** é significamente menor que estudantes na categoria `Pardo` ou `Preta`. 
+Note como a \@ref(fig:fig32) deixa mais claro outra informação subjetiva: ordem. Com as barras ordenadas, fica mais fácil para o leitor verificar em ordem crescente (do menor para o maior) ou decrescente (do maior para o menor) como está distribuída as categorias naquela variável. Fica mais simples e direto verificar, por exemplo, que a quantidade de estudantes **Não declarado** é significamente menor que estudantes na categoria `Pardo` ou `Preta`. 
 
 É importante ressaltar que até o momento foi trabalho apenas com valores absolutos, ou seja, a quantidade total que aquela categoria apareceu naquela variável. Isso é chamado comumente de **frequência absoluta** (FA). Existe outra forma de dispor esses mesmos valores através da **frequência relativa** (FR). A frequência relativa é definida como uma proporção dada por:
 $$FR = {FA \choose T}$$
@@ -271,12 +271,12 @@ Ao utilizar 25 categorias, como apresentado na `fig39` é possível identificar 
 Para corroborar ainda mais essa ideia vamos analisar o gráfico abaixo:
 ``` {python fig310, fig.cap='Histograma da idade dos participantes do ENEM 2018 na cidade de Salvador com uma maior resolução', out.width='90%', fig.asp=.75, fig.align='center', echo=FALSE}
 # Gráfico de pizza
-labels = ['Abaixo dos 20 anos', 'Acima dos 20 anos']
-sizes = [dados_enem_alunos['IDADE_CATEGORICA'].value_counts()[1], dados_enem_alunos['IDADE_CATEGORICA'].value_counts()[0]]
-fig1, eixo = plt.subplots()
-eixo.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=False)
-eixo.axis('equal')
-plt.show()
+labels = ['Abaixo dos 20 anos', 'Acima dos 20 anos'];
+sizes = [dados_enem_alunos['IDADE_CATEGORICA'].value_counts()[1], dados_enem_alunos['IDADE_CATEGORICA'].value_counts()[0]];
+fig1, eixo = plt.subplots();
+eixo.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=False);
+eixo.axis('equal');
+plt.show();
 ```
 
 O gráfico de pizza exposto na `fig310` avalia a quantidade de estudantes de acordo ao um limite de 20 anos de idade. É verificado que quase 50% dos participantes do ENEM 2018 apresentam uma idade inferior a 20 anos, solidificando ainda o que foi verificado durante a a análise do histograma passado, mesmo com um intervalo de idade que vai desde os 12 anos até 81 anos verificado.
@@ -290,7 +290,5 @@ Após concluir a leitura desta seção você pode notar a semelhança entre **hi
 ## Aprimorando suas visualizações
 
 ## Indo Além ...
-
-## Referências
 https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_barras
 

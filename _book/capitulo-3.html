@@ -24,7 +24,7 @@
 <meta name="author" content="Robson Wilson Silva Pessoa, Ícaro Bernardes e Daniela Almeida" />
 
 
-<meta name="date" content="2020-08-11" />
+<meta name="date" content="2020-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,7 +160,7 @@ Figura 4.1: Distinção de estudantes por cor/raça da cidade de Salvador inscri
 Figura 4.2: Distinção de estudantes por cor/raça da cidade de Salvador inscritos no ENEM 2018 ordenados.
 </p>
 </div>
-<p>Note como a <code>fig32</code> deixa mais claro outra informação subjetiva: ordem. Com as barras ordenadas, fica mais fácil para o leitor verificar em ordem crescente (do menor para o maior) ou decrescente (do maior para o menor) como está distribuída as categorias naquela variável. Fica mais simples e direto verificar, por exemplo, que a quantidade de estudantes <strong>Não declarado</strong> é significamente menor que estudantes na categoria <code>Pardo</code> ou <code>Preta</code>.</p>
+<p>Note como a <a href="capitulo-3.html#fig:fig32">4.2</a> deixa mais claro outra informação subjetiva: ordem. Com as barras ordenadas, fica mais fácil para o leitor verificar em ordem crescente (do menor para o maior) ou decrescente (do maior para o menor) como está distribuída as categorias naquela variável. Fica mais simples e direto verificar, por exemplo, que a quantidade de estudantes <strong>Não declarado</strong> é significamente menor que estudantes na categoria <code>Pardo</code> ou <code>Preta</code>.</p>
 <p>É importante ressaltar que até o momento foi trabalho apenas com valores absolutos, ou seja, a quantidade total que aquela categoria apareceu naquela variável. Isso é chamado comumente de <strong>frequência absoluta</strong> (FA). Existe outra forma de dispor esses mesmos valores através da <strong>frequência relativa</strong> (FR). A frequência relativa é definida como uma proporção dada por:
 <span class="math display">\[FR = {FA \choose T}\]</span>
 Onde <span class="math inline">\(T\)</span> é o tamanho amostral e <span class="math inline">\(FA\)</span> a frequência absoluta. Porém é comum apresenta-la no formato <span class="math inline">\(FR (\%)\)</span> onde “%” indica porcentagem, ou seja, parcela de um todo. Para conseguir essa nova visualização, altera-se a proporção anterior da seguinte forma:
@@ -243,16 +243,14 @@ Figura 4.9: Histograma da idade dos participantes do ENEM 2018 na cidade de Salv
 </p>
 </div>
 <p>Ao utilizar 25 categorias, como apresentado na <code>fig39</code> é possível identificar que o intervalo de idade mais dominante foi anulado para participantes com idade em torno de 15 aos 21 anos, o que é congruente visto que a maioria dos inscritos no ENEM são estudantes do ensino médio. Essa conclusão é corroborada com a queda da no eixo vertical para idades superiores a 20 anos.</p>
-<p>Para corroborar ainda mais essa ideia vamos analisar o gráfico abaixo:</p>
-<pre><code>## ([&lt;matplotlib.patches.Wedge object at 0x0000000034E12108&gt;, &lt;matplotlib.patches.Wedge object at 0x0000000034E12148&gt;], [Text(0.13351534689450067, 1.091867048748904, &#39;Abaixo dos 20 anos&#39;), Text(-0.13351524466652911, -1.091867061249508, &#39;Acima dos 20 anos&#39;)], [Text(0.07282655285154582, 0.5955638447721293, &#39;46.1%&#39;), Text(-0.07282649709083405, -0.5955638515906407, &#39;53.9%&#39;)])</code></pre>
-<pre><code>## (-1.1096569746405915, 1.1004598837057975, -1.111390396575388, 1.1238395526998675)</code></pre>
+Para corroborar ainda mais essa ideia vamos analisar o gráfico abaixo:
 <div class="figure" style="text-align: center"><span id="fig:fig310"></span>
 <img src="livro_files/figure-html/fig310-1.png" alt="Histograma da idade dos participantes do ENEM 2018 na cidade de Salvador com uma maior resolução" width="90%" />
 <p class="caption">
 Figura 4.10: Histograma da idade dos participantes do ENEM 2018 na cidade de Salvador com uma maior resolução
 </p>
 </div>
-<p>O gráfico de pizza exposto na <code>fig310</code> avalia a quantidade de estudantes de acordo ao um limite de 20 anos de idade. É verificado que quase 50% dos participantes do ENEM 2018 apresentam uma idade inferior a 20 anos, solidificando ainda o que foi verificado durante a a análise do histograma passado.</p>
+<p>O gráfico de pizza exposto na <code>fig310</code> avalia a quantidade de estudantes de acordo ao um limite de 20 anos de idade. É verificado que quase 50% dos participantes do ENEM 2018 apresentam uma idade inferior a 20 anos, solidificando ainda o que foi verificado durante a a análise do histograma passado, mesmo com um intervalo de idade que vai desde os 12 anos até 81 anos verificado.</p>
 <p>Após concluir a leitura desta seção você pode notar a semelhança entre <strong>histograma</strong> e <strong>gráfico de barras</strong>, porém não confunda: eles são diferentes! Suas principais diferenças são:
 - Os gráficos de barras exibem uma quantidade por categoria. Eles são frequentemente usados para exibir as distribuições de variáveis categóricas. Os histogramas exibem as distribuições de variáveis numéricas.
 - Todas as barras em um gráfico de barras têm a mesma largura e há uma quantidade igual de espaço entre as barras consecutivas. As barras de um histograma podem ter larguras diferentes e são contíguas.</p>
