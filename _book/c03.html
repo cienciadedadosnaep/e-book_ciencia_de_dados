@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Visualização e Ciência de dados | Treinamento Bookdown</title>
+  <meta name="description" content="Este documento faz parte de um treinamento introdutório de Rmardown, Bookdown e Tidyverse para o grupo Ciência de Dados na Escola Pública." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Visualização e Ciência de dados | Treinamento Bookdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este documento faz parte de um treinamento introdutório de Rmardown, Bookdown e Tidyverse para o grupo Ciência de Dados na Escola Pública." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Visualização e Ciência de dados | Treinamento Bookdown" />
+  
+  <meta name="twitter:description" content="Este documento faz parte de um treinamento introdutório de Rmardown, Bookdown e Tidyverse para o grupo Ciência de Dados na Escola Pública." />
+  
+
+<meta name="author" content="Robson Wilson Silva Pessoa, Ícaro Bernardes e Daniela Almeida" />
+
+
+<meta name="date" content="2020-08-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="c02.html"/>
+<link rel="next" href="literatura-e-bibtex.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ciência de Dados na EP</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2" data-path="c02.html"><a href="c02.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
+<li class="chapter" data-level="2.1" data-path="c02.html"><a href="c02.html#criação-do-projeto-do-livro"><i class="fa fa-check"></i><b>2.1</b> Criação do projeto do livro</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="c03.html"><a href="c03.html"><i class="fa fa-check"></i><b>3</b> Visualização e Ciência de dados</a><ul>
+<li class="chapter" data-level="3.1" data-path="c03.html"><a href="c03.html#objeto-de-estudo-do-capítulo"><i class="fa fa-check"></i><b>3.1</b> Objeto de Estudo do capítulo</a></li>
+<li class="chapter" data-level="3.2" data-path="c03.html"><a href="c03.html#gráfico-de-barra"><i class="fa fa-check"></i><b>3.2</b> Gráfico de barra</a></li>
+<li class="chapter" data-level="3.3" data-path="c03.html"><a href="c03.html#gráfico-de-tendências"><i class="fa fa-check"></i><b>3.3</b> Gráfico de tendências</a></li>
+<li class="chapter" data-level="3.4" data-path="c03.html"><a href="c03.html#gráfico-de-setores"><i class="fa fa-check"></i><b>3.4</b> Gráfico de setores</a></li>
+<li class="chapter" data-level="3.5" data-path="c03.html"><a href="c03.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>3.5</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="3.6" data-path="c03.html"><a href="c03.html#histograma"><i class="fa fa-check"></i><b>3.6</b> Histograma</a></li>
+<li class="chapter" data-level="3.7" data-path="c03.html"><a href="c03.html#indo-além"><i class="fa fa-check"></i><b>3.7</b> Indo Além …</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html"><i class="fa fa-check"></i><b>4</b> Literatura e bibtex</a><ul>
+<li class="chapter" data-level="4.1" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html#exemplo-de-citação-simples"><i class="fa fa-check"></i><b>4.1</b> Exemplo de citação simples</a></li>
+<li class="chapter" data-level="4.2" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html#citações-de-dois-ou-mais-artigos"><i class="fa fa-check"></i><b>4.2</b> Citações de dois ou mais artigos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="aplicações.html"><a href="aplicações.html"><i class="fa fa-check"></i><b>5</b> Aplicações</a><ul>
+<li class="chapter" data-level="5.1" data-path="aplicações.html"><a href="aplicações.html#exemplo-1"><i class="fa fa-check"></i><b>5.1</b> Exemplo 1</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="aplicações.html"><a href="aplicações.html#carregamento-de-dados"><i class="fa fa-check"></i><b>5.1.1</b> Carregamento de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="aplicações.html"><a href="aplicações.html#análise-de-dados"><i class="fa fa-check"></i><b>5.2</b> Análise de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="aplicações.html"><a href="aplicações.html#análise-exploratória"><i class="fa fa-check"></i><b>5.2.1</b> Análise Exploratória</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="recomendações-finais.html"><a href="recomendações-finais.html"><i class="fa fa-check"></i><b>6</b> Recomendações finais</a><ul>
+<li class="chapter" data-level="6.1" data-path="recomendações-finais.html"><a href="recomendações-finais.html#o-site-principal-do-bookdown"><i class="fa fa-check"></i><b>6.1</b> O site principal do Bookdown</a></li>
+<li class="chapter" data-level="6.2" data-path="recomendações-finais.html"><a href="recomendações-finais.html#reportagem"><i class="fa fa-check"></i><b>6.2</b> Reportagem</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Treinamento Bookdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="c03" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Visualização e Ciência de dados</h1>
+<p>O capítulo <a href="c02.html#c02">2</a> apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através dos gráficos, conteúdo que será explorado no decorrer deste capítulo.</p>
+<p>A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois é a partir de um bom gráfico que podemos extrair ideias, hipóteses e um melhor entendimento a respeito de um tema ou uma pergunta. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: “Uma imagem vale mais que mil palavras”.</p>
+<div id="objeto-de-estudo-do-capítulo" class="section level2">
+<h2><span class="header-section-number">3.1</span> Objeto de Estudo do capítulo</h2>
+<p>Para compreender a importância da análise gráfica e como utiliza-la corretamente, iremos analisar o perfil dos estudantes de Salvador que realizaram a prova do Exame Nacional do Ensino Médio (ENEM) no período de 2015 até 2019.</p>
+<p>Porém, antes de qualquer coisa: O que é um <strong>Perfil</strong>? Esse termo é muito usado na estatística para <strong>descrever determinado processo ou objeto de estudo, buscando entender características e padrões que o representa</strong>. Para este caso em específico, vamos estudar os estudantes da cidade de Salvador utilizando os microdados do ENEM, publicados pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP), disponível ao público através deste <a href="http://inep.gov.br/microdados">link de acesso</a>.</p>
+<p>Como o termo <strong>perfil</strong> pode ser bem vasto e diversas características podem ser extraídas, é necessário concentrar essa análise em perguntas mais específicas para nortear o estudo. No decorrer deste capítulo, será explorado graficamente as seguintes questões:</p>
+<ul>
+<li><p>A quantidade de estudantes que realizam o ENEM aumentou de 2015 para 2019 na capital bahiana?</p></li>
+<li><p>Como é a distribuição de estudantes em Salvador por cor/raça? Conseguimos identificar algum padrão para esses valores?</p></li>
+<li><p>Na dita era da informação, onde tudo está conectado, como está o acesso dos estudantes a internet em suas residências? E a computadores pessoais?</p></li>
+<li><p>O tipo de escola (pública ou privada) pode influenciar nas notas dos estudantes neste exame?</p></li>
+</ul>
+<p>A compreensão desses dados é de suma importância para compreender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil.</p>
+</div>
+<div id="gráfico-de-barra" class="section level2">
+<h2><span class="header-section-number">3.2</span> Gráfico de barra</h2>
+<p>O <strong>Gráfico de barras</strong> é uma forma bastante comum e versátil de visualização na área de ciência de dados. Ele pode ser utilizado tanto com variáveis categóricas quanto numéricas para expressar grandezas. A Figura abaixo apresenta uma de suas utilizações: demonstrar grandezas numéricas.</p>
+<div class="figure" style="text-align: center"><span id="fig:f31"></span>
+<img src="livro_files/figure-html/f31-1.png" alt="Quantidade de estudantes que se inscreveram o ENEM na capital bahiana" width="100%" />
+<p class="caption">
+Figura 3.1: Quantidade de estudantes que se inscreveram o ENEM na capital bahiana
+</p>
+</div>
+<p>Na Figura <a href="c03.html#fig:f31">3.1</a> é apresentado a quantidade de estudantes que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda drástica na participação de estudantes entre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Ano</th>
+<th align="center">Número de estudantes em Salvador</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2015</td>
+<td align="center">159835</td>
+</tr>
+<tr class="even">
+<td align="center">2016</td>
+<td align="center">175873</td>
+</tr>
+<tr class="odd">
+<td align="center">2017</td>
+<td align="center">121063</td>
+</tr>
+<tr class="even">
+<td align="center">2018</td>
+<td align="center">93852</td>
+</tr>
+<tr class="odd">
+<td align="center">2019</td>
+<td align="center">88557</td>
+</tr>
+</tbody>
+</table>
+<p>Note que ao visualizar a Tabela, nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, ela contém as mesmas informações demonstradas na Figura <a href="c03.html#fig:f31">3.1</a>, porém com uma diferença: através da visualização gráfica fica muito mais claro a queda de inscrições no ENEM de 2016 até 2019.</p>
+<p>O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.</p>
+<p>É através da Figura <a href="c03.html#fig:f31">3.1</a> que podemos responder a primeira pergunta:<strong>A quantidade de estudantes que realizam o ENEM aumentou de 2015 para 2019 na capital bahiana?</strong> E a resposta é não. Apesar do número de estudantes crescer de 2015 para 2016, ocorre uma queda drástica até 2019, chegando a diminuir pela metade o número de inscrições em Salvador.</p>
+<p>Essa resposta pode te levar a um questionamento mais profundo: O que realmente motivou essa queda?. Infelizmente encontrar a resposta para este questionamento não é trivial, requer pesquisas mais específicas a cerca do tema, o que foge do escopo deste capítulo. Todavia, é interessante refletir como a partir de um gráfico simples, podemos alcançar perguntas ainda mais complexas.</p>
+<p>Agora que respondemos a primeira questão, podemos perceber que a pergunta “<strong>Como é a distribuição de estudantes em Salvador por cor/raça? Conseguimos identificar algum padrão para esses valores?</strong>” está bastante relacionada ao seu resultado.
+Inicialmente para entender essa relação, precisamos entender o que seria essa distribuição de raças no questionário no ENEM. Trata-se de uma pergunta que busca entender como o estudante se classifica em relação a sua cor. Essa pergunta possui 7 respostas possíveis:</p>
+<ul>
+<li><p>Não declarado</p></li>
+<li><p>Pardo</p></li>
+<li><p>Preta</p></li>
+<li><p>Branco</p></li>
+<li><p>Amarelo</p></li>
+<li><p>Indígena</p></li>
+<li><p>Opção de não apresentar tal informação</p></li>
+</ul>
+<p>Como foi explicado no Capítulo <a href="c02.html#c02">2</a>, esse questionamento pode ser definido como uma variável categórica. Ele está bastante relacionada com a primeira questão, pois a quantidade de total de estudantes pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. Como tivemos uma diferença tão grande entre o número de inscritos em 2016 e 2019 demonstrado na Figura <a href="c03.html#fig:f31">3.1</a>, uma análise mais aprofundada nesses dois anos podem trazer resultados interessantes para responder nosso segundo questionamento:</p>
+<div class="figure" style="text-align: center"><span id="fig:f32"></span>
+<img src="livro_files/figure-html/f32-1.png" alt="Distinção de estudantes inscritos por cor/raça da cidade de Salvador para os anos de 2016 e 2019" width="100%" />
+<p class="caption">
+Figura 3.2: Distinção de estudantes inscritos por cor/raça da cidade de Salvador para os anos de 2016 e 2019
+</p>
+</div>
+<p>Através da Figura <a href="c03.html#fig:f32">3.2</a>, é apresentado os valores absolutos da quantidade de estudantes que realizaram o ENEM em cada ano identificados pela sua raça. Note que a grande queda encontrada na Figura <a href="c03.html#fig:f31">3.1</a> se reflete neste gráfico também: Em comparação a 2016, todas as categorias apresentaram valores menores. Por exemplo, a quantidade pessoas pardas que realizaram o ENEM caiu quase pela metade, assim como pessoas auto-declaradas como preta. Além disso, podemos notar uma baixíssima quantidade de pessoas indígenas/amarela que realizam este exame e que em sua grande maioria, os estudantes da capital bahiana se declaram como pardos e negros. Essa situação já era esperada e reflete uma realidade já conhecida: Segundo o Instituto Brasileiro de Estatística e Geografia (IBGE), em uma <a href="https://www.acordacidade.com.br/noticias/203087/ibge-ba-salvador-a-capital-mais-negra-do-brasil-e-com-a-maior-desigualdade-salarial-entre-brancos-e-pretos.html?mobile=true">pesquisa realizada em 2017</a>, Salvador é considerada a capital mais preta do brasil, onde 8 em cada 10 moradores se autodeclaravam de cor preta ou parda.</p>
+<p>Note que a Figura <a href="c03.html#fig:f32">3.2</a> demonstra também a principal função do gráfico de barras: dimensionar variáveis categóricas de acordo a frequência de suas categorias. <strong>Frequência</strong> para uma variável categórica pode ser definido com a quantidade de vezes que ela é representada, podendo ser dividida em dois tipos: absoluta e relativa.</p>
+<p>A frequência absoluta se trata da representação da quantidade de vezes que cada categoria ocorre. Este tipo de frequência é trabalhada na Figura <a href="c03.html#fig:f32">3.2</a>, onde apresentamos a quantidade de estudantes por cor/raça que realizaram o ENEM nos anos de 2016 e 2019. Ainda na Figura <a href="c03.html#fig:f32">3.2</a>, conseguimos notar que para todas as categorias apresentaram uma queda na quantidade de estudantes que realizaram em 2016 para 2019, mas e se quisermos comparar este valores ainda utilizando um gráfico de barras, seria possível?</p>
+<p>Uma boa forma para comparar essas frequências absolutas distintas seria através do segundo tipo de frequência apresentada anteriormente: a frequência relativa. A frequência relativa é definida como uma proporção entre o valor que você quer estimar e o valor máximo esperado. Podemos formular este conceito da seguinte forma:
+<span class="math display">\[Frequência\ Relativa (\%) = 100*{Valor\ para\ comparar \choose Valor\ máximo}\]</span>
+Note que não foi mencionado o valor <span class="math inline">\(100\)</span> presente na fórmula. Ele é apresentado para tornar o resultado da frequência relativa em porcentagem. Para compreender melhor este conceito apresentado, vamos continuar respondendo a segunda questão utilizando agora este novo aprendizado:</p>
+<div class="figure" style="text-align: center"><span id="fig:f33"></span>
+<img src="livro_files/figure-html/f33-1.png" alt="Comparação entre os estudantes inscritos de Salvador por cor/raça para 2016 e 2019" width="100%" />
+<p class="caption">
+Figura 3.3: Comparação entre os estudantes inscritos de Salvador por cor/raça para 2016 e 2019
+</p>
+</div>
+<p>A Figura <a href="c03.html#fig:f33">3.3</a> pode ser vista como uma extensão da Figura <a href="c03.html#fig:f32">3.2</a>, utilizando a frequência relativa para apresentar uma informação implícita: a proporção dos estudantes que fizeram o ENEM em 2019 em comparação a quantidade que realizaram o exame em 2016. Transcrevendo a fórmula da frequência relativa apresentada anteriormente, temos:
+<span class="math display">\[Frequência\ Relativa (\%) = 100*{Quantidade\ de\ estudantes\ \ realizaram\ o\ ENEM\ em\ 2019\choose Quantidade\ de\ estudantes\ \ realizaram\ o\ ENEM\ em\ 2016}\]</span>
+Como nos é apresentado uma proporção, podemos ler o gráfico de barras apresentado na Figura <a href="c03.html#fig:f33">3.3</a> como sendo <strong>a quantidade de estudantes que fizeram a prova em 2019 em relação a quantidade que realizaram a prova em 2016</strong>. Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras cores apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação intensifica ainda mais o resultado apresentado na Figura <a href="c03.html#fig:f31">3.1</a>.</p>
+<p>Através da análise do gráfico de barras conseguimos avaliar dois questionamentos de uma só vez! Porém para analisar como esses resultados ocorreram de 2016 até 2019 ao invés de dois anos separados, qual seria o melhor tipo de gráfico? Iremos explora-lo na próxima seção deste capítulo.</p>
+</div>
+<div id="gráfico-de-tendências" class="section level2">
+<h2><span class="header-section-number">3.3</span> Gráfico de tendências</h2>
+<div class="figure" style="text-align: center"><span id="fig:f34"></span>
+<img src="livro_files/figure-html/f34-1.png" alt="Quantidade de estudantes inscritos no ENEM na capital bahiana" width="100%" />
+<p class="caption">
+Figura 3.4: Quantidade de estudantes inscritos no ENEM na capital bahiana
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f35"></span>
+<img src="livro_files/figure-html/f35-1.png" alt="Tendência da quantidade de estudantes inscritos no ENEM por cor de 2015 até 2019" width="100%" />
+<p class="caption">
+Figura 3.5: Tendência da quantidade de estudantes inscritos no ENEM por cor de 2015 até 2019
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f36"></span>
+<img src="livro_files/figure-html/f36-1.png" alt="Tendência da quantidade de estudantes inscritos no ENEM particionado por cor de 2015 até 2019" width="100%" />
+<p class="caption">
+Figura 3.6: Tendência da quantidade de estudantes inscritos no ENEM particionado por cor de 2015 até 2019
+</p>
+</div>
+</div>
+<div id="gráfico-de-setores" class="section level2">
+<h2><span class="header-section-number">3.4</span> Gráfico de setores</h2>
+<pre><code>## (-1.5306764152913361, 1.1289988812849823, -1.1142890698458983, 1.4368634278263297)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f37"></span>
+<img src="livro_files/figure-html/f37-1.png" alt="Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a internet em 2015 e 2019" width="100%" />
+<p class="caption">
+Figura 3.7: Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a internet em 2015 e 2019
+</p>
+</div>
+<pre><code>## (-5.648269795637388, 7.280059322312709, -5.556945257333847, 5.554083333259784)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f38"></span>
+<img src="livro_files/figure-html/f38-1.png" alt="Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019" width="100%" />
+<p class="caption">
+Figura 3.8: Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019
+</p>
+</div>
+<pre><code>## (-5.589599794100887, 6.047989290046181, -5.556945257333847, 5.554083333259784)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f39"></span>
+<img src="livro_files/figure-html/f39-1.png" alt="Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019" width="100%" />
+<p class="caption">
+Figura 3.9: Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019
+</p>
+</div>
+<pre><code>## (-5.561918628791616, 6.300291225095787, -5.524942963490349, 5.528427416135237)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f310"></span>
+<img src="livro_files/figure-html/f310-1.png" alt="Porcentagem de estudantes inscritos no ENEM em Salvador sem acesso a internet em relação ao acesso a computadores pessoais em 2015 e 2019" width="100%" />
+<p class="caption">
+Figura 3.10: Porcentagem de estudantes inscritos no ENEM em Salvador sem acesso a internet em relação ao acesso a computadores pessoais em 2015 e 2019
+</p>
+</div>
+</div>
+<div id="gráfico-de-dispersão" class="section level2">
+<h2><span class="header-section-number">3.5</span> Gráfico de Dispersão</h2>
+<div class="figure" style="text-align: center"><span id="fig:f311"></span>
+<img src="livro_files/figure-html/f311-1.png" alt="Tendências lineares em um plano cartesiano" width="100%" />
+<p class="caption">
+Figura 3.11: Tendências lineares em um plano cartesiano
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f312"></span>
+<img src="livro_files/figure-html/f312-1.png" alt="Relação entre nota de Ciências Naturais e Matemática particionado pelo tipo de escola em 2019" width="100%" />
+<p class="caption">
+Figura 3.12: Relação entre nota de Ciências Naturais e Matemática particionado pelo tipo de escola em 2019
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f313"></span>
+<img src="livro_files/figure-html/f313-1.png" alt="Relação entre nota de Linguagens e Matemática particionado pelo tipo de escola em 2019" width="100%" />
+<p class="caption">
+Figura 3.13: Relação entre nota de Linguagens e Matemática particionado pelo tipo de escola em 2019
+</p>
+</div>
+</div>
+<div id="histograma" class="section level2">
+<h2><span class="header-section-number">3.6</span> Histograma</h2>
+<pre><code>## &lt;Figure size 2000x1000 with 0 Axes&gt;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f314"></span>
+<img src="livro_files/figure-html/f314-1.png" alt="Histograma com 10 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019" width="100%" />
+<p class="caption">
+Figura 3.14: Histograma com 10 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019
+</p>
+</div>
+<pre><code>## &lt;Figure size 2000x1000 with 0 Axes&gt;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:f315"></span>
+<img src="livro_files/figure-html/f315-1.png" alt="Histograma com 25 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019" width="100%" />
+<p class="caption">
+Figura 3.15: Histograma com 25 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f316"></span>
+<img src="livro_files/figure-html/f316-1.png" alt="Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola" width="100%" />
+<p class="caption">
+Figura 3.16: Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:f317"></span>
+<img src="livro_files/figure-html/f317-1.png" alt="Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola" width="100%" />
+<p class="caption">
+Figura 3.17: Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola
+</p>
+</div>
+</div>
+<div id="indo-além" class="section level2">
+<h2><span class="header-section-number">3.7</span> Indo Além …</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="c02.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literatura-e-bibtex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["livro.pdf", "livro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

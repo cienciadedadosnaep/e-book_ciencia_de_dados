@@ -1,0 +1,512 @@
+
+```{python eval=TRUE,echo=FALSE}
+# SOLUCAO PARA CORRIGIR PROBLEMA COM PLOT DO PYTHON
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'
+```
+
+```{python eval=TRUE,echo=FALSE}
+# FUNCAO - Fazer anotação dos valores com frequencia absoluta em graficos de barras
+def fazer_anotacao_frequencia_absoluta(eixo, coord_texto_xy, barra_eixo_y=True, use_int=True):
+    # Loop em cada barra que existe no gráfico
+    for barra in eixo.patches:
+        if barra_eixo_y:
+            tamanho_barra = barra.get_width() # Pegar o tamanho da barra
+            texto_barra = tamanho_barra # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x() + tamanho_barra, barra.get_y()) # Coordenada de onde sera a anotacao no grafico
+            eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=20, color='black',
+                          weight='bold',textcoords='offset points', horizontalalignment='right')
+        else:
+            tamanho_barra = barra.get_height() # Pegar o tamanho da barra
+            texto_barra = tamanho_barra # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x(), barra.get_y() + tamanho_barra) # Coordenada de onde sera a anotacao no grafico
+            if use_int:
+                eixo.annotate(int(texto_barra), coord_anotacao_xy, xytext=coord_texto_xy, fontsize=TAMANHO_FONTE_TICKS,
+                              color='black',weight='bold',textcoords='offset points', horizontalalignment='right')
+            else:
+                eixo.annotate(int(texto_barra), coord_anotacao_xy, xytext=coord_texto_xy, fontsize=TAMANHO_FONTE_TICKS,
+                              color='black',weight='bold',textcoords='offset points', horizontalalignment='right')
+
+# FUNCAO - Fazer anotação dos valores com frequencia relativa em graficos de barras
+def fazer_anotacao_frequencia_relativa(eixo, coord_texto_xy, total_amostras, barra_eixo_y=True):
+    # Loop em cada barra que existe no gráfico
+    for barra in eixo.patches:
+        if barra_eixo_y:
+            tamanho_barra = barra.get_width()  # Pegar o tamanho da barra
+            texto_barra = str(round(100*tamanho_barra/total_amostras, 2)) + ' %' # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x() + tamanho_barra, barra.get_y())
+            eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=20, color='black', 
+                          textcoords='offset points', horizontalalignment='right')
+        else:
+            tamanho_barra = barra.get_height()  # Pegar o tamanho da barra
+            texto_barra = str(round(100*tamanho_barra/total_amostras, 2)) + ' %' # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x(), barra.get_y() + tamanho_barra)
+            eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=20, color='black', 
+                          textcoords='offset points', horizontalalignment='right')
+```
+
+
+# Visualização e Ciência de dados {#c03}
+O capítulo  \@ref(c02) apresenta a tabela como uma forma poderosa para estruturar e visualizar informações. No entanto, quando trabalhamos com enormes tabelas com uma imensa quantidade de linhas e colunas se torna difícil interpretar suas informações, não importa o quão organizadas elas estejam. Às vezes, é muito mais fácil interpretar essas informações através dos gráficos, conteúdo que será explorado no decorrer deste capítulo.
+
+A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois é a partir de um bom gráfico que podemos extrair ideias, hipóteses e um melhor entendimento a respeito de um tema ou uma pergunta. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale mais que mil palavras".
+
+## Objeto de Estudo do capítulo
+Para compreender a importância da análise gráfica e como utiliza-la corretamente, iremos analisar o perfil dos estudantes de Salvador que realizaram a prova do Exame Nacional do Ensino Médio (ENEM) no período de 2015 até 2019. 
+
+Porém, antes de qualquer coisa: O que é um **Perfil**? Esse termo é muito usado na estatística para **descrever determinado processo ou objeto de estudo, buscando entender características e padrões que o representa**. Para este caso em específico, vamos estudar os estudantes da cidade de Salvador utilizando os microdados do ENEM, publicados pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP), disponível ao público através deste [link de acesso](http://inep.gov.br/microdados).
+
+Como o termo **perfil** pode ser bem vasto e diversas características podem ser extraídas, é necessário concentrar essa análise em perguntas mais específicas para nortear o estudo. No decorrer deste capítulo, será explorado graficamente as seguintes questões:
+
+- A quantidade de estudantes que realizam o ENEM aumentou de 2015 para 2019 na capital bahiana?
+
+- Como é a distribuição de estudantes em Salvador por cor/raça? Conseguimos identificar algum padrão para esses valores?
+
+- Na dita era da informação, onde tudo está conectado, como está o acesso dos estudantes a internet em suas residências? E a computadores pessoais?
+
+- O tipo de escola (pública ou privada) pode influenciar nas notas dos estudantes neste exame?
+
+A compreensão desses dados é de suma importância para compreender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil.
+
+```{python eval=TRUE,echo=FALSE}
+# Modulos usados
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Variaveis contendo padroes para os graficos do pyplot
+TAMANHO_FONTE_TICKS = 25
+TAMANHO_FONTE_LABEL = 30
+TAMANHO_FONTE_TITLE = 35
+ESCRITA_FONTE = 'Franklin Gothic Book'
+
+# Aplicando padroes
+plt.rc('font', family=ESCRITA_FONTE)
+plt.rc('axes', titlesize=TAMANHO_FONTE_TITLE, labelsize=TAMANHO_FONTE_LABEL)
+plt.rc('xtick', labelsize=TAMANHO_FONTE_TICKS)
+plt.rc('ytick', labelsize=TAMANHO_FONTE_TICKS)
+plt.rc('legend', fontsize=TAMANHO_FONTE_TICKS, title_fontsize=TAMANHO_FONTE_LABEL)
+
+# Importando dados - Grafico de barras
+dados_ssa_total_estudantes = pd.read_csv('data/educacao_enem_ssa_total_estudantes.csv')
+dados_ssa_raca_2016_2019 = pd.read_csv('data/educacao_enem_raca_2016-2019.csv')
+dados_ssa_raca_comp_2016_2019 = pd.read_csv('data/educacao_enem_raca_comparacao_2016-2019.csv')
+
+# Importando dados - Grafico de linha
+dados_ssa_raca_tendencia =  pd.read_csv('data/educacao_enem_estudantes_cor_2015-2019.csv')
+
+# Importando dados - Grafico de setores
+dados_ssa_net_pc_2015 = pd.read_csv('data/educacao_enem_2015_internet_pc.csv')
+dados_ssa_net_pc_2019 = pd.read_csv('data/educacao_enem_2019_internet_pc.csv')
+
+# Importando dados - Grafico de dispersao & Histograma
+dados_ssa_notas_2019 = pd.read_csv('data/educacao_enem_ssa_notas_privada_publica.csv')
+```
+
+## Gráfico de barra
+O **Gráfico de barras** é uma forma bastante comum e versátil de visualização na área de ciência de dados. Ele pode ser utilizado tanto com variáveis categóricas quanto numéricas para expressar grandezas. A Figura abaixo apresenta uma de suas utilizações: demonstrar grandezas numéricas.
+
+```{python f31, fig.cap='Quantidade de estudantes que se inscreveram o ENEM na capital bahiana', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+ax = sns.barplot(x='Ano', y='FA', data=dados_ssa_total_estudantes, palette=sns.color_palette("Set2"));
+
+# Aplicar configuracoes esteticas no grafico
+plt.ylabel('');
+plt.xticks();
+plt.yticks([]);
+ax.spines['top'].set_visible(False);
+ax.spines['left'].set_visible(False);
+ax.spines['right'].set_visible(False);
+fazer_anotacao_frequencia_absoluta(ax, (160, 10), barra_eixo_y=False, use_int=True);
+plt.tight_layout();
+plt.show();
+```
+
+Na Figura \@ref(fig:f31) é apresentado a quantidade de estudantes que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda drástica na participação de estudantes entre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:
+
+Ano  | Número de estudantes em Salvador
+:---:|:-------------------------------:|
+2015 | 159835 |
+2016 | 175873 |
+2017 | 121063 |
+2018 | 93852  |
+2019 | 88557  |
+
+Note que ao visualizar a Tabela, nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, ela contém as mesmas informações demonstradas na Figura \@ref(fig:f31), porém com uma diferença: através da visualização gráfica fica muito mais claro a queda de inscrições no ENEM de 2016 até 2019.
+
+O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.
+
+É através da Figura \@ref(fig:f31) que podemos responder a primeira pergunta:**A quantidade de estudantes que realizam o ENEM aumentou de 2015 para 2019 na capital bahiana?** E a resposta é não. Apesar do número de estudantes crescer de 2015 para 2016, ocorre uma queda drástica até 2019, chegando a diminuir pela metade o número de inscrições em Salvador. 
+
+Essa resposta pode te levar a um questionamento mais profundo: O que realmente motivou essa queda?. Infelizmente encontrar a resposta para este questionamento não é trivial, requer pesquisas mais específicas a cerca do tema, o que foge do escopo deste capítulo. Todavia, é interessante refletir como a partir de um gráfico simples, podemos alcançar perguntas ainda mais complexas. 
+
+Agora que respondemos a primeira questão, podemos perceber que a pergunta "**Como é a distribuição de estudantes em Salvador por cor/raça? Conseguimos identificar algum padrão para esses valores?**" está bastante relacionada ao seu resultado.
+Inicialmente para entender essa relação, precisamos entender  o que seria essa distribuição de raças no questionário no ENEM. Trata-se de uma pergunta que busca entender  como o estudante se classifica em relação a sua cor. Essa pergunta possui 7 respostas possíveis: 
+
+- Não declarado
+
+- Pardo
+
+- Preta
+
+- Branco
+
+- Amarelo
+
+- Indígena
+
+- Opção de não apresentar tal informação
+
+Como foi explicado no Capítulo \@ref(c02), esse questionamento pode ser definido como uma variável categórica. Ele está bastante relacionada com a primeira questão, pois a quantidade de total de estudantes pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. Como tivemos uma diferença tão grande entre o número de inscritos em 2016 e 2019 demonstrado na Figura \@ref(fig:f31), uma análise mais aprofundada nesses dois anos podem trazer resultados interessantes para responder nosso segundo questionamento:
+
+```{python f32, fig.cap='Distinção de estudantes inscritos por cor/raça da cidade de Salvador para os anos de 2016 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+# Realizar grafico
+ax = sns.countplot(y='TP_COR_RACA',hue='ANO', data=dados_ssa_raca_2016_2019, palette=sns.color_palette("Set2"),
+                   order=dados_ssa_raca_2016_2019['TP_COR_RACA'].value_counts().index);
+# Aplicar configuracoes esteticas no grafico
+plt.xticks([]);
+plt.ylabel('');
+plt.xlabel('');
+plt.legend(title="Ano de avaliação",loc='lower right');
+ax.spines['bottom'].set_visible(False);
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+fazer_anotacao_frequencia_absoluta(ax, (65, -28), barra_eixo_y=True, use_int=True);
+plt.tight_layout();
+plt.show()
+```
+
+Através da Figura \@ref(fig:f32), é apresentado os valores absolutos da quantidade de estudantes que realizaram o ENEM em cada ano identificados pela sua raça. Note que a grande queda encontrada na Figura \@ref(fig:f31) se reflete neste gráfico também: Em comparação a 2016, todas as categorias apresentaram valores menores. Por exemplo, a quantidade pessoas pardas que realizaram o ENEM caiu quase pela metade, assim como pessoas auto-declaradas como preta. Além disso, podemos notar uma baixíssima quantidade de pessoas indígenas/amarela que realizam este exame e que em sua grande maioria, os estudantes da capital bahiana se declaram como pardos e negros. Essa situação já era esperada e reflete uma realidade já conhecida: Segundo o Instituto Brasileiro de Estatística e Geografia (IBGE), em uma [pesquisa realizada em 2017](https://www.acordacidade.com.br/noticias/203087/ibge-ba-salvador-a-capital-mais-negra-do-brasil-e-com-a-maior-desigualdade-salarial-entre-brancos-e-pretos.html?mobile=true), Salvador é considerada a capital mais preta do brasil, onde 8 em cada 10 moradores se autodeclaravam de cor preta ou parda.
+
+Note que a Figura \@ref(fig:f32) demonstra também a principal função do gráfico de barras: dimensionar variáveis categóricas de acordo a frequência de suas categorias. **Frequência** para uma variável categórica pode ser definido com a quantidade de vezes que ela é representada, podendo ser dividida em dois tipos: absoluta e relativa. 
+
+A frequência absoluta se trata da representação da quantidade de vezes que cada categoria ocorre. Este tipo de frequência é trabalhada na Figura \@ref(fig:f32), onde apresentamos a quantidade de estudantes por cor/raça que realizaram o ENEM nos anos de 2016 e 2019. Ainda na Figura \@ref(fig:f32), conseguimos notar que para todas as categorias apresentaram uma queda na quantidade de estudantes que realizaram em 2016 para 2019, mas e se quisermos comparar este valores ainda utilizando um gráfico de barras, seria possível?
+
+Uma boa forma para comparar essas frequências absolutas distintas seria através do segundo tipo de frequência apresentada anteriormente: a frequência relativa. A frequência relativa é definida como uma proporção entre o valor que você quer estimar e o valor máximo esperado. Podemos formular este conceito da seguinte forma:
+$$Frequência\ Relativa (\%) = 100*{Valor\ para\ comparar \choose Valor\ máximo}$$
+Note que não foi mencionado o valor $100$ presente na fórmula. Ele é apresentado para tornar o resultado da frequência relativa em porcentagem. Para compreender melhor este conceito apresentado, vamos continuar respondendo a segunda questão utilizando agora este novo aprendizado:
+
+```{python f33, fig.cap='Comparação entre os estudantes inscritos de Salvador por cor/raça para 2016 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+ax =  sns.barplot(x='FR', y='TP_COR_RACA', data=dados_ssa_raca_comp_2016_2019, palette=sns.color_palette("Set2"), 
+                  order=dados_ssa_raca_comp_2016_2019['TP_COR_RACA']);
+
+# Aplicar configuracoes esteticas no grafico
+plt.xticks([]);
+plt.ylabel('');
+plt.xlabel('');
+ax.spines['bottom'].set_visible(False);
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+fazer_anotacao_frequencia_relativa(ax, (80, -50), 1, barra_eixo_y=True);
+plt.tight_layout();
+plt.show()
+```
+
+A Figura \@ref(fig:f33) pode ser vista como uma extensão da Figura \@ref(fig:f32), utilizando a frequência relativa para apresentar uma informação implícita: a proporção dos estudantes que fizeram o ENEM em 2019 em comparação a quantidade que realizaram o exame em 2016. Transcrevendo a fórmula da frequência relativa apresentada anteriormente, temos:
+$$Frequência\ Relativa (\%) = 100*{Quantidade\ de\ estudantes\ \ realizaram\ o\ ENEM\ em\ 2019\choose Quantidade\ de\ estudantes\ \ realizaram\ o\ ENEM\ em\ 2016}$$
+Como nos é apresentado uma proporção, podemos ler o gráfico de barras apresentado na Figura \@ref(fig:f33) como sendo **a quantidade de estudantes que fizeram a prova em 2019 em relação a quantidade que realizaram a prova em 2016**. Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras cores apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação intensifica ainda mais o resultado apresentado na Figura \@ref(fig:f31).
+
+Através da análise do gráfico de barras conseguimos avaliar dois questionamentos de uma só vez! Porém para analisar como esses resultados ocorreram de 2016 até 2019 ao invés de dois anos separados, qual seria o melhor tipo de gráfico? Iremos explora-lo na próxima seção deste capítulo.
+
+## Gráfico de tendências
+```{python f34, fig.cap='Quantidade de estudantes inscritos no ENEM na capital bahiana', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+fig, ax = plt.subplots(1,1,figsize=(20,15));
+sns.lineplot(x='Ano', y='FA', data=dados_ssa_total_estudantes,marker='o',ax=ax);
+plt.xticks([2015,2016,2017,2018,2019]);
+ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+plt.show();
+```
+
+```{python f35, fig.cap='Tendência da quantidade de estudantes inscritos no ENEM por cor de 2015 até 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir cores dos plots
+cores_raca = sns.color_palette("Set2", len(dados_ssa_raca_tendencia['COR'].unique()))
+
+# Plot
+fig, ax = plt.subplots(1,1,figsize=(20,15));
+sns.lineplot(x='ANO', y='FA', hue='COR', data=dados_ssa_raca_tendencia, marker='o', palette=cores_raca);
+plt.xticks([2015,2016,2017,2018,2019]);
+ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+
+# Solving legend issue
+legend = ax.legend(loc='upper right');
+legend.texts[0].set_text("Cor/Raça");
+plt.show();
+```
+
+```{python f36, fig.cap='Tendência da quantidade de estudantes inscritos no ENEM particionado por cor de 2015 até 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+fig, ax = plt.subplots(3,2,figsize=(20,15));
+
+r = 0      # Index row
+c = 0      # Index col
+
+for raca,pc in zip(dados_ssa_raca_tendencia['COR'].unique(),cores_raca) :
+    aux = dados_ssa_raca_tendencia[dados_ssa_raca_tendencia['COR'] == raca]
+    sns.lineplot(x='ANO', y='FA', data=aux,marker='o',color=pc,ax=ax[r][c]);
+    ax[r][c].set_xticks([2015,2016,2017,2018,2019]);
+    ax[r][c].set_ylabel('');
+    ax[r][c].set_xlabel('');
+    ax[r][c].set_title('Raça - '+raca,fontweight='bold');
+    ax[r][c].spines['right'].set_visible(False);
+    ax[r][c].spines['top'].set_visible(False);
+    # Index control
+    c += 1
+    if c > 1:
+        c = 0
+        r += 1
+plt.tight_layout();
+plt.show();
+```
+
+## Gráfico de setores
+```{python f37, fig.cap='Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a internet em 2015 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Criar variaveis para o gráfico sobre a internet
+e15_internet = round(100*dados_ssa_net_pc_2015['Q025'].value_counts()/len(dados_ssa_net_pc_2015), 2)
+e19_internet = round(100*dados_ssa_net_pc_2019['Q025'].value_counts()/len(dados_ssa_net_pc_2019), 2)
+
+# pie chart
+
+# 2015
+labels = e15_internet.index
+sizes = e15_internet.values
+fig, ax = plt.subplots(1,2, figsize=(20,15));
+_, _, autopcts = ax[0].pie(sizes,explode=(0.5,0),autopct='%1.1f%%',shadow=True,startangle=12,colors=('tab:blue','tab:red'));
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':30});
+ax[0].set_title('2015',fontdict={'fontsize': 35}, pad=-50);
+ax[0].axis('equal');
+
+# 2019
+labels = e19_internet.index
+sizes = e19_internet.values
+_, _, autopcts = ax[1].pie(sizes, explode=(0.5, 0), autopct='%1.1f%%', shadow=True, startangle=0,colors = ('tab:blue', 'tab:red'));
+plt.setp(autopcts, **{'color':'white', 'weight':'bold', 'fontsize':30});
+ax[1].set_title('2019',weight='bold',fontdict={'fontsize': 35}, pad=-25);
+ax[1].axis('equal');
+fig.legend(title='Acesso à Internet',loc='lower center', labels=labels, fontsize=35, title_fontsize=35);
+plt.show();
+```
+
+```{python f38, fig.cap='Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+e15_pc = round(100*dados_ssa_net_pc_2015['Q024'].value_counts()/len(dados_ssa_net_pc_2015), 2);
+e19_pc = round(100*dados_ssa_net_pc_2019['Q024'].value_counts()/len(dados_ssa_net_pc_2019), 2);
+
+# Confs dos graficos
+fig, ax = plt.subplots(1,2, figsize=(20,15));
+
+# 2015
+labels = e15_pc.index;
+sizes = e15_pc.values;
+_, _, autopcts = ax[0].pie(sizes, explode=(0, 0, 0.5, 1.5, 2.5),autopct='%1.1f%%', shadow=True, startangle=30, radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[0].set_title('2015',fontdict={'fontsize': 35}, pad=-50);
+ax[0].axis('equal');
+
+# 2019
+labels = e19_pc.index;
+sizes = e19_pc.values;
+_, _, autopcts = ax[1].pie(sizes, explode=(0, 0, 0.5, 1.5, 2.5),autopct='%1.1f%%', shadow=True, startangle=30, radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[1].set_title('2019',fontdict={'fontsize': 35}, pad=-50);
+ax[1].axis('equal');
+fig.legend(title='Acesso a computadores',loc='lower center', labels=labels, fontsize=20, title_fontsize=35);
+plt.show();
+```
+
+```{python f39, fig.cap='Porcentagem de estudantes inscritos no ENEM em Salvador com acesso a computadores pessoais em 2015 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Gerar cópia
+e15_pc_res = e15_pc.copy();
+e19_pc_res = e19_pc.copy();
+# Criar base condensada do estudo sobre computador
+e15_pc_res['Sim, mais de um'] = round(sum(e15_pc_res[2:]),2);
+e19_pc_res['Sim, mais de um'] = round(sum(e19_pc_res[2:]),2);
+
+# Excluir os outros
+e15_pc_res = e15_pc_res[[0,1,5]];
+e19_pc_res = e19_pc_res[[0,1,5]][['Não', 'Sim, um', 'Sim, mais de um']];
+
+# Confs dos graficos
+fig, ax = plt.subplots(1,2, figsize=(20,15));
+
+# 2015
+labels = e15_pc_res.index;
+sizes = e15_pc_res.values;
+_, _, autopcts = ax[0].pie(sizes, explode=(0, 0, 0.5),colors=('tab:red','tab:blue','tab:green'),autopct='%1.1f%%',shadow=True,startangle=30,radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[0].set_title('2015',fontdict={'fontsize': 35}, pad=-50);
+ax[0].axis('equal');
+
+# 2019
+labels = e19_pc_res.index;
+sizes = e19_pc_res.values;
+_, _, autopcts = ax[1].pie(sizes,explode=(0,0,0.5),colors=('tab:red','tab:blue','tab:green'),autopct='%1.1f%%',shadow=True,startangle=30,radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[1].set_title('2019',fontdict={'fontsize': 35}, pad=-50);
+ax[1].axis('equal');
+fig.legend(title='Acesso a computadores',loc='lower center', labels=labels, fontsize=20, title_fontsize=25);
+plt.show();
+```
+
+```{python f310, fig.cap='Porcentagem de estudantes inscritos no ENEM em Salvador sem acesso a internet em relação ao acesso a computadores pessoais em 2015 e 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Criar variaveis para o gráfico sobre a internet relacionando cor e raca
+e15_pc_NoNet =round(100*dados_ssa_net_pc_2015[dados_ssa_net_pc_2015['Q025']=='Não']['Q024'].value_counts()/sum(dados_ssa_net_pc_2015['Q025']=='Não'), 2);
+e19_pc_NoNet =round(100*dados_ssa_net_pc_2019[dados_ssa_net_pc_2019['Q025']=='Não']['Q024'].value_counts()/sum(dados_ssa_net_pc_2019['Q025']=='Não'), 2);
+e19_pc_NoNet =e19_pc_NoNet[e15_pc_NoNet.index];
+
+# Criar base condensada do estudo sobre computador
+e15_pc_NoNet['Sim, mais de um'] = round(sum(e15_pc_NoNet[2:]),2);
+e19_pc_NoNet['Sim, mais de um'] = round(sum(e19_pc_NoNet[2:]),2);
+
+# Excluir os outros
+e15_pc_NoNet = e15_pc_NoNet[[0,1,5]][['Não', 'Sim, um', 'Sim, mais de um']];
+e19_pc_NoNet = e19_pc_NoNet[[0,1,5]][['Não', 'Sim, um', 'Sim, mais de um']];
+
+# Confs dos graficos
+fig, ax = plt.subplots(1,2, figsize=(20,15));
+# 2015
+labels = e15_pc_NoNet.index;
+sizes = e15_pc_NoNet.values;
+_, _, autopcts = ax[0].pie(sizes,explode=(0, 0.5, 1.5),colors=('tab:red','tab:blue','tab:green'), autopct='%1.1f%%',shadow=True,startangle=30,radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[0].set_title('2015',fontdict={'fontsize': 35}, pad=-50);
+ax[0].axis('equal');
+
+# 2019
+labels = e19_pc_NoNet.index;
+sizes = e19_pc_NoNet.values;
+_, _, autopcts = ax[1].pie(sizes,explode=(0, 0.5, 1.5),colors=('tab:red', 'tab:blue', 'tab:green'),autopct='%1.1f%%',shadow=True,startangle=30,radius=5);
+plt.setp(autopcts, **{'color':'black', 'weight':'bold', 'fontsize':20});
+ax[1].set_title('2019',fontdict={'fontsize': 35}, pad=-50);
+ax[1].axis('equal');
+fig.legend(title='Acesso a computadores',loc='lower center', labels=labels, fontsize=20, title_fontsize=25);
+plt.show();
+
+```
+
+## Gráfico de Dispersão
+```{python f311, fig.cap='Tendências lineares em um plano cartesiano', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+eixo_x = np.arange(0, 1000)
+eixo_y1 = eixo_x*(1.5)
+eixo_y2 = eixo_x*(-1.5)
+# Preparacao do plot
+fig, eixo = plt.subplots(1,1,figsize=(20,10));
+# Plot
+eixo.plot(eixo_x, eixo_y1, 'r');
+eixo.plot(eixo_x, eixo_y2, 'b--');
+eixo.set_xlabel('Eixo X', fontsize=30, fontweight='bold');
+eixo.set_ylabel('Eixo Y', fontsize=30, fontweight='bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+plt.show();
+```
+
+```{python f312, fig.cap='Relação entre nota de Ciências Naturais e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+plt.figure(figsize=(20,10));
+eixo = sns.scatterplot(y='NU_NOTA_CN', x='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=25);
+plt.yticks(fontsize=15);
+plt.xticks(fontsize=15);
+plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=20, weight = 'bold');
+plt.xlabel('Nota em Ciências Naturais e suas tecnologias', fontsize=20, weight = 'bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+# Solving legend issue
+legend = eixo.legend(loc='lower right');
+legend.texts[0].set_text("Tipo de Escola");
+plt.show();
+```
+
+```{python f313, fig.cap='Relação entre nota de Linguagens e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+plt.figure(figsize=(20,10));
+eixo = sns.scatterplot(y='NU_NOTA_LC', x='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=25);
+plt.yticks(fontsize=15);
+plt.xticks(fontsize=15);
+plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=20, weight = 'bold');
+plt.xlabel('Nota em Linguagens e suas tecnologias', fontsize=20, weight = 'bold');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+# Solving legend issue
+legend = eixo.legend(loc='lower right');
+legend.texts[0].set_text("Tipo de Escola");
+plt.show();
+```
+
+## Histograma
+```{python f314, fig.cap='Histograma com 10 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+eixo = dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=10, grid=False,edgecolor='black', linewidth=1.5, color='g');
+plt.yticks(fontsize=25);
+plt.xticks(fontsize=25);
+plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=30, weight = 'bold');
+plt.ylabel('');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+plt.show();
+```
+
+```{python f315, fig.cap='Histograma com 25 categorias de notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+plt.figure(figsize=(20,10));
+
+# Realizar grafico
+eixo = dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=25, grid=False,edgecolor='black', linewidth=1.5, color='g');
+plt.yticks(fontsize=25);
+plt.xticks(fontsize=25);
+plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=30, weight = 'bold');
+plt.ylabel('');
+eixo.spines['right'].set_visible(False);
+eixo.spines['top'].set_visible(False);
+plt.show();
+```
+
+```{python f316, fig.cap='Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir pelo estilo de escola
+e19_notas_pub = dados_ssa_notas_2019[dados_ssa_notas_2019['TP_ESCOLA'] == 'Pública']
+e19_notas_prv = dados_ssa_notas_2019[dados_ssa_notas_2019['TP_ESCOLA'] == 'Privada']
+
+# Definir tamanho da figura
+fig, ax = plt.subplots(1,1,figsize=(20,10));
+
+# Realizar grafico
+e19_notas_pub['NU_NOTA_MT'].hist(bins=25, grid=False,edgecolor='black', linewidth=1.5,ax=ax, color='#1f77b4');
+e19_notas_prv['NU_NOTA_MT'].hist(bins=25, grid=False,edgecolor='black', linewidth=1.5,ax=ax, alpha = 0.75, color='#ff7f0e');
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+ax.legend(['Pública','Privada'], title='Tipo de Escola');
+plt.tight_layout();
+plt.show();
+```
+
+```{python f317, fig.cap='Histograma com 25 categorias de notas de matemática dos estudantes de Salvador em 2019 particionado pelo tipo de escola', out.width='100%', fig.asp=.95, fig.align='center', echo=FALSE}
+# Definir tamanho da figura
+fig, ax = plt.subplots(1,2,figsize=(20,10))
+# Realizar grafico
+e19_notas_pub['NU_NOTA_MT'].hist(bins=25, grid=False, edgecolor='black', linewidth=1.5,ax=ax[0], color='#1f77b4');
+e19_notas_prv['NU_NOTA_MT'].hist(bins=25, grid=False, edgecolor='black', linewidth=1.5,ax=ax[1], color='#ff7f0e');
+ax[0].set_title('Escola Pública',fontweight='bold');
+ax[1].set_title('Escola Privada',fontweight='bold');
+ax[0].spines['right'].set_visible(False);
+ax[0].spines['top'].set_visible(False);
+ax[1].spines['right'].set_visible(False);
+ax[1].spines['top'].set_visible(False);
+plt.tight_layout();
+plt.show();
+```
+
+## Indo Além ...
+
+
