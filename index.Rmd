@@ -1,10 +1,16 @@
 --- 
-title: 'Treinamento Bookdown '
-author: "Robson Wilson Silva Pessoa, Ícaro Bernardes e Daniela Almeida"
+title: 'Uma introdução gentil à Ciência de Dados'
+author: "Kaike Wesley Reis, Júlia Bijos e Janaína Souza"
 date: "`r Sys.Date()`"
-output: pdf_document
-description: Este documento faz parte de um treinamento introdutório de Rmardown,
-  Bookdown e Tidyverse para o grupo Ciência de Dados na Escola Pública.
+#output: pdf_document
+output: 
+  bookdown::html_document2:
+    fig_caption: yes
+    cap_caption: yes
+  bookdown::pdf_document2:
+    fig_caption: yes
+    cap_caption: yes
+description: e-Book de ensino de ciência de dados na educação pública
 documentclass: book
 link-citations: yes
 bibliography:
@@ -18,72 +24,3 @@ classoption: oneside
 ```{r, echo=TRUE}
 knitr::opts_chunk$set(error = TRUE)
 ```
-
-# Pré-requisitos
-
-Este documento foi elaborado a partir da estrutura mínima 
-obtida pelo *template* do *Bookdown* disponível no ambiente 
-do *Rstudio*.  
-
-Este é um _sample_ da escrita em **Markdown**. É 
-possível utilizar qualquer recurso que suportado 
-pelo *Markdown* do *Pandoc*, como  a
-equação
-$$f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$$. 
-
-
-A instalação do **bookdown** package pode instalado pelo CRAN ou Github. A seguir apresentamos uma sequência 
-de passos de instalação pelo modo gráfico. Se 
-você tem familiaridade pule a sequência de 
-figuras e instale utilizando os comandos na aba 
-*Console*, caso contrário siga os seguintes passos:
-
-1. Primeiro é necessário abrir o Rstudio,
-
-![Opção de instalação pelo modo gráfico](fig/open_Rstudio.png)
-
-2. Selecoine a aba de instalação *Packages* e clique em **install**,
-
-![Selecoinar aba de instalação *Packages - Click em install*](fig/install_packages_rstudio_visual.png)
-
-3. No ambiente de busca da interface instalação pesquise
-por *bookdown*, selecione o pacote e clique em *install*,
-
-![ *Pesquisar por bookdown e clicar em install*](fig/install_packages_rstudio_visual_bookdown.png)
-
-4. Finalmente, o código será instalado,
-![Código de instalação em execução](fig/install_packages_rstudio_visual_bookdown_run.png)
-
-5. Ainda é necessário carregá-lo na seção de uso, novamente na aba *Packages* pesquise por *bookdown*
-e selecione o pacote, o que será suficiente para 
-carregá-lo,
-
-![Carregar a biblioteca bookdown na aba Package](fig/install_packages_rstudio_visual_bookdown_run.png)
-
-
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-library("bookdown")
-```
-
-
-Deve-se lembrar que para cada arquivo *.Rmd*
-só pode ter um capítulo sendo definido pelo primeiro nível
-por `#`.
-
-Para compilar este exemplo para PDF, é necessário 
-o pacote XeLaTeX. É recomendável 
-instalar o TinyTeX (que inclui o XeLaTeX): <https://yihui.org/tinytex/>.
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
-
-Nos próximos capítulos serão apresentados outros
-detalhes sobre instalação e configuração.
-
