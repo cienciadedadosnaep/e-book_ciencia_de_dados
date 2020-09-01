@@ -12,6 +12,7 @@ bibliography:
 - packages.bib
 site: bookdown::bookdown_site
 biblio-style: apalike
+classoption: oneside
 ---
 
 ```{r, echo=TRUE}

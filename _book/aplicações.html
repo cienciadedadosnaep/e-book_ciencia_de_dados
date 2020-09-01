@@ -24,7 +24,7 @@
 <meta name="author" content="Robson Wilson Silva Pessoa, Ícaro Bernardes e Daniela Almeida" />
 
 
-<meta name="date" content="2020-08-24" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,14 +139,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="c02.html"><a href="c02.html#criação-do-projeto-do-livro"><i class="fa fa-check"></i><b>2.1</b> Criação do projeto do livro</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="c03.html"><a href="c03.html"><i class="fa fa-check"></i><b>3</b> Visualização e Ciência de dados</a><ul>
-<li class="chapter" data-level="3.1" data-path="c03.html"><a href="c03.html#objeto-de-estudo-do-capítulo"><i class="fa fa-check"></i><b>3.1</b> Objeto de Estudo do capítulo</a></li>
-<li class="chapter" data-level="3.2" data-path="c03.html"><a href="c03.html#gráfico-de-barra"><i class="fa fa-check"></i><b>3.2</b> Gráfico de barra</a></li>
-<li class="chapter" data-level="3.3" data-path="c03.html"><a href="c03.html#séries-temporais"><i class="fa fa-check"></i><b>3.3</b> Séries temporais</a></li>
-<li class="chapter" data-level="3.4" data-path="c03.html"><a href="c03.html#gráfico-de-pizza"><i class="fa fa-check"></i><b>3.4</b> Gráfico de pizza</a></li>
-<li class="chapter" data-level="3.5" data-path="c03.html"><a href="c03.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>3.5</b> Gráficos de Dispersão</a></li>
-<li class="chapter" data-level="3.6" data-path="c03.html"><a href="c03.html#histograma"><i class="fa fa-check"></i><b>3.6</b> Histograma</a></li>
-<li class="chapter" data-level="3.7" data-path="c03.html"><a href="c03.html#aprimorando-suas-visualizações"><i class="fa fa-check"></i><b>3.7</b> Aprimorando suas visualizações</a></li>
-<li class="chapter" data-level="3.8" data-path="c03.html"><a href="c03.html#indo-além"><i class="fa fa-check"></i><b>3.8</b> Indo Além …</a></li>
+<li class="chapter" data-level="3.1" data-path="c03.html"><a href="c03.html#objeto-estudo"><i class="fa fa-check"></i><b>3.1</b> Objeto de estudo do capítulo</a></li>
+<li class="chapter" data-level="3.2" data-path="c03.html"><a href="c03.html#gbarras"><i class="fa fa-check"></i><b>3.2</b> Gráfico de barra</a></li>
+<li class="chapter" data-level="3.3" data-path="c03.html"><a href="c03.html#gtend"><i class="fa fa-check"></i><b>3.3</b> Gráfico de tendências</a></li>
+<li class="chapter" data-level="3.4" data-path="c03.html"><a href="c03.html#gset"><i class="fa fa-check"></i><b>3.4</b> Gráfico de setores</a></li>
+<li class="chapter" data-level="3.5" data-path="c03.html"><a href="c03.html#gdisp"><i class="fa fa-check"></i><b>3.5</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="3.6" data-path="c03.html"><a href="c03.html#ghist"><i class="fa fa-check"></i><b>3.6</b> Histograma</a></li>
+<li class="chapter" data-level="3.7" data-path="c03.html"><a href="c03.html#conc"><i class="fa fa-check"></i><b>3.7</b> Concluindo …</a></li>
+<li class="chapter" data-level="3.8" data-path="c03.html"><a href="c03.html#indo-além"><i class="fa fa-check"></i><b>3.8</b> Indo Além</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html"><i class="fa fa-check"></i><b>4</b> Literatura e bibtex</a><ul>
 <li class="chapter" data-level="4.1" data-path="literatura-e-bibtex.html"><a href="literatura-e-bibtex.html#exemplo-de-citação-simples"><i class="fa fa-check"></i><b>4.1</b> Exemplo de citação simples</a></li>
@@ -193,14 +193,14 @@ aplicações de R.</p>
 <h2><span class="header-section-number">5.1</span> Exemplo 1</h2>
 <div id="carregamento-de-dados" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Carregamento de dados</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="aplicações.html#cb3-1"></a><span class="co">########################################################################################</span></span>
-<span id="cb3-2"><a href="aplicações.html#cb3-2"></a><span class="co">#1-Carregamento de dados</span></span>
-<span id="cb3-3"><a href="aplicações.html#cb3-3"></a><span class="co">#1.1-Dados do Covid19  </span></span>
-<span id="cb3-4"><a href="aplicações.html#cb3-4"></a><span class="co"># referencia(22-06-2020) - (https://data.brasil.io/dataset/covid19/_meta/list.html)</span></span>
-<span id="cb3-5"><a href="aplicações.html#cb3-5"></a></span>
-<span id="cb3-6"><a href="aplicações.html#cb3-6"></a><span class="kw">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="aplicações.html#cb7-1"></a><span class="co">########################################################################################</span></span>
+<span id="cb7-2"><a href="aplicações.html#cb7-2"></a><span class="co">#1-Carregamento de dados</span></span>
+<span id="cb7-3"><a href="aplicações.html#cb7-3"></a><span class="co">#1.1-Dados do Covid19  </span></span>
+<span id="cb7-4"><a href="aplicações.html#cb7-4"></a><span class="co"># referencia(22-06-2020) - (https://data.brasil.io/dataset/covid19/_meta/list.html)</span></span>
+<span id="cb7-5"><a href="aplicações.html#cb7-5"></a></span>
+<span id="cb7-6"><a href="aplicações.html#cb7-6"></a><span class="kw">library</span>(readr)</span></code></pre></div>
 <pre><code>## Error in library(readr): there is no package called &#39;readr&#39;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="aplicações.html#cb5-1"></a>caso &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/caso.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="aplicações.html#cb9-1"></a>caso &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/caso.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in read_csv(&quot;data/caso.csv&quot;): não foi possível encontrar a função &quot;read_csv&quot;</code></pre>
 </div>
 </div>
