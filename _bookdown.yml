@@ -1,9 +1,9 @@
-book_filename: "livro"
+book_filename: "ebook_cd"
 delete_merged_file: true
 language:
   label:
-    eq: "Equação"
-    fig: "Figura"
-    tab: "Tabela"
+    eq: "Equação "
+    fig: "Figura "
+    tab: "Tabela "
   ui:
     chapter_name: "Capítulo "

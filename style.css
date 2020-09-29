@@ -1,6 +1,7 @@
 p.caption {
   color: #777;
   margin-top: 10px;
+  text-align: justify;
 }
 p code {
   white-space: inherit;
@@ -11,4 +12,8 @@ pre {
 }
 pre code {
   white-space: inherit;
+}
+
+body {
+  text-align: justify;
 }
