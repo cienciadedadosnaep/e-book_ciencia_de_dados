@@ -1,0 +1,105 @@
+# Estatística Inicial {#c05}
+
+
+
+Ideias
+- Tema desse capítulo será avaliar os principais delitos no verão em salvador com foco em alguns
+  - citar as divisões feitas pela SSP
+  - mostrar mapa da ssp
+- falar sobre AISP e RISP
+- relacionar a zonas de risco do Uber, buscando noticias
+- citar dados de segurança de salvador
+PRINCIPAL MÊS DE FÉRIAS jANEIRO POIS CASAVA COM FÉRIAS ESCOLARES
+
+## Objeto de estudo
+Para compreender a importância dessas medidas estatísticas e como  usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizado pela Secretaria de Segurança Pública (SSP) no [portal](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109) para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender essa bases de informações. 
+
+Os dados avaliados aqui são disponibilizados através de boletins mensais que mostram as ocorrências dos principais delitos na capital bahiana separado por áreas e regiões. Os principais tipos de delitos considerados são:
+
+- Homicídio Doloso
+
+- Lesão Corporal Seguida de Morte
+
+- Roubo com Resultado Morte (Latrocínio)
+
+- Tentativa de Homicídio
+
+- Estupro
+
+- Roubo a Ônibus (Urbano e em Rodovia)
+
+- Roubo de Veículo
+
+- Furto de Veículo
+
+- Uso/Porte de Substância Entorpecentes (Usuários)
+
+Você viu que eu citei "áreas" e "regiões" certo? Elas são definidas pela SSP em Salvador respectivamente como Área Integrada de Segurança Pública(AISP) e Região Integrada de Segurança Pública(RISP). Para entender melhor essas divisões vamos usar uma abordagem de conjuntos:
+
+```{r f51, echo=FALSE, fig.cap="Conceito por trás das divisões AISP e RISP", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/aisp_risp_explicacao.png")
+```
+
+Através da Figura \@ref(fig:f51) podemos verificar que a abordagem de conjuntos explica bem os conceitos: **AISP** são conjuntos de bairros, ou seja, cada **AISP** representa uma quantidade de bairros da cidade. Já **RISP** se trata de um conjunto de **AISP** e finalmente, o conjunto total de **RISP** representa toda a extensão da cidade de Salvador. Essa divisão é realizada para facilitar a vida dos profissionais de segurança em compreender como cada região se comporta de acordo a um determinado tipo de delito, além de agrupar melhor os bairros, que somam um valor superior a 160 em Salvador. Imagina como seria mais complexo de apresentar um plano para cada bairro em específico?
+
+```{r f52, echo=FALSE, fig.cap="RISP Atlântico de Salvador realizado pela SSP", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/risp_atlantico.png")
+```
+
+```{r f53, echo=FALSE, fig.cap="RISP Baía de Todos os Santos (BTS) de Salvador realizado pela SSP", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/risp_baia.png")
+```
+
+```{r f54, echo=FALSE, fig.cap="RISP Central de Salvador realizado pela SSP", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/risp_central.png")
+```
+
+As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões referente as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto "Meninas na Ciência de Dados" são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.
+
+Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territórios de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal no mês de janeiro de 2019 em Salvador: **roubo a ônibus**. Essas escolhas não foram aleatórias. O mês de janeiro foi escolhido por ser um mês onde uma grande maioria dos trabalhadores entram de férias e por estar na temporada de verão, principal estação para turismo em Salvador, logo podemos esperar mais movimentação nas ruas. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
+
+```{r f55, echo=FALSE, fig.cap="Manchetes do jornal G1 sobre roubos a ônibus na cidade de Salvador em diferentes períodos", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/manchetes_roubo.png")
+```
+
+Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia** (neste capítulo você irá compreender exatamente o que este tipo de frase representa).
+
+
+RISP | AISP | Roubo a Ônibus (Urbano e em Rodovia) |
+:---:|:-------------------------------:|
+2015 | 159835 |
+2016 | 175873 |
+2017 | 121063 |
+2018 | 93852  |
+2019 | 88557  |
+
+0	Atlântico	Brotas (06)	17
+1	Atlântico	Rio Vermelho (07)	7
+2	Atlântico	Boca do Rio (09)	5
+3	Atlântico	Itapuã (12)	17
+4	Atlântico	Barra (14)	2
+5	Atlântico	Nordeste (15)	4
+6	Atlântico	Pituba (16)	13
+7	BTS	Barris (01)	17
+8	BTS	Liberdade (02)	8
+9	BTS	Bonfim (03)	8
+10	BTS	São Cateano (04)	22
+11	BTS	Periperi (05)	13
+12	BTS	CIA (08)	1
+13	Central	Pau da Lima (10)	5
+14	Central	Tancredo Neves (11)	40
+15	Central	Cajazeiras (13)	11
+
+
+
+
+AISP 
+RISP 
+
+## Medidas de tendência central
+
+## Medidas de dispersão
+
+## Visualizando com *Boxplot*
+
+## Distribuição
