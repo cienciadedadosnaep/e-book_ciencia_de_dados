@@ -56,45 +56,36 @@ knitr::include_graphics("fig_cap5/risp_central.png")
 
 As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões referentes as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto "Meninas na Ciência de Dados" são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.
 
-Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **roubo a ônibus**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, principal estação para turismo em Salvador, e conhecido por ser um período onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
+Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **Roubo a Ônibus urbano e em rodovia**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, principal estação para turismo em Salvador, e conhecido por ser um período onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
 
 ```{r f55, echo=FALSE, fig.cap="Manchetes do jornal G1 sobre roubos a ônibus na cidade de Salvador em diferentes períodos", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/manchetes_roubo.png")
 ```
 
-Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia avaliados durante um ano** (neste capítulo você irá compreender exatamente o que este tipo de frase representa).
+Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia avaliados durante um ano** e neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!
+
+A base de dados é apresentada abaixo
 
 
-RISP | AISP | Roubo a Ônibus (Urbano e em Rodovia) |
-:---:|:-------------------------------:|
-2015 | 159835 |
-2016 | 175873 |
-2017 | 121063 |
-2018 | 93852  |
-2019 | 88557  |
+RISP      | AISP           | Delito em Janeiro/2019 | Delito em Fevereiro/2019 | Delito em Março/2019 
+:--------:|:--------------:|:----------------------:|:------------------------:|:--------------------:|
+Atlântico |	Brotas         | 17                     |	6                        | 16                   |             
+Atlântico |	Rio Vermelho   | 7                      |	10                       | 5                    |
+Atlântico |	Boca do Rio    | 5                      |	1                        | 7                    |
+Atlântico |	Itapuã         | 17                     |	11                       | 8                    |
+Atlântico |	Barra          | 2                      |	2                        | 1                    |
+Atlântico |	Nordeste       | 4                      |	1                        | 6                    |
+Atlântico |	Pituba         | 13                     |	8                        | 4                    |
+BTS       |	Barris         | 17                     |	5                        | 10                   |
+BTS       |	Liberdade      | 8                      |	8                        | 11                   |
+BTS       |	Bonfim         | 8                      |	12                       | 12                   |
+BTS       |	São Cateano 	 | 22                     |	15                       | 16                   |
+BTS       |	Periperi       | 13                     |	11                       | 20                   |
+BTS       |	CIA	           | 1                      |	1                        | 2                    |
+Central   |	Pau da Lima    | 5                      |	4                        | 9                    |
+Central   |	Tancredo Neves | 40                     |	25                       | 33                   |
+Central   |	Cajazeiras     | 11                     | 9                        | 6                    |
 
-0	Atlântico	Brotas (06)	17
-1	Atlântico	Rio Vermelho (07)	7
-2	Atlântico	Boca do Rio (09)	5
-3	Atlântico	Itapuã (12)	17
-4	Atlântico	Barra (14)	2
-5	Atlântico	Nordeste (15)	4
-6	Atlântico	Pituba (16)	13
-7	BTS	Barris (01)	17
-8	BTS	Liberdade (02)	8
-9	BTS	Bonfim (03)	8
-10	BTS	São Cateano (04)	22
-11	BTS	Periperi (05)	13
-12	BTS	CIA (08)	1
-13	Central	Pau da Lima (10)	5
-14	Central	Tancredo Neves (11)	40
-15	Central	Cajazeiras (13)	11
-
-
-
-
-AISP 
-RISP 
 
 ## Medidas de tendência central
 
