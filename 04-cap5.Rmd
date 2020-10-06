@@ -12,9 +12,9 @@ Ideias
 PRINCIPAL MÊS DE FÉRIAS jANEIRO POIS CASAVA COM FÉRIAS ESCOLARES
 
 ## Objeto de estudo
-Para compreender a importância dessas medidas estatísticas e como  usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizado pela Secretaria de Segurança Pública (SSP) no [portal](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109) para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender essa bases de informações. 
+Para compreender a importância dessas medidas estatísticas e como  usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizado pela Secretaria de Segurança Pública (SSP) no [portal](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109) para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender essa base de informações. 
 
-Os dados avaliados aqui são disponibilizados através de boletins mensais que mostram as ocorrências dos principais delitos na capital bahiana separado por áreas e regiões. Os principais tipos de delitos considerados são:
+Disponibilizados através de boletins mensais, as ocorrências dos principais delitos na capital bahiana são separados por áreas e regiões. Os principais tipos de delitos considerados são:
 
 - Homicídio Doloso
 
@@ -54,15 +54,15 @@ knitr::include_graphics("fig_cap5/risp_baia.png")
 knitr::include_graphics("fig_cap5/risp_central.png")
 ```
 
-As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões referente as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto "Meninas na Ciência de Dados" são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.
+As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões referentes as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto "Meninas na Ciência de Dados" são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.
 
-Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territórios de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal no mês de janeiro de 2019 em Salvador: **roubo a ônibus**. Essas escolhas não foram aleatórias. O mês de janeiro foi escolhido por ser um mês onde uma grande maioria dos trabalhadores entram de férias e por estar na temporada de verão, principal estação para turismo em Salvador, logo podemos esperar mais movimentação nas ruas. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
+Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **roubo a ônibus**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, principal estação para turismo em Salvador, e conhecido por ser um período onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
 
 ```{r f55, echo=FALSE, fig.cap="Manchetes do jornal G1 sobre roubos a ônibus na cidade de Salvador em diferentes períodos", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/manchetes_roubo.png")
 ```
 
-Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia** (neste capítulo você irá compreender exatamente o que este tipo de frase representa).
+Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia avaliados durante um ano** (neste capítulo você irá compreender exatamente o que este tipo de frase representa).
 
 
 RISP | AISP | Roubo a Ônibus (Urbano e em Rodovia) |
