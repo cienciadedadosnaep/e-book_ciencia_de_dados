@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.24)  29 SEP 2020 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.24)  7 OCT 2020 14:40
 entering extended mode
 **./ebook_cd.tex
 (ebook_cd.tex
@@ -376,7 +376,8 @@ Language: portuges 2020/05/04 v1.2r Portuguese support from the babel system
 File: l3backend-pdfmode.def 2020-08-07 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count280
 \l__pdf_internal_box=\box52
-) (ebook_cd.aux)
+)
+No file ebook_cd.aux.
 \openout1 = `ebook_cd.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
@@ -492,15 +493,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 
-{C:/Users/Kaike W. Reis/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (ebook_
-cd.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 4.
-)
+{C:/Users/Kaike W. Reis/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 \tf@toc=\write3
 \openout3 = `ebook_cd.toc'.
 
@@ -515,7 +508,10 @@ l.92 \chapter*{Prefácio}\label{prefuxe1cio}}
 
 ]
 Cap\'{\i }tulo 1.
-<fig_cap1/cidade_legend.png, id=62, 813.79031pt x 522.45187pt>
+
+LaTeX Warning: Reference `fig:figura1' on page 3 undefined on input line 106.
+
+<fig_cap1/cidade_legend.png, id=23, 813.79031pt x 522.45187pt>
 File: fig_cap1/cidade_legend.png Graphic file (type png)
 <use fig_cap1/cidade_legend.png>
 Package pdftex.def Info: fig_cap1/cidade_legend.png  used on input line 110.
@@ -526,45 +522,75 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [3
 
-] [4 <./fig_cap1/cidade_legend.png>]
-<fig_cap1/tripecd.png, id=85, 450.483pt x 384.9582pt>
+]
+
+LaTeX Warning: Reference `fig:figura1' on page 4 undefined on input line 145.
+
+
+LaTeX Warning: Reference `fig:figura2' on page 4 undefined on input line 145.
+
+[4 <./fig_cap1/cidade_legend.png>]
+<fig_cap1/tripecd.png, id=46, 450.483pt x 384.9582pt>
 File: fig_cap1/tripecd.png Graphic file (type png)
 <use fig_cap1/tripecd.png>
 Package pdftex.def Info: fig_cap1/tripecd.png  used on input line 149.
 (pdftex.def)             Requested size: 207.00473pt x 176.89494pt.
-<fig_cap1/youtube.png, id=88, 963.6pt x 428.3202pt>
+
+LaTeX Warning: Reference `fig:figura3' on page 5 undefined on input line 160.
+
+<fig_cap1/youtube.png, id=48, 963.6pt x 428.3202pt>
 File: fig_cap1/youtube.png Graphic file (type png)
 <use fig_cap1/youtube.png>
 Package pdftex.def Info: fig_cap1/youtube.png  used on input line 164.
 (pdftex.def)             Requested size: 275.99626pt x 122.68033pt.
 [5 <./fig_cap1/tripecd.png>] [6 <./fig_cap1/youtube.png>] [7] [8]
-<fig_cap1/facebook.png, id=117, 677.4108pt x 349.305pt>
+
+LaTeX Warning: Reference `fig:figura4' on page 9 undefined on input line 247.
+
+<fig_cap1/facebook.png, id=77, 677.4108pt x 349.305pt>
 File: fig_cap1/facebook.png Graphic file (type png)
 <use fig_cap1/facebook.png>
 Package pdftex.def Info: fig_cap1/facebook.png  used on input line 252.
 (pdftex.def)             Requested size: 344.99947pt x 177.89801pt.
 [9 <./fig_cap1/facebook.png>]
-<fig_cap1/cap1_fig1.png, id=127, 1193.20781pt x 1012.5328pt>
+
+LaTeX Warning: Reference `fig:figura5' on page 10 undefined on input line 268.
+
+<fig_cap1/cap1_fig1.png, id=87, 1193.20781pt x 1012.5328pt>
 File: fig_cap1/cap1_fig1.png Graphic file (type png)
 <use fig_cap1/cap1_fig1.png>
 Package pdftex.def Info: fig_cap1/cap1_fig1.png  used on input line 272.
 (pdftex.def)             Requested size: 275.99782pt x 234.20634pt.
-<fig_cap1/Imagemetapas.png, id=129, 512.1534pt x 307.8702pt>
+
+LaTeX Warning: Reference `fig:figura6' on page 10 undefined on input line 281.
+
+<fig_cap1/Imagemetapas.png, id=88, 512.1534pt x 307.8702pt>
 File: fig_cap1/Imagemetapas.png Graphic file (type png)
 <use fig_cap1/Imagemetapas.png>
 Package pdftex.def Info: fig_cap1/Imagemetapas.png  used on input line 285.
 (pdftex.def)             Requested size: 276.01167pt x 165.91858pt.
 [10 <./fig_cap1/cap1_fig1.png>]
-<fig_cap1/idades_paint.png, id=138, 975.645pt x 465.99094pt>
+
+LaTeX Warning: Reference `fig:figura7' on page 11 undefined on input line 299.
+
+<fig_cap1/idades_paint.png, id=95, 975.645pt x 465.99094pt>
 File: fig_cap1/idades_paint.png Graphic file (type png)
 <use fig_cap1/idades_paint.png>
 Package pdftex.def Info: fig_cap1/idades_paint.png  used on input line 303.
 (pdftex.def)             Requested size: 344.99423pt x 164.77733pt.
-[11 <./fig_cap1/Imagemetapas.png>] [12 <./fig_cap1/idades_paint.png>]
+[11 <./fig_cap1/Imagemetapas.png>]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.1 on input line 339.
+
+[12 <./fig_cap1/idades_paint.png>]
 
 LaTeX Warning: Reference `cap2' on page 13 undefined on input line 344.
 
-<fig_cap1/reg_class.png, id=153, 954.56625pt x 547.2947pt>
+
+LaTeX Warning: Reference `fig:figura8' on page 13 undefined on input line 351.
+
+<fig_cap1/reg_class.png, id=111, 954.56625pt x 547.2947pt>
 File: fig_cap1/reg_class.png Graphic file (type png)
 <use fig_cap1/reg_class.png>
 Package pdftex.def Info: fig_cap1/reg_class.png  used on input line 355.
@@ -576,217 +602,52 @@ LaTeX Warning: Reference `cap12' on page 13 undefined on input line 362.
 LaTeX Warning: Reference `cap13' on page 13 undefined on input line 362.
 
 [13]
-<fig_cap1/mapaconceitualcap01.png, id=162, 979.40906pt x 550.30594pt>
+
+LaTeX Warning: Reference `fig:figura9' on page 14 undefined on input line 388.
+
+<fig_cap1/mapaconceitualcap01.png, id=120, 979.40906pt x 550.30594pt>
 File: fig_cap1/mapaconceitualcap01.png Graphic file (type png)
 <use fig_cap1/mapaconceitualcap01.png>
 Package pdftex.def Info: fig_cap1/mapaconceitualcap01.png  used on input line 3
 92.
 (pdftex.def)             Requested size: 344.99515pt x 193.84431pt.
-[14 <./fig_cap1/reg_class.png>] [15 <./fig_cap1/mapaconceitualcap01.png>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 404.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 404.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 404.
+
+LaTeX Warning: Reference `fig:figura1' on page 14 undefined on input line 408.
+
+[14 <./fig_cap1/reg_class.png>]
+
+LaTeX Warning: Reference `fig:figura2' on page 15 undefined on input line 410.
+
+
+LaTeX Warning: Reference `fig:figura5' on page 15 undefined on input line 418.
+
+[15 <./fig_cap1/mapaconceitualcap01.png>]
 Cap\'{\i }tulo 2.
-
-Overfull \hbox (7.7918pt too wide) in paragraph at lines 423--424
-\T1/lmr/m/n/10 (-20) teste XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
- []
-
 [16
 
 ]
-Cap\'{\i }tulo 3.
-[17
 
-]
-<ebook_cd_files/figure-latex/f31-1.pdf, id=199, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f31-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f31-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f31-1.pdf  used on input l
-ine 459.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[18 <./ebook_cd_files/figure-latex/f31-1.pdf>] [19]
-<ebook_cd_files/figure-latex/f32-1.pdf, id=235, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f32-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f32-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f32-1.pdf  used on input l
-ine 513.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[20 <./ebook_cd_files/figure-latex/f32-1.pdf>]
+! LaTeX Error: File `fig_cap2/cap2_gif1' not found.
 
-LaTeX Warning: Command \^ invalid in math mode on input line 531.
-
-<ebook_cd_files/figure-latex/f33-1.pdf, id=285, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f33-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f33-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f33-1.pdf  used on input l
-ine 537.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-
-LaTeX Warning: Command \^ invalid in math mode on input line 545.
-
-[21] [22 <./ebook_cd_files/figure-latex/f33-1.pdf>]
-<ebook_cd_files/figure-latex/fig34-1.pdf, id=341, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/fig34-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/fig34-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/fig34-1.pdf  used on input
- line 575.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-<ebook_cd_files/figure-latex/f35-1.pdf, id=343, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f35-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f35-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f35-1.pdf  used on input l
-ine 586.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[23 <./ebook_cd_files/figure-latex/fig34-1.pdf>]
-<ebook_cd_files/figure-latex/f36-1.pdf, id=382, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f36-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f36-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f36-1.pdf  used on input l
-ine 599.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[24 <./ebook_cd_files/figure-latex/f35-1.pdf> <./ebook_cd_files/figure-latex/f3
-6-1.pdf
-
-pdfTeX warning: pdflatex.exe (file ./ebook_cd_files/figure-latex/f36-1.pdf): PD
-F inclusion: multiple pdfs with page group included in a single page
->]
-<ebook_cd_files/figure-latex/f37-1.pdf, id=479, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f37-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f37-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f37-1.pdf  used on input l
-ine 612.
-(pdftex.def)             Requested size: 275.99626pt x 137.99812pt.
-[25 <./ebook_cd_files/figure-latex/f37-1.pdf>]
-<ebook_cd_files/figure-latex/f38-1.pdf, id=543, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f38-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f38-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f38-1.pdf  used on input l
-ine 634.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[26]
-<ebook_cd_files/figure-latex/f39-1.pdf, id=551, 1445.4pt x 1084.05pt>
-File: ebook_cd_files/figure-latex/f39-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f39-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f39-1.pdf  used on input l
-ine 649.
-(pdftex.def)             Requested size: 344.9843pt x 258.73822pt.
-[27 <./ebook_cd_files/figure-latex/f38-1.pdf>] [28 <./ebook_cd_files/figure-lat
-ex/f39-1.pdf>]
-<ebook_cd_files/figure-latex/f310-1.pdf, id=635, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f310-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f310-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f310-1.pdf  used on input 
-line 662.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-<ebook_cd_files/figure-latex/f311-1.pdf, id=637, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f311-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f311-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f311-1.pdf  used on input 
-line 675.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[29 <./ebook_cd_files/figure-latex/f310-1.pdf>] [30 <./ebook_cd_files/figure-la
-tex/f311-1.pdf>]
-<ebook_cd_files/figure-latex/f312-1.pdf, id=720, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f312-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f312-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f312-1.pdf  used on input 
-line 716.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-
-LaTeX Warning: Command \^ invalid in math mode on input line 723.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 723.
-
-[31 <./ebook_cd_files/figure-latex/f312-1.pdf>]
-<ebook_cd_files/figure-latex/f313-1.pdf, id=770, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f313-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f313-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f313-1.pdf  used on input 
-line 731.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[32 <./ebook_cd_files/figure-latex/f313-1.pdf>]
-<ebook_cd_files/figure-latex/f314-1.pdf, id=808, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f314-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f314-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f314-1.pdf  used on input 
-line 750.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[33 <./ebook_cd_files/figure-latex/f314-1.pdf>]
-<ebook_cd_files/figure-latex/f315-1.pdf, id=859, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f315-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f315-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f315-1.pdf  used on input 
-line 768.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[34 <./ebook_cd_files/figure-latex/f315-1.pdf>]
-<ebook_cd_files/figure-latex/f316-1.pdf, id=902, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f316-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f316-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f316-1.pdf  used on input 
-line 787.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-<ebook_cd_files/figure-latex/f317-1.pdf, id=905, 1445.4pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f317-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f317-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f317-1.pdf  used on input 
-line 800.
-(pdftex.def)             Requested size: 344.9843pt x 172.49214pt.
-[35 <./ebook_cd_files/figure-latex/f316-1.pdf>]
-<ebook_cd_files/figure-latex/f318-1.pdf, id=948, 2168.1pt x 722.7pt>
-File: ebook_cd_files/figure-latex/f318-1.pdf Graphic file (type pdf)
-<use ebook_cd_files/figure-latex/f318-1.pdf>
-Package pdftex.def Info: ebook_cd_files/figure-latex/f318-1.pdf  used on input 
-line 813.
-(pdftex.def)             Requested size: 344.9843pt x 114.99477pt.
-[36 <./ebook_cd_files/figure-latex/f317-1.pdf> <./ebook_cd_files/figure-latex/f
-318-1.pdf
-
-pdfTeX warning: pdflatex.exe (file ./ebook_cd_files/figure-latex/f318-1.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
->]
-<fig_cap3/infografico_cap3.png, id=1030, 963.6pt x 542.025pt>
-File: fig_cap3/infografico_cap3.png Graphic file (type png)
-<use fig_cap3/infografico_cap3.png>
-Package pdftex.def Info: fig_cap3/infografico_cap3.png  used on input line 845.
-
-(pdftex.def)             Requested size: 341.54372pt x 192.11833pt.
-[37]
-
-LaTeX Warning: Reference `cOPC' on page 38 undefined on input line 859.
-
-[38 <./fig_cap3/infografico_cap3.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 875.
-[39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 875.
-(ebook_cd.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 875.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 875.
-
-LaTeX Warning: There were undefined references.
-
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444 ...cs[width=1\linewidth]{fig_cap2/cap2_gif1}
+                                                   \end{center} 
 Here is how much of TeX's memory you used:
- 13888 strings out of 481212
- 204860 string characters out of 2915701
- 504287 words of memory out of 3000000
- 28955 multiletter control sequences out of 15000+200000
- 616726 words of font info for 142 fonts, out of 3000000 for 9000
+ 13656 strings out of 481212
+ 198698 string characters out of 2915701
+ 500168 words of memory out of 3000000
+ 28804 multiletter control sequences out of 15000+200000
+ 616441 words of font info for 138 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,6n,42p,1263b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/M
-iKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
-lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program
- Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Program Files/MiKTeX/fonts/type
-1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pf
-b><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files/
-MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
-blic/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/f
-onts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lm
-ri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Program 
-Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on ebook_cd.pdf (40 pages, 4915694 bytes).
-PDF statistics:
- 1181 PDF objects out of 1200 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
- 14629 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 50i,6n,42p,1112b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
