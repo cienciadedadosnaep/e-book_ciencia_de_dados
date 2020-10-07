@@ -1,18 +1,27 @@
-# Estatística Inicial {#c05}
+```{r imports, echo=FALSE}
+library(kableExtra);
+library(dplyr);
+```
 
+# Descrevendo e Construindo indicadores básicos com a ciência de dados
 
+Apesar da ciência de dados ser bem conhecida atualmente através das aplicações mais práticas e incríveis da Inteligência Artificial como demonstrado no vídeo abaixo:
 
-Ideias
-- Tema desse capítulo será avaliar os principais delitos no verão em salvador com foco em alguns
-  - citar as divisões feitas pela SSP
-  - mostrar mapa da ssp
-- falar sobre AISP e RISP
-- relacionar a zonas de risco do Uber, buscando noticias
-- citar dados de segurança de salvador
-PRINCIPAL MÊS DE FÉRIAS jANEIRO POIS CASAVA COM FÉRIAS ESCOLARES
+*INSERIR VÍDEO DO YOUTUBE AQUI*
+
+A ciência de dados está presente de outras formas no dia a dia do brasileiro de forma sutil.
+
+```{r f50, echo=FALSE, fig.cap="Manchetes de jornais com termos da ciência de dados", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/machetes_media.PNG")
+```
+
+Na Figura \@ref(fig:f50) em destaque conseguiram identificar esses termos? Eles estão muito presentes neste imenso universo que é a ciência de dados e seus conceitos são bem simples de entender!
+
+Porém, você pode estar se questionando "Porque devo aprender mais sobre eles?" ou "Vou usar isso em algum momento da minha vida?". Questões como podem ser recorrentes durante a aprendizagem e são importante serem endereçadas. A área que é apresentada na Figura \@ref(fig:f50) e será discutida neste capítulo é chamada de **estatística descritiva**. Ao estudar os dados, é comum o cientista buscar padrões desconhecidos e quantificar grandes quantidades de números em um só valor e nesse aspecto que esta ferramenta simples e eficaz é aplicada. 
+O nome pode parecer complicado, porém se trata de um ramo da matemática com uma série de técnicas para descrever e resumir uma grande massa de informações. Essa área pode ser dividida em três grupos de medidas: tendência central, dispersão e forma. Neste capítulo focaremos nas duas primeiras. Além disso iremos explorar formas de visualizações utilizando estes conceitos como o diagrama de caixas e distribuições.
 
 ## Objeto de estudo
-Para compreender a importância dessas medidas estatísticas e como  usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizado pela Secretaria de Segurança Pública (SSP) no [portal](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109) para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender essa base de informações. 
+Para compreender a importância dessas medidas estatísticas e como  usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizados pela Secretaria de Segurança Pública (SSP) no [portal](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109) para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender essa base de informações. 
 
 Disponibilizados através de boletins mensais, as ocorrências dos principais delitos na capital bahiana são separados por áreas e regiões. Os principais tipos de delitos considerados são:
 
@@ -56,7 +65,7 @@ knitr::include_graphics("fig_cap5/risp_central.png")
 
 As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões referentes as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto "Meninas na Ciência de Dados" são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.
 
-Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **Roubo a Ônibus urbano e em rodovia**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, principal estação para turismo em Salvador, e conhecido por ser um período onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na cidade, seja a trabalho ou a lazer.
+Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **Roubo a Ônibus urbano e em rodovia**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, principal estação para turismo em Salvador, e conhecido por ser um período onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na capital bahiana, seja a trabalho ou a lazer.
 
 ```{r f55, echo=FALSE, fig.cap="Manchetes do jornal G1 sobre roubos a ônibus na cidade de Salvador em diferentes períodos", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/manchetes_roubo.png")
@@ -64,28 +73,19 @@ knitr::include_graphics("fig_cap5/manchetes_roubo.png")
 
 Na Figura \@ref(fig:f55) podemos verificar por exemplo que **em média ocorreu 3 assaltos em Salvador por dia avaliados durante um ano** e neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!
 
-A base de dados é apresentada abaixo
+A base de dados referente aos assaltos à coletivos na cidade de Salvador na estação do verão em 2019 é apresentada abaixo:
 
+```{r tabela1, echo=FALSE}
+df = read.csv('data/segurança_boletim_01_02_03_2019_rouboOnibus.csv', encoding = 'latin-1', sep = ';');
+kbl(df) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
 
-RISP      | AISP           | Delito em Janeiro/2019 | Delito em Fevereiro/2019 | Delito em Março/2019 
-:--------:|:--------------:|:----------------------:|:------------------------:|:--------------------:|
-Atlântico |	Brotas         | 17                     |	6                        | 16                   |             
-Atlântico |	Rio Vermelho   | 7                      |	10                       | 5                    |
-Atlântico |	Boca do Rio    | 5                      |	1                        | 7                    |
-Atlântico |	Itapuã         | 17                     |	11                       | 8                    |
-Atlântico |	Barra          | 2                      |	2                        | 1                    |
-Atlântico |	Nordeste       | 4                      |	1                        | 6                    |
-Atlântico |	Pituba         | 13                     |	8                        | 4                    |
-BTS       |	Barris         | 17                     |	5                        | 10                   |
-BTS       |	Liberdade      | 8                      |	8                        | 11                   |
-BTS       |	Bonfim         | 8                      |	12                       | 12                   |
-BTS       |	São Cateano 	 | 22                     |	15                       | 16                   |
-BTS       |	Periperi       | 13                     |	11                       | 20                   |
-BTS       |	CIA	           | 1                      |	1                        | 2                    |
-Central   |	Pau da Lima    | 5                      |	4                        | 9                    |
-Central   |	Tancredo Neves | 40                     |	25                       | 33                   |
-Central   |	Cajazeiras     | 11                     | 9                        | 6                    |
+Nesta tabela vemos valores para cada uma das regiões divididas pela Secretária de Segurança Pública que serão estudados no decorrer deste capítulo. Alguns valores são bem alarmantes como a AISP de Tancredo Neves com um total de 40 ocorrências de assalto à coletivos em janeiro e 33 em março. Em contrapartida, outras AISP como Barra e CIA apresentam valores muito baixos em comparação com 1 ou 2 ocorrências.
 
+Porém, e se quisermos **resumir esses valores para gerar indicadores para uma determinada região (RISP) ou para a cidade nesta época de verão?** **Como esses indicadores poderiam ajudar os gestores a entender como está determinada região ou área em relação ao aumento da violência, considerando este delito?** E principalmente: **Como podemos visualizar e passar estas ideias de forma fácil e intuitiva para gerar ações públicas de combate?**
+
+Para responder esses e outros questionamentos, vamos estudar alguns conceitos importantes da ciência de dados como medidas de tendência central, medidas de dispersão, diagrama de caixas e distribuição no decorrer deste capítulo.
 
 ## Medidas de tendência central
 

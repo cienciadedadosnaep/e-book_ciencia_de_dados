@@ -24,6 +24,7 @@ classoption: oneside
 
 ```{r, eval=TRUE,echo=FALSE}
 library(knitr)
+
 knitr::opts_chunk$set(error = TRUE, fig.align="center")
 
 # SOLVE - Manter o tamanho das imagens em HTML equivalente ao PDF
