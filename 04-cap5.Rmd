@@ -1,6 +1,6 @@
-```{r imports, echo=FALSE}
-library(kableExtra);
-library(dplyr);
+```{python solve_plot_bugs, eval=TRUE,echo=FALSE}
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'
 ```
 
 # Descrevendo e Construindo indicadores básicos com a ciência de dados
@@ -79,7 +79,9 @@ Na Figura \@ref(fig:f55) podemos verificar uma realidade referente a este crime:
 
 A base de dados referente aos assaltos à coletivos na cidade de Salvador na estação do verão em 2019 é apresentada abaixo:
 
-```{r tabela1, echo=FALSE}
+```{r tabela1, echo=FALSE, message=FALSE}
+library(kableExtra);
+library(dplyr);
 df = read.csv('data/segurança_boletim_01_02_03_2019_rouboOnibus.csv', encoding = 'latin-1', sep = ';');
 kbl(df) %>% 
   kable_styling(bootstrap_options = c("striped", "hover"))
@@ -91,7 +93,104 @@ Porém, e se quisermos **resumir esses valores para gerar indicadores para uma d
 
 Para responder esses e outros questionamentos, vamos estudar alguns conceitos importantes da ciência de dados como medidas de tendência central, medidas de dispersão, diagrama de caixas e distribuição no decorrer deste capítulo.
 
+```{python imports_configs_c5, eval=TRUE,echo=FALSE}
+# Modulos
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcol
+
+# Variaveis contendo padroes para os graficos do pyplot
+TAMANHO_FONTE_TICKS = 25
+TAMANHO_FONTE_LABEL = 30
+TAMANHO_FONTE_TITLE = 35
+ESCRITA_FONTE = 'Franklin Gothic Book'
+
+# Aplicando padroes
+plt.rc('font', family=ESCRITA_FONTE)
+plt.rc('axes', titlesize=TAMANHO_FONTE_TITLE, labelsize=TAMANHO_FONTE_LABEL)
+plt.rc('xtick', labelsize=TAMANHO_FONTE_TICKS)
+plt.rc('ytick', labelsize=TAMANHO_FONTE_TICKS)
+plt.rc('legend', fontsize=TAMANHO_FONTE_TICKS, title_fontsize=TAMANHO_FONTE_LABEL)
+
+# Criar colormap
+cm1 = mcol.LinearSegmentedColormap.from_list("WhiteToRed",["white","r"])
+```
+
+```{python import_dados_c5, eval=TRUE,echo=FALSE}
+# Importando
+df = pd.read_csv('data/segurança_boletim_01_02_03_2019_rouboOnibus.csv', sep=';',encoding='latin-1')
+
+# Variáveis
+risp_atc = ['Brotas','Rio Vermelho','Boca do Rio','Itapuã','Barra','Nordeste','Pituba']
+risp_bts = ['Barris','Liberdade','Bonfim','São Caetano','Periperi','CIA']
+risp_ctl = ['Pau da Lima','Tancredo Neves','Cajazeiras'] 
+
+# DATASET - Mapa de calor
+df_calor = df.drop(axis=1,columns=['RISP']).copy().set_index('AISP',drop=True);
+```
+
 ## Medidas de tendência central
+
+As **medidas de tendência central** são aquelas que buscam refletir o ponto de equilíbrio dos dados, ou seja, o seu ponto central. Diversas medidas existem com esse intuito e as mais básicas são: média, mediana e moda. Porém você pode se perguntar “Porque existe mais de uma medida se elas apresentam o mesmo significado?” Bom, cada uma dessas medidas possui suas vantagens e desvantagens, onde entendê-las pode ser fundamental para compreender aquele conjunto de informações da forma mais coerente com a realidade. 
+
+Porém, antes de cair de cabeça nestas medidas vamos avaliar a Tabela apresentada na seção anterior (número de ocorrências de roubo à ônibus) através de um **mapa de calor**.
+
+```{python f56, fig.cap='Mapa de calor da incidência de roubos à ônibus nas áreas de Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Grafico 01 - Mapa de calor geral
+plt.figure(figsize=(10,15));
+sns.heatmap(data=df_calor, annot=True, annot_kws={'fontsize':TAMANHO_FONTE_TICKS, 'color':'black'}, vmin=0, linewidths=0.02, linecolor='black', cmap=cm1, cbar=False);
+plt.ylabel('');
+            
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+Apesar do mapa de calor parecer bastante com uma tabela, existe uma diferença: Cada célula (campo do gráfico) apresenta uma coloração de acordo a grandeza representada. 
+
+Na Figura \@ref(fig:f56) apresentamos um mapa de calor para todas as áreas de Salvador, onde a grandeza representa é o número de ocorrências de assalto, onde quanto mais avermelhada for aquela região, maior é o valor e quanto menor for o número de ocorrências mais esbranqueçida se torna a célula. Ainda na Figura \@ref(fig:f56) podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida a situação de Tancredo Neves, as áreas Barra e CIA apresentam os menores números de ocorrência, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é? No geral:
+
+- O setor com maior incidência é, de forma disparada, Tancredo Neves em todos os meses do verão.
+
+- Barra e CIA são os setores com os menores números de ocorrência no geral.
+
+Além dessas informações, você consegue extrair mais conhecimento deste gráfico?
+
+Apesar da Figura \@ref(fig:f56) apresentar um panorama geral das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna os outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas regiões de periculosidade? 
+
+```{python f57, fig.cap='Mapa de calor particionado por regiões de Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Grafico 02 - Mapa de calor por RISP
+fig, axes = plt.subplots(nrows=3,ncols=1,figsize=(10,25));
+
+# Loop nas RISP
+for aisp,risp,p in zip([risp_atc,risp_bts,risp_ctl],['Atlântico','BTS','Central'], [0,1,2]):
+    sns.heatmap(data=df_calor.loc[aisp,:], annot=True, annot_kws={'fontsize':TAMANHO_FONTE_TICKS,'color':'black'},
+                vmin=0, linewidths=0.02, linecolor='black', cmap=cm1, cbar=False,ax=axes[p]);
+    axes[p].set_title('RISP - '+risp);
+    axes[p].set_ylabel('');
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+Na Figura \@ref(fig:f57) apresentamos novamente o mapa de calor, agora separado por regiões. Cada uma das três regiões apresentam características interessantes no verão:
+
+- Na região "Atlântico" podemos verificar que as áreas Brotas e Itapuã são as mais perigosas de modo geral, onde em Janeiro ocorreu em ambas o maior número de ocorrências com 17 casos. Além disso, Pituba e Rio Vermelho possuem um grande tom de rosa, mostrando que elas não são tão seguras.
+
+- Na região "BTS" nota-se que diversas áreas apresentam tons avermelhados, mostrando um grande perigo nesta região com destaque para São Caetano e Periperi que apresentam os maiores valores.
+
+- Na região "Central" é possível perceber que a área Tancredo Neves é a mais perigosa, mantendo o mesmo padrão apresentado na Figura \@ref(fig:f57).
+
+Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura \@ref(fig:f56) apenas a área de Tancredo Neves se destacavam em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando a característica referente a região, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central.
+
+A primeira medida de tendência central a ser analisada será a **Média**. Trata-se da medida mais conhecida e usada em nosso dia a dia como vimos no início deste capítulo. De forma geral ela é calculada através 
+
+
+
 
 ## Medidas de dispersão
 
