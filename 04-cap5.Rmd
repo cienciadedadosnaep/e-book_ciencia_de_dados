@@ -71,7 +71,7 @@ As Figuras \@ref(fig:f52), \@ref(fig:f53) e \@ref(fig:f54) mostram as divisões 
 
 Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: **Roubo a Ônibus urbano e em rodovia**. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, um dos principais períodos para turismo em Salvador,onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na capital bahiana, seja a trabalho, estudos ou a lazer.
 
-```{r f55, echo=FALSE, fig.cap="Manchetes do jornal G1 sobre roubos a ônibus na cidade de Salvador em diferentes períodos", align = "center", out.width = '99%', fig.align='center'}
+```{r f55, echo=FALSE, fig.cap="Manchetes sobre roubos a ônibus na cidade de Salvador", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/manchetes_roubo.png")
 ```
 
@@ -100,7 +100,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcol
-
+from scipy import stats
 # Variaveis contendo padroes para os graficos do pyplot
 TAMANHO_FONTE_TICKS = 25
 TAMANHO_FONTE_LABEL = 30
@@ -116,19 +116,53 @@ plt.rc('legend', fontsize=TAMANHO_FONTE_TICKS, title_fontsize=TAMANHO_FONTE_LABE
 
 # Criar colormap
 cm1 = mcol.LinearSegmentedColormap.from_list("WhiteToRed",["white","r"])
+
+# Funcao para anotar no grafico de barras
+def fazer_anotacao_frequencia_absoluta(eixo, coord_texto_xy, barra_eixo_y=True, use_int=True):
+    # Loop em cada barra que existe no gráfico
+    for barra in eixo.patches:
+        if barra_eixo_y:
+            tamanho_barra = barra.get_width() # Pegar o tamanho da barra
+            texto_barra = tamanho_barra # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x() + tamanho_barra, barra.get_y()) # Coordenada de onde sera a anotacao no grafico
+            eixo.annotate(texto_barra, coord_anotacao_xy, xytext=coord_texto_xy, fontsize=20, color='black',
+                          weight='bold',textcoords='offset points', horizontalalignment='right')
+        else:
+            tamanho_barra = barra.get_height() # Pegar o tamanho da barra
+            texto_barra = tamanho_barra # Texto que sera anotado referente a barra
+            coord_anotacao_xy = (barra.get_x(), barra.get_y() + tamanho_barra) # Coordenada de onde sera a anotacao no grafico
+            if use_int:
+                eixo.annotate(int(texto_barra), coord_anotacao_xy, xytext=coord_texto_xy, fontsize=TAMANHO_FONTE_TICKS,
+                              color='black',weight='bold',textcoords='offset points', horizontalalignment='right')
+            else:
+                eixo.annotate(int(texto_barra), coord_anotacao_xy, xytext=coord_texto_xy, fontsize=TAMANHO_FONTE_TICKS,
+                              color='black',weight='bold',textcoords='offset points', horizontalalignment='right')
 ```
 
 ```{python import_dados_c5, eval=TRUE,echo=FALSE}
 # Importando
-df = pd.read_csv('data/segurança_boletim_01_02_03_2019_rouboOnibus.csv', sep=';',encoding='latin-1')
+df = pd.read_csv('data/segurança_boletim_01_02_03_2019_rouboOnibus.csv', sep=';',encoding='latin-1');
 
-# Variáveis
-risp_atc = ['Brotas','Rio Vermelho','Boca do Rio','Itapuã','Barra','Nordeste','Pituba']
-risp_bts = ['Barris','Liberdade','Bonfim','São Caetano','Periperi','CIA']
-risp_ctl = ['Pau da Lima','Tancredo Neves','Cajazeiras'] 
+# Variaveis
+risp_atc = ['Brotas','Rio Vermelho','Boca do Rio','Itapuã','Barra','Nordeste','Pituba'];
+risp_bts = ['Barris','Liberdade','Bonfim','São Caetano','Periperi','CIA'];
+risp_ctl = ['Pau da Lima','Tancredo Neves','Cajazeiras']; 
+risp_nomes = ['Atlântico','BTS','Central']
+meses = df.columns[2:].to_list()
 
 # DATASET - Mapa de calor
 df_calor = df.drop(axis=1,columns=['RISP']).copy().set_index('AISP',drop=True);
+
+# DATASET - Medidas Centrais
+df_central = df.groupby('RISP').aggregate([('Média','mean'),('Mediana',np.median)]).round(2);
+
+# DATASET - Medidas Dispersao
+df_disp = df.groupby('RISP').aggregate([('Amplitude',np.ptp),('Desvio Padrão',np.std),('Distância Interquartil',stats.iqr)]).round(2);
+df_disp = df_disp.unstack().to_frame().reset_index(); # Transformar em um dataframe linear
+df_disp.rename(columns={'level_0':'Mês','level_1':'Medidas',0:'Valor'},inplace=True); # Corrigir nome das colunas
+
+# DATASET - Boxplot & Distribuicao
+df_box = df.melt(id_vars=['AISP','RISP'], var_name='Meses',value_name='Ocorrências');
 ```
 
 ## Medidas de tendência central
@@ -187,13 +221,181 @@ Na Figura \@ref(fig:f57) apresentamos novamente o mapa de calor, agora separado 
 
 Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura \@ref(fig:f56) apenas a área de Tancredo Neves se destacavam em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando a característica referente a região, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central.
 
-A primeira medida de tendência central a ser analisada será a **Média**. Trata-se da medida mais conhecida e usada em nosso dia a dia como vimos no início deste capítulo. De forma geral ela é calculada através 
+A primeira medida de tendência central a ser analisada será a **Média**. Trata-se da medida mais conhecida e usada em nosso dia a dia, como vimos no início deste capítulo. Ela é calculada através do **somatório de todos os valores dividido pela quantidade**.
 
+Com este conhecimento em mãos vamos montar uma tabela da média de ocorrência para os meses do verão de acordo a região:
+
+
+Média
+
+RISP      | Janeiro | Fevereiro | Março |
+:--------:|:-------:|:---------:|:-----:|
+Atlântico | 9.29    | 5.57      | 6.71  |
+BTS       | 11.50   | 8.67      | 11.83 |
+Central   | 18.67   | 12.67     | 16.0  |
+
+Mediana
+
+RISP      | Janeiro | Fevereiro | Março |
+:--------:|:-------:|:---------:|:-----:|
+Atlântico | 7.0     | 6.0       | 6.0   |
+BTS       | 10.5    | 9.5       | 11.5  |
+Central   | 11.0    | 9         | 9.0   |
+
+```{python f58, fig.cap='Gráfico de pontos para as ocorrências em Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, results='hide'}
+# Grafico de pontos
+fig, axes = plt.subplots(nrows=1,ncols=3,figsize=(25,10));
+
+# Loop para fazer os plots
+for mes, idx in zip(meses, [0,1,2]):
+    # Gerar grafico
+    sns.stripplot(x=mes, y='RISP', data=df, size=25, ax=axes[idx],
+                  linewidth=0.5,edgecolor='black', color=plt.get_cmap("Set2")(0));
+    
+    # Detalhes visuais do grafico
+    axes[idx].set_title(mes, fontweight='bold');
+    axes[idx].set_xlabel('');
+    axes[idx].set_ylabel('');
+    axes[idx].spines['right'].set_visible(False);
+    axes[idx].spines['top'].set_visible(False);
+    
+    # Detalhes visuais especificos
+    if idx != 0:
+        axes[idx].set_yticks([]);
+    else:
+        axes[idx].yaxis.set_tick_params(labelsize=30);
+
+# Fazer plots das médias e medianas no gráfico
+acrescimo = -0.15;
+
+# Loop para fazer plot das medidas centrais
+for mes, idx in zip(meses, [0,1,2]):
+    for risp, coordX in zip(risp_nomes, [0+acrescimo,1+acrescimo,2+acrescimo]):
+        # Gerar media
+        coordY = df_central.loc[risp][mes]['Média'];
+        axes[idx].plot([coordY],[coordX], marker='P',color='red', markersize=25, label='Média',linestyle = 'None');
+        coordY = df_central.loc[risp][mes]['Mediana'];
+        axes[idx].plot([coordY],[coordX], marker='D',color='gray', markersize=20, label='Mediana', linestyle='None');
+
+# Inserir legenda
+plt.legend(['Média','Mediana'], title='Medidas', bbox_to_anchor=(1.15,0.65), fontsize=30);        
+
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
 
 
 
 ## Medidas de dispersão
 
-## Visualizando com *Boxplot*
+```{python f59, fig.cap='Medidas de dispersão em gráfico de barras das ocorrências de Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE, results='hide'}
+# Plot
+fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(20,10));
+sns.barplot(x='Mês',y='Valor',hue='Medidas',data=df_disp, ci=None, ax=ax, palette='Set2');
+
+# Configuracoes do grafico
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+ax.set_xlabel('');
+ax.set_ylabel('');
+ax.set_yticks(np.arange(0, 30, step=5))
+plt.legend(title='Medidas',bbox_to_anchor=(1.35,0.75), fontsize=30);    
+
+fazer_anotacao_frequencia_absoluta(ax, (60, 7), barra_eixo_y=False, use_int=True);
+
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+
+
+## Visualizando com Diagramas de Caixa
+
+
+```{python f510, fig.cap='Diagrama de caixa das ocorrências mensais', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
+# Diagrama de caixas
+fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(20,10));
+sns.boxplot(x='Meses', y='Ocorrências', data=df_box, ax=ax, palette='Set2');
+
+# Configuracoes do grafico
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+ax.set_xlabel('');
+ax.set_ylabel('Ocorrências', labelpad=20);  
+
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+```{r f511, echo=FALSE, fig.cap="Diagrama de caixa explicado", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/fig_diagramaCaixas.png")
+```
 
 ## Distribuição
+
+```{python f512, fig.cap='Distribuição das ocorrências separadas por mês', out.width='100%', fig.asp=.99, fig.align='center', results='hide', echo=FALSE, message=FALSE}
+# Distribuição
+fig, ax = plt.subplots(nrows=3,ncols=1,figsize=(15,15));
+
+# Loop para gerar os graficos
+for mes, idx, xlimite in zip(meses, [0,1,2], [55, 55,55]):
+    sns.distplot(df_box.loc[df_box['Meses'] == mes,'Ocorrências'], ax=ax[idx], hist=False, 
+                 color=plt.get_cmap("Set2")(0), kde_kws={"shade": True});
+    
+    # Gerar linha da media e mediana
+    media = df_box.loc[df_box['Meses'] == mes,'Ocorrências'].mean();
+    mediana = df_box.loc[df_box['Meses'] == mes,'Ocorrências'].median();
+    ax[idx].axvline(x=media, color='r', linestyle='-',label='Média');
+    ax[idx].axvline(x=mediana, color='b', linestyle='-',label='Mediana');
+    
+    # Configuracoes do grafico
+    ax[idx].spines['right'].set_visible(False);
+    ax[idx].spines['top'].set_visible(False);
+    ax[idx].set_title(mes);
+    ax[idx].set_yticks([]);
+    ax[idx].set_xticks(np.arange(0, xlimite, step=5));
+    ax[idx].set_xlim(xmin=0);
+    if idx != 2:
+        ax[idx].set_xlabel('');
+    if idx == 1:
+      ax[idx].legend(['Média','Mediana'], title='Medidas',bbox_to_anchor=(1.30,0.75), fontsize=30);  
+
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+```{python f513, fig.cap='Distribuição das ocorrências em Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
+# Distribuição
+fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(10,10));
+
+# Loop para gerar os graficos
+for mes, cor in zip(meses,[0,1,2]):
+    # Gerar grafico
+    sns.distplot(df_box.loc[df_box['Meses'] == mes,'Ocorrências'], ax=ax, 
+                 hist=False, color=plt.get_cmap("Set2")(cor), kde_kws={"shade": True},label=mes);
+    
+# Configuracoes do grafico
+ax.spines['right'].set_visible(False);
+ax.spines['top'].set_visible(False);
+ax.set_yticks([]);
+ax.set_xticks(np.arange(0, 65, step=5));
+ax.set_xlim(xmin=0);
+plt.legend(title='Meses')
+# Mostrar e fechar objeto grafico
+plt.tight_layout();
+plt.show();
+plt.close('all');
+```
+
+## Concluindo ...
+
+## Indo Além
+
