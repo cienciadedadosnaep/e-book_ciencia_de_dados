@@ -20,7 +20,7 @@ knitr::include_graphics("fig_cap5/machetes_media.PNG")
 
 Na Figura \@ref(fig:f50) destacamos alguns termos, consegue identificá-los? Eles são muito recorrentes neste imenso universo que é a ciência de dados e seus conceitos são bem simples de entender além de práticos!
 
-Porém, você pode estar se questionando "Porque devo aprender mais sobre eles?" ou "Vou usar isso em algum momento da minha vida?". Questões como essas podem ser recorrentes durante a aprendizagem e são importante serem endereçadas. A área que é apresentada na Figura \@ref(fig:f50) e que será discutida neste capítulo é chamada de **estatística descritiva**. Ao estudar os dados, é comum o cientista buscar padrões desconhecidos e quantificar grandes quantidades de números em um só valor e nesse aspecto que esta ferramenta simples e eficaz é aplicada. 
+Porém, você pode estar se questionando "Porque devo aprender mais sobre eles?" ou "Vou usar isso em algum momento da minha vida?". Questões como essas podem ser recorrentes durante a aprendizagem e são importante serem endereçadas. A área que é apresentada na Figura \@ref(fig:f50) e que será discutida neste capítulo é chamada de **estatística descritiva**. Ao estudar os dados, é comum o cientista buscar padrões desconhecidos e quantificar grandes quantidades de números em um só valor e é neste aspecto que esta ferramenta simples e eficaz é aplicada. 
 
 O nome pode parecer complicado, porém se trata de um ramo da matemática com uma série de técnicas para descrever e resumir uma grande massa de informações. Essa área pode ser dividida em três grupos de medidas: tendência central, dispersão e forma. Neste capítulo focaremos nas duas primeiras. Além disso iremos explorar formas de visualizações utilizando estes conceitos como o diagrama de caixas e distribuições.
 
@@ -75,7 +75,7 @@ Com toda estas informações em mente como tipos dos principais delitos, divisõ
 knitr::include_graphics("fig_cap5/manchetes_roubo.png")
 ```
 
-Na Figura \@ref(fig:f55) podemos verificar uma realidade referente a este crime: **em média ocorreu 3 assaltos em Salvador por dia avaliados durante um ano**. Neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!
+Na Figura \@ref(fig:f55) podemos verificar uma realidade referente a este crime: **em média ocorreram 3 assaltos em Salvador por dia avaliados durante um ano**. Neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!
 
 A base de dados referente aos assaltos à coletivos na cidade de Salvador na estação do verão em 2019 é apresentada abaixo:
 
@@ -185,7 +185,9 @@ plt.close('all');
 
 Apesar do mapa de calor parecer bastante com uma tabela, existe uma diferença: Cada célula (campo do gráfico) apresenta uma coloração de acordo a grandeza representada. 
 
-Na Figura \@ref(fig:f56) apresentamos um mapa de calor para todas as áreas de Salvador, onde a grandeza representa é o número de ocorrências de assalto, onde quanto mais avermelhada for aquela região, maior é o valor e quanto menor for o número de ocorrências mais esbranqueçida se torna a célula. Ainda na Figura \@ref(fig:f56) podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida a situação de Tancredo Neves, as áreas Barra e CIA apresentam os menores números de ocorrência, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é? No geral:
+Na Figura \@ref(fig:f56) apresentamos um mapa de calor para todas as áreas de Salvador, onde a grandeza representada é o número de ocorrências , onde quanto mais avermelhada for aquela região, maior é o valor e quanto menor for o número de ocorrências mais branca se torna a célula. Ainda na Figura \@ref(fig:f56) podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida a situação de Tancredo Neves, as áreas Barra e CIA apresentam os menores números de ocorrência, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é? 
+
+Em geral percebemos que:
 
 - O setor com maior incidência é, de forma disparada, Tancredo Neves em todos os meses do verão.
 
@@ -193,7 +195,7 @@ Na Figura \@ref(fig:f56) apresentamos um mapa de calor para todas as áreas de S
 
 Além dessas informações, você consegue extrair mais conhecimento deste gráfico?
 
-Apesar da Figura \@ref(fig:f56) apresentar um panorama geral das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna os outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas regiões de periculosidade? 
+Apesar da Figura \@ref(fig:f56) apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas regiões de periculosidade? 
 
 ```{python f57, fig.cap='Mapa de calor particionado por regiões de Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
 # Grafico 02 - Mapa de calor por RISP
@@ -213,20 +215,17 @@ plt.close('all');
 
 Na Figura \@ref(fig:f57) apresentamos novamente o mapa de calor, agora separado por regiões. Cada uma das três regiões apresentam características interessantes no verão:
 
-- Na região "Atlântico" podemos verificar que as áreas Brotas e Itapuã são as mais perigosas de modo geral, onde em Janeiro ocorreu em ambas o maior número de ocorrências com 17 casos. Além disso, Pituba e Rio Vermelho possuem um grande tom de rosa, mostrando que elas não são tão seguras.
+- Na região Atlântico podemos verificar que as áreas Brotas e Itapuã são as mais perigosas de modo geral, onde em Janeiro ocorreu em ambas o maior número de ocorrências com 17 casos. Além disso, Pituba e Rio Vermelho possuem um grande tom de rosa, mostrando que elas não são tão seguras.
 
-- Na região "BTS" nota-se que diversas áreas apresentam tons avermelhados, mostrando um grande perigo nesta região com destaque para São Caetano e Periperi que apresentam os maiores valores.
+- Na região BTS nota-se que diversas áreas apresentam tons avermelhados, mostrando um grande perigo nesta região com destaque para São Caetano e Periperi que apresentam os maiores valores.
 
-- Na região "Central" é possível perceber que a área Tancredo Neves é a mais perigosa, mantendo o mesmo padrão apresentado na Figura \@ref(fig:f57).
+- Na região Central é possível perceber que a área Tancredo Neves é a mais perigosa, mantendo o mesmo padrão apresentado na Figura \@ref(fig:f57).
 
-Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura \@ref(fig:f56) apenas a área de Tancredo Neves se destacavam em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando a característica referente a região, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central.
+Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura \@ref(fig:f56) apenas a área de Tancredo Neves se destacava em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando a característica referente a região, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central, onde vamos entender o impacto de um **valor aberrante**.
 
-A primeira medida de tendência central a ser analisada será a **Média**. Trata-se da medida mais conhecida e usada em nosso dia a dia, como vimos no início deste capítulo. Ela é calculada através do **somatório de todos os valores dividido pela quantidade**.
+A primeira medida de tendência central a ser analisada será a **Média**. Trata-se da medida mais conhecida e usada em nosso dia a dia, como vimos no início deste capítulo. 
 
-Com este conhecimento em mãos vamos montar uma tabela da média de ocorrência para os meses do verão de acordo a região:
-
-
-Média
+Ela é calculada através do **somatório de todos os valores dividido pela sua quantidade**. Com este conhecimento em mãos vamos montar uma tabela da média de ocorrência para os meses do verão de acordo a região:
 
 RISP      | Janeiro | Fevereiro | Março |
 :--------:|:-------:|:---------:|:-----:|
@@ -234,13 +233,67 @@ Atlântico | 9.29    | 5.57      | 6.71  |
 BTS       | 11.50   | 8.67      | 11.83 |
 Central   | 18.67   | 12.67     | 16.0  |
 
-Mediana
+Porém, antes de mergulhar na análise desses valores encontrados, por quê calculamos a média? Bom, o intuito é apresentar um indicador para o número de ocorrências para as regiões de Salvador. Assim, ao invés de avaliar área por área, temos um valor único que resume aquela imensa quantidade de valores em um só representativo.
+
+Da Tabela de médias calculadas, podemos perceber que:
+
+- O mês de fevereiro como um todo possui os menores índices de ocorrências em comparação a janeiro e fevereiro.
+
+- A RISP Central possui as maiores médias de ocorrências nos meses de verão, mesmo sendo uma região com apenas 3 áreas catalogadas. Note que a área com maior incidência, Tancredo Neves, pertence a esta região.
+
+- A RISP Atlântico possui os melhores indicadores em todos os meses, ou seja, possui a menor média de ocorrências.
+
+Através da média, conseguimos extrair indicadores capazes de fazer comparações diretas entre as regiões! Isso é importante para avaliar situações de forma mais abrangente em um cenário mais amplo para a cidade de Salvador.
+
+Note que os valores de média são decimais, porém estamos tratando de números de ocorrências certo? Você nunca ouviu algo como "Ontem acontecem 2.5 assaltos naquele ponto de ônibus" ou "Aconteceu em Salvador 30.5 furtos de veículos na região do litoral" e mesmo assim o valor da média é decimal. Isto ocorre, pois estamos tratando de uma variável que por natureza é **inteira**, ou seja, aumenta em unidades, porém a forma como a média é calculada não é garantido que o resultado seja também um **inteiro** (algumas vezes pode acontecer). Logo, é comum realizar uma aproximação simples seguindo as regras:
+
+- Caso a parte decimal seja maior ou igual 0.5, você aproxima para o maior valor inteiro próximo do seu número
+
+- Caso a parte decimal seja menor que 0.5, você aproxima para o menor valor inteiro próximo do seu número
+
+Esta regra vale para qualquer valor decimal que você queira representar e não somente a média. Aplicando esta regra na tabela anterior temos:
+
+RISP      | Janeiro | Fevereiro | Março |
+:--------:|:-------:|:---------:|:-----:|
+Atlântico | 9       | 6         | 7     |
+BTS       | 12      | 9         | 12    |
+Central   | 19      | 13        | 16    |
+
+Assim, fica mais simples manter a ideia deste indicador: representar um ponto de equilíbrio para o número de ocorrências de assaltos a ônibus por região em Salvador.
+
+Com esta nova Tabela, podemos assinalar outro situação, protagonizada pela novamente pela área Tancredo Neves na região Central... Você conseguiu perceber?
+
+Olhe para as médias da região Central: 19 ocorrências em Janeiro, 13 ocorrências em Fevereiro e 16 ocorrências em Março. Agora olhe novamente para esta mesma região na Figura \@ref(fig:f57) e responda: estes valores de média fazem sentido?
+
+Infelizmente não. A situação que ocorre aqui mostra uma das fraquezas desta medida: **valores aberrantes**. Tratam-se de observações demasiadamente grandes ou pequenos que apresentam um grande afastamento das demais. Neste caso a responsável por esses valores é o setor Tancredo Neves, com números de ocorrências muito maiores em comparação aos demais. Os valores aberrantes influenciam bastante na média e isso será discutido mais a frente ...
+
+Agora que aprendemos como calcular e utilizar a média, podemos compreender a frase dita no início desta seção:
+
+**"Em média ocorreram 3 assaltos em Salvador por dia avaliados durante o ano"**
+
+Basicamente o que o jornal apresentou foi um tratamento similiar ao que fizemos anteriormente: Adquiriu todos os os boletins mensais disponibilizados pela SSP, somou todos os números de ocorrências de Janeiro até Dezembro e então dividiu pelo total de dias que existem no ano, 365 dias. É provável que o valor encontrado tenha sido decimal também, e então foi aproximado para este valor que verificamos: três ocorrências em média!
+
+Depois de compreender um pouco sobre a medida mais usada e saber uma de suas falhas (valores aberrantes), será que existe alguma outra medida que seja blindada a esta questão? Para nossa sorte, ela existe e se chama **Mediana**.
+
+A mediana é definida como o valor que divide os dados na metade, 50% estão acima da mediana e 50% estão abaixo. A obtenção da mediana é feita ordenando-se os dados e escolhendo-se o valor do meio. Por exemplo se temos 11 valores, a mediana estará na 6º posição (5 valores abaixo e 5 valores acima). No caso de uma quantidade amostral par, computamos a média dos dois valores “centrais”. Abaixo é apresentado a Tabela com os valores das medianas para cada região de Salvador:
 
 RISP      | Janeiro | Fevereiro | Março |
 :--------:|:-------:|:---------:|:-----:|
 Atlântico | 7.0     | 6.0       | 6.0   |
 BTS       | 10.5    | 9.5       | 11.5  |
-Central   | 11.0    | 9         | 9.0   |
+Central   | 11.0    | 9.0       | 9.0   |
+
+Note que algumas regiões apresentam valores decimais, assim como aconteceu com a média e o motivo é o mesmo: ao calcular a média dos valores "centrais" não garantimos um resultado inteiro.
+
+Para compreender melhor este resultado, vamos organizar de forma crescente os números de ocorrências em cada região para o mês de janeiro:
+
+- RISP Atlântico: 2,4,5,**7**,13,17,17
+
+- RISP BTS: 1,8,**8**,**13**,17,22
+
+- RISP Central: 5,**11**,40
+
+Vemos anteriormente que cada uma região das regiões listadas possuem respectivamente sete, seis e três áreas no total. Apenas a região BTS possui um valor par e é por isso que a incidência de medianas decimais são nesta região! Para as outras, apenas foi pego os valores que separam o conjunto de dados em 50% para cada lado, sendo destacados em negrito.
 
 ```{python f58, fig.cap='Gráfico de pontos para as ocorrências em Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, results='hide'}
 # Grafico de pontos
@@ -286,7 +339,17 @@ plt.show();
 plt.close('all');
 ```
 
+Na Figura \@ref(fig:f58) podemos avaliamr essas duas medidas junto a grandeza estudada através de uma visualização: **gráfico de pontos**.
 
+Podemos perceber na Figura \@ref(fig:f58) que para as regiões Atlâtico e BTS os valores de média e mediana são próximos, diferente da região Central. Essa disparidade é explicada pelo que vimos anteriormente: O **valor aberrante** distorce o valor da média, puxando-a em sua direção como vocês podem perceber.
+
+A comparação de média e mediana pode ser um bom indicativo da presença de um valor aberrante: quanto mais próximos essas medidas forem, mais provável a ausência de valores aberrantes.
+
+Nesta análise em específico, verificamos que a mediana seria uma melhor medida para representar a região Central como um todo, já para as outras duas regiões a escolha entre ambas as medidas é arbitrária, pois elas estão bem próximas.
+
+São visualizações como essas que ajudam o cientista de dados a tomar melhores decisões na escolha de indicadores ou medidas de resumo.
+
+Finalmente, a última medida de tendência central tratada neste capítulo é a **moda**. Trata-se da medida de maior frequência em um conjunto de dados, em outras palavras, o valor que mais se repete em uma amostra será a moda deste dado. Este conceito é muito usado com variáveis categóricas. Como neste capítulo trabalhamos com valores numéricos, não cabe a análise deste medida.
 
 ## Medidas de dispersão
 
