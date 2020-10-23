@@ -731,7 +731,7 @@ Na Figura \@ref(fig:f319) é apresentado o infográfico resumindo as informaçõ
 ## Indo Além
 Fizemos diversas análises e respondemos alguns questionamentos a respeito do **perfil dos estudantes de Salvador que realizaram o ENEM** não foi? Porém com a riqueza que esta base de dados possui o leitor pode explorar ainda mais!
 
-Utilizando Python, explicada em nosso capítulo \@ref(cOPC) de programação, você conseguiria **ir além** e responder os seguintes questionamentos?
+Utilizando Python, explicada em nosso capítulo de programação, você conseguiria **ir além** e responder os seguintes questionamentos?
 
 - Através do infográfico na Figura \@ref(fig:f319) avaliamos que ocorreu um aumento no número de estudantes sem acesso a computadores pessoais no ENEM de 2015 para 2019, o que pode dificultar os estudos desta parcela de estudantes. Você consegue avaliar a distribuição de cor/raça para esses estudantes em 2019 utilizando o gráfico de barras?
 
