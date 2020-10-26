@@ -175,14 +175,14 @@ Na proxima seção você vai conhecer algumas bases de dados abertas que podem s
 
 ### Dados abertos governamentais
 
-
+Dados abertos governamentais são dados produzidos pelos governos que devem ser colocados à disposição de qualquer cidadão para qualquer fim^[W3C BRASIL, 2011, p. 4]
 
 A seguir, alguns exemplos de base de dados abertas governamentais:
 
 
   - [Dados abertos da Câmara dos Deputados](https://dadosabertos.camara.leg.br/#a1)
-  
-   Fornece dados sobre as atividades parlamentares da Casa a qualquer cidadão que possa se conectar à internet.
+ 
+Nesta base de dados você terá acesso a dados sobre as atividades parlamentares da câmara dos deputados através de uma plataforma bastante intuitiva.
   
 ```{r ch9,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
@@ -192,7 +192,8 @@ knitr::include_graphics("fig_cap2/cap2_fig8.png")
   
   - [Dados abertos do Senado Federal](https://www12.senado.leg.br/dados-abertos)
   
-  
+Fornece dados relativos a contratos firmados pelo Senado Federal, dados relativos a servidores aposentados, pensionistas, estagiários e terceirizados do Senado Federal e demais dados que você pode verificar
+
   
 ```{r ch10,fig.cap="Dados abertos do Senado Federal" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
@@ -200,20 +201,55 @@ knitr::include_graphics("fig_cap2/cap2_fig9.png")
 
 ```
   
-  _______________________________________
-  
   - [Dados Abertos Ministério da Justiça e Segurança](https://www.justica.gov.br/dados-abertos/dados)
   
+Na base de dados do Ministério da Justiça você encontra dados referentes a ocorrências criminais, violência contra mulher, refugiados e muitos outros que você pode verificar
+    
+```{r ch11,fig.cap="Dados abertos do Ministério da Justiça e Segurança" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig10.png")
+
+```
+  _______________________________________
+  
+As bases de dados acima foram apenas alguns exemplos de dados abertos governamentais que você pode acessar. Abaixo, temos mais algumas bases de dados para você conferir:
+  
+ 
   - [Dados Abertos sobre Emprego](https://sineaberto.economia.gov.br/)
   
-
+  - [Dados Abertos - INEP](http://portal.inep.gov.br/web/guest/dados)
+  
+  - [Educação em Números: Bahia](http://escolas.educacao.ba.gov.br/eduemnumeros)
+  
+  - [Educação em Números: Salvador](http://educacao.salvador.ba.gov.br/educacao-em-numeros/)
+  
+  - [Estatística Acidentes - Transalvador](http://transalvador.salvador.ba.gov.br/conteudo/index.php/estatisticaAcidente/acidenteComVitima)
+  
+  - [Secretaria de Segurança Pública da Bahia](http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=110)
+  
+  - [Proteção aos povos indigenas e ODS 15](https://observatorionacional.cnj.jus.br/observatorionacional/index.php/protecao-aos-povos-indigenas-e-ods-15)
+  
+  - [Portal Brasileiro de Dados Abertos](https://dados.gov.br/)
+  
 
 
 ### Kaggle
 
-Kaggle é uma comunidade on-line de cientistas de dados e profissionais de aprendizado de máquina
+[Em reconstrução]
 
 ### UCL
+
+```{r ch12, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
+
+knitr::include_graphics("fig_cap2/cap2_gif2.gif")
+
+``` 
+
+[Em reconstrução]
+
+## Indo Além
+
+[Em reconstrução]
 
 ## Referências
 
