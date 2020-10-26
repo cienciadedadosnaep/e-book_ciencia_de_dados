@@ -239,6 +239,10 @@ As bases de dados acima foram apenas alguns exemplos de dados abertos governamen
 
 ### UCL
 
+## Concluindo
+
+[texto que está no canva]
+
 ```{r ch12, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
 
 knitr::include_graphics("fig_cap2/cap2_gif2.gif")
