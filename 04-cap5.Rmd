@@ -360,16 +360,15 @@ São visualizações como essas que ajudam o cientista de dados a tomar melhores
 Finalmente, a última medida de tendência central a ser mencionada neste capítulo é a **moda**. Trata-se da medida de maior frequência em um conjunto de dados, em outras palavras, o valor que mais se repete em uma amostra será a moda deste dado. Este conceito é muito usado com variáveis categóricas. Como neste capítulo trabalhamos com valores numéricos, não cabe sua análise deste medida.
 
 ## Medidas de dispersão
+Como já foi visto as medidas de posição ou se preferir, tendência central, podem ser utilizadas para descrever as informações através de um único valor. Porém e se dois conjuntos possuirem o mesmo valor de média ou mediana, podemos dizer que eles são equivalentes?
 
-Como já foi visto as medidas de posição ou se preferir tendência central, podem ser utilizadas para descrever as informações através de um único valor. Porém e se dois conjuntos possuirem o mesmo valor de média ou mediana, podemos dizer que eles são equivalentes?
-
-A resposta é Não! Apesar destas medidas resumirem bem os conjuntos de informações, perdemos outras características importantes e é assim que expandimos nossas análises usando as **medidas de dispersão**. 
+**A resposta é Não!** Apesar destas medidas resumirem bem os conjuntos de informações, perdemos outras características importantes ... Para alcançar uma visão geral e expandir nossas análises usamos também as **medidas de dispersão**. 
 
 ```{r f59, echo=FALSE, fig.cap="Explicação das medidas de dispersão", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/disp.png")
 ```
 
-Para entender melhor este conceito e a necessidade de saber entender melhor essas medidas dispersão avalie a Figura \@ref(fig:f59). Nela estão apresentadas duas situações. Na "Situação 1" podemos perceber que os dados apresentam um espalhamento ou dispersão. Isto significa dizer que há variação entre os valores observados em comparação a uma medida qualquer de posição, o que torna este conjunto **heterogêneo**, ou seja, bem diversificado. Já na "Situação 2" vemos uma situação oposta: a massa de dados está bem localizada ao redor da medida de posição inclusive bastante próxima, mostrando assim um conjunto de dados **homogêneo**.
+Para entender melhor este conceito e a necessidade de saber entender melhor essas medidas dispersão avalie a Figura \@ref(fig:f59) onde apresentamos duas situações: Na "Situação 1" podemos perceber que os dados apresentam um espalhamento ou dispersão em relação a medida de posição, lembre que o triângulo busca resumir todas as bolinhas. Isto significa dizer que há variação entre os valores observados em comparação a uma medida qualquer de posição, o que torna este conjunto **heterogêneo**, ou seja, bem diversificado. Já na "Situação 2" vemos uma situação oposta, onde a massa de dados está bem localizada ao redor da medida de posição inclusive bastante próxima, mostrando assim um conjunto de dados **homogêneo**.
 
 Quanto mais homogêneo for um conjunto em relação a uma medida de posição, maior será o poder de explicação desta medida sobre o conjunto.
 
@@ -413,7 +412,9 @@ Na Figura \@ref(fig:f510) apresentamos novamente o gráfico de pontos da seção
 
 Agora que entendemos um conceito mais simples, vamos partir para a compreensão de dois conceitos um pouco mais complexos: Desvio padrão e Distância Interquartil.
 
-O **Desvio Padrão** relaciona a diferença entre cada elemento do conjunto com a média aritmética. Ou seja, cada elemento terá um determinado valor de variação em relação à média do grupo e desta forma, é possível saber quando os conjuntos analisados são heterogêneos ou homogêneos. Isso confirma que esta medida consegue representar a dispersão dos dados, já que utiliza todos os valores do conjunto no seu cálculo. Sua fórmula não será apresentada neste material, pois foge do escopo do livro. Já a **Distância Interquartil**, diferente da amplitude, é mais robusta à valores aberrantes. Para entender a distância interquartil precisamos inicialmente definir os quartis. Quartis são valores que dividem os dados em quatro partes e eles são:
+O **Desvio Padrão** relaciona a diferença entre cada elemento do conjunto com a média aritmética através de uma fórmula matemática. Ou seja, cada elemento terá um determinado valor de variação em relação à média do grupo e desta forma, é possível saber quando os conjuntos analisados são heterogêneos ou homogêneos. Isso confirma que esta medida consegue representar a dispersão dos dados, já que utiliza todos os valores do conjunto no seu cálculo. Sua fórmula não será apresentada neste material, pois foge do escopo do livro. Na ciência, esta medida junto com a média é essencial para construir análises e resultados, pois esta dupla se complementa, sendo as mais utilizadas.
+
+A **Distância Interquartil**, diferente da amplitude, é mais robusta à valores aberrantes. Para entender a distância interquartil precisamos inicialmente definir os quartis. Quartis são valores que dividem os dados em quatro partes e eles são:
 
 - $Q1$ (primeiro quartil) define o valor para o qual 25% dos valores estão abaixo dele;
 
@@ -436,7 +437,7 @@ $$Posição\ de\ Q3=N*0,75$$
 
 Caso alguma dessas posições seja um número inteiro, será necessário calcula uma média aritmética entre o valor naquela posição e o valor seguinte para conseguir o resultado para o quartil. Caso contrário, o valor daquela posição será o nosso quartil. Finalmente, com os quartis em mãos, calcule a distância entre o terceiro e o primeiro para encontrar a **Distância Interquartil**.
 
-Para entender melhor estes conceitos, vamos calcula-los para o nosso caso de estudo: número de ocorrências de assalto em Salvador.
+Para entender melhor estes conceitos, vamos calcula-los para o nosso caso de estudo: número de ocorrências de assalto à ônibus em Salvador.
 
 ```{python f511, fig.cap='Medidas de dispersão aproximadas em gráfico de barras das ocorrências de Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE, results='hide'}
 # Plot
@@ -479,7 +480,7 @@ A Figura \@ref(fig:f511) resume os resultados encontrados dessas medidas para ca
 
 Um fato a ser ressaltado sobre a Distância Interquartil: Apesar de ser uma medida robusta a valores aberrantes, assim como a mediana, ao avalia-la com um conjunto muito pequeno, como é o caso da RISP Central, essa robustez acaba se tornando fraca.
 
-Outro ponto a ser ressaltado é que amplitude e desvio padrão possuem uma relação: quanto mais próximos os dados estiverem do valor médio, significa que há uma amplitude menor e consequentemente um desvio padrão dos dados também será pequeno. Já quando os dados se afastam do valor da média, é indicado que a amplitude é maior e consequentemente, o desvio padrão também será maior. 
+Outro ponto a ser ressaltado é que amplitude e desvio padrão possuem uma relação: quanto mais próximos os dados estiverem do valor médio, significa que há uma amplitude menor e consequentemente um desvio padrão dos dados também será pequeno, por outro lado quando os dados se afastam do valor da média, é indicado que a amplitude é maior e consequentemente, o desvio padrão também será maior. 
 
 No geral utilizar mais de uma medida descritiva é essencial para se atingir uma boa conclusão a respeito dos dados que estão sendo avaliados. Além disso, o diagnóstico encontrado ao se utilizar uma medida é confirmado pelas outras. Por isso a importância de conhecer as medidas de Tendência Central e Dispersão para interpretar nossos dados e garantir conclusões confiáveis!
 
@@ -487,7 +488,47 @@ Na próxima seção iremos expandir ainda mais o que aprendemos aqui, trazendo c
 
 ## Visualizando com Diagramas de Caixa
 
-```{python f512, fig.cap='Diagrama de caixa das ocorrências mensais', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
+Nesta seção vamos tratar sobre o **Diagrama de Caixa**. Trata-se de uma de uma das principais visualizações de dados numéricos que resume os dois conceitos apresentados anteriormente: medida de posição e dispersão.
+
+Antes de mergulhar em sua utilização através do nosso caso de estudos, vamos explicar o que é cada parte dessa "caixinha".
+
+```{r f512, echo=FALSE, fig.cap="Diagrama de caixa explicado para o mês de Janeiro", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/fig_diagramaCaixas.png")
+```
+
+Na Figura \@ref(fig:f512) apresentamos de forma elegante nosso diagrama de blocos referente ao mês de janeiro. No geral, quando olhamos este tipo de visualização focamos 4 elementos principais:
+
+- **Mediana**: Trata-se da medida de posição, blindada a valores aberrantes e que separa o conjunto de dados em 50% para cada lado como aprendemos anteriormente.
+
+- **Distância Interquartil**: Nossa medida de dispersão definida anteriormente. Assim como a mediana, trata-se de uma medida blindada a valores aberrantes.
+
+- **Limites**: São valores calculados a partir da distância interquartil e de seus elementos. Responsáveis por definir "a última fronteira" entre valores comuns e aberrantes. São separados em dois elementos como vimos na Figura \@ref(fig:f512): Limite Superior e Limite Inferior.
+
+O **Limite Superior** calculado:
+$$Limite\ Superior=Q3+1,5*Distância\ Interquartil$$ 
+
+Já o **Limite Inferior** é calculado como:
+$$Limite\ Inferior=Q1-1,5*Distância\ Interquartil$$ 
+
+- **Valor Aberrante**: Todo valor que ultrapassa a barreira definida pelos limites. Na maioria das vezes são definidos como pontinhos.
+
+Considerando os principais elementos apresentados, conseguimos perceber que:
+
+- a linha superior da nossa caixa retrata o $Q3$, já a linha inferior o $Q1$, pois $Q3-Q1=Distância\ Interquartil$ como vimos na Figura \@ref(f512). Finalmente, a linha do meio, que divide a caixa em duas, é a nossa $Mediana$.
+
+- Não é garantido a existência de valores aberrantes como na Figura \@ref(f512). Eles só ocorrem se ultrapassar o limite superior ou inferior.
+
+- Apesar de usarmos mediana e distância interquartil, poderíamos ter utilizado a média junto com o desvio padrão, porém o mais comum é utilizar os dois primeiros.
+
+Neste momento você pode se perguntar: "Mais o que este gráfico pode me oferecer? Qual o sentido de eu aprender seus elementos?". Para responder essa pergunta como uma frase:
+
+**Ele condensa muitas informações de forma simples e robusta**
+
+O diagrama de caixas nos fornece diversas várias informações: dispersão dos dados (distância interquartil) em torno de uma medida de posição (mediana), presença de valores aberrantes e assimetria dos dados.
+
+Vamos discuti-las através do nosso caso de estudo: construindo diagramas de caixa para cada mês do verão de 2019.
+
+```{python f513, fig.cap='Diagrama de caixa das ocorrências mensais', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
 # Diagrama de caixas
 fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(20,10));
 sns.boxplot(x='Meses', y='Ocorrências', data=df_box, ax=ax, palette='Set2');
@@ -504,9 +545,20 @@ plt.show();
 plt.close('all');
 ```
 
-```{r f513, echo=FALSE, fig.cap="Diagrama de caixa explicado", align = "center", out.width = '99%', fig.align='center'}
-knitr::include_graphics("fig_cap5/fig_diagramaCaixas.png")
-```
+Através da Figura \@ref(f512) avaliamos as ocorrências de assaltos à ônibus em Salvador dividos pelos meses do verão. Note que não estamos trabalhando mais com AISP ou RISP e sim com a cidade de Salvador, ou seja, reduzimos aquela tabela inicial em três caixinhas!
+
+Primeiramente, vamos avaliar de forma aprofundada o que conseguimos verificar nesses três meses de 2019:
+
+- Se considerarmos a **mediana**, podemos verificar que Janeiro apresentou o maior valor. Em outras palavras, podemos dizer que ....
+
+- Considerando a **distância interquartil**, ou se preferir a altura da caixa, verificamos que o mês de janeiro apresentou a maior variação em torno da mediana, valor que separa o conjunto em duas partes de 50%. Mas ... O que significa dizer isso? Significa dizer que tivemos áreas com muitos assaltos e poucos assaltos. Considerando o mês de Janeiro por exemplo, vemos que o **limite inferior** é equivalente à 5 ocorrências de assalto enquanto o **limite superior** está entre 15 e 20 ocorrências, mais de três vezes o valor inferior!
+
+- Conseguem ver aqueles potinhos em cima de cada caixa? Eles são nossos **valores aberrantes** e são de uma área bastante citada neste capítulo: AISP Tancredo Neves. Os valores de ocorrência foram tão altos nessa região que o diagrama de caixa os colocam como valores aberrantes. 
+
+Outro aspecto importante a ser considerado: **50% dos valores estão definidos dentro de cada caixa**. Podemos dizer que para cada mês, dentro de cada caixa temos 50% das áreas de salvador registradas ali. A posição da mediana possui uma importância fundamental para demonstrar a assimetria deste conjunto.
+
+
+análise temporal da subida e descida
 
 ## Distribuição
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Kaike Wesley Reis, Júlia Bijos e Janaína Souza" />
 
 
-<meta name="date" content="2020-10-23" />
+<meta name="date" content="2020-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,7 +133,7 @@
 </iframe>
 </div>
 <p></br></p>
-<p>A ciência de dados está presente de outras formas no dia a dia do brasileiro de forma sutil.</p>
+<p>Ela está presente de outras formas no dia a dia do brasileiro de forma sutil.</p>
 <div class="figure" style="text-align: center"><span id="fig:f50"></span>
 <img src="fig_cap5/machetes_media.PNG" alt="Manchetes de jornais com termos da ciência de dados" width="99%" />
 <p class="caption">
@@ -145,7 +145,7 @@ Figura 4.1: Manchetes de jornais com termos da ciência de dados
 <p>O nome pode parecer complicado, porém se trata de um ramo da matemática com uma série de técnicas para descrever e resumir uma grande massa de informações. Essa área pode ser dividida em três grupos de medidas: tendência central, dispersão e forma. Neste capítulo focaremos nas duas primeiras. Além disso iremos explorar formas de visualizações utilizando estes conceitos como o diagrama de caixas e distribuições.</p>
 <div id="objeto-de-estudo" class="section level2">
 <h2><span class="header-section-number">4.1</span> Objeto de estudo</h2>
-<p>Para compreender a importância dessas medidas estatísticas e como usa-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizados pela Secretaria de Segurança Pública (SSP) no <a href="http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109">portal</a> para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender como funciona essa base de informações.</p>
+<p>Para compreender a importância dessas medidas estatísticas e como usá-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizados pela Secretaria de Segurança Pública (SSP) no <a href="http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109">portal</a> para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender como funciona essa base de informações.</p>
 <p>Disponibilizados através de boletins mensais, as ocorrências dos principais delitos na capital bahiana são separados por áreas e regiões. Os principais tipos de delitos considerados são:</p>
 <ul>
 <li><p>Homicídio Doloso</p></li>
@@ -165,7 +165,7 @@ Figura 4.1: Manchetes de jornais com termos da ciência de dados
 Figura 4.2: Conceito por trás das divisões AISP e RISP
 </p>
 </div>
-<p>Através da Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f51">4.2</a> podemos explicar bem estes conceitos: <strong>AISP</strong> são conjuntos de bairros, ou seja, cada <strong>AISP</strong> representa uma quantidade de bairros da cidade. Já <strong>RISP</strong> se trata de um conjunto de <strong>AISP</strong> e finalmente, o conjunto total de <strong>RISP</strong> representa toda a extensão da cidade de Salvador. Essa divisão é realizada para facilitar a vida dos profissionais de segurança em compreender como cada região se comporta de acordo a um determinado tipo de delito, além de agrupar melhor os bairros, que somam um valor superior a 160 em Salvador. Imagina como seria mais complexo de apresentar um plano para cada bairro em específico?</p>
+<p>Através da Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f51">4.2</a> podemos explicar bem estes conceitos: <strong>AISP</strong> são conjuntos de bairros, ou seja, cada <strong>AISP</strong> representa uma quantidade de bairros da cidade. Já <strong>RISP</strong> se trata de um conjunto de <strong>AISP</strong> e finalmente, o conjunto total de <strong>RISP</strong> representa toda a extensão da cidade de Salvador. Essa divisão é realizada para facilitar a vida dos profissionais de segurança em compreender como cada região se comporta de acordo a um determinado tipo de delito, além de agrupar melhor os bairros, que somam um valor superior a 160 em Salvador. Imagina como seria mais complexo de apresentar um plano para cada bairro em específico para um gestor municipal ou estadual?</p>
 <div class="figure" style="text-align: center"><span id="fig:f52"></span>
 <img src="fig_cap5/risp_atlantico.PNG" alt="RISP Atlântico de Salvador realizado pela SSP" width="99%" />
 <p class="caption">
@@ -185,14 +185,14 @@ Figura 4.5: RISP Central de Salvador realizado pela SSP
 </p>
 </div>
 <p>As Figuras <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f52">4.3</a>, <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f53">4.4</a> e <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f54">4.5</a> mostram as divisões referentes as AISP e RISP em Salvador. Para contextualizar, a maioria das escolas que participaram do projeto “Meninas na Ciência de Dados” são localizadas no bairro da federação e este bairro está contido na AISP - Rio Vermelho que, por sua vez, está contida na RISP - Atlântico.</p>
-<p>Com toda estas informações em mente como tipos dos principais delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: <strong>Roubo a Ônibus urbano e em rodovia</strong>. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, um dos principais períodos para turismo em Salvador,onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na capital bahiana, seja a trabalho, estudos ou a lazer.</p>
+<p>Com toda estas informações em mente como os principais tipos delitos, divisões e subdivisões territoriais de Salvador determinada pela SSP podemos de fato identificar um objeto de estudo com um propósito: entender um pouco a violência em Salvador. Será analisado em específico um tipo de delito principal nos meses de janeiro, feveireiro e março de 2019 em Salvador: <strong>Roubo a Ônibus urbano e em rodovia</strong>. Essas escolhas não foram aleatórias. Os três meses citados foram escolhidos por ser um período de grande movimentação na capital: estação de verão, um dos principais períodos para turismo em Salvador,onde a grande maioria dos trabalhadores entram de férias. Além disso o delito de roubo a ônibus é uma realidade presente para quem depende do serviço público para se locomover na capital bahiana, seja a trabalho, estudos ou a lazer.</p>
 <div class="figure" style="text-align: center"><span id="fig:f55"></span>
 <img src="fig_cap5/manchetes_roubo.png" alt="Manchetes sobre roubos a ônibus na cidade de Salvador" width="99%" />
 <p class="caption">
 Figura 4.6: Manchetes sobre roubos a ônibus na cidade de Salvador
 </p>
 </div>
-<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f55">4.6</a> podemos verificar uma realidade referente a este crime: <strong>em média ocorreram 3 assaltos em Salvador por dia avaliados durante um ano</strong>. Neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!</p>
+<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f55">4.6</a> podemos verificar uma realidade referente a este crime: <strong>em média ocorreram 3 assaltos em Salvador por dia avaliados durante 2019</strong>. Neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!</p>
 <p>A base de dados referente aos assaltos à coletivos na cidade de Salvador na estação do verão em 2019 é apresentada abaixo:</p>
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -504,14 +504,14 @@ Figura 4.7: Mapa de calor da incidência de roubos à ônibus nas áreas de Salv
 </p>
 </div>
 <p>Apesar do mapa de calor parecer bastante com uma tabela, existe uma diferença: Cada célula (campo do gráfico) apresenta uma coloração de acordo a grandeza representada.</p>
-<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apresentamos um mapa de calor para todas as áreas de Salvador, onde a grandeza representada é o número de ocorrências , onde quanto mais avermelhada for aquela região, maior é o valor e quanto menor for o número de ocorrências mais branca se torna a célula. Ainda na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida a situação de Tancredo Neves, as áreas Barra e CIA apresentam os menores números de ocorrência, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é?</p>
+<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apresentamos um mapa de calor para todas as áreas de Salvador considerando o número de ocorrências, onde quanto mais avermelhada for aquela região, maior é a incidência de delitos e quanto menor for o número de ocorrências mais branca se torna a célula. Ainda na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida as áreas Barra e CIA apresentam os menores números de ocorrências, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é?</p>
 <p>Em geral percebemos que:</p>
 <ul>
 <li><p>O setor com maior incidência é, de forma disparada, Tancredo Neves em todos os meses do verão.</p></li>
 <li><p>Barra e CIA são os setores com os menores números de ocorrência no geral.</p></li>
 </ul>
 <p>Além dessas informações, você consegue extrair mais conhecimento deste gráfico?</p>
-<p>Apesar da Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas regiões de periculosidade?</p>
+<p>Apesar da Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas zonas de periculosidade?</p>
 <div class="figure" style="text-align: center"><span id="fig:f57"></span>
 <img src="ebook_cd_files/figure-html/f57-1.png" alt="Mapa de calor particionado por regiões de Salvador" width="100%" />
 <p class="caption">
@@ -524,7 +524,7 @@ Figura 4.8: Mapa de calor particionado por regiões de Salvador
 <li><p>Na região BTS nota-se que diversas áreas apresentam tons avermelhados, mostrando um grande perigo nesta região com destaque para São Caetano e Periperi que apresentam os maiores valores.</p></li>
 <li><p>Na região Central é possível perceber que a área Tancredo Neves é a mais perigosa, mantendo o mesmo padrão apresentado na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f57">4.8</a>.</p></li>
 </ul>
-<p>Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apenas a área de Tancredo Neves se destacava em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando a característica referente a região, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central, onde vamos entender o impacto de um <strong>valor aberrante</strong>.</p>
+<p>Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f56">4.7</a> apenas a área de Tancredo Neves se destacava em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando uma comparação apenas dentro das regiões definidas pela SSP, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central, onde vamos entender o impacto de um <strong>valor aberrante</strong>.</p>
 <p>A primeira medida de tendência central a ser analisada será a <strong>Média</strong>. Trata-se da medida mais conhecida e usada em nosso dia a dia, como vimos no início deste capítulo.</p>
 <p>Ela é calculada através do <strong>somatório de todos os valores dividido pela sua quantidade</strong>. Com este conhecimento em mãos vamos montar uma tabela da média de ocorrência para os meses do verão de acordo a região:</p>
 <table>
@@ -557,12 +557,12 @@ Figura 4.8: Mapa de calor particionado por regiões de Salvador
 </tr>
 </tbody>
 </table>
-<p>Porém, antes de mergulhar na análise desses valores encontrados, por quê calculamos a média? Bom, o intuito é apresentar um indicador para o número de ocorrências para as regiões de Salvador. Assim, ao invés de avaliar área por área, temos um valor único que resume aquela imensa quantidade de valores em um só representativo.</p>
+<p>Porém, antes de analisar esta tabela, por quê calculamos a média? Bom, o intuito é apresentar um indicador para o número de ocorrências para as regiões de Salvador encontrando uma medida capaz de resumir todos os valores daquelas áreas. Assim, ao invés de avaliar área por área, temos um valor único que resume aquela imensa quantidade de dados em um só representativo.</p>
 <p>Da Tabela de médias calculadas, podemos perceber que:</p>
 <ul>
 <li><p>O mês de fevereiro como um todo possui os menores índices de ocorrências em comparação a janeiro e fevereiro.</p></li>
 <li><p>A RISP Central possui as maiores médias de ocorrências nos meses de verão, mesmo sendo uma região com apenas 3 áreas catalogadas. Note que a área com maior incidência, Tancredo Neves, pertence a esta região.</p></li>
-<li><p>A RISP Atlântico possui os melhores indicadores em todos os meses, ou seja, possui a menor média de ocorrências.</p></li>
+<li><p>A RISP Atlântico possui os melhores indicadores em todos os meses, ou seja, possui a menor média de ocorrências e, portanto, poderia ser considerada a região mais segura.</p></li>
 </ul>
 <p>Através da média, conseguimos extrair indicadores capazes de fazer comparações diretas entre as regiões! Isso é importante para avaliar situações de forma mais abrangente em um cenário mais amplo para a cidade de Salvador.</p>
 <p>Note que os valores de média são decimais, porém estamos tratando de números de ocorrências certo? Você nunca ouviu algo como “Ontem acontecem 2.5 assaltos naquele ponto de ônibus” ou “Aconteceu em Salvador 30.5 furtos de veículos na região do litoral” e mesmo assim o valor da média é decimal. Isto ocorre, pois estamos tratando de uma variável que por natureza é <strong>inteira</strong>, ou seja, aumenta em unidades, porém a forma como a média é calculada não é garantido que o resultado seja também um <strong>inteiro</strong> (algumas vezes pode acontecer). Logo, é comum realizar uma aproximação simples seguindo as regras:</p>
@@ -602,12 +602,18 @@ Figura 4.8: Mapa de calor particionado por regiões de Salvador
 </tbody>
 </table>
 <p>Assim, fica mais simples manter a ideia deste indicador: representar um ponto de equilíbrio para o número de ocorrências de assaltos a ônibus por região em Salvador.</p>
-<p>Com esta nova Tabela, podemos assinalar outro situação, protagonizada pela novamente pela área Tancredo Neves na região Central… Você conseguiu perceber?</p>
+<p>Com os valores das médias calculados por região, podemos assinalar outro situação, protagonizada pela novamente pela área Tancredo Neves na região Central… Você conseguiu perceber?</p>
 <p>Olhe para as médias da região Central: 19 ocorrências em Janeiro, 13 ocorrências em Fevereiro e 16 ocorrências em Março. Agora olhe novamente para esta mesma região na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f57">4.8</a> e responda: estes valores de média fazem sentido?</p>
-<p>Infelizmente não. A situação que ocorre aqui mostra uma das fraquezas desta medida: <strong>valores aberrantes</strong>. Tratam-se de observações demasiadamente grandes ou pequenos que apresentam um grande afastamento das demais. Neste caso a responsável por esses valores é o setor Tancredo Neves, com números de ocorrências muito maiores em comparação aos demais. Os valores aberrantes influenciam bastante na média e isso será discutido mais a frente …</p>
+<p>Infelizmente não. A situação que ocorre aqui mostra uma das fraquezas desta medida: <strong>valores aberrantes</strong>. Tratam-se de observações demasiadamente grandes ou pequenos que apresentam um grande afastamento das demais.</p>
+<p>Neste caso a responsável por esses valores é o setor Tancredo Neves, com números de ocorrências muito maiores em comparação aos demais. Os valores aberrantes influenciam bastante na média e isso será discutido mais a frente …</p>
 <p>Agora que aprendemos como calcular e utilizar a média, podemos compreender a frase dita no início desta seção:</p>
 <p><strong>“Em média ocorreram 3 assaltos em Salvador por dia avaliados durante o ano”</strong></p>
 <p>Basicamente o que o jornal apresentou foi um tratamento similiar ao que fizemos anteriormente: Adquiriu todos os os boletins mensais disponibilizados pela SSP, somou todos os números de ocorrências de Janeiro até Dezembro e então dividiu pelo total de dias que existem no ano, 365 dias. É provável que o valor encontrado tenha sido decimal também, e então foi aproximado para este valor que verificamos: três ocorrências em média!</p>
+<p>Além disso, com a tabela calculada podemos dizer frases como:</p>
+<ul>
+<li><p>“Durante o período de Janeiro, em média ocorreram doze assaltos à ônibus”</p></li>
+<li><p>“Em Fevereiro, na Região BTS, aconteceram nove assaltos à ônibus em média”</p></li>
+</ul>
 <p>Depois de compreender um pouco sobre a medida mais usada e saber uma de suas falhas (valores aberrantes), será que existe alguma outra medida que seja blindada a esta questão? Para nossa sorte, ela existe e se chama <strong>Mediana</strong>.</p>
 <p>A mediana é definida como o valor que divide os dados na metade, 50% estão acima da mediana e 50% estão abaixo. A obtenção da mediana é feita ordenando-se os dados e escolhendo-se o valor do meio. Por exemplo se temos 11 valores, a mediana estará na 6º posição (5 valores abaixo e 5 valores acima). No caso de uma quantidade amostral par, computamos a média dos dois valores “centrais”. Abaixo é apresentado a Tabela com os valores das medianas para cada região de Salvador:</p>
 <table>
@@ -647,19 +653,19 @@ Figura 4.8: Mapa de calor particionado por regiões de Salvador
 <li><p>RISP BTS: 1,8,<strong>8</strong>,<strong>13</strong>,17,22</p></li>
 <li><p>RISP Central: 5,<strong>11</strong>,40</p></li>
 </ul>
-<p>Vemos anteriormente que cada uma região das regiões listadas possuem respectivamente sete, seis e três áreas no total. Apenas a região BTS possui um valor par e é por isso que a incidência de medianas decimais são nesta região! Para as outras, apenas foi pego os valores que separam o conjunto de dados em 50% para cada lado, sendo destacados em negrito.</p>
+<p>Vimos anteriormente que cada uma das regiões listadas possuem respectivamente sete, seis e três AISP no total. Apenas a região BTS possui um valor par e é por isso que a incidência de medianas decimais são nesta região! Para as outras, apenas foi pego os valores que separam o conjunto de dados em 50% para cada lado, sendo destacados em negrito.</p>
 <div class="figure" style="text-align: center"><span id="fig:f58"></span>
 <img src="ebook_cd_files/figure-html/f58-1.png" alt="Gráfico de pontos para as ocorrências em Salvador" width="100%" />
 <p class="caption">
 Figura 4.9: Gráfico de pontos para as ocorrências em Salvador
 </p>
 </div>
-<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f58">4.9</a> podemos avaliamr essas duas medidas junto a grandeza estudada através de uma visualização: <strong>gráfico de pontos</strong>.</p>
-<p>Podemos perceber na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f58">4.9</a> que para as regiões Atlâtico e BTS os valores de média e mediana são próximos, diferente da região Central. Essa disparidade é explicada pelo que vimos anteriormente: O <strong>valor aberrante</strong> distorce o valor da média, puxando-a em sua direção como vocês podem perceber.</p>
-<p>A comparação de média e mediana pode ser um bom indicativo da presença de um valor aberrante: quanto mais próximos essas medidas forem, mais provável a ausência de valores aberrantes.</p>
+<p>Na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f58">4.9</a> avaliamos essas duas medidas junto a grandeza estudada através de uma nova visualização: <strong>gráfico de pontos</strong>.</p>
+<p>Podemos perceber na Figura <a href="descrevendo-e-construindo-indicadores-básicos-com-a-ciência-de-dados.html#fig:f58">4.9</a> que para as regiões Atlâtico e BTS os valores de média e mediana são próximos, diferente da região Central. Essa disparidade é explicada pelo que vimos anteriormente: O <strong>valor aberrante</strong> distorce o valor da média, puxando-a em sua direção como vocês percebem.</p>
+<p>A comparação de média e mediana pode ser um bom indicativo para verificar a presença de um valor aberrante: quanto mais próximos essas medidas forem, mais provável a ausência de valores aberrantes.</p>
 <p>Nesta análise em específico, verificamos que a mediana seria uma melhor medida para representar a região Central como um todo, já para as outras duas regiões a escolha entre ambas as medidas é arbitrária, pois elas estão bem próximas.</p>
 <p>São visualizações como essas que ajudam o cientista de dados a tomar melhores decisões na escolha de indicadores ou medidas de resumo. Logo, conseguimos perceber que no geral a região mais perigosa, ou melhor, a área mais perigosa durante o verão de 2019 foi Tancredo Neves.</p>
-<p>Finalmente, a última medida de tendência central tratada neste capítulo é a <strong>moda</strong>. Trata-se da medida de maior frequência em um conjunto de dados, em outras palavras, o valor que mais se repete em uma amostra será a moda deste dado. Este conceito é muito usado com variáveis categóricas. Como neste capítulo trabalhamos com valores numéricos, não cabe a análise deste medida.</p>
+<p>Finalmente, a última medida de tendência central a ser mencionada neste capítulo é a <strong>moda</strong>. Trata-se da medida de maior frequência em um conjunto de dados, em outras palavras, o valor que mais se repete em uma amostra será a moda deste dado. Este conceito é muito usado com variáveis categóricas. Como neste capítulo trabalhamos com valores numéricos, não cabe sua análise deste medida.</p>
 </div>
 <div id="medidas-de-dispersão" class="section level2">
 <h2><span class="header-section-number">4.3</span> Medidas de dispersão</h2>
