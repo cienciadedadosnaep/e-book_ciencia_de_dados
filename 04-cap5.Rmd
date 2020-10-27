@@ -3,7 +3,7 @@ import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'
 ```
 
-# Descrevendo e Construindo indicadores básicos com a ciência de dados
+# Indicadores básicos na ciência de dados  {#c05}
 
 Apesar da ciência de dados ser bem conhecida atualmente através das aplicações mais práticas e incríveis da Inteligência Artificial como demonstrado no vídeo abaixo:
 
@@ -193,6 +193,8 @@ Em geral percebemos que:
 
 - Barra e CIA são os setores com os menores números de ocorrência no geral.
 
+- Somando o número total de ocorrências por área para cada mês encontramos para janeiro, fevereiro e março respectivamente 190, 129 e 166 ocorrências. Logo o mês de Janeiro se destaca inicialmente em nossa análise.
+
 Além dessas informações, você consegue extrair mais conhecimento deste gráfico?
 
 Apesar da Figura \@ref(fig:f56) apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas zonas de periculosidade? 
@@ -274,6 +276,16 @@ Agora que aprendemos como calcular e utilizar a média, podemos compreender a fr
 **"Em média ocorreram 3 assaltos em Salvador por dia avaliados durante o ano"**
 
 Basicamente o que o jornal apresentou foi um tratamento similiar ao que fizemos anteriormente: Adquiriu todos os os boletins mensais disponibilizados pela SSP, somou todos os números de ocorrências de Janeiro até Dezembro e então dividiu pelo total de dias que existem no ano, 365 dias. É provável que o valor encontrado tenha sido decimal também, e então foi aproximado para este valor que verificamos: três ocorrências em média!
+
+Podemos aplicar esta mesma análise para o nosso banco de dados. Considerando os dias vigentes de cada mês no ano de 2019, podemos dizer que:
+
+- Em Janeiro ocorreram em média 6 assaltos à ônibus por dia em Salvador.
+
+- Em fevereiro ocorreram em média 5 assaltos à ônibus por dia em Salvador.
+
+- Em março ocorreram em média 5 assaltos à ônibus por dia em Salvador.
+
+Note que esses valores foram encontrados considerando a aproximação discutida anteriormente.
 
 Além disso, com a tabela calculada podemos dizer frases como:
 
@@ -486,9 +498,9 @@ No geral utilizar mais de uma medida descritiva é essencial para se atingir uma
 
 Na próxima seção iremos expandir ainda mais o que aprendemos aqui, trazendo conclusões mais factíveis ao nosso caso de estudo através do Diagrama de caixas.
 
-## Visualizando com Diagramas de Caixa
+## Diagramas de Caixa
 
-Nesta seção vamos tratar sobre o **Diagrama de Caixa**. Trata-se de uma de uma das principais visualizações de dados numéricos que resume os dois conceitos apresentados anteriormente: medida de posição e dispersão.
+Nesta seção vamos tratar sobre o **Diagrama de Caixa** (chamado comumente de *boxplot*), uma das visualizações mais completa de dados numéricos que um cientista de dados possui e que resume as duas ideias apresentadas anteriormente: tendência central e dispersão.
 
 Antes de mergulhar em sua utilização através do nosso caso de estudos, vamos explicar o que é cada parte dessa "caixinha".
 
@@ -496,15 +508,15 @@ Antes de mergulhar em sua utilização através do nosso caso de estudos, vamos 
 knitr::include_graphics("fig_cap5/fig_diagramaCaixas.png")
 ```
 
-Na Figura \@ref(fig:f512) apresentamos de forma elegante nosso diagrama de blocos referente ao mês de janeiro. No geral, quando olhamos este tipo de visualização focamos 4 elementos principais:
+Na Figura \@ref(fig:f512) apresentamos de forma elegante nosso diagrama de blocos referente ao mês de janeiro. No geral, quando olhamos este tipo de visualização focamos em 4 elementos principais:
 
-- **Mediana**: Trata-se da medida de posição, blindada a valores aberrantes e que separa o conjunto de dados em 50% para cada lado como aprendemos anteriormente.
+- **Mediana**: Trata-se da medida de blindada a valores aberrantes e que separa o conjunto de dados em 50% para cada lado como aprendemos anteriormente.
 
 - **Distância Interquartil**: Nossa medida de dispersão definida anteriormente. Assim como a mediana, trata-se de uma medida blindada a valores aberrantes.
 
-- **Limites**: São valores calculados a partir da distância interquartil e de seus elementos. Responsáveis por definir "a última fronteira" entre valores comuns e aberrantes. São separados em dois elementos como vimos na Figura \@ref(fig:f512): Limite Superior e Limite Inferior.
+- **Limites**: São valores calculados a partir da distância interquartil e de seus elementos. Responsáveis por definir "a última fronteira" entre valores comuns e aberrantes. São separados em dois como vimos na Figura \@ref(fig:f512): Limite Superior e Limite Inferior.
 
-O **Limite Superior** calculado:
+O **Limite Superior** é calculado:
 $$Limite\ Superior=Q3+1,5*Distância\ Interquartil$$ 
 
 Já o **Limite Inferior** é calculado como:
@@ -512,21 +524,21 @@ $$Limite\ Inferior=Q1-1,5*Distância\ Interquartil$$
 
 - **Valor Aberrante**: Todo valor que ultrapassa a barreira definida pelos limites. Na maioria das vezes são definidos como pontinhos.
 
-Considerando os principais elementos apresentados, conseguimos perceber que:
+Considerando esses elementos discutidos, percebemos que:
 
-- a linha superior da nossa caixa retrata o $Q3$, já a linha inferior o $Q1$, pois $Q3-Q1=Distância\ Interquartil$ como vimos na Figura \@ref(f512). Finalmente, a linha do meio, que divide a caixa em duas, é a nossa $Mediana$.
+- a linha superior da nossa caixa retrata o $Q3$, já a linha inferior o $Q1$, pois $Q3-Q1=Distância\ Interquartil$ como vemos na Figura \@ref(fig:f512). Finalmente, a linha do meio, que divide a caixa em duas, é a nossa $Mediana$.
 
-- Não é garantido a existência de valores aberrantes como na Figura \@ref(f512). Eles só ocorrem se ultrapassar o limite superior ou inferior.
+- Não é garantido a existência de valores aberrantes como na Figura \@ref(fig:f512). Eles só ocorrem se ultrapassar o limite superior ou inferior.
 
 - Apesar de usarmos mediana e distância interquartil, poderíamos ter utilizado a média junto com o desvio padrão, porém o mais comum é utilizar os dois primeiros.
 
-Neste momento você pode se perguntar: "Mais o que este gráfico pode me oferecer? Qual o sentido de eu aprender seus elementos?". Para responder essa pergunta como uma frase:
+Neste momento você pode se perguntar: "Mais o que este gráfico pode me oferecer? Qual o sentido de eu aprender seus elementos?" E a resposta é simples: 
 
-**Ele condensa muitas informações de forma simples e robusta**
+**Ele condensa muitas informações de forma robusta e de fácil percepção!**
 
-O diagrama de caixas nos fornece diversas várias informações: dispersão dos dados (distância interquartil) em torno de uma medida de posição (mediana), presença de valores aberrantes e assimetria dos dados.
+O diagrama de caixas nos fornece: dispersão dos dados (distância interquartil) em torno de uma medida de posição (mediana), presença de valores aberrantes e assimetria dos dados.
 
-Vamos discuti-las através do nosso caso de estudo: construindo diagramas de caixa para cada mês do verão de 2019.
+Vamos discuti-las através do nosso caso de estudo através da construção de diagramas de caixa para cada mês do verão em 2019.
 
 ```{python f513, fig.cap='Diagrama de caixa das ocorrências mensais', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
 # Diagrama de caixas
@@ -545,80 +557,70 @@ plt.show();
 plt.close('all');
 ```
 
-Através da Figura \@ref(f512) avaliamos as ocorrências de assaltos à ônibus em Salvador dividos pelos meses do verão. Note que não estamos trabalhando mais com AISP ou RISP e sim com a cidade de Salvador, ou seja, reduzimos aquela tabela inicial em três caixinhas!
+Através da Figura \@ref(fig:f513) avaliamos as ocorrências de assaltos à ônibus em Salvador dividos pelos meses do verão. Note que não estamos trabalhando mais com AISP ou RISP e sim com a cidade de Salvador, ou seja, reduzimos aquela tabela inicial em três caixinhas!
 
-Primeiramente, vamos avaliar de forma aprofundada o que conseguimos verificar nesses três meses de 2019:
+Primeiramente, antes de entrar em uma análise mais aprofudanda desta Figura, vamos responder em tópicos a seguinte pergunta: 
 
-- Se considerarmos a **mediana**, podemos verificar que Janeiro apresentou o maior valor. Em outras palavras, podemos dizer que ....
+**Qual seria o melhor diagrama de caixas para o número de ocorrências de assalto ônibus em Salvador para um determinado mês?**
 
-- Considerando a **distância interquartil**, ou se preferir a altura da caixa, verificamos que o mês de janeiro apresentou a maior variação em torno da mediana, valor que separa o conjunto em duas partes de 50%. Mas ... O que significa dizer isso? Significa dizer que tivemos áreas com muitos assaltos e poucos assaltos. Considerando o mês de Janeiro por exemplo, vemos que o **limite inferior** é equivalente à 5 ocorrências de assalto enquanto o **limite superior** está entre 15 e 20 ocorrências, mais de três vezes o valor inferior!
+Com o que aprendemos até então neste capítulo, poderiamos dizer:
 
-- Conseguem ver aqueles potinhos em cima de cada caixa? Eles são nossos **valores aberrantes** e são de uma área bastante citada neste capítulo: AISP Tancredo Neves. Os valores de ocorrência foram tão altos nessa região que o diagrama de caixa os colocam como valores aberrantes. 
+- Um baixo valor de mediana, pois assim teríamos uma baixa incidência de assaltos.
 
-Outro aspecto importante a ser considerado: **50% dos valores estão definidos dentro de cada caixa**. Podemos dizer que para cada mês, dentro de cada caixa temos 50% das áreas de salvador registradas ali. A posição da mediana possui uma importância fundamental para demonstrar a assimetria deste conjunto.
+- Sem valores aberrantes. Caso exista incidência de valores aberrantes acima da caixa, estaremos enfrentando casos extremos certo? afinal eles estariam muito acima das outras áreas. Já valores aberrantes abaixo da caixa pode demonstrar que apenas poucas regiões são seguras na cidade em comparação aos demais.
 
+Esses dois tópicos resumem bem o que um policial ou delegado gostaria de ver em relação a sua cidade: um baixo número de ocorrências. Vamos agora avaliar de forma aprofundada o que conseguimos verificar nesses três meses de 2019:
 
-análise temporal da subida e descida
+- Se considerarmos a **mediana**, podemos verificar que Janeiro apresentou o maior valor, logo um cenário ruim em comparação aos demais. Em outras palavras, podemos dizer que foi o mês com maior incidência central.
 
-## Distribuição
+- Considerando a **distância interquartil**, ou se preferir a altura da caixa, verificamos que o mês de janeiro apresentou a maior variação em torno da mediana, valor que separa o conjunto em duas partes de 50%. Mas ... O que significa dizer isso? Significa dizer que tivemos áreas com muitos assaltos e poucos assaltos. Lembre-se que dentro da caixa representamos 50% das nossas áreas!
 
-```{python f514, fig.cap='Distribuição das ocorrências separadas por mês', out.width='100%', fig.asp=.99, fig.align='center', results='hide', echo=FALSE, message=FALSE}
-# Distribuição
-fig, ax = plt.subplots(nrows=3,ncols=1,figsize=(15,15));
+Considerando o mês de Janeiro por exemplo, vemos que o **limite inferior** é equivalente à 5 ocorrências de assalto enquanto o **limite superior** está entre 15 e 20 ocorrências, mais de três vezes o valor inferior! Demonstrando um desbalancaeamento entre áreas neste mês e uma assimetria na ocorrência de casos.
 
-# Loop para gerar os graficos
-for mes, idx, xlimite in zip(meses, [0,1,2], [55, 55,55]):
-    sns.distplot(df_box.loc[df_box['Meses'] == mes,'Ocorrências'], ax=ax[idx], hist=False, 
-                 color=plt.get_cmap("Set2")(0), kde_kws={"shade": True});
-    
-    # Gerar linha da media e mediana
-    media = df_box.loc[df_box['Meses'] == mes,'Ocorrências'].mean();
-    mediana = df_box.loc[df_box['Meses'] == mes,'Ocorrências'].median();
-    ax[idx].axvline(x=media, color='r', linestyle='-',label='Média');
-    ax[idx].axvline(x=mediana, color='b', linestyle='-',label='Mediana');
-    
-    # Configuracoes do grafico
-    ax[idx].spines['right'].set_visible(False);
-    ax[idx].spines['top'].set_visible(False);
-    ax[idx].set_title(mes);
-    ax[idx].set_yticks([]);
-    ax[idx].set_xticks(np.arange(0, xlimite, step=5));
-    ax[idx].set_xlim(xmin=0);
-    if idx != 2:
-        ax[idx].set_xlabel('');
-    if idx == 1:
-      ax[idx].legend(['Média','Mediana'], title='Medidas',bbox_to_anchor=(1.30,0.75), fontsize=30);  
+- Conseguem ver aqueles potinhos em cima de cada caixa? Eles são nossos **valores aberrantes** e são de uma área bastante citada neste capítulo: AISP Tancredo Neves. Os valores de ocorrência foram tão altos nessa região, durante todos os meses, que o diagrama de caixa os colocam como valores aberrantes. 
 
-# Mostrar e fechar objeto grafico
-plt.tight_layout();
-plt.show();
-plt.close('all');
-```
+De forma geral, conseguimos verficar que Janeiro foi o mês com maiores ocorrências por região apresentando os maiores: Limite superior, Q3 e Mediana, ou seja, podemos dizer que foi o pior mês do verão de 2019 para se andar de ônibus. Já Fevereiro pode ser considerado o melhor:sua caixa se concentra em uma região de 3 à 10 ocorrências com um limite superior máximo de 15 ocorrências. Além disso, apresentou a menor ocorrência do nosso pior setor Tancredo Neves: 25 ocorrências. Finalmente, Março ocorreu uma piora em comparação a fevereiro através da deslocação da caixa para uma região de 5 à 12 assaltos.
 
-```{python f515, fig.cap='Distribuição das ocorrências em Salvador', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE, message=FALSE}
-# Distribuição
-fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(10,10));
-
-# Loop para gerar os graficos
-for mes, cor in zip(meses,[0,1,2]):
-    # Gerar grafico
-    sns.distplot(df_box.loc[df_box['Meses'] == mes,'Ocorrências'], ax=ax, 
-                 hist=False, color=plt.get_cmap("Set2")(cor), kde_kws={"shade": True},label=mes);
-    
-# Configuracoes do grafico
-ax.spines['right'].set_visible(False);
-ax.spines['top'].set_visible(False);
-ax.set_yticks([]);
-ax.set_xticks(np.arange(0, 65, step=5));
-ax.set_xlim(xmin=0);
-plt.legend(title='Meses')
-# Mostrar e fechar objeto grafico
-plt.tight_layout();
-plt.show();
-plt.close('all');
-```
+Através desta simples visualização, conseguimos extrair muitas respostas a cerca do nosso caso de estudo, inclusive muitas de comparação!
 
 ## Concluindo ...
 
+Através deste capítulo conseguimos entender que através de alguns indicadores básicos conseguimos analisar e discutir grandes tabelas. Além disso, avaliamos uma nova forma de visualizar nossas informações: o diagrama de caixa.
+
+```{r f514, echo=FALSE, fig.cap="Conclusões sobre o tema do nosso capítulo", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/info_tema.png")
+```
+
+Por meio do infográfico da \@ref(fig:f514) conseguimos perceber que através de uma análise descritiva simples, conseguimos chegar em diversas conclusões a respeito do tema estudado.
+
+Além disso, aprendemos que:
+
+- Apesar de existirem diferentes tipos de medidas para apresentar um mesmo conceito, elas se diferem em quando utilizá-las.
+
+- O diagrama de caixa é uma ótima ferramenta para ter uma visão geral a respeito do nosso conjunto de dados.
+
+Dominar essas ferramentas é uma peça fundamental para o cientista de dados exercer seu trabalho e responder questões.
+
+
 ## Indo Além
+
+Agora que já aprendemos um pouco sobre **Estatística Descritiva** que tal aplica-lo na prática?
+
+Você agora é cientista contratado pelo governo de Salvador para compreender e descrever melhor as ocorrências de **roubo de veículos na capital bahiana**. 
+
+```{r f515, echo=FALSE, fig.cap="Boletim de dezembro de 2019 produzido pela SSP", align = "center", out.width = '99%', fig.align='center'}
+knitr::include_graphics("fig_cap5/boletim_12_19_ssp.PNG")
+```
+
+A Figura \@ref(fig:f515) mostra o boletim da SSP que lhe foi enviado (no formato `.csv`), constando as ocorrências de todos os delitos na capital bahiana. O gestor pediu que apresentasse, em relação ao delito de roubo de veículos:
+
+- Qual a RISP que precisa ser mais monitorada pelos profissionais?
+
+- Em média, quantos roubos estão acontecendo por região?
+
+- Qual a região com menor incidência de casos? Consegue descrever uma motivação para isso.
+
+- Descrição completa deste delito através de uma visualização gráfica.
+
+Então, com o conhecimento que desenvolvemos até aqui, resolva essas questões usando programação!
 
