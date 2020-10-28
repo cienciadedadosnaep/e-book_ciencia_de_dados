@@ -585,13 +585,13 @@ Através desta simples visualização, conseguimos extrair muitas respostas a ce
 
 ## Concluindo ...
 
-Através deste capítulo conseguimos entender que através de alguns indicadores básicos conseguimos analisar e discutir grandes tabelas. Além disso, avaliamos uma nova forma de visualizar nossas informações: o diagrama de caixa.
+Através deste capítulo conseguimos entender que através de alguns indicadores básicos conseguimos analisar e discutir grandes tabelas. Além disso, avaliamos uma nova forma de visualizar nossas informações: o diagrama de caixa. Por meio do infográfico da \@ref(fig:f514) resumimos o verão de 2019 de Salvador em relação aos assaltos à ônibus na cidade.
 
 ```{r f514, echo=FALSE, fig.cap="Conclusões sobre o tema do nosso capítulo", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/info_tema.png")
 ```
 
-Por meio do infográfico da \@ref(fig:f514) conseguimos perceber que através de uma análise descritiva simples, conseguimos chegar em diversas conclusões a respeito do tema estudado.
+Podemos perceber que através de uma análise descritiva simples, conseguimos chegar em diversas conclusões a respeito do tema estudado. Estas conclusões podem embasar políticas públicas para melhorar esses indicadores.
 
 Além disso, aprendemos que:
 
@@ -606,13 +606,13 @@ Dominar essas ferramentas é uma peça fundamental para o cientista de dados exe
 
 Agora que já aprendemos um pouco sobre **Estatística Descritiva** que tal aplica-lo na prática?
 
-Você agora é cientista contratado pelo governo de Salvador para compreender e descrever melhor as ocorrências de **roubo de veículos na capital bahiana**. 
+Você agora é cientista contratado pelo governo de Salvador para compreender e descrever melhor as ocorrências de **roubo de veículos na capital bahiana** durante o mês de Dezembro. A Figura \@ref(fig:f515) mostra o boletim da SSP que lhe foi enviado (no formato `.csv`), constando as ocorrências de todos os delitos na capital bahiana no mês de dezembro.
 
 ```{r f515, echo=FALSE, fig.cap="Boletim de dezembro de 2019 produzido pela SSP", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap5/boletim_12_19_ssp.PNG")
 ```
 
-A Figura \@ref(fig:f515) mostra o boletim da SSP que lhe foi enviado (no formato `.csv`), constando as ocorrências de todos os delitos na capital bahiana. O gestor pediu que apresentasse, em relação ao delito de roubo de veículos:
+O gestor pediu que apresentasse, em relação ao delito de roubo de veículos:
 
 - Qual a RISP que precisa ser mais monitorada pelos profissionais?
 

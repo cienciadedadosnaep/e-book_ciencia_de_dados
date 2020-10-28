@@ -93,7 +93,7 @@ O capítulo  \@ref(c02) apresenta a tabela como uma forma poderosa para estrutur
 
 A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois é a partir de um bom gráfico que podemos extrair ideias, hipóteses e um melhor entendimento a respeito de um tema ou uma pergunta. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale mais que mil palavras".
 
-## Objeto de estudo do capítulo {#objeto-estudo}
+## Objeto de estudo {#objeto-estudo}
 Para compreender a importância da análise gráfica e como utiliza-la corretamente, iremos buscar entender o perfil dos estudantes de Salvador que realizaram a prova do Exame Nacional do Ensino Médio (ENEM) no período de 2015 até 2019. Porém, antes de qualquer coisa: O que é um **Perfil**? Esse termo é muito usado na ciência de dados para **descrever um determinado processo ou objeto de estudo através de padrões e características que o representam**. Para este caso em específico, vamos analisar os estudantes da cidade de Salvador utilizando os microdados do ENEM, publicados pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP), disponível ao público através deste [link de acesso](http://inep.gov.br/microdados)^1^.
 
 Como o termo **perfil** pode ser bem vasto e diversas características podem ser extraídas do nosso objeto de estudo, é necessário concentrar essa análise em perguntas mais específicas para nortear o caminho. No decorrer deste capítulo, serão exploradas graficamente as seguintes questões:
@@ -106,12 +106,12 @@ Como o termo **perfil** pode ser bem vasto e diversas características podem ser
 
 - O tipo de escola (pública ou privada) pode influenciar nas notas dos estudantes neste exame?
 
-A compreensão desses dados é de suma importância para compreender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil.
+A compreensão desses dados é de suma importância para entender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil. No geral, diversos setores da sociedade conseguem se beneficiar destes questionamentos: Estudantes podem buscar compreender se o tipo de escola onde estudam possui algum impacto em suas notas, enquanto gestores de políticas públicas como diretores e coordenadores podem buscar compreender as três primeiras questões para compreender melhor o panorama educacional da cidade de Salvador e assim gerar embasamento para decisões importantes no aperfeiçoamento do ensino no geral.
 
 ## Gráfico de barra {#gbarras}
 O **Gráfico de barras** é uma forma bastante comum e versátil de visualização na área de ciência de dados. Ele pode ser utilizado tanto com variáveis categóricas quanto numéricas para expressar grandezas. A Figura abaixo apresenta uma de suas utilizações: demonstrar grandezas numéricas.
 
-```{python f31, fig.cap='Quantidade de estudantes que se inscreveram o ENEM na capital bahiana', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+```{python f31, fig.cap='Número de inscritos no ENEM na capital bahiana', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
 # Definir tamanho da figura
 plt.figure(figsize=(20,10));
 
@@ -119,7 +119,7 @@ plt.figure(figsize=(20,10));
 ax = sns.barplot(x='Ano', y='FA', data=dados_ssa_total_estudantes, color='blue');
 
 # Aplicar configuracoes esteticas no grafico
-plt.ylabel('');
+plt.ylabel('Número de estudantes inscritos');
 plt.xticks();
 plt.yticks([]);
 ax.spines['top'].set_visible(False);
@@ -132,9 +132,9 @@ plt.show();
 plt.close('all');
 ```
 
-Na Figura \@ref(fig:f31) é apresentada a quantidade de estudantes, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação de estudantes entre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:
+Na Figura \@ref(fig:f31) é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:
 
-Ano  | Número de estudantes em Salvador
+Ano  | Quantidade de inscritos em Salvador
 :---:|:-------------------------------:|
 2015 | 159835 |
 2016 | 175873 |
@@ -165,7 +165,7 @@ Inicialmente para entender essa relação, precisamos entender  o que seria essa
 
 - Opção de não apresentar tal informação
 
-Como foi explicado no Capítulo \@ref(c02), esse questionamento pode ser definido como uma variável categórica dada a quantidade finita de opções apresentadas. Essa pergunta está bastante relacionado com a primeira questão, pois a quantidade total de estudantes pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. 
+Como foi explicado no Capítulo \@ref(c02), esse questionamento pode ser definido como uma variável categórica dada a quantidade finita de opções apresentadas. Esta pergunta está bastante relacionada com a primeira questão, pois a quantidade total de estudantes inscritos na prova pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. 
 
 Como tivemos uma diferença tão grande entre o número de inscritos em 2016 e 2019 demonstrado na Figura \@ref(fig:f31), uma análise mais aprofundada nesses dois anos podem trazer resultados interessantes para responder nosso segundo questionamento:
 
@@ -232,7 +232,7 @@ $$Frequência\ Relativa\ (\%) = 100*\frac{\text{estudantes que realizaram o ENEM
 
 Como nos é apresentada uma proporção, podemos ler o gráfico de barras apresentado na Figura \@ref(fig:f33) como sendo **a quantidade de estudantes que fizeram a prova em 2019 em relação a quantidade que realizou a prova em 2016**.
 
-Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras raças apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação intensifica ainda mais o resultado apresentado na Figura \@ref(fig:f31), mostrando que ocorreu uma grande queda na quantidade de inscrições no geral, porém isso é verificado com maior intensidade entre estudantes não declarados de cor branca na capital bahiana ...
+Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras raças apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação confirma ainda mais o resultado apresentado na Figura \@ref(fig:f31), mostrando que ocorreu uma grande queda na quantidade de inscrições no geral, porém isso é verificado com maior intensidade entre estudantes não declarados de cor branca na capital bahiana.
 
 Através da análise do gráfico de barras conseguimos avaliar dois questionamentos de uma só vez! Porém para analisar como esses resultados ocorreram de 2016 até 2019 ao invés de dois anos separados, qual seria o melhor tipo de gráfico? Iremos explora-lo na próxima seção deste capítulo.
 
@@ -256,13 +256,14 @@ Antes de mergulhar na análise desses dois questionamentos utilizando o gráfico
 # Preparacao do plot
 plt.figure(figsize=(20,10));
 fig, eixo = plt.subplots(1,1,figsize=(20,10));
-# Plot
+# Definir padroes esteticos da figura
 eixo.set_xticks([0,10,20,30,40,50,60,70,80,90,100]);
 eixo.set_yticks([10,20,30,40,50,60,70,80,90,100]);
 eixo.set_xlabel('Eixo horizontal', fontsize=TAMANHO_FONTE_LABEL, fontweight='bold');
 eixo.set_ylabel('Eixo vertical', fontsize=TAMANHO_FONTE_LABEL, fontweight='bold');
 eixo.spines['top'].set_visible(False);
 eixo.spines['right'].set_visible(False);
+# Mostrar e fechar figura
 plt.show();
 plt.close('all');
 ```
@@ -270,12 +271,16 @@ plt.close('all');
 A Figura \@ref(fig:fig34) apresenta um plano cartesiano simplificado. São definidos dois eixos principais sendo eles o eixo horizontal e o eixo vertical. Cada eixo pode demonstrar o comportamento de uma variável desejada: Para o eixo horizontal, ao aumentarmos o valor se move para a direita e ao diminuir o valor se move para a esquerda, já para o eixo vertical, ao aumentarmos o valor se move para cima e ao diminuir para baixo. Ter esse conceito em mente será importante para as análises futuras.
 
 ```{python f35, fig.cap='Quantidade de estudantes inscritos no ENEM na capital bahiana', out.width='100%', fig.asp=.60, fig.align='center', echo=FALSE}
+# Definir a figura e seu tamanho
 fig, ax = plt.subplots(1,1,figsize=(20,10));
+# Fazer grafico
 sns.lineplot(x='Ano', y='FA', data=dados_ssa_total_estudantes,marker='o',ax=ax);
+# Definir padroes esteticos da figura
 plt.xticks([2015,2016,2017,2018,2019]);
 ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
 ax.spines['right'].set_visible(False);
 ax.spines['top'].set_visible(False);
+# Mostrar e fechar figura
 plt.show();
 plt.close('all');
 ```
@@ -288,9 +293,10 @@ Ainda neste gráfico, podemos extrair um conceito bem interessante referente a e
 # Definir cores dos plots
 cores_raca = sns.color_palette("Set2", len(dados_ssa_raca_tendencia['COR'].unique()))
 
-# Plot
+# Fazer grafico
 fig, ax = plt.subplots(1,1,figsize=(20,10));
 sns.lineplot(x='ANO', y='FA', hue='COR', data=dados_ssa_raca_tendencia, marker='o', palette=cores_raca);
+# Padroes esteticos da figura
 plt.xticks([2015,2016,2017,2018,2019], fontsize=TAMANHO_FONTE_TICKS);
 ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
 ax.spines['right'].set_visible(False);
@@ -308,11 +314,13 @@ A Figura \@ref(fig:f36) é endereçada ao segundo questionamento. Podemos notar 
 Para visualizar melhor e trazer uma melhor discussão a respeito do segundo questiomento, cada curva foi separada de acordo a raça que ela representa:
 
 ```{python f37, fig.cap='Tendência da quantidade de estudantes inscritos no ENEM particionado por cor de 2015 até 2019', out.width='80%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Definir figura e eixos
 fig, ax = plt.subplots(3,2,figsize=(20,10));
 
-r = 0      # Index row
-c = 0      # Index col
+r = 0      # Controlar linha
+c = 0      # Controlar coluna de plot
 
+# LOOP para fazer os plots de acordo a cor
 for raca,pc in zip(dados_ssa_raca_tendencia['COR'].unique(),cores_raca) :
     aux = dados_ssa_raca_tendencia[dados_ssa_raca_tendencia['COR'] == raca]
     sns.lineplot(x='ANO', y='FA', data=aux,marker='o',color=pc,ax=ax[r][c]);
@@ -322,7 +330,7 @@ for raca,pc in zip(dados_ssa_raca_tendencia['COR'].unique(),cores_raca) :
     ax[r][c].set_title('Raça - '+raca,fontweight='bold');
     ax[r][c].spines['right'].set_visible(False);
     ax[r][c].spines['top'].set_visible(False);
-    # Index control
+    # Controle de index
     c += 1
     if c > 1:
         c = 0
@@ -333,6 +341,7 @@ fig.add_subplot(111, frameon=False);
 plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False);
 plt.xlabel("Ano", labelpad=20);
 plt.ylabel("Frequência Absoluta de Estudantes por cor/raça", labelpad=45);
+# Mostrar e fechar figura
 plt.tight_layout();
 plt.show();
 plt.close('all');
@@ -515,8 +524,10 @@ Essas condições foram colocadas para evitar valores atípicos nas análises, p
 Inicialmente, será mostrado um gráfico de dispersão para as provas da área de exatas: matemática e ciências naturais, mas não se assuste! O gráfico será explicado passo a passo.
 
 ```{python f312, fig.cap='Relação entre nota de Ciências Naturais e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Definir figura e fazer plot
 plt.figure(figsize=(20,10));
 eixo = sns.scatterplot(y='NU_NOTA_CN', x='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=75, linewidth=0);
+# Definir configuracoes do plot
 plt.yticks(fontsize=15);
 plt.xticks(fontsize=15);
 plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
@@ -537,9 +548,10 @@ Na Figura \@ref(fig:f312) são apresentadas as notas dos estudantes de Salvador 
 
 Através da Figura \@ref(fig:f312) podemos verificar que a maioria dos estudantes de escolas públicas se localizam no canto inferior esquerdo, ou seja, estudantes com notas menores em ambas as provas e a medida que crescemos em ambos os eixos, mais dominante se tornam os estudantes de escolas privadas, mostrando um maior rendimento.
 
-Além desta análise, no geral é possível verificar uma **tendência** crescente, onde ao aumentarmos a nota de matemática vemos que a maioria dos estudantes também aumentam a nota em ciências naturais. Compreender tendências deste tipo faz parte do dia a dia do cientista de dados, pois essas tendências são as mais comuns e intuitivas na natureza.
+Além desta análise, no geral é possível verificar uma **tendência** crescente, onde ao aumentarmos a nota de matemática vemos que a maioria dos estudantes também aumentam a nota em ciências naturais. Compreender tendências deste tipo faz parte do dia a dia do cientista de dados, pois essas tendências são as mais comuns e intuitivas na natureza. Na Figura \@ref(fig:f313) é apresentado dois padrões: em vermelho está uma tendência linear crescente e em azul uma tendência linear decrescente representadas em um plano cartesiano. 
 
 ```{python f313, fig.cap='Tendências lineares em um plano cartesiano', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Definir vetores para plot
 eixo_x = np.arange(0, 1000);
 eixo_y1 = eixo_x*(1.5);
 eixo_y2 = eixo_x*(-1.5);
@@ -558,19 +570,20 @@ plt.show();
 plt.close('all');
 ```
 
-Na Figura \@ref(fig:f313) é apresentado dois padrões: em vermelho está uma tendência linear crescente e em azul uma tendência linear decrescente representadas em um plano cartesiano. 
+É dito linear, pois seu comportamento lembra o formato de uma uma linha: mostra um padrão que está aumentando ou diminuindo a uma taxa constante (fixa).
 
-É dito linear, pois seu comportamento é equivalente a uma linha, onde a variação de um ponto em um dos eixos em relação a outro é constante (sem alteração). 
-
-Os termos crescente e descrescente se referem a como os valores de um eixo se comportam em relação ao outro: na tendência linear crescente, ao aumentarmos o valor em um eixo é esperado aumentarmos também o valor no outro eixo, já na tendência linear decrescente ocorre o inverso: ao aumentarmos o valor em um dos eixos, é esperado que o valor no outro eixo decaia de forma constante.
+Os termos crescente e descrescente se referem a como os valores de um eixo se comportam em relação ao outro: na **tendência linear crescente**, ao aumentarmos o valor em um eixo é esperado aumentarmos também o valor no outro eixo, já na **tendência linear decrescente** ocorre o inverso: ao aumentarmos o valor em um dos eixos, é esperado que o valor no outro eixo decaia na mesma proporção.
 
 Na Figura \@ref(fig:f312) conseguimos visualizar o padrão exposto pela reta linear vermelha, ou seja, ao crescermos as notas em matemática, esperamos que cresça as notas em ciências naturais.
 
 Através da Figura \@ref(fig:f312) verificamos que, de certa forma, o tipo de escola que o estudante frequentou possui um fato impacto nas notas dos estudantes de Salvador, porém este padrão se repete caso seja avaliado outra prova?
 
 ```{python f314, fig.cap='Relação entre nota de Linguagens e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+# Definir figura e fazer plot
 plt.figure(figsize=(20,10));
 eixo = sns.scatterplot(x='NU_NOTA_LC', y='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=75, linewidth=0);
+
+# Configuracoes do plot
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
@@ -593,7 +606,7 @@ Este conhecimento é importante para ressaltar a necessidade do aperfeiçoamento
 
 ## Histograma {#ghist}
 
-Para expandir ainda mais as discussões referente ao quarto questionamento, vamos utilizar mais uma ferramenta gráfica de visualização: o histograma. Um histograma de um conjunto de dados numéricos se parece muito com um gráfico de barras apresentado anteriormente, embora tenha algumas diferenças importantes que examinaremos nesta seção.
+Para expandir ainda mais as discussões referentes ao quarto questionamento, vamos utilizar mais uma ferramenta gráfica de visualização: o histograma. Um histograma de um conjunto de dados numéricos se parece muito com um gráfico de barras apresentado anteriormente, embora tenha algumas diferenças importantes que examinaremos nesta seção.
 
 ```{python f315, fig.cap='Histograma com as notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019 de 300 à 1000 pontos com resolução de 50 pontos', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
 # Definir tamanho da figura
@@ -610,7 +623,7 @@ dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='b
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(xticks_intervalos, fontsize=TAMANHO_FONTE_TICKS);
 plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL);
-plt.ylabel('Contagem',labelpad=30);
+plt.ylabel('Número de estudantes',labelpad=30);
 eixo.spines['right'].set_visible(False);
 eixo.spines['top'].set_visible(False);
 
@@ -641,7 +654,7 @@ dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='b
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(xticks_intervalos,fontsize=TAMANHO_FONTE_TICKS);
 plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
-plt.ylabel('Contagem',labelpad=30);
+plt.ylabel('Número de estudantes',labelpad=30);
 eixo.spines['right'].set_visible(False);
 eixo.spines['top'].set_visible(False);
 
@@ -666,7 +679,8 @@ fig, ax = plt.subplots(1, 1,figsize=(20,10));
 e19_notas_pub['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='black', linewidth=1.5,ax=ax, color='#1f77b4');
 e19_notas_prv['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='black', linewidth=1.5,ax=ax, alpha = 0.75, color='#ff7f0e');
 ax.set_xticks(xticks_intervalos);
-ax.set_ylabel('Contagem',labelpad=30);
+ax.set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
+ax.set_ylabel('Número de estudantes',labelpad=30);
 ax.spines['right'].set_visible(False);
 ax.spines['top'].set_visible(False);
 ax.legend(['Pública','Privada'], title='Tipo de Escola');
@@ -676,7 +690,7 @@ plt.show();
 plt.close('all');
 ```
 
-A Figura \@ref(fig:f317) mostra o mesmo histograma agora com distinção entre os tipos de escola. Inicialmente verificamos que existe uma diferença na quantidade de estudantes de colégio público e privado na edição de 2019, como apontado na seção anterior. Além disso, é possível verificar que o perfil dos estudantes de colégio público é semelhante ao apresentado na Figura \@ref(fig:f316): O intervalo mais representativo está próximo de 450 pontos, porém para os estudantes de escola privada os intervalos mais representativos estão em entre 600 e 700 pontos. 
+A Figura \@ref(fig:f317) mostra o mesmo histograma agora com distinção entre os tipos de escola. Inicialmente verificamos que existe uma diferença na quantidade de estudantes de colégio público e privado na edição de 2019, como apontado na seção anterior. Além disso, é possível verificar que o perfil dos estudantes de colégio público é semelhante ao apresentado na Figura \@ref(fig:f316): O intervalo mais representativo está próximo de 450 pontos, porém e para os estudantes de escola privada os intervalos mais representativos estão em entre 600 e 700 pontos. 
 
 Para uma melhor visualização e contornar o problema de diferença de escala entre os tipos de escolas, visto anteriormente na seção \@ref(gtend), vamos separar os histogramas em diferentes gráficos com seus eixos representativos próprios:
 
@@ -688,13 +702,15 @@ e19_notas_prv['NU_NOTA_MT'].hist(bins=intervalos, grid=False, edgecolor='black',
 
 # Configs - publica
 ax[0].set_title('Escola Pública',fontweight='bold');
-ax[0].set_ylabel('Contagem',labelpad=30);
+ax[0].set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
+ax[0].set_ylabel('Número de estudantes',labelpad=30);
 ax[0].set_xticks(xticks_intervalos);
 ax[0].spines['right'].set_visible(False);
 ax[0].spines['top'].set_visible(False);
 
 # Configs - privada
 ax[1].set_title('Escola Privada',fontweight='bold');
+ax[1].set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
 ax[1].set_xticks(xticks_intervalos);
 ax[1].spines['right'].set_visible(False);
 ax[1].spines['top'].set_visible(False);
@@ -720,13 +736,13 @@ Após concluir a leitura desta seção você pode notar a semelhança entre **hi
 
 ## Concluindo ... {#conc}
 Através deste capítulo conseguimos entender como a visualição gráfica pode trazer diferentes ideias e esclarecimentos a respeito dos nossos questionamentos, apresentando informações de forma simples e de fácil entendimento. Vimos também que cada gráfico pode trazer uma visão distinta e cabe ao leitor saber escolher qual a melhor abordagem a partir da sua pergunta e conjuntos de dados.
-Nosso questionamento sobre o **perfil dos estudantes de Salvador que realizaram o ENEM** conseguiu apresentar diversos *insights*, porém desanimadores ...
+Nosso questionamento sobre o **perfil dos estudantes de Salvador que realizaram o ENEM** conseguiu apresentar diversos *insights*, porém desanimadores. Na Figura \@ref(fig:f319) é apresentado o infográfico resumindo as informações extraídas a partir da análise gráfica.  
 
 ```{r f319, echo=FALSE, fig.cap="Infográfico dos resultados encontrados para o nosso questionamento", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap3/infografico_cap3.png")
 ```
 
-Na Figura \@ref(fig:f319) é apresentado o infográfico resumindo as informações extraídas a partir da análise gráfica. Esses resultados são desanimadores, pois no geral mostra uma grande evasão no número de inscritos de estudantes de vulnerabilidade social e um baixo rendimento dos estudantes de escolas públicas em comparação aos de escola privada. Todavia, para confirmar esses resultados apenas a visualização gráfica é insuficiente: Na ciência de dados precisamos de indicadores e medidas matemáticas para expressar se de nossas hipóteses são verídicas. Esse ferramental será explorado nos próximos capítulos deste livro, então mantenha o estudo!
+Esses resultados são desanimadores, pois no geral mostra uma grande evasão no número de inscritos de estudantes de vulnerabilidade social e um baixo rendimento dos estudantes de escolas públicas em comparação aos de escola privada. Todavia, para confirmar esses resultados apenas a visualização gráfica é insuficiente: Na ciência de dados precisamos de indicadores e medidas matemáticas para expressar se de nossas hipóteses são verídicas. Esse ferramental será explorado nos próximos capítulos deste livro, então mantenha o estudo!
 
 ## Indo Além
 Fizemos diversas análises e respondemos alguns questionamentos a respeito do **perfil dos estudantes de Salvador que realizaram o ENEM** não foi? Porém com a riqueza que esta base de dados possui o leitor pode explorar ainda mais!

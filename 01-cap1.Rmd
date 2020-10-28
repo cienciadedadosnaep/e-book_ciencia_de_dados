@@ -194,7 +194,7 @@ Isaac | A mulher de preto | Terror
 
 Observe que as colunas trazem as características dos dados que coletamos. Já as linhas trazem as observações coletadas para cada pessoa, a respeito das características. Perceba que para uma mesma característica temos observações que podem ser iguais ou diferentes. Embora um mesmo **Gênero** possa aparecer repetidas vezes, notamos que há observações que diferem. Por isso a tabela também permite enxergar a variabilidade dos dados. No capítulo 2 este tópico será abordado de forma mais aprofundada.
 
->Além de representar os dados por meio de tabelas, você aprenderá no capítulo \@ref(c2) como representar os dados de forma gráfica. Este formato permite visualizar as informações de uma forma mais clara e mais explicativa.
+>Além de representar os dados por meio de tabelas, você aprenderá no capítulo \@ref(c02) como representar os dados de forma gráfica. Este formato permite visualizar as informações de uma forma mais clara e mais explicativa.
 
 ## Identificando o tipo de problema
 
@@ -206,7 +206,7 @@ Parte do trabalho da Ciência de Dados é realizar predições, e para isto, exi
 knitr::include_graphics("fig_cap1/reg_class.png")
 ```
 
-Você irá aprender detalhadamente como aplicar estes métodos nos capítulos  \@ref(c9) e  \@ref(c10) deste *e-book*. 
+Você irá aprender detalhadamente como aplicar estes métodos nos capítulos  \@ref(c09) e  \@ref(c10) deste *e-book*. 
 
 ## Considerações finais
 
