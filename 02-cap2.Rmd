@@ -231,13 +231,17 @@ As bases de dados acima foram apenas alguns exemplos de dados abertos governamen
   
   - [Portal Brasileiro de Dados Abertos](https://dados.gov.br/)
   
-
-
 ### Kaggle
 
 [Em reconstrução]
 
 ### UCL
+
+## Você Sabia?
+
+### Anedotas, Dados e Viés pessoal
+
+### Fake News
 
 ## Concluindo
 
