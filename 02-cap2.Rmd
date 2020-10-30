@@ -237,6 +237,8 @@ As bases de dados acima foram apenas alguns exemplos de dados abertos governamen
 
 ### UCL
 
+[Em reconstrução]
+
 ## Você Sabia?
 
 ### Anedotas, Dados e Viés pessoal
@@ -245,7 +247,7 @@ As bases de dados acima foram apenas alguns exemplos de dados abertos governamen
 
 ## Concluindo
 
-[texto que está no canva]
+[Em reconstrução]
 
 ```{r ch12, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
 
