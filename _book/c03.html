@@ -24,7 +24,7 @@
 <meta name="author" content="Kaike Wesley Reis, Júlia Bijos e Janaína Souza" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -100,6 +102,7 @@
 <li class="chapter" data-level="3.4" data-path="c05.html"><a href="c05.html#diagramas-de-caixa"><i class="fa fa-check"></i><b>3.4</b> Diagramas de Caixa</a></li>
 <li class="chapter" data-level="3.5" data-path="c05.html"><a href="c05.html#concluindo"><i class="fa fa-check"></i><b>3.5</b> Concluindo …</a></li>
 <li class="chapter" data-level="3.6" data-path="c03.html"><a href="c03.html#indo-além"><i class="fa fa-check"></i><b>3.6</b> Indo Além</a></li>
+<li class="chapter" data-level="3.7" data-path="c03.html"><a href="c03.html#citações-no-capítulo"><i class="fa fa-check"></i><b>3.7</b> Citações no capítulo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -146,38 +149,65 @@
 Figura 2.1: Número de inscritos no ENEM na capital bahiana
 </p>
 </div>
-<p>Na Figura <a href="c03.html#fig:f31">2.1</a> é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:</p>
-<table>
+<p>Na Figura <a href="c03.html#fig:f31">2.1</a> é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t31">Tabela 2.1: </span>Número total de inscritos no ENEM em Salvador de 2015 até 2019
+</caption>
 <thead>
-<tr class="header">
-<th align="center">Ano</th>
-<th align="center">Quantidade de inscritos em Salvador</th>
+<tr>
+<th style="text-align:right;">
+Ano
+</th>
+<th style="text-align:right;">
+Número total de inscritos em Salvador
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="center">2015</td>
-<td align="center">159835</td>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:right;">
+159835
+</td>
 </tr>
-<tr class="even">
-<td align="center">2016</td>
-<td align="center">175873</td>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:right;">
+175873
+</td>
 </tr>
-<tr class="odd">
-<td align="center">2017</td>
-<td align="center">121063</td>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+121063
+</td>
 </tr>
-<tr class="even">
-<td align="center">2018</td>
-<td align="center">93852</td>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:right;">
+93852
+</td>
 </tr>
-<tr class="odd">
-<td align="center">2019</td>
-<td align="center">88557</td>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+88557
+</td>
 </tr>
 </tbody>
 </table>
-<p>Note que ao visualizar a Tabela, nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, ela contém as mesmas informações demonstradas na Figura <a href="c03.html#fig:f31">2.1</a>, porém com uma diferença: através da visualização gráfica fica muito mais claro a queda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.</p>
+<p>A Tabela <a href="c03.html#tab:t31">2.1</a> mostra os mesmos dados apresentados na Figura <a href="c03.html#fig:f31">2.1</a>. Note que nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, fica muito mais visível através da visualização gráfica aqueda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.</p>
 <p>É através da Figura <a href="c03.html#fig:f31">2.1</a> que podemos responder a primeira pergunta:“<strong>A quantidade de estudantes que realizaram o ENEM aumentou de 2015 para 2019 na capital bahiana?</strong>” E a resposta é não. Apesar do número de estudantes crescer de 2015 para 2016, observa-se uma queda do número de inscritos no ENEM de Salvador, chegando a diminuir pela metade este número de 2016 para 2019.</p>
 <p>Essa resposta pode levar a novos questionamentos, por exemplo, “O que realmente motivou essa queda?”. Infelizmente encontrar a resposta para este questionamento não é trivial, requer pesquisas mais específicas a cerca do tema, o que foge do escopo deste capítulo. Todavia, é interessante refletir como a partir de um simples gráfico, podemos alcançar perguntas ainda mais complexas.</p>
 <p>Agora que respondemos a primeira questão, podemos perceber que a pergunta “<strong>Como é a distribuição de estudantes em Salvador por cor/raça? Conseguimos identificar algum padrão para esses valores?</strong>” está bastante relacionada ao seu resultado.

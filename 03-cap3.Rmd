@@ -132,17 +132,19 @@ plt.show();
 plt.close('all');
 ```
 
-Na Figura \@ref(fig:f31) é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:
+Na Figura \@ref(fig:f31) é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa.
 
-Ano  | Quantidade de inscritos em Salvador
-:---:|:-------------------------------:|
-2015 | 159835 |
-2016 | 175873 |
-2017 | 121063 |
-2018 | 93852  |
-2019 | 88557  |
+```{r t31, echo=FALSE, message=FALSE}
+library(kableExtra);
+library(dplyr);
+df <- data.frame('Ano'=c(2015,2016,2017,2018,2019),
+                 'Número\ total\ de\ inscritos\ em\ Salvador' = c(159835,175873,121063,93852,88557), check.names = FALSE)
 
-Note que ao visualizar a Tabela, nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, ela contém as mesmas informações demonstradas na Figura \@ref(fig:f31), porém com uma diferença: através da visualização gráfica fica muito mais claro a queda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.
+kableExtra::kable(df, caption='Número total de inscritos no ENEM em Salvador de 2015 até 2019') %>% 
+  kable_styling(position = "center")
+```
+
+A Tabela \@ref(tab:t31) mostra os mesmos dados apresentados na Figura \@ref(fig:f31). Note que nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, fica muito mais visível através da visualização gráfica aqueda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.
 
 É através da Figura \@ref(fig:f31) que podemos responder a primeira pergunta:"**A quantidade de estudantes que realizaram o ENEM aumentou de 2015 para 2019 na capital bahiana?**" E a resposta é não. Apesar do número de estudantes crescer de 2015 para 2016, observa-se uma queda do número de inscritos no ENEM de Salvador, chegando a diminuir pela metade este número de 2016 para 2019. 
 

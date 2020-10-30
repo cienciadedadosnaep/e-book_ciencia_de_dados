@@ -24,7 +24,7 @@
 <meta name="author" content="Kaike Wesley Reis, Júlia Bijos e Janaína Souza" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-10-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -102,6 +102,7 @@
 <li class="chapter" data-level="3.4" data-path="c05.html"><a href="c05.html#diagramas-de-caixa"><i class="fa fa-check"></i><b>3.4</b> Diagramas de Caixa</a></li>
 <li class="chapter" data-level="3.5" data-path="c05.html"><a href="c05.html#concluindo"><i class="fa fa-check"></i><b>3.5</b> Concluindo …</a></li>
 <li class="chapter" data-level="3.6" data-path="c03.html"><a href="c03.html#indo-além"><i class="fa fa-check"></i><b>3.6</b> Indo Além</a></li>
+<li class="chapter" data-level="3.7" data-path="c03.html"><a href="c03.html#citações-no-capítulo"><i class="fa fa-check"></i><b>3.7</b> Citações no capítulo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -131,19 +132,19 @@
 </iframe>
 </div>
 <p></br></p>
-<p>Ela está presente de outras formas no dia a dia do brasileiro de forma sutil.</p>
+<p>Ela está presente de outras formas no dia a dia do brasileiro de forma sutil. Na Figura <a href="c05.html#fig:f50">3.1</a> destacamos alguns termos desta área, consegue identificá-los?</p>
 <div class="figure" style="text-align: center"><span id="fig:f50"></span>
 <img src="fig_cap5/machetes_media.PNG" alt="Manchetes de jornais com termos da ciência de dados" width="99%" />
 <p class="caption">
 Figura 3.1: Manchetes de jornais com termos da ciência de dados
 </p>
 </div>
-<p>Na Figura <a href="c05.html#fig:f50">3.1</a> destacamos alguns termos, consegue identificá-los? Eles são muito recorrentes neste imenso universo que é a ciência de dados e seus conceitos são bem simples de entender além de práticos!</p>
+<p>Eles são muito recorrentes neste imenso universo que é a ciência de dados e seus conceitos são bem simples de entender além de práticos!</p>
 <p>Porém, você pode estar se questionando “Porque devo aprender mais sobre eles?” ou “Vou usar isso em algum momento da minha vida?”. Questões como essas podem ser recorrentes durante a aprendizagem e são importante serem endereçadas. A área que é apresentada na Figura <a href="c05.html#fig:f50">3.1</a> e que será discutida neste capítulo é chamada de <strong>estatística descritiva</strong>. Ao estudar os dados, é comum o cientista buscar padrões desconhecidos e quantificar grandes quantidades de números em um só valor e é neste aspecto que esta ferramenta simples e eficaz é aplicada.</p>
-<p>O nome pode parecer complicado, porém se trata de um ramo da matemática com uma série de técnicas para descrever e resumir uma grande massa de informações. Essa área pode ser dividida em três grupos de medidas: tendência central, dispersão e forma. Neste capítulo focaremos nas duas primeiras. Além disso iremos explorar formas de visualizações utilizando estes conceitos como o diagrama de caixas e distribuições.</p>
+<p>O nome pode parecer complicado, porém se trata de um ramo da matemática com uma série de técnicas para descrever e resumir dados ou informações em indicadores de fácil compreensão. Essa área pode ser dividida em três grupos de medidas: tendência central, dispersão e forma. Neste capítulo focaremos nas duas primeiras. Além disso iremos explorar formas de visualizações utilizando estes conceitos como o diagrama de caixas e distribuições.</p>
 <div id="objeto-de-estudo" class="section level2">
 <h2><span class="header-section-number">3.1</span> Objeto de estudo</h2>
-<p>Para compreender a importância dessas medidas estatísticas e como usá-las vamos estudar os dados de segurança pública da cidade de Salvador disponibilizados pela Secretaria de Segurança Pública (SSP) no <a href="http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109">portal</a> para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender como funciona essa base de informações.</p>
+<p>Para compreender a importância dessas medidas estatísticas e como usá-las, vamos estudar os dados de segurança pública da cidade de Salvador disponibilizados pela Secretaria de Segurança Pública (SSP) no <a href="http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109">portal</a><sup>1</sup> para compreender um pouco da realidade que Salvador convive: a violência. Porém, antes de apresentar nosso tema central de estudo precisamos entender como funciona essa base de informações.</p>
 <p>Disponibilizados através de boletins mensais, as ocorrências dos principais delitos na capital bahiana são separados por áreas e regiões. Os principais tipos de delitos considerados são:</p>
 <ul>
 <li><p>Homicídio Doloso</p></li>
@@ -156,14 +157,14 @@ Figura 3.1: Manchetes de jornais com termos da ciência de dados
 <li><p>Furto de Veículo</p></li>
 <li><p>Uso/Porte de Substância Entorpecentes (Usuários)</p></li>
 </ul>
-<p>Você viu que eu citei “áreas” e “regiões” certo? Elas são definidas pela SSP em Salvador respectivamente como Área Integrada de Segurança Pública (AISP) e Região Integrada de Segurança Pública (RISP). Para entender melhor essas divisões vamos usar uma abordagem de conjuntos:</p>
+<p>Você viu que eu citei “áreas” e “regiões” certo? Elas são definidas pela SSP em Salvador respectivamente como Área Integrada de Segurança Pública (AISP) e Região Integrada de Segurança Pública (RISP). Para entender melhor essas divisões, vamos explicar através da Figura <a href="c05.html#fig:f51">3.2</a> estes conceitos usando uma abordagem de conjuntos.</p>
 <div class="figure" style="text-align: center"><span id="fig:f51"></span>
 <img src="fig_cap5/aisp_risp_explicacao.png" alt="Conceito por trás das divisões AISP e RISP" width="99%" />
 <p class="caption">
 Figura 3.2: Conceito por trás das divisões AISP e RISP
 </p>
 </div>
-<p>Através da Figura <a href="c05.html#fig:f51">3.2</a> podemos explicar bem estes conceitos: <strong>AISP</strong> são conjuntos de bairros, ou seja, cada <strong>AISP</strong> representa uma quantidade de bairros da cidade. Já <strong>RISP</strong> se trata de um conjunto de <strong>AISP</strong> e finalmente, o conjunto total de <strong>RISP</strong> representa toda a extensão da cidade de Salvador. Essa divisão é realizada para facilitar a vida dos profissionais de segurança em compreender como cada região se comporta de acordo a um determinado tipo de delito, além de agrupar melhor os bairros, que somam um valor superior a 160 em Salvador. Imagina como seria mais complexo de apresentar um plano para cada bairro em específico para um gestor municipal ou estadual?</p>
+<p><strong>AISP</strong> são conjuntos de bairros, ou seja, cada <strong>AISP</strong> representa uma quantidade de bairros da cidade. Já <strong>RISP</strong> se trata de um conjunto de <strong>AISP</strong> e finalmente, o conjunto total de <strong>RISP</strong> representa toda a extensão da cidade de Salvador. Essa divisão é realizada para facilitar o trabalho dos profissionais de segurança em compreender como cada região se comporta de acordo a um determinado tipo de delito, além de agrupar melhor os bairros, que somam um valor superior a 160 em Salvador. Imagina como seria mais complexo de apresentar um plano para cada bairro em específico para um gestor municipal ou estadual?</p>
 <div class="figure" style="text-align: center"><span id="fig:f52"></span>
 <img src="fig_cap5/risp_atlantico.PNG" alt="RISP Atlântico de Salvador realizado pela SSP" width="99%" />
 <p class="caption">
@@ -193,6 +194,9 @@ Figura 3.6: Manchetes sobre roubos a ônibus na cidade de Salvador
 <p>Na Figura <a href="c05.html#fig:f55">3.6</a> podemos verificar uma realidade referente a este crime: <strong>em média ocorreram 3 assaltos em Salvador por dia avaliados durante 2019</strong>. Neste capítulo frases como essa serão compreendidas por vocês de forma mais simples e intuitiva!</p>
 <p>A base de dados referente aos assaltos à coletivos na cidade de Salvador na estação do verão em 2019 é apresentada abaixo:</p>
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t51">Tabela 3.1: </span>Ocorrências registradas na cidade de Salvador no período de Janeiro à Março em 2019
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -487,37 +491,37 @@ Cajazeiras
 </tr>
 </tbody>
 </table>
-<p>Nesta tabela vemos valores para cada uma das regiões divididas pela Secretária de Segurança Pública que serão estudados no decorrer deste capítulo. Alguns valores são bem alarmantes como a AISP de Tancredo Neves com um total de 40 ocorrências de assalto à coletivos em janeiro e 33 em março. Em contrapartida, outras AISP como Barra e CIA apresentam valores muito baixos em comparação com 1 ou 2 ocorrências.</p>
-<p>Porém, e se quisermos <strong>resumir esses valores para gerar indicadores para uma determinada região (RISP) ou para a cidade nesta época de verão?</strong> <strong>Como esses indicadores poderiam ajudar os gestores a entender como está determinada região ou área em relação ao aumento da violência, considerando este delito?</strong> E principalmente: <strong>Como podemos visualizar e passar estas ideias de forma fácil e intuitiva para gerar ações públicas de combate?</strong></p>
+<p>Na Tabela <a href="c05.html#tab:t51">3.1</a> vemos valores para cada uma das regiões divididas pela Secretária de Segurança Pública que serão estudados no decorrer deste capítulo. Alguns valores são bem alarmantes como a AISP de Tancredo Neves com um total de 40 ocorrências de assalto à coletivos em janeiro e 33 em março. Em contrapartida, outras AISP como Barra e CIA apresentam valores muito baixos em comparação com 1 ou 2 ocorrências.</p>
+<p>Porém, e se quisermos <strong>resumir esses valores para gerar indicadores para uma determinada região (RISP) ou para a cidade neste período?</strong> <strong>Como esses indicadores poderiam ajudar os gestores a entender como está determinada região ou área em relação ao aumento da violência, considerando este delito?</strong> E principalmente: <strong>Como podemos visualizar e passar estas ideias de forma fácil e intuitiva para gerar ações públicas de combate?</strong></p>
 <p>Para responder esses e outros questionamentos, vamos estudar alguns conceitos importantes da ciência de dados como medidas de tendência central, medidas de dispersão, diagrama de caixas e distribuição no decorrer deste capítulo.</p>
 </div>
 <div id="medidas-de-tendência-central" class="section level2">
 <h2><span class="header-section-number">3.2</span> Medidas de tendência central</h2>
-<p>As <strong>medidas de tendência central</strong> são aquelas que buscam refletir o ponto de equilíbrio dos dados, ou seja, o seu ponto central. Diversas medidas existem com esse intuito e as mais básicas são: média, mediana e moda. Porém você pode se perguntar “Porque existe mais de uma medida se elas apresentam o mesmo significado?” Bom, cada uma dessas medidas possui suas vantagens e desvantagens, onde entendê-las pode ser fundamental para compreender aquele conjunto de informações da forma mais coerente com a realidade.</p>
+<p>As <strong>medidas de tendência central</strong> são aquelas que buscam refletir o ponto de equilíbrio dos dados, ou seja, o seu ponto central. Diversas medidas existem com esse intuito e as mais básicas são: média, mediana e moda. Porém você pode se perguntar “Porque existe mais de uma medida se elas apresentam o mesmo significado?” Bom, cada uma dessas medidas possui suas vantagens e desvantagens, onde entendê-las pode ser fundamental para compreender aquele conjunto de informações da forma mais coerente com a realidade<sup>2</sup>.</p>
 <p>Porém, antes de cair de cabeça nestas medidas vamos avaliar a Tabela apresentada na seção anterior (número de ocorrências de roubo à ônibus) através de um <strong>mapa de calor</strong>.</p>
+<p>Na Figura <a href="c05.html#fig:f56">3.7</a> apresentamos um mapa de calor para todas as áreas de Salvador considerando o número de ocorrências, onde quanto mais avermelhada for aquela região, maior é a incidência de delitos e quanto menor for o número de ocorrências mais branca se torna a célula.</p>
 <div class="figure" style="text-align: center"><span id="fig:f56"></span>
 <img src="ebook_cd_files/figure-html/f56-1.png" alt="Mapa de calor da incidência de roubos à ônibus nas áreas de Salvador" width="100%" />
 <p class="caption">
 Figura 3.7: Mapa de calor da incidência de roubos à ônibus nas áreas de Salvador
 </p>
 </div>
-<p>Apesar do mapa de calor parecer bastante com uma tabela, existe uma diferença: Cada célula (campo do gráfico) apresenta uma coloração de acordo a grandeza representada.</p>
-<p>Na Figura <a href="c05.html#fig:f56">3.7</a> apresentamos um mapa de calor para todas as áreas de Salvador considerando o número de ocorrências, onde quanto mais avermelhada for aquela região, maior é a incidência de delitos e quanto menor for o número de ocorrências mais branca se torna a célula. Ainda na Figura <a href="c05.html#fig:f56">3.7</a> podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida as áreas Barra e CIA apresentam os menores números de ocorrências, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é?</p>
+<p>Apesar do mapa de calor parecer bastante com uma tabela na Figura <a href="c05.html#fig:f56">3.7</a>, existe uma diferença: Cada célula (campo do gráfico) apresenta uma coloração de acordo a grandeza representada. Além disso podemos verificar que o setor Tancredo Neves, localizado na RISP Central, apresenta os maiores valores disparado, enquanto o restante em sua grande maioria aparece com um tom mais rosa. Em contrapartida as áreas Barra e CIA apresentam os menores números de ocorrências, não passando de duas ocorrências por mês. Visualmente falando, já conseguimos extrair algumas informações deste gráfico não é?</p>
 <p>Em geral percebemos que:</p>
 <ul>
 <li><p>O setor com maior incidência é, de forma disparada, Tancredo Neves em todos os meses do verão.</p></li>
-<li><p>Barra e CIA são os setores com os menores números de ocorrência no geral.</p></li>
-<li><p>Somando o número total de ocorrências por área para cada mês encontramos para janeiro, fevereiro e março respectivamente 190, 129 e 166 ocorrências. Logo o mês de Janeiro se destaca inicialmente em nossa análise.</p></li>
+<li><p>Barra e CIA são os setores com os menores números de ocorrência.</p></li>
+<li><p>Somando o número total de ocorrências por área para cada mês encontramos para janeiro, fevereiro e março respectivamente 190, 129 e 166 ocorrências. Logo, o mês de Janeiro se destaca inicialmente em nossa análise.</p></li>
 </ul>
 <p>Além dessas informações, você consegue extrair mais conhecimento deste gráfico?</p>
-<p>Apesar da Figura <a href="c05.html#fig:f56">3.7</a> apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas zonas de periculosidade?</p>
+<p>Apesar da Figura <a href="c05.html#fig:f56">3.7</a> apresentar um panorama completo das ocorrências, podemos notar um detalhe curioso: O fato da área Tancredo Neves apresentar altas incidências, torna outros setores, visualmente, menos perigosos. E se fizermos uma análise por região, será que conseguiremos identificar novas zonas com alta incidência de assaltos? Na Figura <a href="c05.html#fig:f57">3.8</a> apresentamos novamente o mapa de calor, agora separado por regiões.</p>
 <div class="figure" style="text-align: center"><span id="fig:f57"></span>
 <img src="ebook_cd_files/figure-html/f57-1.png" alt="Mapa de calor particionado por regiões de Salvador" width="100%" />
 <p class="caption">
 Figura 3.8: Mapa de calor particionado por regiões de Salvador
 </p>
 </div>
-<p>Na Figura <a href="c05.html#fig:f57">3.8</a> apresentamos novamente o mapa de calor, agora separado por regiões. Cada uma das três regiões apresentam características interessantes no verão:</p>
+<p>Cada uma das três regiões apresentaram características interessantes no verão:</p>
 <ul>
 <li><p>Na região Atlântico podemos verificar que as áreas Brotas e Itapuã são as mais perigosas de modo geral, onde em Janeiro ocorreu em ambas o maior número de ocorrências com 17 casos. Além disso, Pituba e Rio Vermelho possuem um grande tom de rosa, mostrando que elas não são tão seguras.</p></li>
 <li><p>Na região BTS nota-se que diversas áreas apresentam tons avermelhados, mostrando um grande perigo nesta região com destaque para São Caetano e Periperi que apresentam os maiores valores.</p></li>
@@ -526,81 +530,159 @@ Figura 3.8: Mapa de calor particionado por regiões de Salvador
 <p>Com esta nova análise conseguimos perceber que as vezes até uma imagem podem acabar nos enganando no que se refere a perspectiva: Na Figura <a href="c05.html#fig:f56">3.7</a> apenas a área de Tancredo Neves se destacava em comparação as outras, porém ao fazer uma análise mais aprofundada, considerando uma comparação apenas dentro das regiões definidas pela SSP, verificamos que outras áreas apresentam uma grande quantidade de ocorrências. Este padrão será observado nesta seção quando avaliarmos as medidas de tendência central, onde vamos entender o impacto de um <strong>valor aberrante</strong>.</p>
 <p>A primeira medida de tendência central a ser analisada será a <strong>Média</strong>. Trata-se da medida mais conhecida e usada em nosso dia a dia, como vimos no início deste capítulo.</p>
 <p>Ela é calculada através do <strong>somatório de todos os valores dividido pela sua quantidade</strong>. Com este conhecimento em mãos vamos montar uma tabela da média de ocorrência para os meses do verão de acordo a região:</p>
-<table>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t52">Tabela 3.2: </span>Médias encontradas para as ocorrências de assalto à ônibus separada por região
+</caption>
 <thead>
-<tr class="header">
-<th align="center">RISP</th>
-<th align="center">Janeiro</th>
-<th align="center">Fevereiro</th>
-<th align="center">Março</th>
+<tr>
+<th style="text-align:left;">
+RISP
+</th>
+<th style="text-align:left;">
+Janeiro
+</th>
+<th style="text-align:left;">
+Fevereiro
+</th>
+<th style="text-align:left;">
+Março
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="center">Atlântico</td>
-<td align="center">9.29</td>
-<td align="center">5.57</td>
-<td align="center">6.71</td>
+<tr>
+<td style="text-align:left;">
+Atlântico
+</td>
+<td style="text-align:left;">
+9,29
+</td>
+<td style="text-align:left;">
+5,57
+</td>
+<td style="text-align:left;">
+6,71
+</td>
 </tr>
-<tr class="even">
-<td align="center">BTS</td>
-<td align="center">11.50</td>
-<td align="center">8.67</td>
-<td align="center">11.83</td>
+<tr>
+<td style="text-align:left;">
+BTS
+</td>
+<td style="text-align:left;">
+11,50
+</td>
+<td style="text-align:left;">
+8,67
+</td>
+<td style="text-align:left;">
+11,83
+</td>
 </tr>
-<tr class="odd">
-<td align="center">Central</td>
-<td align="center">18.67</td>
-<td align="center">12.67</td>
-<td align="center">16.0</td>
+<tr>
+<td style="text-align:left;">
+Central
+</td>
+<td style="text-align:left;">
+18,67
+</td>
+<td style="text-align:left;">
+12,67
+</td>
+<td style="text-align:left;">
+16,00
+</td>
 </tr>
 </tbody>
 </table>
-<p>Porém, antes de analisar esta tabela, por quê calculamos a média? Bom, o intuito é apresentar um indicador para o número de ocorrências para as regiões de Salvador encontrando uma medida capaz de resumir todos os valores daquelas áreas. Assim, ao invés de avaliar área por área, temos um valor único que resume aquela imensa quantidade de dados em um só representativo.</p>
-<p>Da Tabela de médias calculadas, podemos perceber que:</p>
+<p>Porém, antes de analisar a Tabela <a href="c05.html#tab:t52">3.2</a>, por quê calculamos a média? Bom, o intuito é apresentar um indicador para o número de ocorrências para as regiões de Salvador encontrando uma medida capaz de resumir todos os valores daquelas áreas. Assim, ao invés de avaliar área por área, temos um valor único que resume aquela imensa quantidade de dados em um só representativo.</p>
+<p>Através das médias calculadas na Tabela <a href="c05.html#tab:t52">3.2</a>, podemos perceber que:</p>
 <ul>
 <li><p>O mês de fevereiro como um todo possui os menores índices de ocorrências em comparação a janeiro e fevereiro.</p></li>
 <li><p>A RISP Central possui as maiores médias de ocorrências nos meses de verão, mesmo sendo uma região com apenas 3 áreas catalogadas. Note que a área com maior incidência, Tancredo Neves, pertence a esta região.</p></li>
 <li><p>A RISP Atlântico possui os melhores indicadores em todos os meses, ou seja, possui a menor média de ocorrências e, portanto, poderia ser considerada a região mais segura.</p></li>
 </ul>
 <p>Através da média, conseguimos extrair indicadores capazes de fazer comparações diretas entre as regiões! Isso é importante para avaliar situações de forma mais abrangente em um cenário mais amplo para a cidade de Salvador.</p>
-<p>Note que os valores de média são decimais, porém estamos tratando de números de ocorrências certo? Você nunca ouviu algo como “Ontem acontecem 2.5 assaltos naquele ponto de ônibus” ou “Aconteceu em Salvador 30.5 furtos de veículos na região do litoral” e mesmo assim o valor da média é decimal. Isto ocorre, pois estamos tratando de uma variável que por natureza é <strong>inteira</strong>, ou seja, aumenta em unidades, porém a forma como a média é calculada não é garantido que o resultado seja também um <strong>inteiro</strong> (algumas vezes pode acontecer). Logo, é comum realizar uma aproximação simples seguindo as regras:</p>
+<p>Para deixar ainda mais claro o cálculo desta medida, a Figura <a href="c05.html#fig:fmean">3.9</a> apresenta as etapas para calculá-la através do estudo de caso.</p>
+<div class="figure" style="text-align: center"><span id="fig:fmean"></span>
+<img src="fig_cap5/calc_media.png" alt="Etapas para calcular a média" width="99%" />
+<p class="caption">
+Figura 3.9: Etapas para calcular a média
+</p>
+</div>
+<p>A Figura <a href="c05.html#fig:fmean">3.9</a> mostra o passo a passo simples para calcular a média de ocorrências para uma das regiões de Salvador em janeiro. Note que ao final a média apresentou um resultado aproximado, diferente da Tabela <a href="c05.html#tab:t52">3.2</a> que apresentou alguns valores decimais, mas qual seria o motivo?</p>
+<p>Bom, estamos tratando de números de ocorrências, certo? Você nunca ouviu algo como “Ontem acontecem 2,5 assaltos naquele ponto de ônibus” ou “Aconteceu em Salvador 30,5 furtos de veículos na região do litoral” e mesmo assim o valor da média é decimal na Tabela <a href="c05.html#tab:t52">3.2</a>. Isto ocorre, pois estamos tratando de uma variável que por natureza é <strong>inteira</strong>, ou seja, aumenta em unidades, porém a forma como a média é calculada não é garante que o resultado seja também um <strong>inteiro</strong> (algumas vezes pode acontecer). Logo, é comum realizar uma aproximação simples seguindo as regras:</p>
 <ul>
-<li><p>Caso a parte decimal seja maior ou igual 0.5, você aproxima para o maior valor inteiro próximo do seu número</p></li>
-<li><p>Caso a parte decimal seja menor que 0.5, você aproxima para o menor valor inteiro próximo do seu número</p></li>
+<li><p>Caso a parte decimal seja maior ou igual 0,5, você aproxima para o maior valor inteiro próximo do seu número</p></li>
+<li><p>Caso a parte decimal seja menor que 0,5, você aproxima para o menor valor inteiro próximo do seu número</p></li>
 </ul>
-<p>Esta regra vale para qualquer valor decimal que você queira representar e não somente a média. Aplicando esta regra na tabela anterior temos:</p>
-<table>
+<p>Esta regra vale para qualquer valor decimal que você queira representar e não somente a média. Aplicando esta regra na Tabela <a href="c05.html#tab:t52">3.2</a>, assim como foi aplicada na Figura <a href="c05.html#fig:fmean">3.9</a>, temos:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t53">Tabela 3.3: </span>Médias encontradas após aproximação para as ocorrências de assalto à ônibus separada por região
+</caption>
 <thead>
-<tr class="header">
-<th align="center">RISP</th>
-<th align="center">Janeiro</th>
-<th align="center">Fevereiro</th>
-<th align="center">Março</th>
+<tr>
+<th style="text-align:left;">
+RISP
+</th>
+<th style="text-align:left;">
+Janeiro
+</th>
+<th style="text-align:left;">
+Fevereiro
+</th>
+<th style="text-align:left;">
+Março
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="center">Atlântico</td>
-<td align="center">9</td>
-<td align="center">6</td>
-<td align="center">7</td>
+<tr>
+<td style="text-align:left;">
+Atlântico
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+7
+</td>
 </tr>
-<tr class="even">
-<td align="center">BTS</td>
-<td align="center">12</td>
-<td align="center">9</td>
-<td align="center">12</td>
+<tr>
+<td style="text-align:left;">
+BTS
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+12
+</td>
 </tr>
-<tr class="odd">
-<td align="center">Central</td>
-<td align="center">19</td>
-<td align="center">13</td>
-<td align="center">16</td>
+<tr>
+<td style="text-align:left;">
+Central
+</td>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
 </tbody>
 </table>
-<p>Assim, fica mais simples manter a ideia deste indicador: representar um ponto de equilíbrio para o número de ocorrências de assaltos a ônibus por região em Salvador.</p>
+<p>A Tabela <a href="c05.html#tab:t53">3.3</a> mostra de forma a média com a mesma natureza da grandeza estudada, ou seja, em valores inteiros mantendo o seu conceito: representar um ponto de equilíbrio para o número de ocorrências de assaltos a ônibus por região em Salvador.</p>
 <p>Com os valores das médias calculados por região, podemos assinalar outro situação, protagonizada pela novamente pela área Tancredo Neves na região Central… Você conseguiu perceber?</p>
 <p>Olhe para as médias da região Central: 19 ocorrências em Janeiro, 13 ocorrências em Fevereiro e 16 ocorrências em Março. Agora olhe novamente para esta mesma região na Figura <a href="c05.html#fig:f57">3.8</a> e responda: estes valores de média fazem sentido?</p>
 <p>Infelizmente não. A situação que ocorre aqui mostra uma das fraquezas desta medida: <strong>valores aberrantes</strong>. Tratam-se de observações demasiadamente grandes ou pequenos que apresentam um grande afastamento das demais.</p>
@@ -621,53 +703,89 @@ Figura 3.8: Mapa de calor particionado por regiões de Salvador
 <li><p>“Em Fevereiro, na Região BTS, aconteceram nove assaltos à ônibus em média”</p></li>
 </ul>
 <p>Depois de compreender um pouco sobre a medida mais usada e saber uma de suas falhas (valores aberrantes), será que existe alguma outra medida que seja blindada a esta questão? Para nossa sorte, ela existe e se chama <strong>Mediana</strong>.</p>
-<p>A mediana é definida como o valor que divide os dados na metade, 50% estão acima da mediana e 50% estão abaixo. A obtenção da mediana é feita ordenando-se os dados e escolhendo-se o valor do meio. Por exemplo se temos 11 valores, a mediana estará na 6º posição (5 valores abaixo e 5 valores acima). No caso de uma quantidade amostral par, computamos a média dos dois valores “centrais”. Abaixo é apresentado a Tabela com os valores das medianas para cada região de Salvador:</p>
-<table>
+<p>A mediana é definida como o valor que divide os dados na metade, 50% estão acima da mediana e 50% estão abaixo. A obtenção da mediana é feita ordenando-se os dados e escolhendo-se o valor do meio. Por exemplo se temos 11 valores, a mediana estará na 6º posição (5 valores abaixo e 5 valores acima). No caso de uma quantidade amostral par, computamos a média dos dois valores “centrais”.</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t54">Tabela 3.4: </span>Medianas encontradas para as ocorrências de assalto à ônibus separada por região
+</caption>
 <thead>
-<tr class="header">
-<th align="center">RISP</th>
-<th align="center">Janeiro</th>
-<th align="center">Fevereiro</th>
-<th align="center">Março</th>
+<tr>
+<th style="text-align:left;">
+RISP
+</th>
+<th style="text-align:left;">
+Janeiro
+</th>
+<th style="text-align:left;">
+Fevereiro
+</th>
+<th style="text-align:left;">
+Março
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="center">Atlântico</td>
-<td align="center">7.0</td>
-<td align="center">6.0</td>
-<td align="center">6.0</td>
+<tr>
+<td style="text-align:left;">
+Atlântico
+</td>
+<td style="text-align:left;">
+7,0
+</td>
+<td style="text-align:left;">
+6,0
+</td>
+<td style="text-align:left;">
+6,0
+</td>
 </tr>
-<tr class="even">
-<td align="center">BTS</td>
-<td align="center">10.5</td>
-<td align="center">9.5</td>
-<td align="center">11.5</td>
+<tr>
+<td style="text-align:left;">
+BTS
+</td>
+<td style="text-align:left;">
+10,5
+</td>
+<td style="text-align:left;">
+9,5
+</td>
+<td style="text-align:left;">
+11,5
+</td>
 </tr>
-<tr class="odd">
-<td align="center">Central</td>
-<td align="center">11.0</td>
-<td align="center">9.0</td>
-<td align="center">9.0</td>
+<tr>
+<td style="text-align:left;">
+Central
+</td>
+<td style="text-align:left;">
+11,0
+</td>
+<td style="text-align:left;">
+9,0
+</td>
+<td style="text-align:left;">
+9,0
+</td>
 </tr>
 </tbody>
 </table>
-<p>Note que algumas regiões apresentam valores decimais, assim como aconteceu com a média e o motivo é o mesmo: ao calcular a média dos valores “centrais” não garantimos um resultado inteiro.</p>
-<p>Para compreender melhor este resultado, vamos organizar de forma crescente os números de ocorrências em cada região para o mês de janeiro:</p>
-<ul>
-<li><p>RISP Atlântico: 2,4,5,<strong>7</strong>,13,17,17</p></li>
-<li><p>RISP BTS: 1,8,<strong>8</strong>,<strong>13</strong>,17,22</p></li>
-<li><p>RISP Central: 5,<strong>11</strong>,40</p></li>
-</ul>
-<p>Vimos anteriormente que cada uma das regiões listadas possuem respectivamente sete, seis e três AISP no total. Apenas a região BTS possui um valor par e é por isso que a incidência de medianas decimais são nesta região! Para as outras, apenas foi pego os valores que separam o conjunto de dados em 50% para cada lado, sendo destacados em negrito.</p>
+<p>A Tabela <a href="c05.html#tab:t54">3.4</a> apresenta os valores das medianas para cada região de Salvador. Note que algumas regiões apresentam valores decimais, assim como aconteceu com a média e o motivo é o mesmo: ao calcular a média dos valores “centrais” não garantimos um resultado inteiro.</p>
+<p>Para compreender melhor este resultado, na Figura <a href="c05.html#fig:fmed">3.10</a> apresentamos o passo a passo para calcular esta medida e.</p>
+<div class="figure" style="text-align: center"><span id="fig:fmed"></span>
+<img src="fig_cap5/calc_mediana.png" alt="Etapas para calcular a mediana" width="99%" />
+<p class="caption">
+Figura 3.10: Etapas para calcular a mediana
+</p>
+</div>
+<p>Na Figura <a href="c05.html#fig:fmed">3.10</a> mostramos em duas regiões diferentes de Salvador como calcular a mediana. Note que ela pode ser encontrada de duas maneiras distintas a depender da quantidade de valores.</p>
 <div class="figure" style="text-align: center"><span id="fig:f58"></span>
 <img src="ebook_cd_files/figure-html/f58-1.png" alt="Gráfico de pontos para as ocorrências em Salvador" width="100%" />
 <p class="caption">
-Figura 3.9: Gráfico de pontos para as ocorrências em Salvador
+Figura 3.11: Gráfico de pontos para as ocorrências em Salvador
 </p>
 </div>
-<p>Na Figura <a href="c05.html#fig:f58">3.9</a> avaliamos essas duas medidas junto a grandeza estudada através de uma nova visualização: <strong>gráfico de pontos</strong>.</p>
-<p>Podemos perceber na Figura <a href="c05.html#fig:f58">3.9</a> que para as regiões Atlâtico e BTS os valores de média e mediana são próximos, diferente da região Central. Essa disparidade é explicada pelo que vimos anteriormente: O <strong>valor aberrante</strong> distorce o valor da média, puxando-a em sua direção como vocês percebem.</p>
+<p>Na Figura <a href="c05.html#fig:f58">3.11</a> avaliamos essas duas medidas junto a grandeza estudada através de uma nova visualização: <strong>gráfico de pontos</strong>.</p>
+<p>Podemos perceber na Figura <a href="c05.html#fig:f58">3.11</a> que para as regiões Atlâtico e BTS os valores de média e mediana são próximos, diferente da região Central. Essa disparidade é explicada pelo que vimos anteriormente: O <strong>valor aberrante</strong> distorce o valor da média, puxando-a em sua direção como vocês percebem.</p>
 <p>A comparação de média e mediana pode ser um bom indicativo para verificar a presença de um valor aberrante: quanto mais próximos essas medidas forem, mais provável a ausência de valores aberrantes.</p>
 <p>Nesta análise em específico, verificamos que a mediana seria uma melhor medida para representar a região Central como um todo, já para as outras duas regiões a escolha entre ambas as medidas é arbitrária, pois elas estão bem próximas.</p>
 <p>São visualizações como essas que ajudam o cientista de dados a tomar melhores decisões na escolha de indicadores ou medidas de resumo. Logo, conseguimos perceber que no geral a região mais perigosa, ou melhor, a área mais perigosa durante o verão de 2019 foi Tancredo Neves.</p>
@@ -676,14 +794,14 @@ Figura 3.9: Gráfico de pontos para as ocorrências em Salvador
 <div id="medidas-de-dispersão" class="section level2">
 <h2><span class="header-section-number">3.3</span> Medidas de dispersão</h2>
 <p>Como já foi visto as medidas de posição ou se preferir, tendência central, podem ser utilizadas para descrever as informações através de um único valor. Porém e se dois conjuntos possuirem o mesmo valor de média ou mediana, podemos dizer que eles são equivalentes?</p>
-<p><strong>A resposta é Não!</strong> Apesar destas medidas resumirem bem os conjuntos de informações, perdemos outras características importantes … Para alcançar uma visão geral e expandir nossas análises usamos também as <strong>medidas de dispersão</strong>.</p>
+<p><strong>A resposta é Não!</strong> Apesar destas medidas resumirem bem os conjuntos de informações, perdemos outras características importantes. Para alcançar uma visão geral e expandir nossas análises usamos também as <strong>medidas de dispersão</strong><sup>2</sup>.</p>
 <div class="figure" style="text-align: center"><span id="fig:f59"></span>
 <img src="fig_cap5/disp.png" alt="Explicação das medidas de dispersão" width="99%" />
 <p class="caption">
-Figura 3.10: Explicação das medidas de dispersão
+Figura 3.12: Explicação das medidas de dispersão
 </p>
 </div>
-<p>Para entender melhor este conceito e a necessidade de saber entender melhor essas medidas dispersão avalie a Figura <a href="c05.html#fig:f59">3.10</a> onde apresentamos duas situações: Na “Situação 1” podemos perceber que os dados apresentam um espalhamento ou dispersão em relação a medida de posição, lembre que o triângulo busca resumir todas as bolinhas. Isto significa dizer que há variação entre os valores observados em comparação a uma medida qualquer de posição, o que torna este conjunto <strong>heterogêneo</strong>, ou seja, bem diversificado. Já na “Situação 2” vemos uma situação oposta, onde a massa de dados está bem localizada ao redor da medida de posição inclusive bastante próxima, mostrando assim um conjunto de dados <strong>homogêneo</strong>.</p>
+<p>Para entender melhor este conceito e a necessidade de saber entender melhor essas medidas dispersão avalie a Figura <a href="c05.html#fig:f59">3.12</a> onde apresentamos duas situações: Na “Situação 1” podemos perceber que os dados apresentam um espalhamento ou dispersão em relação a medida de posição, lembre que o triângulo busca resumir todas as bolinhas. Isto significa dizer que há variação entre os valores observados em comparação a uma medida qualquer de posição, o que torna este conjunto <strong>heterogêneo</strong>, ou seja, bem diversificado. Já na “Situação 2” vemos uma situação oposta, onde a massa de dados está bem localizada ao redor da medida de posição inclusive bastante próxima, mostrando assim um conjunto de dados <strong>homogêneo</strong>.</p>
 <p>Quanto mais homogêneo for um conjunto em relação a uma medida de posição, maior será o poder de explicação desta medida sobre o conjunto.</p>
 <p>Portanto, medidas de dispersão são medidas capazes de relacionar o afastamento dos dados em comparação à uma medida de posição, que estudamos na seção anterior. Existem várias formas de se medir, porém será tratado como tópico de discussão a <strong>Amplitude</strong>, <strong>Desvio padrão</strong> e <strong>Distância Interquartil</strong>. Essas medidas se tratam de um complemento, pois agora conseguimos entender como os dados estão espalhados em relação a medida central calculada.</p>
 <p>A primeira medida a ser trabalha é a <strong>amplitude</strong> definida como:</p>
@@ -692,10 +810,10 @@ Seu conceito é bastante simples de entender.</p>
 <div class="figure" style="text-align: center"><span id="fig:f510"></span>
 <img src="ebook_cd_files/figure-html/f510-1.png" alt="Gráfico de pontos para as ocorrências em Salvador" width="100%" />
 <p class="caption">
-Figura 3.11: Gráfico de pontos para as ocorrências em Salvador
+Figura 3.13: Gráfico de pontos para as ocorrências em Salvador
 </p>
 </div>
-<p>Na Figura <a href="c05.html#fig:f510">3.11</a> apresentamos novamente o gráfico de pontos da seção anterior para o número de ocorrências. Podemos perceber de forma visual, que a amplitude da região Central será maior do que todas as outras regiões em todos os meses, pois a área de Tancredo Neves apresenta grandes índices de assaltos, como foi discutido anteriormente. Em geral, a amplitude apenas permite comparar dois ou mais conjuntos no sentido de avaliar quem apresentar a maior ou menor variação em relação a outra, porém não dá resposta em relação à distribuição dos dados e como eles estão espalhados em torno de uma medida de posição. Além disso, assim como a média essa medida sofre bastante com a presença de valores aberrantes, a amplitude também sofre … Você consegue identificar o motivo?</p>
+<p>Na Figura <a href="c05.html#fig:f510">3.13</a> apresentamos novamente o gráfico de pontos da seção anterior para o número de ocorrências. Podemos perceber de forma visual, que a amplitude da região Central será maior do que todas as outras regiões em todos os meses, pois a área de Tancredo Neves apresenta grandes índices de assaltos, como foi discutido anteriormente. Em geral, a amplitude apenas permite comparar dois ou mais conjuntos no sentido de avaliar quem apresentar a maior ou menor variação em relação a outra, porém não dá resposta em relação à distribuição dos dados e como eles estão espalhados em torno de uma medida de posição. Além disso, assim como a média essa medida sofre bastante com a presença de valores aberrantes, a amplitude também sofre … Você consegue identificar o motivo?</p>
 <p>Agora que entendemos um conceito mais simples, vamos partir para a compreensão de dois conceitos um pouco mais complexos: Desvio padrão e Distância Interquartil.</p>
 <p>O <strong>Desvio Padrão</strong> relaciona a diferença entre cada elemento do conjunto com a média aritmética através de uma fórmula matemática. Ou seja, cada elemento terá um determinado valor de variação em relação à média do grupo e desta forma, é possível saber quando os conjuntos analisados são heterogêneos ou homogêneos. Isso confirma que esta medida consegue representar a dispersão dos dados, já que utiliza todos os valores do conjunto no seu cálculo. Sua fórmula não será apresentada neste material, pois foge do escopo do livro. Na ciência, esta medida junto com a média é essencial para construir análises e resultados, pois esta dupla se complementa, sendo as mais utilizadas.</p>
 <p>A <strong>Distância Interquartil</strong>, diferente da amplitude, é mais robusta à valores aberrantes. Para entender a distância interquartil precisamos inicialmente definir os quartis. Quartis são valores que dividem os dados em quatro partes e eles são:</p>
@@ -717,19 +835,37 @@ Figura 3.11: Gráfico de pontos para as ocorrências em Salvador
 </ul>
 <p><span class="math display">\[Posição\ de\ Q1=N*0,25\]</span>
 <span class="math display">\[Posição\ de\ Q3=N*0,75\]</span></p>
-<p>Caso alguma dessas posições seja um número inteiro, será necessário calcula uma média aritmética entre o valor naquela posição e o valor seguinte para conseguir o resultado para o quartil. Caso contrário, o valor daquela posição será o nosso quartil. Finalmente, com os quartis em mãos, calcule a distância entre o terceiro e o primeiro para encontrar a <strong>Distância Interquartil</strong>.</p>
+<ul>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Verificar se as posições encontradas são valores inteiros ou decimais. Se for decimal, aproximar para o valor inteiro mais próximo.</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Encontrar os quartis <span class="math inline">\(Q1\)</span> e <span class="math inline">\(Q3\)</span> da seguinte forma: calculando a média entre o valor na posição encontrada com o valor seguinte na sequência</li>
+</ol></li>
+<li><ol start="5" style="list-style-type: decimal">
+<li>Finalmente, com os quartis em mãos, calcule a distância entre o terceiro e o primeiro para encontrar a <strong>Distância Interquartil</strong>: <span class="math inline">\(Q3-Q1\)</span></li>
+</ol></li>
+</ul>
+<p>Na Figura <a href="c05.html#fig:fdiq">3.14</a> apresentamos uma abordagem prática para encontrar esta medida em nossos dados.</p>
+<div class="figure" style="text-align: center"><span id="fig:fdiq"></span>
+<img src="fig_cap5/calc_diq.png" alt="Etapas para calcular Distância Interquartil" width="99%" />
+<p class="caption">
+Figura 3.14: Etapas para calcular Distância Interquartil
+</p>
+</div>
+<p>A Figura <a href="c05.html#fig:fdiq">3.14</a> detalha os passos apresentados anteriormente para o cálculo da distância interquartil em uma das regiões de Salvador no mês de Janeiro, mostrando que apesar de parecer complexo as etapas são bem simples de resolver!</p>
 <p>Para entender melhor estes conceitos, vamos calcula-los para o nosso caso de estudo: número de ocorrências de assalto à ônibus em Salvador.</p>
 <div class="figure" style="text-align: center"><span id="fig:f511"></span>
 <img src="ebook_cd_files/figure-html/f511-1.png" alt="Medidas de dispersão aproximadas em gráfico de barras das ocorrências de Salvador" width="100%" />
 <p class="caption">
-Figura 3.12: Medidas de dispersão aproximadas em gráfico de barras das ocorrências de Salvador
+Figura 3.15: Medidas de dispersão aproximadas em gráfico de barras das ocorrências de Salvador
 </p>
 </div>
-<p>A Figura <a href="c05.html#fig:f511">3.12</a> resume os resultados encontrados dessas medidas para cada região de Salvador separado por mês. Conseguimos extrair as seguintes informações:</p>
+<p>A Figura <a href="c05.html#fig:f511">3.15</a> resume os resultados encontrados dessas medidas para cada região de Salvador separado por mês. Conseguimos extrair as seguintes informações:</p>
 <ul>
 <li><p>Considerando a <strong>amplitude</strong>, vemos que a região central é que mais varia em todos os meses em comparação com BTS e Atlântico. Isso indica uma grande disparidade entre o máximo de ocorrências, Tancredo Neves, com as demais. Esta região impacta inclusive no resultado do <strong>Desvio Padrão</strong> que é o dobro em comparação as demais regiões.</p></li>
 <li><p>O menor <strong>Desvio Padrão</strong> avaliado está no mês de fevereiro para a RISP Atlântico. O valor 4 pode ser lido da seguinte forma “No mês de fevereiro a diferença entre o número de ocorrências por área com a média da região é de quatro ocorrências”</p></li>
-<li><p>No geral, o conjunto com maior espalhamento é representado pela RISP Central, que demonstrou os maiores valores em todas medidas. Essa tendência é observada também na Figura <a href="c05.html#fig:f510">3.11</a> onde as outras regiões mostram número de ocorrências similares.</p></li>
+<li><p>No geral, o conjunto com maior espalhamento é representado pela RISP Central, que demonstrou os maiores valores em todas medidas. Essa tendência é observada também na Figura <a href="c05.html#fig:f510">3.13</a> onde as outras regiões mostram número de ocorrências similares.</p></li>
 </ul>
 <p>Um fato a ser ressaltado sobre a Distância Interquartil: Apesar de ser uma medida robusta a valores aberrantes, assim como a mediana, ao avalia-la com um conjunto muito pequeno, como é o caso da RISP Central, essa robustez acaba se tornando fraca.</p>
 <p>Outro ponto a ser ressaltado é que amplitude e desvio padrão possuem uma relação: quanto mais próximos os dados estiverem do valor médio, significa que há uma amplitude menor e consequentemente um desvio padrão dos dados também será pequeno, por outro lado quando os dados se afastam do valor da média, é indicado que a amplitude é maior e consequentemente, o desvio padrão também será maior.</p>
@@ -743,14 +879,14 @@ Figura 3.12: Medidas de dispersão aproximadas em gráfico de barras das ocorrê
 <div class="figure" style="text-align: center"><span id="fig:f512"></span>
 <img src="fig_cap5/fig_diagramaCaixas.png" alt="Diagrama de caixa explicado para o mês de Janeiro" width="99%" />
 <p class="caption">
-Figura 3.13: Diagrama de caixa explicado para o mês de Janeiro
+Figura 3.16: Diagrama de caixa explicado para o mês de Janeiro
 </p>
 </div>
-<p>Na Figura <a href="c05.html#fig:f512">3.13</a> apresentamos de forma elegante nosso diagrama de blocos referente ao mês de janeiro. No geral, quando olhamos este tipo de visualização focamos em 4 elementos principais:</p>
+<p>Na Figura <a href="c05.html#fig:f512">3.16</a> apresentamos de forma elegante nosso diagrama de blocos referente ao mês de janeiro. No geral, quando olhamos este tipo de visualização focamos em 4 elementos principais<sup>2</sup>:</p>
 <ul>
 <li><p><strong>Mediana</strong>: Trata-se da medida de blindada a valores aberrantes e que separa o conjunto de dados em 50% para cada lado como aprendemos anteriormente.</p></li>
 <li><p><strong>Distância Interquartil</strong>: Nossa medida de dispersão definida anteriormente. Assim como a mediana, trata-se de uma medida blindada a valores aberrantes.</p></li>
-<li><p><strong>Limites</strong>: São valores calculados a partir da distância interquartil e de seus elementos. Responsáveis por definir “a última fronteira” entre valores comuns e aberrantes. São separados em dois como vimos na Figura <a href="c05.html#fig:f512">3.13</a>: Limite Superior e Limite Inferior.</p></li>
+<li><p><strong>Limites</strong>: São valores calculados a partir da distância interquartil e de seus elementos. Responsáveis por definir “a última fronteira” entre valores comuns e aberrantes. São separados em dois como vimos na Figura <a href="c05.html#fig:f512">3.16</a>: Limite Superior e Limite Inferior.</p></li>
 </ul>
 <p>O <strong>Limite Superior</strong> é calculado:
 <span class="math display">\[Limite\ Superior=Q3+1,5*Distância\ Interquartil\]</span></p>
@@ -761,8 +897,8 @@ Figura 3.13: Diagrama de caixa explicado para o mês de Janeiro
 </ul>
 <p>Considerando esses elementos discutidos, percebemos que:</p>
 <ul>
-<li><p>a linha superior da nossa caixa retrata o <span class="math inline">\(Q3\)</span>, já a linha inferior o <span class="math inline">\(Q1\)</span>, pois <span class="math inline">\(Q3-Q1=Distância\ Interquartil\)</span> como vemos na Figura <a href="c05.html#fig:f512">3.13</a>. Finalmente, a linha do meio, que divide a caixa em duas, é a nossa <span class="math inline">\(Mediana\)</span>.</p></li>
-<li><p>Não é garantido a existência de valores aberrantes como na Figura <a href="c05.html#fig:f512">3.13</a>. Eles só ocorrem se ultrapassar o limite superior ou inferior.</p></li>
+<li><p>a linha superior da nossa caixa retrata o <span class="math inline">\(Q3\)</span>, já a linha inferior o <span class="math inline">\(Q1\)</span>, pois <span class="math inline">\(Q3-Q1=Distância\ Interquartil\)</span> como vemos na Figura <a href="c05.html#fig:f512">3.16</a>. Finalmente, a linha do meio, que divide a caixa em duas, é a nossa <span class="math inline">\(Mediana\)</span>.</p></li>
+<li><p>Não é garantido a existência de valores aberrantes como na Figura <a href="c05.html#fig:f512">3.16</a>. Eles só ocorrem se ultrapassar o limite superior ou inferior.</p></li>
 <li><p>Apesar de usarmos mediana e distância interquartil, poderíamos ter utilizado a média junto com o desvio padrão, porém o mais comum é utilizar os dois primeiros.</p></li>
 </ul>
 <p>Neste momento você pode se perguntar: “Mais o que este gráfico pode me oferecer? Qual o sentido de eu aprender seus elementos?” E a resposta é simples:</p>
@@ -772,10 +908,10 @@ Figura 3.13: Diagrama de caixa explicado para o mês de Janeiro
 <div class="figure" style="text-align: center"><span id="fig:f513"></span>
 <img src="ebook_cd_files/figure-html/f513-1.png" alt="Diagrama de caixa das ocorrências mensais" width="100%" />
 <p class="caption">
-Figura 3.14: Diagrama de caixa das ocorrências mensais
+Figura 3.17: Diagrama de caixa das ocorrências mensais
 </p>
 </div>
-<p>Através da Figura <a href="c05.html#fig:f513">3.14</a> avaliamos as ocorrências de assaltos à ônibus em Salvador dividos pelos meses do verão. Note que não estamos trabalhando mais com AISP ou RISP e sim com a cidade de Salvador, ou seja, reduzimos aquela tabela inicial em três caixinhas!</p>
+<p>Através da Figura <a href="c05.html#fig:f513">3.17</a> avaliamos as ocorrências de assaltos à ônibus em Salvador dividos pelos meses do verão. Note que não estamos trabalhando mais com AISP ou RISP e sim com a cidade de Salvador, ou seja, reduzimos aquela tabela inicial em três caixinhas!</p>
 <p>Primeiramente, antes de entrar em uma análise mais aprofudanda desta Figura, vamos responder em tópicos a seguinte pergunta:</p>
 <p><strong>Qual seria o melhor diagrama de caixas para o número de ocorrências de assalto ônibus em Salvador para um determinado mês?</strong></p>
 <p>Com o que aprendemos até então neste capítulo, poderiamos dizer:</p>
@@ -786,22 +922,22 @@ Figura 3.14: Diagrama de caixa das ocorrências mensais
 <p>Esses dois tópicos resumem bem o que um policial ou delegado gostaria de ver em relação a sua cidade: um baixo número de ocorrências. Vamos agora avaliar de forma aprofundada o que conseguimos verificar nesses três meses de 2019:</p>
 <ul>
 <li><p>Se considerarmos a <strong>mediana</strong>, podemos verificar que Janeiro apresentou o maior valor, logo um cenário ruim em comparação aos demais. Em outras palavras, podemos dizer que foi o mês com maior incidência central.</p></li>
-<li><p>Considerando a <strong>distância interquartil</strong>, ou se preferir a altura da caixa, verificamos que o mês de janeiro apresentou a maior variação em torno da mediana, valor que separa o conjunto em duas partes de 50%. Mas … O que significa dizer isso? Significa dizer que tivemos áreas com muitos assaltos e poucos assaltos. Lembre-se que dentro da caixa representamos 50% das nossas áreas!</p></li>
+<li><p>Considerando a <strong>distância interquartil</strong>, ou se preferir a altura da caixa, verificamos que o mês de janeiro apresentou a maior variação em torno da mediana, valor que separa o conjunto em duas partes de 50%. Mas … O que significa dizer isso? Significa dizer que tivemos áreas com muitos assaltos e outras com poucos assaltos. Lembre-se que dentro da caixa representamos 50% das nossas áreas!</p></li>
 </ul>
-<p>Considerando o mês de Janeiro por exemplo, vemos que o <strong>limite inferior</strong> é equivalente à 5 ocorrências de assalto enquanto o <strong>limite superior</strong> está entre 15 e 20 ocorrências, mais de três vezes o valor inferior! Demonstrando um desbalancaeamento entre áreas neste mês e uma assimetria na ocorrência de casos.</p>
+<p>Considerando o mês de janeiro por exemplo, vemos que o <strong>limite inferior</strong> é equivalente à 5 ocorrências de assalto enquanto o <strong>limite superior</strong> está entre 15 e 20 ocorrências, mais de três vezes o valor inferior! Demonstrando um desbalancaeamento entre áreas neste mês e uma assimetria na ocorrência de casos.</p>
 <ul>
-<li>Conseguem ver aqueles potinhos em cima de cada caixa? Eles são nossos <strong>valores aberrantes</strong> e são de uma área bastante citada neste capítulo: AISP Tancredo Neves. Os valores de ocorrência foram tão altos nessa região, durante todos os meses, que o diagrama de caixa os colocam como valores aberrantes.</li>
+<li>Conseguem ver aqueles potinhos em cima de cada caixa? Eles são nossos <strong>valores aberrantes</strong> e são de uma área bastante citada neste capítulo: AISP Tancredo Neves. Os valores de ocorrência foram tão altos nessa região, durante todos os meses, que o diagrama de caixa os coloca como valores aberrantes.</li>
 </ul>
-<p>De forma geral, conseguimos verficar que Janeiro foi o mês com maiores ocorrências por região apresentando os maiores: Limite superior, Q3 e Mediana, ou seja, podemos dizer que foi o pior mês do verão de 2019 para se andar de ônibus. Já Fevereiro pode ser considerado o melhor:sua caixa se concentra em uma região de 3 à 10 ocorrências com um limite superior máximo de 15 ocorrências. Além disso, apresentou a menor ocorrência do nosso pior setor Tancredo Neves: 25 ocorrências. Finalmente, Março ocorreu uma piora em comparação a fevereiro através da deslocação da caixa para uma região de 5 à 12 assaltos.</p>
+<p>De forma geral, conseguimos verificar que janeiro foi o mês com maiores ocorrências por região apresentando os maiores: Limite superior, Q3 e Mediana, ou seja, podemos dizer que foi o pior mês do verão de 2019 para se andar de ônibus. Já fevereiro pode ser considerado o melhor:sua caixa se concentra em uma região de 3 à 10 ocorrências com um limite superior máximo de 15 ocorrências. Além disso, apresentou a menor ocorrência do nosso pior setor Tancredo Neves com 25 ocorrências. Finalmente, março ocorreu uma piora em comparação a fevereiro através da deslocação da caixa para uma região de 5 à 12 assaltos, porém não superou janeiro.</p>
 <p>Através desta simples visualização, conseguimos extrair muitas respostas a cerca do nosso caso de estudo, inclusive muitas de comparação!</p>
 </div>
 <div id="concluindo" class="section level2">
 <h2><span class="header-section-number">3.5</span> Concluindo …</h2>
-<p>Através deste capítulo conseguimos entender que através de alguns indicadores básicos conseguimos analisar e discutir grandes tabelas. Além disso, avaliamos uma nova forma de visualizar nossas informações: o diagrama de caixa. Por meio do infográfico da <a href="c05.html#fig:f514">3.15</a> resumimos o verão de 2019 de Salvador em relação aos assaltos à ônibus na cidade.</p>
+<p>Através deste capítulo conseguimos entender que através de alguns indicadores conseguimos analisar e discutir grandes tabelas. Além disso, avaliamos uma nova forma de visualizar nossas informações: o diagrama de caixa. Por meio do infográfico da <a href="c05.html#fig:f514">3.18</a> resumimos o verão de 2019 de Salvador em relação aos assaltos à ônibus na cidade.</p>
 <div class="figure" style="text-align: center"><span id="fig:f514"></span>
 <img src="fig_cap5/info_tema.png" alt="Conclusões sobre o tema do nosso capítulo" width="99%" />
 <p class="caption">
-Figura 3.15: Conclusões sobre o tema do nosso capítulo
+Figura 3.18: Conclusões sobre o tema do nosso capítulo
 </p>
 </div>
 <p>Podemos perceber que através de uma análise descritiva simples, conseguimos chegar em diversas conclusões a respeito do tema estudado. Estas conclusões podem embasar políticas públicas para melhorar esses indicadores.</p>
@@ -815,11 +951,11 @@ Figura 3.15: Conclusões sobre o tema do nosso capítulo
 <div id="indo-além" class="section level2">
 <h2><span class="header-section-number">3.6</span> Indo Além</h2>
 <p>Agora que já aprendemos um pouco sobre <strong>Estatística Descritiva</strong> que tal aplica-lo na prática?</p>
-<p>Você agora é cientista contratado pelo governo de Salvador para compreender e descrever melhor as ocorrências de <strong>roubo de veículos na capital bahiana</strong> durante o mês de Dezembro. A Figura <a href="c05.html#fig:f515">3.16</a> mostra o boletim da SSP que lhe foi enviado (no formato <code>.csv</code>), constando as ocorrências de todos os delitos na capital bahiana no mês de dezembro.</p>
+<p>Você agora é cientista contratado pelo governo de Salvador para compreender e descrever melhor as ocorrências de <strong>roubo de veículos na capital bahiana</strong> durante o mês de Dezembro. A Figura <a href="c05.html#fig:f515">3.19</a> mostra o boletim da SSP que lhe foi enviado (no formato <code>.csv</code>), constando as ocorrências de todos os delitos na capital bahiana no mês de dezembro<sup>1</sup>.</p>
 <div class="figure" style="text-align: center"><span id="fig:f515"></span>
 <img src="fig_cap5/boletim_12_19_ssp.PNG" alt="Boletim de dezembro de 2019 produzido pela SSP" width="99%" />
 <p class="caption">
-Figura 3.16: Boletim de dezembro de 2019 produzido pela SSP
+Figura 3.19: Boletim de dezembro de 2019 produzido pela SSP
 </p>
 </div>
 <p>O gestor pediu que apresentasse, em relação ao delito de roubo de veículos:</p>
@@ -830,6 +966,11 @@ Figura 3.16: Boletim de dezembro de 2019 produzido pela SSP
 <li><p>Descrição completa deste delito através de uma visualização gráfica.</p></li>
 </ul>
 <p>Então, com o conhecimento que desenvolvemos até aqui, resolva essas questões usando programação!</p>
+</div>
+<div id="citações-no-capítulo" class="section level2">
+<h2><span class="header-section-number">3.7</span> Citações no capítulo</h2>
+<p>[1] Secretaria de Segurança Pública. <strong>Boletins mensais de delitos</strong>. Disponível em: <a href="http://www.ssp.ba.gov.br/modules/conteudo/conteudo.php?conteudo=109">link de acesso</a></p>
+<p>[2] Sergio Miranda Freire. <strong>Bioestatística Básica, Capítulo 3 – Medidas de Tendência Central e Dispersão</strong> Disponível em: <a href="http://www.lampada.uerj.br/arquivosdb/_book/medidasTendenciaDispersao.html">link de acesso</a></p>
 
 </div>
 </div>
