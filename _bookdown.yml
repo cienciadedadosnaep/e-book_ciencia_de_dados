@@ -5,5 +5,10 @@ language:
     eq: "Equação "
     fig: "Figura "
     tab: "Tabela "
+    def: "Definição"
+    exm: "Exemplo "
+    solution: "Solução"
+    exr: "Exercício"
   ui:
     chapter_name: "Capítulo "
+

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.7) (preloaded format=xelatex 2020.8.24)  28 OCT 2020 08:50
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.24)  7 OCT 2020 14:40
+>>>>>>> master
 entering extended mode
 **./ebook_cd.tex
 (ebook_cd.tex
@@ -434,6 +438,7 @@ braces):
 >  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}.
 )
+<<<<<<< HEAD
 Package polyglossia Info: Default language is latex.
 ) ("C:\Program Files\MiKTeX\tex/latex/polyglossia\gloss-portuguese.ldf"
 File: gloss-portuguese.ldf polyglossia: module for portuguese
@@ -480,6 +485,23 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip58
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count298
+=======
+\bbl@dirlevel=\count279
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+) ("C:\Program Files\MiKTeX\tex/latex/babel-portuges\portuguese.ldf"
+Language: portuges 2020/05/04 v1.2r Portuguese support from the babel system
+) ("C:\Program Files\MiKTeX\tex/latex/babel-portuges\portuguese.ldf"
+Language: portuges 2020/05/04 v1.2r Portuguese support from the babel system
+)) ("C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdfmode.def"
+File: l3backend-pdfmode.def 2020-08-07 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count280
+\l__pdf_internal_box=\box52
+>>>>>>> master
 )
 No file ebook_cd.aux.
 \openout1 = `ebook_cd.aux'.
@@ -839,7 +861,11 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 
+<<<<<<< HEAD
 ]
+=======
+{C:/Users/Kaike W. Reis/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+>>>>>>> master
 \tf@toc=\write3
 \openout3 = `ebook_cd.toc'.
 
@@ -848,6 +874,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] [2
 
 ]
+<<<<<<< HEAD
 Capítulo 1.
 
 LaTeX Warning: Reference `fig:figura1' on page 3 undefined on input line 109.
@@ -953,10 +980,134 @@ Capítulo 2.
 Overfull \hbox (14.94pt too wide) in paragraph at lines 426--427
 \TU/lmr/m/n/10 teste XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
  []
+=======
+Cap\'{\i }tulo 1.
 
+LaTeX Warning: Reference `fig:figura1' on page 3 undefined on input line 106.
+
+<fig_cap1/cidade_legend.png, id=23, 813.79031pt x 522.45187pt>
+File: fig_cap1/cidade_legend.png Graphic file (type png)
+<use fig_cap1/cidade_legend.png>
+Package pdftex.def Info: fig_cap1/cidade_legend.png  used on input line 110.
+(pdftex.def)             Requested size: 344.9933pt x 221.48505pt.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+22.
+("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [3
+
+]
+
+LaTeX Warning: Reference `fig:figura1' on page 4 undefined on input line 145.
+
+
+LaTeX Warning: Reference `fig:figura2' on page 4 undefined on input line 145.
+
+[4 <./fig_cap1/cidade_legend.png>]
+<fig_cap1/tripecd.png, id=46, 450.483pt x 384.9582pt>
+File: fig_cap1/tripecd.png Graphic file (type png)
+<use fig_cap1/tripecd.png>
+Package pdftex.def Info: fig_cap1/tripecd.png  used on input line 149.
+(pdftex.def)             Requested size: 207.00473pt x 176.89494pt.
+
+LaTeX Warning: Reference `fig:figura3' on page 5 undefined on input line 160.
+
+<fig_cap1/youtube.png, id=48, 963.6pt x 428.3202pt>
+File: fig_cap1/youtube.png Graphic file (type png)
+<use fig_cap1/youtube.png>
+Package pdftex.def Info: fig_cap1/youtube.png  used on input line 164.
+(pdftex.def)             Requested size: 275.99626pt x 122.68033pt.
+[5 <./fig_cap1/tripecd.png>] [6 <./fig_cap1/youtube.png>] [7] [8]
+
+LaTeX Warning: Reference `fig:figura4' on page 9 undefined on input line 247.
+
+<fig_cap1/facebook.png, id=77, 677.4108pt x 349.305pt>
+File: fig_cap1/facebook.png Graphic file (type png)
+<use fig_cap1/facebook.png>
+Package pdftex.def Info: fig_cap1/facebook.png  used on input line 252.
+(pdftex.def)             Requested size: 344.99947pt x 177.89801pt.
+[9 <./fig_cap1/facebook.png>]
+
+LaTeX Warning: Reference `fig:figura5' on page 10 undefined on input line 268.
+
+<fig_cap1/cap1_fig1.png, id=87, 1193.20781pt x 1012.5328pt>
+File: fig_cap1/cap1_fig1.png Graphic file (type png)
+<use fig_cap1/cap1_fig1.png>
+Package pdftex.def Info: fig_cap1/cap1_fig1.png  used on input line 272.
+(pdftex.def)             Requested size: 275.99782pt x 234.20634pt.
+
+LaTeX Warning: Reference `fig:figura6' on page 10 undefined on input line 281.
+
+<fig_cap1/Imagemetapas.png, id=88, 512.1534pt x 307.8702pt>
+File: fig_cap1/Imagemetapas.png Graphic file (type png)
+<use fig_cap1/Imagemetapas.png>
+Package pdftex.def Info: fig_cap1/Imagemetapas.png  used on input line 285.
+(pdftex.def)             Requested size: 276.01167pt x 165.91858pt.
+[10 <./fig_cap1/cap1_fig1.png>]
+
+LaTeX Warning: Reference `fig:figura7' on page 11 undefined on input line 299.
+
+<fig_cap1/idades_paint.png, id=95, 975.645pt x 465.99094pt>
+File: fig_cap1/idades_paint.png Graphic file (type png)
+<use fig_cap1/idades_paint.png>
+Package pdftex.def Info: fig_cap1/idades_paint.png  used on input line 303.
+(pdftex.def)             Requested size: 344.99423pt x 164.77733pt.
+[11 <./fig_cap1/Imagemetapas.png>]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.1 on input line 339.
+
+[12 <./fig_cap1/idades_paint.png>]
+
+LaTeX Warning: Reference `cap2' on page 13 undefined on input line 344.
+
+
+LaTeX Warning: Reference `fig:figura8' on page 13 undefined on input line 351.
+
+<fig_cap1/reg_class.png, id=111, 954.56625pt x 547.2947pt>
+File: fig_cap1/reg_class.png Graphic file (type png)
+<use fig_cap1/reg_class.png>
+Package pdftex.def Info: fig_cap1/reg_class.png  used on input line 355.
+(pdftex.def)             Requested size: 344.99818pt x 197.80258pt.
+
+LaTeX Warning: Reference `cap12' on page 13 undefined on input line 362.
+
+
+LaTeX Warning: Reference `cap13' on page 13 undefined on input line 362.
+
+[13]
+
+LaTeX Warning: Reference `fig:figura9' on page 14 undefined on input line 388.
+
+<fig_cap1/mapaconceitualcap01.png, id=120, 979.40906pt x 550.30594pt>
+File: fig_cap1/mapaconceitualcap01.png Graphic file (type png)
+<use fig_cap1/mapaconceitualcap01.png>
+Package pdftex.def Info: fig_cap1/mapaconceitualcap01.png  used on input line 3
+92.
+(pdftex.def)             Requested size: 344.99515pt x 193.84431pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 404.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 404.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 404.
+
+LaTeX Warning: Reference `fig:figura1' on page 14 undefined on input line 408.
+
+[14 <./fig_cap1/reg_class.png>]
+
+LaTeX Warning: Reference `fig:figura2' on page 15 undefined on input line 410.
+
+>>>>>>> master
+
+LaTeX Warning: Reference `fig:figura5' on page 15 undefined on input line 418.
+
+[15 <./fig_cap1/mapaconceitualcap01.png>]
+Cap\'{\i }tulo 2.
 [16
 
 ]
+<<<<<<< HEAD
 Capítulo 3.
 
 LaTeX Warning: Reference `c02' on page 17 undefined on input line 431.
@@ -1218,11 +1369,16 @@ LaTeX Warning: Reference `fig:f55' on page 43 undefined on input line 979.
 
 
 ! LaTeX Error: Unknown float option `H'.
+=======
+
+! LaTeX Error: File `fig_cap2/cap2_gif1' not found.
+>>>>>>> master
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
+<<<<<<< HEAD
 l.983 \begin{table}[H]
                        
 Here is how much of TeX's memory you used:
@@ -1235,3 +1391,17 @@ Here is how much of TeX's memory you used:
  58i,6n,118p,1235b,451s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ebook_cd.pdf (43 pages).
+=======
+l.444 ...cs[width=1\linewidth]{fig_cap2/cap2_gif1}
+                                                   \end{center} 
+Here is how much of TeX's memory you used:
+ 13656 strings out of 481212
+ 198698 string characters out of 2915701
+ 500168 words of memory out of 3000000
+ 28804 multiletter control sequences out of 15000+200000
+ 616441 words of font info for 138 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 50i,6n,42p,1112b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+!  ==> Fatal error occurred, no output PDF file produced!
+>>>>>>> master
