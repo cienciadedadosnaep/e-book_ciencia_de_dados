@@ -1,3 +1,530 @@
+--- 
+title: 'Uma introdução gentil à Ciência de Dados'
+author: "Kaike Wesley Reis, Júlia Bijos e Janaína Souza"
+date: "`r Sys.Date()`"
+#output: pdf_document
+output: 
+  bookdown::pdf_document2:
+    fig_caption: yes
+    cap_caption: yes
+  bookdown::html_document2:
+    fig_caption: yes
+    cap_caption: yes
+lang: pt
+description: e-Book de ensino de ciência de dados na educação pública
+documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+classoption: oneside
+---
+
+```{r, eval=TRUE,echo=FALSE}
+library(knitr)
+knitr::opts_chunk$set(error = TRUE, fig.align="center")
+
+# SOLVE - Manter o tamanho das imagens em HTML equivalente ao PDF
+output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+if (output=="html") opts_chunk$set(fig.width=11, fig.height=11)
+if (output=="pdf") opts_chunk$set(fig.width=11,  fig.height=11)
+```
+
+
+# Prefácio {-}
+
+Escrever prefácio. 
+
+
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introdução à Ciência de Dados {#c01}
+
+Provavelmente você deve estar pensando que não faz ideia do que seja Ciência de Dados, já que nunca teve contato com esta área da ciência. Mas, será mesmo? Ao longo deste capítulo vamos entender o que é a **Ciência de Dados** e refletir como ela está inserida no nosso dia a dia. 
+
+_A Ciência de Dados pode ser definida como o campo do conhecimento que busca transformar **dados** em **informações**._
+  
+_Mas, o que isto significa?_
+
+Observe a Figura \@ref(fig:figura1) que trata algumas situações vivenciadas na nossa cidade ou comunidade, que precisam ser adaptadas para melhorar o bem estar dos cidadãos. Você consegue imaginar como a Ciência de Dados poderia ajudar a lidar com estas dificuldades? Verifique os setores observados, os questionamentos e possíveis soluções indicados nas caixas em azul.
+
+```{r figura1, echo=FALSE, fig.cap="Ciência de Dados para o bem social", align = "center", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig_cap1/cidade_legend.png")
+```
+
+Esta imagem é um bom referencial de algumas aplicações da Ciência de Dados para o bem da sociedade. Além disso, mostra como podemos partir de problemas e perguntas iniciais para realizar investigações. Observe o questionamento 1, em que os ônibus não passam no horário esperado. Uma das formas de solucionar este problema é através de uma estimativa da frequência ideal de ônibus neste ponto, com base em um tempo de espera que se imagina ser adequado. Então, para definir esta frequência é necessário saber: 
+
+* a **frequência dos ônibus** que ali passam para conhecer a situação atual
+* a **quantidade de passageiros** que utiliza o transporte
+* a **melhor rota** que deve ser percorrida, de forma que evite atrasos no translado
+
+A definição destes tópicos é importante, pois eles indicam quais dados são necessários obter. A partir do momento que são obtidos, o processo investigativo evolui até que se saiba qual é a frequência ideal de ônibus neste ponto da cidade!  
+
+Observe como temos questionamentos em tantas áreas diferentes. Isto indica que a Ciência de Dados é um campo do conhecimento que nos permite abordar problemas de uma forma abrangente e com aplicações em diversos setores! 
+
+No processo da Ciência de Dados, o **dado** é transformado em informação relevante por meio de etapas que permitem analisar tendências e prever comportamentos futuros! Estas informações geradas permitem extrair conclusões e criar **sacadas** (os famosos _**insights**_ ou "lampejos de ideias") para responder a perguntas e solucionar problemas.
+
+> _Que tal conhecer alguns setores que tem aplicado Ciência de Dados aqui no Brasil?_
+> Transportes e Mobilidade Urbana: [link 1](https://jornal.usp.br/ciencias/ciencias-humanas/dados-sobre-onibus-em-sp-permitirao-analises-criticas-do-servico/) [link 2](https://www.caf.com/pt/presente/noticias/2019/03/ciencia-dados-para-aprimorar-as-politicas-publicas-a-experiencia-de-cordoba/)  
+> Saúde: [link](https://www.einstein.br/Pages/Home.aspx)  
+> Segurança pública: [link](https://jornal.usp.br/universidade/acoes-para-comunidade/pesquisadores-aplicam-ciencia-de-dados-e-inteligencia-artificial-no-combate-ao-crime/)  
+> Comunicação  com clientes: [link](https://g1.globo.com/jornal-nacional/noticia/2019/03/09/ligacoes-de-robos-incomodam-muitos-brasileiros.ghtml)  
+> Turismo: [link](https://datascienceacademy.com.br/blog/7-casos-de-uso-de-data-science-no-turismo/)  
+> Atividade Jurídica: [link](http://www.crb8.org.br/entrevista-sofia-marshallowitz-ciencia-de-dados-aplicada-ao-direito/)
+
+Para aplicar esta ciência é preciso ter conhecimentos de Estatística, Computação e conhecimento sobre o problema investigado! Isto porque as ferramentas de solução são baseadas nestes conteúdos, por isso eles são a essência da Ciência de Dados! Mas não se engane, estas ferramentas "matemáticas" são vinculadas à ciências sociais, biológicas, ambientais, ao setor de negócios, tecnologia, entre outros, a fim de descobrir padrões em problemas de diferentes naturezas (como vimos na Figura \@ref(fig:figura1)). Por este motivo, a Ciência de Dados é uma área **interdisciplinar**. A Figura \@ref(fig:figura2) esquematiza os conteúdos básicos da Ciência de Dados.
+
+```{r figura2, echo=FALSE, fig.cap="Interdisciplinaridade da Ciência de Dados", align = "center", out.width = '60%', fig.align='center'}
+knitr::include_graphics("fig_cap1/tripecd.png")
+```
+
+_Mas por quê a Ciência de Dados se tornou indispensável?_  
+A popularidade da área veio a partir do aumento de dados disponíveis atualmente. É impossível gerir tantos dados sem a utilização de computadores, que apresentam alta capacidade de processamento. Mas atenção, embora a Ciência de Dados seja favorecida pela tecnologia, é importante ressaltar que são seres humanos que direcionam, criam regras, avaliam e manuseiam todo o processo investigativo. Portanto, a criticidade de um profissional que avalie a execução de cada etapa realizada é essencial para garantir análises e interpretações coerentes a cada situação.
+
+_Para compreender melhor como o processo de Ciência de Dados ocorre, vamos pensar na seguinte situação:_   
+Sabemos que atualmente o lazer está muito vinculado ao uso de tecnologias e, portanto, estamos a um clique de uma música que gostamos de ouvir, ou de um vídeo que queremos assistir, uma busca no _google_ sobre algum tema de interesse. O fato de realizarmos estas buscas revela nossos interesses, você concorda? A partir da análise do nosso histórico de buscas, várias propagandas ou recomendações podem começar a nos ser feitas. Pense em quantas vezes você pesquisou sobre algum item e depois surgiram várias propagandas sobre ele. Ou quando você assistiu no _youtube_ o clipe de uma banda e depois apareceram sugestões de outros clipes desta mesma banda, como na Figura \@ref(fig:figura3). Observe que nesta imagem estamos assistindo a um vídeo da banda _Coldplay_, e ao lado existem várias sugestões de outras músicas deles, inclusive há uma indicação de outra banda. 
+
+```{r figura3, echo=FALSE, fig.cap="Mecanismo de recomendação do Youtube", align = "center", out.width = '80%', fig.align='center'}
+knitr::include_graphics("fig_cap1/youtube.png")
+```
+
+_Que tal entender melhor como este mecanismo ocorre?_  
+Imagine que você será responsável por escolher um filme para assistir junto com seus amigos. Porém, eles disseram gostar de filmes de terror, romance, suspense, ação, comédia, ficção científica e drama. Para você ficou quase impossível escolher frente à tantas opções, já que quer ter certeza que eles irão curtir o filme. Assim, como podemos saber qual gênero de filmes deve ser escolhido? Sabendo isso, a sua escolha será certeira e a diversão estará garantida! 
+
+Podemos solucionar este problema utilizando a Ciência de Dados para analisar as preferências de filme dos seus amigos, de forma similar ao mecanismo de recomendações do _youtube_, por exemplo. Nas próximas seções deste capítulo, vamos solucionar cada etapa desta investigação!
+
+> Quer saber mais sobre onde a Ciência de Dados se aplica? Assista ao vídeo abaixo:
+
+<div align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WjSimFnfPF0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</br>
+Depois de tantos exemplos uma conclusão é real: a Ciência de Dados está por toda parte e nós, fazemos parte dela ao consumir ou gerar dados. Você concorda?
+
+## O que são "dados" e onde estão presentes?
+
+No item anterior vimos que a Ciência de Dados é algo indispensável, já que é impossível lidar com tantos dados sem o uso de tecnologias. Vimos também, que parte destes dados, somos nós quem geramos. Precisamos entender o que significa a palavra **dados** neste contexto. 
+
+Vamos dar sequência no nosso exemplo, onde queremos descobrir qual é o gênero de filmes que você deve escolher. Para isto, podemos avaliar qual é o gênero favorito de cada amigo seu a partir dos filmes que eles assistiram recentemente e o gênero destes filmes. Desta forma, iremos verificar se eles têm a preferência em comum por algum gênero. Para iniciar a investigação, devemos criar um registro para cada pessoa, contendo características importantes coletadas para a avaliação das preferências deles, como: 
+
+* Nome
+* Filmes assistidos
+* Gênero do filme
+
+Portanto, o nosso registro irá conter observações de cada característica citada, para cada pessoa. Assim, dizemos que as observações destas determinadas características são os nossos dados.  
+
+_Em outras palavras: dados são **observações** que foram coletadas e armazenadas de alguma forma. Inicialmente, compõem apenas registros e não apresentam relevância. Qualquer dado pode ser armazenado, caso contrário não pode ser considerado um dado._
+
+>*O dado por si só não apresenta significado e por isso não serve para gerar respostas, interpretações e informações. Assim, somente após processar e transformá-los é que se torna possível tirar conclusões.*
+
+</br>
+Parte do trabalho do investigador é avaliar quais dados são de fato importantes para o processo de análise. Muitas vezes temos uma grande quantidade de dados, mas ao avaliar a natureza do problema percebemos que nem todos são fatores importantes para a situação investigada. 
+
+No nosso exemplo, queremos saber qual gênero de filmes você deve escolher para assistir com seus amigos. Já vimos que algumas características são importantes para guiar a sua decisão final, mas podem existir outras que também complementariam nossos dados. Todavia, deve ser feita uma valiação sobre a importância delas para o problema abordado. Por exemplo, poderíamos coletar a altura e peso de cada amigo, mas, isso seria relevante para a nossa investigação? Claramente não, portanto não faria sentido registrar estes dados. Observe também que você obteve os dados por meio de uma pesquisa realizada com os seus amigos. Todavia, há muitas outras fontes de obtenção de dados. Basta lembrar que nós mesmos somos geramos dados quando interagimos em uma rede social. 
+
+_Portanto, os dados podem ser obtidos pelo uso de celulares, computadores, sensores, registros escolares, pesquisas de opinião ou qualquer forma de registro._ 
+</br>
+E porquê é tão importante entendermos a definição de dados e como eles são obtidos? Basicamente, porque eles são a essência da Ciência de Dados. Sem eles não é possível gerar informações e aplicar o processo investigativo. A análise dos dados permite observar uma **tendência** ou **padrão** em processos, fenômenos na natureza ou mesmo nos nossos comportamentos. E este é o grande objetivo da Ciência de Dados, **reconhecer padrões** e **interpretá-los** para tomar boas decisões!
+
+
+### Posso compartilhar dados?
+
+Vamos voltar à nossa investigação sobre os filmes. Lembre-se que para nós é importante registrar os últimos filmes assistidos pelos nossos amigos, o gênero dos filmes e a identificação da pessoa. Podemos nos questionar se estes registros serão restritos à você que está analisando ou se serão abertos à qualquer pessoa (inclusive seus amigos). É um questionamento pertinente? Haveria algum incômodo se qualquer pessoa tivesse acesso a estes registros? 
+
+Outro questionamento que poderia ser feito antes mesmo de seus amigos aceitarem participar do experimento é: como os dados serão utilizados e com qual finalidade?
+
+Estas perguntas são importantes porque as informações adquiridas a partir dos dados revelam gostos pessoais e padrões de comportamento dos seus amigos. E, portanto, quem tiver acesso a estes dados vai ter conhecimento sobre as preferências deles. E a forma como esta informação será utilizada é extremamente importante. Assim, temos duas observações: 
+
+*1. dados são gerados a todo momento*
+
+*2. dados são transformados em informações que revelam padrões desconhecidos.*
+
+Por este motivo, empresas e organizações tem tanto interesse em deter dados de usuários dos seus serviços, pois isso permite conhecer o cliente a ponto de fazer ofertas que se adequem ao perfil de cada um. Mas, quais são as consequências dessa prática? Para compreender mais, vamos discutir sobre a **privacidade**.
+
+### Privacidade de dados
+
+A privacidade antes de tudo é um direito. Este direito nos resguarda da exposição de nossas informações pessoais. O contexto atual de estarmos conectados, com uma constante troca de informação, traz algumas preocupações quanto à garantia da nossa privacidade. 
+
+Podemos começar citando o exemplo das publicações em redes sociais. Por meio delas, divulgamos sobre nosso local de trabalho ou estudo, quem são nossos familiares, nosso itinerário, datas importantes e tantas outras informações, na maioria das vezes sem refletir o que isto representa. E estes são os dados que nós sabemos que estamos divulgando!
+
+Além disso, os aplicativos que temos em nossos *smartphones* podem ter acesso à nossa câmera, microfone e contatos. Sim, ao fazer o download de um aplicativo e concordarmos com os termos de condição de uso, damos acesso à todos estes dados. Você já leu os termos de condições antes de prosseguir com a instalação de um aplicativo?   
+
+Mas muito além do que publicamos, existe uma infinidade de dados que são coletados sobre nós que nem temos ideia. Eles alimentam grandes *bases de dados* de empresas, organizações ou instituições. Nossas preferências de lazer, política, estilo, gostos musicais, itens que compramos, informações bancárias, local de viagens, são convertidos em informações nas mãos de quem pode manipulá-los. Ficamos expostos, sendo influenciados por serviços e propagandas e, ao mesmo tempo, não temos acesso à forma que processam estes dados. 
+
+Assim, sempre que abrimos nossos aplicativos, automaticamente somos direcionados a interagir com posts de conteúdos preparados para prender a nossa atenção, ou sempre existem propostas imperdíveis para adquirir itens que geralmente nos interessamos. 
+
+O ponto central que deve ser levantado aqui é que podemos sim fazer uso de aplicativos, redes sociais e sites, mas devemos ter criticidade para entender que somos monitorados e possivelmente influenciados. Para refletir mais sobre a privacidade dos dados, assista ao vídeo indicado.
+
+<div align = "center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qw_TGrpPdkw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<br />
+
+>_Já ouviu o termo **LGPD**?_ <br />
+Diante da problemática da privacidade e segurança dos dados, o Brasil aprovou a _Lei n° 13.709/18 (Lei de Proteção de Dados - LGPD)_, o que vai exigir a adequação de empresas e corporações que realizam coleta, tratamento, processamento ou comércio de dados em prol de grantir a privacidade e a segurança de usuários. Isso será feito por meio de políticas e planos de proteção de dados. Ao mesmo tempo, nós usuários deveremos estar mais atentos à segurança que as empresas oferecem aos nossos dados. *(Para saber mais sobre esta lei, assista ao [vídeo](https://www.youtube.com/watch?v=fuuudzh1qEo))*  
+A rede social Facebook é um exemplo de organização que já iniciou as alterações recomendadas pela lei em busca de transparência. A Figura \@ref(fig:figura4) exibe partes da mensagem que aparece ao realizar o acesso à página. 
+
+
+```{r figura4, echo=FALSE, fig.cap="Notificação do Facebook", align = "center", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig_cap1/facebook.png")
+```
+
+
+## O ciclo dos Dados - Construindo uma pergunta estatística
+
+No início do capítulo, definimos Ciência de Dados como um campo da ciência que realiza a transformação de dados em informação por meio de etapas. Neste tópico, vamos compreender melhor sobre cada etapa que ocorre neste processo. Primeiramente, esta série de etapas é denominada como *Ciclo dos dados*. 
+
+A compreensão do ciclo dos dados dá uma noção geral sobre o que deverá ser realizado na metodologia de investigação, possibilitando um melhor planejamento de cada etapa.
+
+Uma vez que a Ciência de Dados busca extrair padrões para lidar com problemas, é essencial que inicialmente se tenha uma pergunta a ser respondida. Esta pergunta irá direcionar todo o nosso processo em relação à quais dados devem ser coletados, quais são os melhores métodos de análise e qual a natureza do problema.
+
+O Ciclo dos Dados compreende quatro etapas, como indicado na Figura \@ref(fig:figura5):
+
+```{r figura5, echo=FALSE, fig.cap="Etapas do ciclo de Dados", out.width = '80%', fig.align='center'}
+knitr::include_graphics("fig_cap1/cap1_fig1.png")
+```
+
+Vamos lembrar do nosso exemplo inicial, cuja pergunta é: Qual gênero de filme você deve escolher para assistir com seus amigos com base nas preferências deles?
+
+Observe que geramos uma pergunta inicial que só poderá ser respondida a partir dos dados. Isto significa dizer que precisaremos coletar dados, analisá-los e, por fim, interpretá-los para tomar uma decisão. Por este motivo, esta pergunta é definida como **pergunta estatística**. A partir dela todas as outras etapas do ciclo dos dados serão direcionadas, a fim de respondê-la. A Figura \@ref(fig:figura6) indica como cada etapa se desenvolve.
+
+```{r figura6, echo=FALSE, fig.cap="O que fazer em cada etapa?", align = "center", out.width = '80%', fig.align='center'}
+knitr::include_graphics("fig_cap1/Imagemetapas.png")
+```
+
+Mas, como saber se temos uma pergunta estatística ou não? Lembre-se que uma pergunta estatística deve atender os requisitos citados no parágrafo anterior. Portanto, se eu te perguntasse: "Qual a sua idade?", esta seria uma questão estatística? 
+
+Bom, você me responderia a sua idade. Porém, não seria necessário coletar mais dados para responder a pergunta, pois apenas uma única observação já foi suficiente. Ou seja, a etapa de análise de dados não se faz necessária e por isso, não chegamos à etapa de interpretação dos dados. Por estes motivos, comprovamos que esta questão não é uma pergunta estatística, pois não indica variabilidade. 
+
+_Uma **pergunta estatística** sinaliza a **variabilidade** dos dados, que acontece quando existem observações que diferem da maioria registrada._
+</br>
+Podemos adaptar a pergunta para que ela se torne uma questão estatística! No caso, poderíamos perguntar: "Qual é a idade dos estudantes do Projeto Ciência de Dados na Educação Pública?". Ao coletar a idade de cada estudante perceberíamos que muitas se repetem, mas também há algumas que variam. Por exemplo, observamos estudantes de 11 a 15 anos. Todas as observações coletadas poderiam tranquilamente ser dispostas em um gráfico ou tabela que seriam usados para mostrar o padrão de idades da turma de estudantes do projeto. Graficamente, notamos que a maioria das idades equivale a 14 anos! Assim, todas as etapas do ciclo de dados se cumprem para responder esta pergunta. 
+
+Veja a Figura \@ref(fig:figura7) que aponta diferenças entre estes dois tipos de perguntas. 
+
+```{r figura7, echo=FALSE, fig.cap="Pergunta estatística e não estatística", align = "center", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig_cap1/idades_paint.png")
+```
+
+Outro conceito relevante para qualquer investigação, é que para responder a uma pergunta estatística, podemos estabelecer **hipóteses**, que pode ser considerada como uma suposição que será testada ao longo do processo. Esta hipótese pode estar correta, neste caso ajudando a solucionar o problema, ou pode estar incorreta. Neste caso, precisamos investigar os motivos pelos quais ela é incorreta, e pode até indicar que a nossa pergunta precisa ser melhorada. Pense no caso do nosso exemplo dos filmes, poderíamos estabelecer uma hipótese onde arriscamos dizer qual será o gênero preferido. Bom, esta hipótese será testada ao longo da investigação, e ao final, poderemos dizer se estava certa ou não. 
+
+
+## Estruturando os dados
+
+Após definir a pergunta estatística, devemos coletar os dados e armazená-los em algum formato. Chamamos de **estrutura de dados** o formato em que estes dados ficam armazenados. 
+
+A tabela é uma forma muito comum de se estruturar dados, embora não seja a única. Este formato é comum pois os dados ficam dispostos de uma forma organizada e de fácil entendimento. 
+
+A tabela é composta por linhas e colunas. Veja como exemplo a Tabela 1:
+
+Nome | Filme assistido | Gênero | 
+:-----:|:---:|:---:|:----:|
+Gabrielle | Entre Realidades | Drama
+Gabrielle | Getúlio | Drama
+Gabrielle | Até que a sorte nos separe | Comédia
+Gabrielle | Terremoto: A falha de _San Andreas_ | Ação 
+Karen | A Lista de Schindler | Drama
+Karen | Férias Frustradas | Comédia
+Karen | Letra e Música | Romance
+Karen | Pantera Negra | Ação
+Isaac | Madagascar | Comédia
+Isaac| Karatê Kid | Ação
+Isaac | Um senhor estagiário | Comédia
+Isaac | A mulher de preto | Terror
+
+Observe que as colunas trazem as características dos dados que coletamos. Já as linhas trazem as observações coletadas para cada pessoa, a respeito das características. Perceba que para uma mesma característica temos observações que podem ser iguais ou diferentes. Embora um mesmo **Gênero** possa aparecer repetidas vezes, notamos que há observações que diferem. Por isso a tabela também permite enxergar a variabilidade dos dados. No capítulo 2 este tópico será abordado de forma mais aprofundada.
+
+>Além de representar os dados por meio de tabelas, você aprenderá no capítulo \@ref(cap2) como representar os dados de forma gráfica. Este formato permite visualizar as informações de uma forma mais clara e mais explicativa.
+
+## Identificando o tipo de problema
+
+Um grande diferencial da Ciência de Dados é a investigação sobre o que os dados revelam acerca do futuro. Portanto, esta ciência não só obtém diagnósticos sobre situações já ocorridas como também traz _insights_  sobre o que pode acontecer (Lembra deste termo? São aquelas **sacadas** que comentamos no início do capítulo). A isto chamamos de **predição**.  
+Parte do trabalho da Ciência de Dados é realizar predições, e para isto, existem métodos estatísticos que podem ser aplicados. Em geral, podemos dividir as situações em problemas de **Regressão** ou **Classificação**. A Figura \@ref(fig:figura8) exemplifica estes métodos.
+
+</br>
+```{r figura8, echo=FALSE, fig.cap="Regressão x Classificação", align = "center", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig_cap1/reg_class.png")
+```
+
+Você irá aprender detalhadamente como aplicar estes métodos nos capítulos  \@ref(cap12) e  \@ref(cap13) deste *e-book*. 
+
+## Considerações finais
+
+Neste capítulo você foi apresentado à área de Ciência de Dados e percebeu como ela está presente no nosso dia a dia. Outro ponto relevante foi a percepção da nossa atividade enquanto consumidores e geradores de dados. Esta nova forma de gerar informações exige um conhecimento mínimo sobre como podemos ser influenciados a todo tempo.
+
+
+*Vamos finalizar o nosso exemplo?*  
+Na tabela que constrímos, temos 4 observações para cada pessoa. Ao analisarmos quantas vezes cada gênero aparece, temos: 
+
+* Drama: 3 observações
+* Comédia: 4 observações
+* Ação: 3 observações
+* Romance: 1 observação
+* Terror: 1 observação
+
+Ao analisar o grupo de observações percebemos que o gênero **Comédia** aparece mais vezes no nosso conjunto de dados. Ao verificar a tabela, é possível notar que ele aparece pelo menos uma vez para cada pessoa. Portanto, é uma preferência comum a todo o grupo. Por isso, se você escolher um filme deste gênero sua chance de acerto será alta, concorda? 
+
+A Figura \@ref(fig:figura9) sintetiza os conceitos discutidos neste capítulo introdutório.
+
+```{r figura9, echo=FALSE, fig.cap="Esquema de conceitos", align = "center", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig_cap1/mapaconceitualcap01.png")
+```
+
+Viu quantos conteúdos novos você aprendeu neste capítulo? Este aprendizado vai se aprofundar mais à medida que você avançar no estudo deste _e-book_ e tiver curiosidade em relação aos assuntos abordados! A Ciência de Dados tem revolucionado os setores onde é aplicada, pois busca constantemente obter respostas valiosas. Portanto, o cientista de dados é movido pela curiosidade! 
+
+## Referências 
+
+Tecmundo (2018). Do futebol à medicina: a ciência de dados está em todo lugar. Disponível em: https://youtu.be/WjSimFnfPF0.
+
+Provocações Filosóficas (2018). A privacidade na internet. Diponível em: https://youtu.be/qw_TGrpPdkw. 
+
+Figura \@ref(fig:figura1): Pingado sociedade ilustrativa (2010). Adaptada de: Cidade Sustentável. Disponível em: http://www.pingado.com/imagem/0811cidade_gra.jpg.
+
+Figura \@ref(fig:figura2): Coldplay (2011). Adaptada de: Coldplay - Viva la Vida (Live in Madrid 2011). Disponível em: https://youtu.be/9ldOuVuas1c.
+
+LGPD Brasil. Lei Geral de Proteção de Dados - Lei n° 13.709/18. Disponível em: https://www.lgpdbrasil.com.br/.
+
+Brasil. LEI Nº 13.709, DE 14 DE AGOSTO DE 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). Disponível em: http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.html. 
+
+McAfee (2019). Desafios Tecnológicos para atender a LGPD. Disponível em: https://youtu.be/fuuudzh1qEo.
+
+Figura \@ref(fig:figura5): O Ciclo de Dados. Adaptada de: Introduction to Data Science v_5.0 (IDS). Lesson 4: The Data Cycle. The Data Cycle file (LMR_1.3_Data Cycle)
+
+
+
+
+<!--chapter:end:01-cap1.Rmd-->
+
+
+# Construindo uma base de dados
+
+No capítulo anterior, você aprendeu sobre dados e viu, resumidamente, que a forma como os dados estão armazenados chama-se estrutura de dados. Neste capítulo vamos resgatar e aprofundar um pouco mais do que você já aprendeu de modo que você seja capaz de construir a sua própria base de dados. Mas antes, precisamos entender o que é e para que serve uma base de dados.
+
+
+*Será que você já teve contato com alguma base de dados no decorrer de sua vida?*
+
+
+## O que é uma base de dados?
+
+*Você já ouviu falar sobre o Programa Bolsa Família?*
+
+
+O Programa Bolsa Família (PBF) é uma [política pública](https://www.todospelaeducacao.org.br/conteudo/o-que-e-uma-politica-publica-e-como-ela-afeta-sua-vida) que visa cooperar para a inclusão social de famílias em situação de vulnerabilidade, contribuindo com alívio imediato da situação de pobreza e fome. O PBF estimula um melhor acompanhamento do atendimento do público-alvo pelos serviços de saúde, além de ajudar a superar indicadores que marcam negativamente a trajetória educacional de crianças mais pobres; como por exemplo os altos índices de evasão escolar e a repetência. Desde que foi criado em 2003, o PBF evoluiu e se tornou um dos mais eficientes mecanismos de enfrentamento a pobreza do mundo, consolidando-se como um dos maiores programas de transferência direta de renda existentes. Em todo o país, segundo dados do Ministério da Cidadania, em junho de 2020 o PBF atendia a mais de 14 milhões de famílias, das quais 180.706 mil estavam em Salvador, sendo 476.633 mil pessoas diretamente beneficiadas com o PBF na capital baiana.
+
+*Interessante, né? Mas o que o bolsa família tem a ver com uma base de dados?*
+
+Bem, para ser beneficiária do PBF a família precisa estar cadastrada no Cadastro Único para Programas Sociais (CadÚnico). O CadÚnico é a **base de dados** do governo federal onde estão registrados dados sobre famílias de baixa renda; ou seja, famílias que possuem renda mensal de até ½ salário mínimo por pessoa ou 3 salários mínimos no total. É a partir dos dados registrados no CadÚnico que é possível identificar as famílias que necessitam do bolsa família e encaminha-las para serem beneficiarias do programa.
+
+*Portanto, sem uma base de dados não seria possível que uma política pública do tamanho e da importância do Programa Bolsa Família existisse.*
+
+*E como podemos, exatamente, definir uma base de dados?*
+
+Uma base de dados é um conjunto de **dados** inter-relacionados (possuem relação), que estão armazenados em uma estrutura que permite que **informações** sejam extraídas.
+
+
+```{r ch1, fig.align='center',out.width="100%",fig.width=50 ,echo=FALSE}
+
+knitr::include_graphics("fig_cap2/cap2_gif1.gif")
+
+``` 
+
+Na base de dados da nossa discussão, o CadÚnico, dados referentes a raça, sexo, ocupação, moradia, escolaridade e muitos outros, estão relacionados a cada família que compõem o cadastro. Dessa forma, o governo consegue extrair informações referentes a habitação, saúde, educação, renda; possibilitando que se pense em formas de melhor atender as necessidades da população que compoem o cadastro. Atualmente, o CadÚnico conta com o registro dos dados de aproximadamente 29 milhões de famílias, mais de 76 milhões de pessoas. Isto é, o CadÚnico armazena dados de quase 40% da população brasileira.
+
+O CadÚnico funciona tão bem porque cumpre um requisito muito importante para bases de dados: a armazenagem eficiente dos dados. Para que a sua base de dados funcione do mesmo jeito, os seus dados precisam estar armazenados de maneira correta. Na próxima seção vamos discutir um pouco mais sobre isso.
+
+
+## Como montar uma tabela 
+
+*Vimos que em uma base de dados, os dados estão armazenados em uma estrutura que permite que informações sejam extraídas. Nessa seção, vamos entender um pouco mais sobre essas estruturas.*
+
+Já aprendemos no capítulo 1 que dados são observações que foram coletadas e armazenadas de alguma forma. A maneira como esses dados são armazenados varia e algumas dessas formas de se armazenar os dados são mais eficientes que outras pois auxiliam na análise e visualização dos dados. Quanto à maneira como os dados estão armazenados podemos classifica-los de duas formas principais: estruturados e não-estruturados
+
+
+Os **dados não-estruturados**, como o nome indica, não possuem uma estrutura bem definida e previamente pensada para se armazenar os dados. Como exemplo de dados não estruturados podemos citar as redes-sociais, imagens, filmes, vídeos, músicas e documentos de texto.
+
+```{r ch2, fig.align='center', fig.cap="Exemplo de dados não-estruturados", fig.width=50 ,echo=FALSE,out.width="80%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig1.png")
+
+```
+
+
+
+Os **dados estruturados** por sua vez, possuem uma estrutura bem definida, rígida e previamente pensada para se armazenar os dados. A tabela é uma das formas mais comuns e simples dessas estruturas pois nela os dados ficam dispostos em linhas e colunas que é uma forma de se armazenar dados bastante organizada e de fácil entendimento. Vamos entender mais sobre essa forma de organização. Leia o fragmento de texto abaixo extraído e adaptado do [site](https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/index.html "Cadastro Único, Conhecer Para Incluir")
+
+
+```{r ch3, fig.align='center', fig.width=50,out.width="70%",echo=FALSE}
+
+knitr::include_graphics("fig_cap2/cap2_fig2.png")
+
+``` 
+
+Observe agora como os dados referentes aos grupos prioritários do PBF ficam organizados em uma tabela:
+
+
+```{r ch4, fig.align='center',fig.width=50,out.width="100%",echo=FALSE}
+
+knitr::include_graphics("fig_cap2/cap2_fig3.png")
+
+``` 
+
+
+
+As **linhas**, partes horizontais da tabela, que também podemos chamar de amostras, representam indivíduos ou observações, que são os nossos objetos de estudo. No nosso exemplo, as observações são os grupos de famílias prioritárias ao PBF: "Indígenas", "Quilombolas", "Famílias com pessoas libertas de situação análoga à de trabalho escravo", "Famílias com pessoas catadoras de material reciclável" e "Famílias com pessoas em situação de trabalho infantil" 
+
+As **colunas**, parte vertical da tabela, representam atributos, ou seja, representam características referentes as observações. Em nosso exemplo, "Grupo", "Quantidade" e "Percentual" são os atributos que caracterizam nossas observações.
+
+
+Note que à medida que percorremos uma linha, todos os atributos são referentes a aquela observação. Por exemplo, quando percorremos a linha cuja observação é do grupo “Indígenas”, os atributos: “Quantidade” e “Percentual” se referem a ela. No caso 5 e 0,0% respectivamente. Portanto, existem 5 famílias que fazem parte do grupo prioritário “Indígenas”, representando, aproximadamente, 0,0% do total entre todos os beneficiários do Bolsa Família em Salvador.
+
+*Das mais de 180 mil famílias que recebem o Bolsa Família em Salvador, apenas 5 são famílias indígenas. Em sua opinião, por que isso acontece? Que tal buscar dados referentes a populações indígenas existentes em sua cidade?*
+
+```{r ch5, fig.align='center',fig.cap="Sentido de leitura da linha" ,fig.width=50,echo=FALSE,out.width="100%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig4.png")
+
+``` 
+
+Observe também que quando descemos em uma coluna da tabela, todos os valores representam a mesma característica. Por exemplo, quando descemos na coluna "Quantidade", todos os valores representam quantidades. As quantidades variam dependendo da observação que está sendo avaliada, mas o atributo é o mesmo: Quantidade. 
+
+```{r ch6, fig.align='center',fig.cap="Sentido de leitura da coluna" ,fig.width=50,echo=FALSE,out.width="100%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig5.png")
+
+``` 
+
+
+O fato de os valores dos atributos variarem indica que os dados possuem **variabilidade**. Quando você for analisar seus dados, perceber a variabilidade dos dados é um passo muito importante. Os atributos também são chamados de **variáveis**. Perceba que existe relação entre os termos **variáveis** e **variabilidade**. A palavras "variável" indica que os valores dos dados variam. Nos acompanhe na próxima seção para entender um pouco mais sobre variáveis.
+
+
+## Tipos de variáveis 
+
+Já vimos que variáveis (atributos) são simplesmente características de nossas observações (indivíduos). Ou seja, são atributos que pertencem aos nossos objetos de estudo. 
+
+Imagine que você decide estudar sobre os impactos que o Programa Bolsa Família tem sobre os hábitos e práticas alimentares dos beneficiários. Você decidiu seu objeto de estudo: famílias beneficiárias do PBF. Depois de definir o objeto de estudo, você se pergunta “Quais as informações que eu poderia levantar sobre meu objeto de estudo?”. Bem, você pode levantar muitas informações: o tipo de alimento consumido, a quantidade, se são alimentos ricos em gorduras ou em açucares, se o PBF faz com que as famílias se alimentem de maneira mais saudável, e muitas outras informações. Essas informações são os atributos do seu objeto de estudo, suas variáveis.
+
+No exemplo da seção anterior, o nosso objeto de estudo foram os grupos prioritários ao Programa Bolsa Família. E as variáveis que caracterizaram o nosso objeto de estudo foram: "Grupo", que indica quais são esses grupos prioritários; "Quantidade", que indica a quantidade de famílias que compõem esses grupos e "Percentual" que indica a porcentagem que esses grupos representam em relação ao total de beneficiários em Salvador. 
+
+Agora que já sabemos o que são variáveis, vamos discutir sobre os seus dois principais tipos: variáveis categóricas e variáveis numéricas.
+
+
+### Variáveis Numéricas
+
+Variáveis numéricas são aquelas que assumem **valores numéricos** finitos ou infinitos, ou seja, são variáveis **quantitativas**. Essas variáveis podem ser **contínuas** ou **discretas**.
+
+As variáveis numéricas discretas são aquelas que só podem ser representadas por números inteiros. Vamos entender um pouco mais: famílias beneficiárias do PBF que tenham em sua composição gestantes, nutrizes (mães que amamentam) e crianças e adolescentes de 0 a 15 anos, recebem o benefício de R$ 41,00 para cada membro da família e cada família pode acumular até 5 benefícios por mês. Então, imagine que uma mãe que possua 5 filhos entre 0 e 15 anos irá receber o benefício de R$ 41,00 para cada filho; mas o que aconteceria se ela tivesse 5,5 filhos? Faz sentido dizer que uma pessoa tem 5,5 filhos (cinco filhos e meio)? Não, né?! Isso acontece porque a variável "Quantidade de filhos" é uma variável numérica discreta pois só pode assumir valores inteiros (0,1,2,3...). As variáveis discretas geralmente são resultado de contagens.
+
+Já as variáveis numéricas contínuas são aquelas que podem assumir valores contínuos. Ou seja, são variáveis que podem assumir qualquer valor nos números reais. Vamos retomar o exemplo acima para entendermos melhor, mas dessa vez vamos falar sobre a variável “Idade”. Para você faria sentido dizer que um dos filhos dessa mulher tem 5,5 anos (cinco anos e meio)? Sim, né?! O que estamos dizendo é que essa criança tem 5 anos e 6 meses de idade; ou quem sabe 5 anos 6 meses e 2 dias, 5 anos 6 meses 2 dias e 15 horas, e assim por diante. Isso acontece porque a variável “Idade” é uma variável contínua e pode assumir qualquer [valor real](https://www.educamaisbrasil.com.br/enem/matematica/numeros-reais "Conjunto dos números reais"). As variáveis contínuas geralmente resultam de medições.
+
+
+Vamos retomar o exemplo dos grupos prioritários ao PBF e ver quais foram as nossas variáveis numéricas:
+
+
+```{r ch7, fig.align='center', fig.width=50,echo=FALSE,out.width="100%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig6.png")
+
+```
+
+
+### Variáveis Categóricas 
+
+Variáveis categóricas são qualitativas, finitas e expressam um valor determinado de categorias ou níveis. Ou seja, são variáveis que representam uma classificação das observações. Normalmente as variáveis categóricas representam valores que possuem palavras. Essas variáveis podem ser nominais ou ordinais. 
+
+Variáveis categóricas ordinais existe uma ordenação entre as categorias. Como exemplo podemos pensar na escolaridade dos beneficiários do PBF, (1º,2º,3º grau)
+
+Variáveis categóricas nominais não possuem ordenação entre as categorias. Como exemplo podemos pensar no sexo dos beneficiários do PBF, que pode ser masculino ou feminino
+
+
+A variável categórica do nosso exemplo é do tipo nominal, pois não existe ordenação entre as categorias:
+
+```{r ch8, fig.align='center', fig.width=50 ,echo=FALSE,out.width="100%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig7.png")
+
+```
+
+Até aqui você já aprendeu sobre o que são bases de dados, como montar tabelas, o que são e quais os tipos de variáveis; ou seja, já apendeu o básico necessário para montar a sua própria base de dados. Na próxima seção, você vai aprender a acessar bases de dados que estão disponíveis para serem acessadas por qualquer pessoa: as bases de dados abertas.
+
+
+## Como buscar base de dados abertas
+
+Já vimos que o CadÚnico é a base de dados do governo federal onde estão registrados dados de família de baixa renda residentes no Brasil. Entre os muitos dados que estão registrados no CadÚnico, constam também a identificação de cada pessoa; informações como RG, CPF e endereço.Por conta disso, o acesso a essa base de dados é restrito, sendo permitindo apenas a pesquisadores através de um procedimento administrativo. Logo, o CadÚnico não é uma base de dados aberta. 
+
+*Mas o que são bases de dados abertas?*
+
+Para entendermos o que são bases de dados abertas, vamos falar sobre **dados abertos**
+
+A [Open Knowledge Foundation]( https://okfn.org/), organização sem fins lucrativos que tem por objetivo promover o conhecimento livre, define dados abertos da seguinte forma:
+
+> Dados abertos são dados que podem ser livremente usados, reutilizados e redistribuídos por qualquer pessoa - sujeitos, no máximo, à exigência de atribuição da fonte e compartilhamento pelas mesmas regras.
+>
+>Você pode acessar a definição completa: [Open Definition](http://opendefinition.org/od/2.1/en/). Mas, resumindo os pontos mais importantes da definição de dados abertos, temos:
+
+>> - Disponibilidade e Acesso: os dados devem estar disponíveis como um todo e sob custo não maior que um custo razoável de reprodução, preferencialmente possíveis de serem baixados pela internet. Os dados devem também estar disponíveis de uma forma conveniente e modificável.
+ - Reutilização e Redistribuição: os dados devem ser fornecidos sob termos que permitam a reutilização e a redistribuição, inclusive a combinação com outros conjuntos de dados.
+- Participação Universal: todos devem ser capazes de usar, reutilizar e redistribuir - não deve haver discriminação contra áreas de atuação ou contra pessoas ou grupos.
+
+Portanto, podemos definir uma base de dados abertas como um conjunto de dados abertos que podem ser livremente usados, reutilizados e redistribuídos por qualquer pessoa.
+
+Na proxima seção você vai conhecer algumas bases de dados abertas que podem ser uteis para você a apartir de agora
+
+
+### Dados abertos governamentais
+
+
+
+A seguir, alguns exemplos de base de dados abertas governamentais:
+
+
+  - [Dados abertos da Câmara dos Deputados](https://dadosabertos.camara.leg.br/#a1)
+  
+   Fornece dados sobre as atividades parlamentares da Casa a qualquer cidadão que possa se conectar à internet.
+  
+```{r ch9,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig8.png")
+
+```
+  
+  - [Dados abertos do Senado Federal](https://www12.senado.leg.br/dados-abertos)
+  
+  
+  
+```{r ch10,fig.cap="Dados abertos do Senado Federal" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
+
+knitr::include_graphics("fig_cap2/cap2_fig9.png")
+
+```
+  
+  _______________________________________
+  
+  - [Dados Abertos Ministério da Justiça e Segurança](https://www.justica.gov.br/dados-abertos/dados)
+  
+  - [Dados Abertos sobre Emprego](https://sineaberto.economia.gov.br/)
+  
+
+
+
+### Kaggle
+
+Kaggle é uma comunidade on-line de cientistas de dados e profissionais de aprendizado de máquina
+
+### UCL
+
+## Referências
+
+
+
+
+<!--chapter:end:02-cap2.Rmd-->
+
 
 ```{python solve_plot_bug, eval=TRUE,echo=FALSE}
 import os
@@ -93,7 +620,7 @@ O capítulo  \@ref(c02) apresenta a tabela como uma forma poderosa para estrutur
 
 A construção e visualização gráfica é de extrema importância na área de ciência de dados, pois é a partir de um bom gráfico que podemos extrair ideias, hipóteses e um melhor entendimento a respeito de um tema ou uma pergunta. A importância desse tipo de análise pode ser expressa por um ditado popular bastante conhecido: "Uma imagem vale mais que mil palavras".
 
-## Objeto de estudo {#objeto-estudo}
+## Objeto de estudo do capítulo {#objeto-estudo}
 Para compreender a importância da análise gráfica e como utiliza-la corretamente, iremos buscar entender o perfil dos estudantes de Salvador que realizaram a prova do Exame Nacional do Ensino Médio (ENEM) no período de 2015 até 2019. Porém, antes de qualquer coisa: O que é um **Perfil**? Esse termo é muito usado na ciência de dados para **descrever um determinado processo ou objeto de estudo através de padrões e características que o representam**. Para este caso em específico, vamos analisar os estudantes da cidade de Salvador utilizando os microdados do ENEM, publicados pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP), disponível ao público através deste [link de acesso](http://inep.gov.br/microdados)^1^.
 
 Como o termo **perfil** pode ser bem vasto e diversas características podem ser extraídas do nosso objeto de estudo, é necessário concentrar essa análise em perguntas mais específicas para nortear o caminho. No decorrer deste capítulo, serão exploradas graficamente as seguintes questões:
@@ -106,12 +633,12 @@ Como o termo **perfil** pode ser bem vasto e diversas características podem ser
 
 - O tipo de escola (pública ou privada) pode influenciar nas notas dos estudantes neste exame?
 
-A compreensão desses dados é de suma importância para entender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil. No geral, diversos setores da sociedade conseguem se beneficiar destes questionamentos: Estudantes podem buscar compreender se o tipo de escola onde estudam possui algum impacto em suas notas, enquanto gestores de políticas públicas como diretores e coordenadores podem buscar compreender as três primeiras questões para compreender melhor o panorama educacional da cidade de Salvador e assim gerar embasamento para decisões importantes no aperfeiçoamento do ensino no geral.
+A compreensão desses dados é de suma importância para compreender melhor o perfil dos estudantes de Salvador que possuem o ENEM como uma oportunidade de acesso, as vezes única, ao ensino superior no Brasil.
 
 ## Gráfico de barra {#gbarras}
 O **Gráfico de barras** é uma forma bastante comum e versátil de visualização na área de ciência de dados. Ele pode ser utilizado tanto com variáveis categóricas quanto numéricas para expressar grandezas. A Figura abaixo apresenta uma de suas utilizações: demonstrar grandezas numéricas.
 
-```{python f31, fig.cap='Número de inscritos no ENEM na capital bahiana', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
+```{python f31, fig.cap='Quantidade de estudantes que se inscreveram o ENEM na capital bahiana', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
 # Definir tamanho da figura
 plt.figure(figsize=(20,10));
 
@@ -119,7 +646,7 @@ plt.figure(figsize=(20,10));
 ax = sns.barplot(x='Ano', y='FA', data=dados_ssa_total_estudantes, color='blue');
 
 # Aplicar configuracoes esteticas no grafico
-plt.ylabel('Número de estudantes inscritos');
+plt.ylabel('');
 plt.xticks();
 plt.yticks([]);
 ax.spines['top'].set_visible(False);
@@ -132,19 +659,17 @@ plt.show();
 plt.close('all');
 ```
 
-Na Figura \@ref(fig:f31) é apresentada a quantidade de inscritos, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação dentre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa.
+Na Figura \@ref(fig:f31) é apresentada a quantidade de estudantes, uma grandeza numérica, que realizaram o ENEM de 2015 até 2019 na capital bahiana. É possível notar uma queda na participação de estudantes entre os períodos de 2016 até 2019. Apesar de simples e direto, a análise desse mesmo resultado através de uma tabela pode se mostrar confusa:
 
-```{r t31, echo=FALSE, message=FALSE}
-library(kableExtra);
-library(dplyr);
-df <- data.frame('Ano'=c(2015,2016,2017,2018,2019),
-                 'Número\ total\ de\ inscritos\ em\ Salvador' = c(159835,175873,121063,93852,88557), check.names = FALSE)
+Ano  | Número de estudantes em Salvador
+:---:|:-------------------------------:|
+2015 | 159835 |
+2016 | 175873 |
+2017 | 121063 |
+2018 | 93852  |
+2019 | 88557  |
 
-kableExtra::kable(df, caption='Número total de inscritos no ENEM em Salvador de 2015 até 2019') %>% 
-  kable_styling(position = "center")
-```
-
-A Tabela \@ref(tab:t31) mostra os mesmos dados apresentados na Figura \@ref(fig:f31). Note que nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, fica muito mais visível através da visualização gráfica aqueda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.
+Note que ao visualizar a Tabela, nenhuma informação visual é passada para destacar os anos com mais ou menos participantes. Além disso, ela contém as mesmas informações demonstradas na Figura \@ref(fig:f31), porém com uma diferença: através da visualização gráfica fica muito mais claro a queda de inscrições no ENEM de 2016 até 2019. O gráfico de barras apresenta uma característica muito importante relacionado ao tamanho das barras: elas crescem proporcionalmente de acordo as grandezas que elas se referem, ou seja, quanto maior o valor maior será sua barra. Comumente essas barras apresentam a mesma largura neste tipo de gráfico.
 
 É através da Figura \@ref(fig:f31) que podemos responder a primeira pergunta:"**A quantidade de estudantes que realizaram o ENEM aumentou de 2015 para 2019 na capital bahiana?**" E a resposta é não. Apesar do número de estudantes crescer de 2015 para 2016, observa-se uma queda do número de inscritos no ENEM de Salvador, chegando a diminuir pela metade este número de 2016 para 2019. 
 
@@ -167,7 +692,7 @@ Inicialmente para entender essa relação, precisamos entender  o que seria essa
 
 - Opção de não apresentar tal informação
 
-Como foi explicado no Capítulo \@ref(c02), esse questionamento pode ser definido como uma variável categórica dada a quantidade finita de opções apresentadas. Esta pergunta está bastante relacionada com a primeira questão, pois a quantidade total de estudantes inscritos na prova pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. 
+Como foi explicado no Capítulo \@ref(c02), esse questionamento pode ser definido como uma variável categórica dada a quantidade finita de opções apresentadas. Essa pergunta está bastante relacionado com a primeira questão, pois a quantidade total de estudantes pode alterar essa distribuição, aumentando ou diminuindo a depender das categorias. 
 
 Como tivemos uma diferença tão grande entre o número de inscritos em 2016 e 2019 demonstrado na Figura \@ref(fig:f31), uma análise mais aprofundada nesses dois anos podem trazer resultados interessantes para responder nosso segundo questionamento:
 
@@ -234,7 +759,7 @@ $$Frequência\ Relativa\ (\%) = 100*\frac{\text{estudantes que realizaram o ENEM
 
 Como nos é apresentada uma proporção, podemos ler o gráfico de barras apresentado na Figura \@ref(fig:f33) como sendo **a quantidade de estudantes que fizeram a prova em 2019 em relação a quantidade que realizou a prova em 2016**.
 
-Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras raças apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação confirma ainda mais o resultado apresentado na Figura \@ref(fig:f31), mostrando que ocorreu uma grande queda na quantidade de inscrições no geral, porém isso é verificado com maior intensidade entre estudantes não declarados de cor branca na capital bahiana.
+Podemos identificar, por exemplo, que com exceção dos estudantes auto-declarados de cor branca todas as outras raças apresentaram uma proporção de aproximadamente 50%, ou seja, o número de estudantes pardos, pretos, amarelos, indígenas e não declarados caíram pela metade em comparação ao ano de 2016. Esta informação intensifica ainda mais o resultado apresentado na Figura \@ref(fig:f31), mostrando que ocorreu uma grande queda na quantidade de inscrições no geral, porém isso é verificado com maior intensidade entre estudantes não declarados de cor branca na capital bahiana ...
 
 Através da análise do gráfico de barras conseguimos avaliar dois questionamentos de uma só vez! Porém para analisar como esses resultados ocorreram de 2016 até 2019 ao invés de dois anos separados, qual seria o melhor tipo de gráfico? Iremos explora-lo na próxima seção deste capítulo.
 
@@ -258,14 +783,13 @@ Antes de mergulhar na análise desses dois questionamentos utilizando o gráfico
 # Preparacao do plot
 plt.figure(figsize=(20,10));
 fig, eixo = plt.subplots(1,1,figsize=(20,10));
-# Definir padroes esteticos da figura
+# Plot
 eixo.set_xticks([0,10,20,30,40,50,60,70,80,90,100]);
 eixo.set_yticks([10,20,30,40,50,60,70,80,90,100]);
 eixo.set_xlabel('Eixo horizontal', fontsize=TAMANHO_FONTE_LABEL, fontweight='bold');
 eixo.set_ylabel('Eixo vertical', fontsize=TAMANHO_FONTE_LABEL, fontweight='bold');
 eixo.spines['top'].set_visible(False);
 eixo.spines['right'].set_visible(False);
-# Mostrar e fechar figura
 plt.show();
 plt.close('all');
 ```
@@ -273,16 +797,12 @@ plt.close('all');
 A Figura \@ref(fig:fig34) apresenta um plano cartesiano simplificado. São definidos dois eixos principais sendo eles o eixo horizontal e o eixo vertical. Cada eixo pode demonstrar o comportamento de uma variável desejada: Para o eixo horizontal, ao aumentarmos o valor se move para a direita e ao diminuir o valor se move para a esquerda, já para o eixo vertical, ao aumentarmos o valor se move para cima e ao diminuir para baixo. Ter esse conceito em mente será importante para as análises futuras.
 
 ```{python f35, fig.cap='Quantidade de estudantes inscritos no ENEM na capital bahiana', out.width='100%', fig.asp=.60, fig.align='center', echo=FALSE}
-# Definir a figura e seu tamanho
 fig, ax = plt.subplots(1,1,figsize=(20,10));
-# Fazer grafico
 sns.lineplot(x='Ano', y='FA', data=dados_ssa_total_estudantes,marker='o',ax=ax);
-# Definir padroes esteticos da figura
 plt.xticks([2015,2016,2017,2018,2019]);
 ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
 ax.spines['right'].set_visible(False);
 ax.spines['top'].set_visible(False);
-# Mostrar e fechar figura
 plt.show();
 plt.close('all');
 ```
@@ -295,10 +815,9 @@ Ainda neste gráfico, podemos extrair um conceito bem interessante referente a e
 # Definir cores dos plots
 cores_raca = sns.color_palette("Set2", len(dados_ssa_raca_tendencia['COR'].unique()))
 
-# Fazer grafico
+# Plot
 fig, ax = plt.subplots(1,1,figsize=(20,10));
 sns.lineplot(x='ANO', y='FA', hue='COR', data=dados_ssa_raca_tendencia, marker='o', palette=cores_raca);
-# Padroes esteticos da figura
 plt.xticks([2015,2016,2017,2018,2019], fontsize=TAMANHO_FONTE_TICKS);
 ax.set_ylabel('Frequência Absoluta de Estudantes',labelpad=20);
 ax.spines['right'].set_visible(False);
@@ -316,13 +835,11 @@ A Figura \@ref(fig:f36) é endereçada ao segundo questionamento. Podemos notar 
 Para visualizar melhor e trazer uma melhor discussão a respeito do segundo questiomento, cada curva foi separada de acordo a raça que ela representa:
 
 ```{python f37, fig.cap='Tendência da quantidade de estudantes inscritos no ENEM particionado por cor de 2015 até 2019', out.width='80%', fig.asp=.99, fig.align='center', echo=FALSE}
-# Definir figura e eixos
 fig, ax = plt.subplots(3,2,figsize=(20,10));
 
-r = 0      # Controlar linha
-c = 0      # Controlar coluna de plot
+r = 0      # Index row
+c = 0      # Index col
 
-# LOOP para fazer os plots de acordo a cor
 for raca,pc in zip(dados_ssa_raca_tendencia['COR'].unique(),cores_raca) :
     aux = dados_ssa_raca_tendencia[dados_ssa_raca_tendencia['COR'] == raca]
     sns.lineplot(x='ANO', y='FA', data=aux,marker='o',color=pc,ax=ax[r][c]);
@@ -332,7 +849,7 @@ for raca,pc in zip(dados_ssa_raca_tendencia['COR'].unique(),cores_raca) :
     ax[r][c].set_title('Raça - '+raca,fontweight='bold');
     ax[r][c].spines['right'].set_visible(False);
     ax[r][c].spines['top'].set_visible(False);
-    # Controle de index
+    # Index control
     c += 1
     if c > 1:
         c = 0
@@ -343,7 +860,6 @@ fig.add_subplot(111, frameon=False);
 plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False);
 plt.xlabel("Ano", labelpad=20);
 plt.ylabel("Frequência Absoluta de Estudantes por cor/raça", labelpad=45);
-# Mostrar e fechar figura
 plt.tight_layout();
 plt.show();
 plt.close('all');
@@ -526,10 +1042,8 @@ Essas condições foram colocadas para evitar valores atípicos nas análises, p
 Inicialmente, será mostrado um gráfico de dispersão para as provas da área de exatas: matemática e ciências naturais, mas não se assuste! O gráfico será explicado passo a passo.
 
 ```{python f312, fig.cap='Relação entre nota de Ciências Naturais e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
-# Definir figura e fazer plot
 plt.figure(figsize=(20,10));
 eixo = sns.scatterplot(y='NU_NOTA_CN', x='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=75, linewidth=0);
-# Definir configuracoes do plot
 plt.yticks(fontsize=15);
 plt.xticks(fontsize=15);
 plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
@@ -550,10 +1064,9 @@ Na Figura \@ref(fig:f312) são apresentadas as notas dos estudantes de Salvador 
 
 Através da Figura \@ref(fig:f312) podemos verificar que a maioria dos estudantes de escolas públicas se localizam no canto inferior esquerdo, ou seja, estudantes com notas menores em ambas as provas e a medida que crescemos em ambos os eixos, mais dominante se tornam os estudantes de escolas privadas, mostrando um maior rendimento.
 
-Além desta análise, no geral é possível verificar uma **tendência** crescente, onde ao aumentarmos a nota de matemática vemos que a maioria dos estudantes também aumentam a nota em ciências naturais. Compreender tendências deste tipo faz parte do dia a dia do cientista de dados, pois essas tendências são as mais comuns e intuitivas na natureza. Na Figura \@ref(fig:f313) é apresentado dois padrões: em vermelho está uma tendência linear crescente e em azul uma tendência linear decrescente representadas em um plano cartesiano. 
+Além desta análise, no geral é possível verificar uma **tendência** crescente, onde ao aumentarmos a nota de matemática vemos que a maioria dos estudantes também aumentam a nota em ciências naturais. Compreender tendências deste tipo faz parte do dia a dia do cientista de dados, pois essas tendências são as mais comuns e intuitivas na natureza.
 
 ```{python f313, fig.cap='Tendências lineares em um plano cartesiano', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
-# Definir vetores para plot
 eixo_x = np.arange(0, 1000);
 eixo_y1 = eixo_x*(1.5);
 eixo_y2 = eixo_x*(-1.5);
@@ -572,20 +1085,19 @@ plt.show();
 plt.close('all');
 ```
 
-É dito linear, pois seu comportamento lembra o formato de uma uma linha: mostra um padrão que está aumentando ou diminuindo a uma taxa constante (fixa).
+Na Figura \@ref(fig:f313) é apresentado dois padrões: em vermelho está uma tendência linear crescente e em azul uma tendência linear decrescente representadas em um plano cartesiano. 
 
-Os termos crescente e descrescente se referem a como os valores de um eixo se comportam em relação ao outro: na **tendência linear crescente**, ao aumentarmos o valor em um eixo é esperado aumentarmos também o valor no outro eixo, já na **tendência linear decrescente** ocorre o inverso: ao aumentarmos o valor em um dos eixos, é esperado que o valor no outro eixo decaia na mesma proporção.
+É dito linear, pois seu comportamento é equivalente a uma linha, onde a variação de um ponto em um dos eixos em relação a outro é constante (sem alteração). 
+
+Os termos crescente e descrescente se referem a como os valores de um eixo se comportam em relação ao outro: na tendência linear crescente, ao aumentarmos o valor em um eixo é esperado aumentarmos também o valor no outro eixo, já na tendência linear decrescente ocorre o inverso: ao aumentarmos o valor em um dos eixos, é esperado que o valor no outro eixo decaia de forma constante.
 
 Na Figura \@ref(fig:f312) conseguimos visualizar o padrão exposto pela reta linear vermelha, ou seja, ao crescermos as notas em matemática, esperamos que cresça as notas em ciências naturais.
 
 Através da Figura \@ref(fig:f312) verificamos que, de certa forma, o tipo de escola que o estudante frequentou possui um fato impacto nas notas dos estudantes de Salvador, porém este padrão se repete caso seja avaliado outra prova?
 
 ```{python f314, fig.cap='Relação entre nota de Linguagens e Matemática particionado pelo tipo de escola em 2019', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
-# Definir figura e fazer plot
 plt.figure(figsize=(20,10));
 eixo = sns.scatterplot(x='NU_NOTA_LC', y='NU_NOTA_MT',hue='TP_ESCOLA', data=dados_ssa_notas_2019, s=75, linewidth=0);
-
-# Configuracoes do plot
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.ylabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
@@ -608,7 +1120,7 @@ Este conhecimento é importante para ressaltar a necessidade do aperfeiçoamento
 
 ## Histograma {#ghist}
 
-Para expandir ainda mais as discussões referentes ao quarto questionamento, vamos utilizar mais uma ferramenta gráfica de visualização: o histograma. Um histograma de um conjunto de dados numéricos se parece muito com um gráfico de barras apresentado anteriormente, embora tenha algumas diferenças importantes que examinaremos nesta seção.
+Para expandir ainda mais as discussões referente ao quarto questionamento, vamos utilizar mais uma ferramenta gráfica de visualização: o histograma. Um histograma de um conjunto de dados numéricos se parece muito com um gráfico de barras apresentado anteriormente, embora tenha algumas diferenças importantes que examinaremos nesta seção.
 
 ```{python f315, fig.cap='Histograma com as notas de matemática dos estudantes de escolas públicas e privadas de Salvador em 2019 de 300 à 1000 pontos com resolução de 50 pontos', out.width='100%', fig.asp=.99, fig.align='center', echo=FALSE}
 # Definir tamanho da figura
@@ -625,7 +1137,7 @@ dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='b
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(xticks_intervalos, fontsize=TAMANHO_FONTE_TICKS);
 plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL);
-plt.ylabel('Número de estudantes',labelpad=30);
+plt.ylabel('Contagem',labelpad=30);
 eixo.spines['right'].set_visible(False);
 eixo.spines['top'].set_visible(False);
 
@@ -656,7 +1168,7 @@ dados_ssa_notas_2019['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='b
 plt.yticks(fontsize=TAMANHO_FONTE_TICKS);
 plt.xticks(xticks_intervalos,fontsize=TAMANHO_FONTE_TICKS);
 plt.xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
-plt.ylabel('Número de estudantes',labelpad=30);
+plt.ylabel('Contagem',labelpad=30);
 eixo.spines['right'].set_visible(False);
 eixo.spines['top'].set_visible(False);
 
@@ -681,8 +1193,7 @@ fig, ax = plt.subplots(1, 1,figsize=(20,10));
 e19_notas_pub['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='black', linewidth=1.5,ax=ax, color='#1f77b4');
 e19_notas_prv['NU_NOTA_MT'].hist(bins=intervalos, grid=False,edgecolor='black', linewidth=1.5,ax=ax, alpha = 0.75, color='#ff7f0e');
 ax.set_xticks(xticks_intervalos);
-ax.set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
-ax.set_ylabel('Número de estudantes',labelpad=30);
+ax.set_ylabel('Contagem',labelpad=30);
 ax.spines['right'].set_visible(False);
 ax.spines['top'].set_visible(False);
 ax.legend(['Pública','Privada'], title='Tipo de Escola');
@@ -692,7 +1203,7 @@ plt.show();
 plt.close('all');
 ```
 
-A Figura \@ref(fig:f317) mostra o mesmo histograma agora com distinção entre os tipos de escola. Inicialmente verificamos que existe uma diferença na quantidade de estudantes de colégio público e privado na edição de 2019, como apontado na seção anterior. Além disso, é possível verificar que o perfil dos estudantes de colégio público é semelhante ao apresentado na Figura \@ref(fig:f316): O intervalo mais representativo está próximo de 450 pontos, porém e para os estudantes de escola privada os intervalos mais representativos estão em entre 600 e 700 pontos. 
+A Figura \@ref(fig:f317) mostra o mesmo histograma agora com distinção entre os tipos de escola. Inicialmente verificamos que existe uma diferença na quantidade de estudantes de colégio público e privado na edição de 2019, como apontado na seção anterior. Além disso, é possível verificar que o perfil dos estudantes de colégio público é semelhante ao apresentado na Figura \@ref(fig:f316): O intervalo mais representativo está próximo de 450 pontos, porém para os estudantes de escola privada os intervalos mais representativos estão em entre 600 e 700 pontos. 
 
 Para uma melhor visualização e contornar o problema de diferença de escala entre os tipos de escolas, visto anteriormente na seção \@ref(gtend), vamos separar os histogramas em diferentes gráficos com seus eixos representativos próprios:
 
@@ -704,15 +1215,13 @@ e19_notas_prv['NU_NOTA_MT'].hist(bins=intervalos, grid=False, edgecolor='black',
 
 # Configs - publica
 ax[0].set_title('Escola Pública',fontweight='bold');
-ax[0].set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
-ax[0].set_ylabel('Número de estudantes',labelpad=30);
+ax[0].set_ylabel('Contagem',labelpad=30);
 ax[0].set_xticks(xticks_intervalos);
 ax[0].spines['right'].set_visible(False);
 ax[0].spines['top'].set_visible(False);
 
 # Configs - privada
 ax[1].set_title('Escola Privada',fontweight='bold');
-ax[1].set_xlabel('Nota em Matemática e suas tecnologias', fontsize=TAMANHO_FONTE_LABEL, weight = 'bold');
 ax[1].set_xticks(xticks_intervalos);
 ax[1].spines['right'].set_visible(False);
 ax[1].spines['top'].set_visible(False);
@@ -738,18 +1247,18 @@ Após concluir a leitura desta seção você pode notar a semelhança entre **hi
 
 ## Concluindo ... {#conc}
 Através deste capítulo conseguimos entender como a visualição gráfica pode trazer diferentes ideias e esclarecimentos a respeito dos nossos questionamentos, apresentando informações de forma simples e de fácil entendimento. Vimos também que cada gráfico pode trazer uma visão distinta e cabe ao leitor saber escolher qual a melhor abordagem a partir da sua pergunta e conjuntos de dados.
-Nosso questionamento sobre o **perfil dos estudantes de Salvador que realizaram o ENEM** conseguiu apresentar diversos *insights*, porém desanimadores. Na Figura \@ref(fig:f319) é apresentado o infográfico resumindo as informações extraídas a partir da análise gráfica.  
+Nosso questionamento sobre o **perfil dos estudantes de Salvador que realizaram o ENEM** conseguiu apresentar diversos *insights*, porém desanimadores ...
 
 ```{r f319, echo=FALSE, fig.cap="Infográfico dos resultados encontrados para o nosso questionamento", align = "center", out.width = '99%', fig.align='center'}
 knitr::include_graphics("fig_cap3/infografico_cap3.png")
 ```
 
-Esses resultados são desanimadores, pois no geral mostra uma grande evasão no número de inscritos de estudantes de vulnerabilidade social e um baixo rendimento dos estudantes de escolas públicas em comparação aos de escola privada. Todavia, para confirmar esses resultados apenas a visualização gráfica é insuficiente: Na ciência de dados precisamos de indicadores e medidas matemáticas para expressar se de nossas hipóteses são verídicas. Esse ferramental será explorado nos próximos capítulos deste livro, então mantenha o estudo!
+Na Figura \@ref(fig:f319) é apresentado o infográfico resumindo as informações extraídas a partir da análise gráfica. Esses resultados são desanimadores, pois no geral mostra uma grande evasão no número de inscritos de estudantes de vulnerabilidade social e um baixo rendimento dos estudantes de escolas públicas em comparação aos de escola privada. Todavia, para confirmar esses resultados apenas a visualização gráfica é insuficiente: Na ciência de dados precisamos de indicadores e medidas matemáticas para expressar se de nossas hipóteses são verídicas. Esse ferramental será explorado nos próximos capítulos deste livro, então mantenha o estudo!
 
 ## Indo Além
 Fizemos diversas análises e respondemos alguns questionamentos a respeito do **perfil dos estudantes de Salvador que realizaram o ENEM** não foi? Porém com a riqueza que esta base de dados possui o leitor pode explorar ainda mais!
 
-Utilizando Python, explicada em nosso capítulo de programação, você conseguiria **ir além** e responder os seguintes questionamentos?
+Utilizando Python, explicada em nosso capítulo \@ref(cOPC) de programação, você conseguiria **ir além** e responder os seguintes questionamentos?
 
 - Através do infográfico na Figura \@ref(fig:f319) avaliamos que ocorreu um aumento no número de estudantes sem acesso a computadores pessoais no ENEM de 2015 para 2019, o que pode dificultar os estudos desta parcela de estudantes. Você consegue avaliar a distribuição de cor/raça para esses estudantes em 2019 utilizando o gráfico de barras?
 
@@ -761,4 +1270,7 @@ Utilizando Python, explicada em nosso capítulo de programação, você consegui
 [2] Acorda Cidade. **IBGE-BA: Salvador é a capital mais negra do Brasil e com a maior desigualdade salarial entre brancos e pretos**. Publicado em 19 de novembro de 2018. Disponível em: [link de acesso](https://www.acordacidade.com.br/noticias/203087/ibge-ba-salvador-a-capital-mais-negra-do-brasil-e-com-a-maior-desigualdade-salarial-entre-brancos-e-pretos.html)
 
 
+
+
+<!--chapter:end:03-cap3.Rmd-->
 

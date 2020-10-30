@@ -4,10 +4,10 @@ author: "Kaike Wesley Reis, Júlia Bijos e Janaína Souza"
 date: "`r Sys.Date()`"
 #output: pdf_document
 output: 
-  bookdown::pdf_document2:
+  bookdown::html_document2:
     fig_caption: yes
     cap_caption: yes
-  bookdown::html_document2:
+  bookdown::pdf_document2:
     fig_caption: yes
     cap_caption: yes
 lang: pt
@@ -24,6 +24,7 @@ classoption: oneside
 
 ```{r, eval=TRUE,echo=FALSE}
 library(knitr)
+
 knitr::opts_chunk$set(error = TRUE, fig.align="center")
 
 # SOLVE - Manter o tamanho das imagens em HTML equivalente ao PDF
