@@ -210,7 +210,7 @@ Sem os dados, não existiria ciência de dados, e neste capítulo aprendemos um 
 
 ```{r ch11, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
 
-knitr::include_graphics("cap2_gif2.1.gif")
+knitr::include_graphics("fig_cap2/cap2_gif2.1.gif")
 
 ``` 
 
