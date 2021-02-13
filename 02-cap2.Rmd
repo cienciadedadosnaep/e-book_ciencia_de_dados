@@ -47,7 +47,7 @@ Os **dados não-estruturados**, como o nome indica, não possuem uma estrutura b
 
 ```{r ch2, fig.align='center', fig.cap="Exemplo de dados não-estruturados", fig.width=50 ,echo=FALSE,out.width="70%"}
 
-knitr::include_graphics("cap2_fig1.png")
+knitr::include_graphics("fig_cap2/cap2_fig1.png")
 
 ```
 
@@ -70,7 +70,7 @@ Observe agora como os dados referentes aos grupos prioritários do PBF ficam org
 
 ```{r ch4, fig.align='center',fig.width=50,out.width="100%",echo=FALSE}
 
-knitr::include_graphics("cap2_fig3.png")
+knitr::include_graphics("fig_cap2/cap2_fig3.png")
 
 ``` 
 
@@ -87,7 +87,7 @@ Note que à medida que percorremos uma linha, todos os atributos são referentes
 
 ```{r ch5, fig.align='center',fig.cap="Sentido de leitura da linha" ,fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("cap2_fig4.png")
+knitr::include_graphics("fig_cap2/cap2_fig4.png")
 
 ``` 
 
@@ -95,7 +95,7 @@ Observe também que quando descemos em uma coluna da tabela, todos os valores re
 
 ```{r ch6, fig.align='center',fig.cap="Sentido de leitura da coluna" ,fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("cap2_fig5.png")
+knitr::include_graphics("fig_cap2/cap2_fig5.png")
 
 ``` 
 
@@ -128,7 +128,7 @@ Vamos retomar o exemplo dos grupos prioritários ao PBF e ver quais foram as nos
 
 ```{r ch7, fig.align='center', fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("cap2_fig6.png")
+knitr::include_graphics("fig_cap2/cap2_fig6.png")
 
 ```
 
@@ -146,7 +146,7 @@ A variável categórica do nosso exemplo é do tipo nominal, pois não existe or
 
 ```{r ch8, fig.align='center', fig.width=50 ,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("cap2_fig7.png")
+knitr::include_graphics("fig_cap2/cap2_fig7.png")
 
 ```
 
@@ -169,7 +169,7 @@ Agora que já sabemos o que são dados abertos, podemos definir uma base de dado
 
 ```{r ch9, fig.align='center', fig.width=50,echo=FALSE,out.width="50%"}
 
-knitr::include_graphics("basededados_cap2.png")
+knitr::include_graphics("fig_cap2/basededados_cap2.png")
 
 ```
 
@@ -189,7 +189,7 @@ Na base de dados da Câmara dos Deputados, você encontra dados referentes a vot
   
 ```{r ch10,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
-knitr::include_graphics("cap2_fig8.png")
+knitr::include_graphics("fig_cap2/cap2_fig8.png")
 
 ```
 
@@ -212,7 +212,7 @@ Sem os dados, não existiria ciência de dados, e neste capítulo aprendemos um 
 
 ```{r ch11, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
 
-knitr::include_graphics("cap2_gif2.1.gif")
+knitr::include_graphics("fig_cap2/cap2_gif2.1.gif")
 
 ``` 
 
