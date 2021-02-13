@@ -152,70 +152,86 @@ Até aqui você já aprendeu sobre o que são bases de dados, como montar tabela
 
 ## Como buscar base de dados abertas
 
-Já vimos que o CadÚnico é a base de dados do governo federal onde estão registrados dados de família de baixa renda residentes no Brasil. Entre os muitos dados que estão registrados no CadÚnico, constam também a identificação de cada pessoa; informações como RG, CPF e endereço.Por conta disso, o acesso a essa base de dados é restrito, sendo permitindo apenas a pesquisadores através de um procedimento administrativo. Logo, o CadÚnico não é uma base de dados aberta. 
+Durante a sua jornada como cientista de dados, os dados que você irá utilizar, normalmente, estarão em bases de dados. Porém, nem todas as bases de dados estarão disponíveis para serem acessadas por todas as pessoas. Como vimos, o CadÚnico é a base de dados do governo federal onde estão registrados dados de família de baixa renda residentes no Brasil. Entre os muitos dados que estão registrados no CadÚnico, constam também a identificação de cada pessoa; informações como RG, CPF e endereço. Por conta disso, o acesso a essa base de dados é restrito. Logo, o CadÚnico não é uma base de dados aberta. 
 
 *Mas o que são bases de dados abertas?*
 
-Para entendermos o que são bases de dados abertas, vamos falar sobre **dados abertos**
+Antes de definirmos o que são base de dados abertas, precisamos entender o que são **dados abertos**. Para isso, vamos assistir o vídeo a seguir:
 
-A [Open Knowledge Foundation]( https://okfn.org/), organização sem fins lucrativos que tem por objetivo promover o conhecimento livre, define dados abertos da seguinte forma:
+<div class="embed-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T6_AsumMFm4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</br>
 
-> Dados abertos são dados que podem ser livremente usados, reutilizados e redistribuídos por qualquer pessoa - sujeitos, no máximo, à exigência de atribuição da fonte e compartilhamento pelas mesmas regras.
->
->Você pode acessar a definição completa: [Open Definition](http://opendefinition.org/od/2.1/en/). Mas, resumindo os pontos mais importantes da definição de dados abertos, temos:
+Agora que já sabemos o que são dados abertos, podemos definir uma base de dados aberta como um conjunto de dados abertos que podem ser livremente usados, reutilizados e redistribuídos por qualquer pessoa.
 
->> - Disponibilidade e Acesso: os dados devem estar disponíveis como um todo e sob custo não maior que um custo razoável de reprodução, preferencialmente possíveis de serem baixados pela internet. Os dados devem também estar disponíveis de uma forma conveniente e modificável.
- - Reutilização e Redistribuição: os dados devem ser fornecidos sob termos que permitam a reutilização e a redistribuição, inclusive a combinação com outros conjuntos de dados.
-- Participação Universal: todos devem ser capazes de usar, reutilizar e redistribuir - não deve haver discriminação contra áreas de atuação ou contra pessoas ou grupos.
+```{r ch9, fig.align='center', fig.width=50,echo=FALSE,out.width="50%"}
 
-Portanto, podemos definir uma base de dados abertas como um conjunto de dados abertos que podem ser livremente usados, reutilizados e redistribuídos por qualquer pessoa.
+knitr::include_graphics("fig_cap2/basededados_cap2.png")
+
+```
 
 Na proxima seção você vai conhecer algumas bases de dados abertas que podem ser uteis para você a apartir de agora
 
 
 ### Dados abertos governamentais
 
-
-
-A seguir, alguns exemplos de base de dados abertas governamentais:
+Dados abertos governamentais são dados gerados pelo governo que estão disponíveis para serem acessados e utilizados pela população. O objetivo é aumentar a transparência, além de incentivar maior participação politica por parte do cidadão.
 
 
   - [Dados abertos da Câmara dos Deputados](https://dadosabertos.camara.leg.br/#a1)
   
-   Fornece dados sobre as atividades parlamentares da Casa a qualquer cidadão que possa se conectar à internet.
+A Câmara dos Deputados discute e vota propostas referentes às áreas econômicas e sociais, como educação, saúde, transporte, entre outras. É também responsabilidade do Câmara dos deputados fiscalizar a utilização dos recursos arrecadados da população com o pagamento de impostos.
+
+Na base de dados da Câmara dos Deputados, você encontra dados referentes a votações, partidos políticos, informações detalhadas de deputados, entre outros. Os dados disponíveis na base de dados da Câmara dos Deputados possibilitam, inclusive, que a população crie projetos que ajudam a fiscalizar a atividade dos deputados, como por exemplo a [AKAN](https://visualizemobile.github.io/akan/), um aplicativo que acompanha os gastos de deputados.
   
-```{r ch9,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
+```{r ch10,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
 knitr::include_graphics("fig_cap2/cap2_fig8.png")
 
 ```
-  
-  - [Dados abertos do Senado Federal](https://www12.senado.leg.br/dados-abertos)
-  
-  
-  
-```{r ch10,fig.cap="Dados abertos do Senado Federal" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig9.png")
+Confira a seguir mais alguns exemplos de bases de dados abertas:
 
-```
-  
-  _______________________________________
-  
-  - [Dados Abertos Ministério da Justiça e Segurança](https://www.justica.gov.br/dados-abertos/dados)
-  
-  - [Dados Abertos sobre Emprego](https://sineaberto.economia.gov.br/)
-  
+ - [Dados abertos do Senado Federal](https://www12.senado.leg.br/dados-abertos)
+ 
+ - [Dados Abertos Ministério da Justiça e Segurança](https://www.justica.gov.br/dados-abertos/dados)
+ 
+ - [Dados Abertos sobre Emprego](https://sineaberto.economia.gov.br/)
+ 
+ - [Portal Brasileiro de Dados Abertos](https://dados.gov.br/)
 
 
+  
 
-### Kaggle
+## Concluindo...
 
-Kaggle é uma comunidade on-line de cientistas de dados e profissionais de aprendizado de máquina
+Sem os dados, não existiria ciência de dados, e neste capítulo aprendemos um pouco mais sobre eles. No próximo capítulo, visualização e ciência de dados, vamos conversar sobre um tema essencial para futuros cientistas de dados tal como você. Mas antes, confira um breve resumo do que aprendemos:
 
-### UCL
+```{r ch11, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
+
+knitr::include_graphics("cap2_gif2.1.gif")
+
+``` 
+
+## Você sabia? Dados, anedotas e fakenews
+
+(Seção baseada no encontro realizado com os estudantes. Prevista para ser adicionada na correção final)  
+
+
+
 
 ## Referências
+
+CÂMARA DOS DEPUTADOS DO BRASIL. Papel e história da câmara. Disponível em: https://www2.camara.leg.br/a-camara/conheca/o-papel-da-camara-dos-deputados
+
+CIANCONI, Regina. Banco de Dados de acesso público. Ciência da Informação
+Brasília, v. 16, n. J, p. 53-59,jan./jun. 1987. 
+
+NIC.br (2014). Dados Abertos para um dia a dia melhor - com narração. Disponível em: https://www.youtube.com/watch?v=T6_AsumMFm4
+
+Programa Bolsa Família : uma década de inclusão e cidadania / organizadores: Tereza Campello, Marcelo Côrtes Neri. –
+Brasília : Ipea, 2013. Disponível em:         https://www.ipea.gov.br/portal/index.php?option=com_content&id=20408
 
 
 
