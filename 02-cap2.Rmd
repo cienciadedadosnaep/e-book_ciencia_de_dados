@@ -1,5 +1,6 @@
 
-# Construindo uma base de dados {#c02}
+
+# Construindo Uma Base de Dados {#cap2}
 
 No capítulo anterior, você aprendeu sobre dados e viu, resumidamente, que a forma como os dados estão armazenados chama-se estrutura de dados. Neste capítulo vamos resgatar e aprofundar um pouco mais do que você já aprendeu de modo que você seja capaz de construir a sua própria base de dados. Mas antes, precisamos entender o que é e para que serve uma base de dados.
 
@@ -22,14 +23,13 @@ Bem, para ser beneficiária do PBF a família precisa estar cadastrada no Cadast
 
 *E como podemos, exatamente, definir uma base de dados?*
 
-Uma base de dados é um conjunto de **dados** inter-relacionados (possuem relação), que estão armazenados em uma estrutura que permite que **informações** sejam extraídas.
+Uma base de dados é um conjunto de **dados** inter-relacionados (possuem relação), que estão armazenados em uma estrutura que permite que **informações** sejam extraídas.^[CIANCONI, 1987, p. 54]
 
 
-```{r ch1, fig.align='center',out.width="100%",fig.width=50 ,echo=FALSE}
-
-knitr::include_graphics("fig_cap2/cap2_gif1.gif")
-
-``` 
+<br />
+<img alt="" align="left" src="cap2_gif1.1.gif" width="400" height="270" /> 
+<p><font size="4" face="Bradley Hand">Dados são observações armazenadas. Desde imagens salvas em seu celular até vídeos presentes no youtube. Porém, sua existência não implica em significado ou sentido, logo, não tem valor algum para embasar conclusões. Por outro lado, ao organizar esse conjunto de dados com o intuito de transmitir significado, conseguimos gerar informações. Em resumo, dados podem ser considerados informações não processadas.</font></p>
+<br />
 
 Na base de dados da nossa discussão, o CadÚnico, dados referentes a raça, sexo, ocupação, moradia, escolaridade e muitos outros, estão relacionados a cada família que compõem o cadastro. Dessa forma, o governo consegue extrair informações referentes a habitação, saúde, educação, renda; possibilitando que se pense em formas de melhor atender as necessidades da população que compoem o cadastro. Atualmente, o CadÚnico conta com o registro dos dados de aproximadamente 29 milhões de famílias, mais de 76 milhões de pessoas. Isto é, o CadÚnico armazena dados de quase 40% da população brasileira.
 
@@ -40,34 +40,37 @@ O CadÚnico funciona tão bem porque cumpre um requisito muito importante para b
 
 *Vimos que em uma base de dados, os dados estão armazenados em uma estrutura que permite que informações sejam extraídas. Nessa seção, vamos entender um pouco mais sobre essas estruturas.*
 
-Já aprendemos no capítulo 1 que dados são observações que foram coletadas e armazenadas de alguma forma. A maneira como esses dados são armazenados varia e algumas dessas formas de se armazenar os dados são mais eficientes que outras pois auxiliam na análise e visualização dos dados. Quanto à maneira como os dados estão armazenados podemos classifica-los de duas formas principais: estruturados e não-estruturados
+Já aprendemos no capítulo \@ref(cap1) que dados são observações que foram coletadas e armazenadas de alguma forma. A maneira como esses dados são armazenados varia e algumas dessas formas de se armazenar os dados são mais eficientes que outras pois auxiliam na análise e visualização dos dados. Quanto à maneira como os dados estão armazenados podemos classifica-los de duas formas principais: estruturados e não-estruturados
 
 
 Os **dados não-estruturados**, como o nome indica, não possuem uma estrutura bem definida e previamente pensada para se armazenar os dados. Como exemplo de dados não estruturados podemos citar as redes-sociais, imagens, filmes, vídeos, músicas e documentos de texto.
 
-```{r ch2, fig.align='center', fig.cap="Exemplo de dados não-estruturados", fig.width=50 ,echo=FALSE,out.width="80%"}
+```{r ch2, fig.align='center', fig.cap="Exemplo de dados não-estruturados", fig.width=50 ,echo=FALSE,out.width="70%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig1.png")
+knitr::include_graphics("cap2_fig1.png")
 
 ```
 
 
 
-Os **dados estruturados** por sua vez, possuem uma estrutura bem definida, rígida e previamente pensada para se armazenar os dados. A tabela é uma das formas mais comuns e simples dessas estruturas pois nela os dados ficam dispostos em linhas e colunas que é uma forma de se armazenar dados bastante organizada e de fácil entendimento. Vamos entender mais sobre essa forma de organização. Leia o fragmento de texto abaixo extraído e adaptado do [site](https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/index.html "Cadastro Único, Conhecer Para Incluir")
+Os **dados estruturados** por sua vez, possuem uma estrutura bem definida, rígida e previamente pensada para se armazenar os dados. A tabela é uma das formas mais comuns e simples dessas estruturas pois nela os dados ficam dispostos em linhas e colunas que é uma forma de se armazenar dados bastante organizada e de fácil entendimento. Vamos entender mais sobre essa forma de organização. Leia o fragmento de texto abaixo extraído e adaptado do site: [Cadastro Único Conhecer para incluir](https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/index.html "Cadastro Único, Conhecer Para Incluir")
 
+<center>
+<p><font size="4" face="FreeMono">
+"Tendo em vista o alto grau de vulnerabilidade social, alguns grupos são considerados prioritários no processo de ingresso no PBF. São eles: famílias indígenas, quilombolas, em situação de trabalho infantil, com pessoas libertas de situação análoga à de trabalho escravo e com catadores de material reciclável.<br />
 
-```{r ch3, fig.align='center', fig.width=50,out.width="70%",echo=FALSE}
+No mês de junho de 2020, 5.5 mil famílias beneficiarias em Salvador pertenciam a um dos grupos denominados prioritários ao PBF. (3.0% do total de famílias beneficiarias)"
+</font></p>
+</center>
+<br />
 
-knitr::include_graphics("fig_cap2/cap2_fig2.png")
-
-``` 
 
 Observe agora como os dados referentes aos grupos prioritários do PBF ficam organizados em uma tabela:
 
 
 ```{r ch4, fig.align='center',fig.width=50,out.width="100%",echo=FALSE}
 
-knitr::include_graphics("fig_cap2/cap2_fig3.png")
+knitr::include_graphics("cap2_fig3.png")
 
 ``` 
 
@@ -84,7 +87,7 @@ Note que à medida que percorremos uma linha, todos os atributos são referentes
 
 ```{r ch5, fig.align='center',fig.cap="Sentido de leitura da linha" ,fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig4.png")
+knitr::include_graphics("cap2_fig4.png")
 
 ``` 
 
@@ -92,7 +95,7 @@ Observe também que quando descemos em uma coluna da tabela, todos os valores re
 
 ```{r ch6, fig.align='center',fig.cap="Sentido de leitura da coluna" ,fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig5.png")
+knitr::include_graphics("cap2_fig5.png")
 
 ``` 
 
@@ -125,7 +128,7 @@ Vamos retomar o exemplo dos grupos prioritários ao PBF e ver quais foram as nos
 
 ```{r ch7, fig.align='center', fig.width=50,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig6.png")
+knitr::include_graphics("cap2_fig6.png")
 
 ```
 
@@ -143,12 +146,11 @@ A variável categórica do nosso exemplo é do tipo nominal, pois não existe or
 
 ```{r ch8, fig.align='center', fig.width=50 ,echo=FALSE,out.width="100%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig7.png")
+knitr::include_graphics("cap2_fig7.png")
 
 ```
 
 Até aqui você já aprendeu sobre o que são bases de dados, como montar tabelas, o que são e quais os tipos de variáveis; ou seja, já apendeu o básico necessário para montar a sua própria base de dados. Na próxima seção, você vai aprender a acessar bases de dados que estão disponíveis para serem acessadas por qualquer pessoa: as bases de dados abertas.
-
 
 ## Como buscar base de dados abertas
 
@@ -167,7 +169,7 @@ Agora que já sabemos o que são dados abertos, podemos definir uma base de dado
 
 ```{r ch9, fig.align='center', fig.width=50,echo=FALSE,out.width="50%"}
 
-knitr::include_graphics("fig_cap2/basededados_cap2.png")
+knitr::include_graphics("basededados_cap2.png")
 
 ```
 
@@ -187,7 +189,7 @@ Na base de dados da Câmara dos Deputados, você encontra dados referentes a vot
   
 ```{r ch10,fig.cap="Dados abertos da Câmara dos Deputados" ,fig.align='center',fig.width=50,echo=FALSE,out.width="70%"}
 
-knitr::include_graphics("fig_cap2/cap2_fig8.png")
+knitr::include_graphics("cap2_fig8.png")
 
 ```
 
@@ -210,18 +212,16 @@ Sem os dados, não existiria ciência de dados, e neste capítulo aprendemos um 
 
 ```{r ch11, fig.align='center',out.width="100%",fig.width=100,echo=FALSE}
 
-knitr::include_graphics("fig_cap2/cap2_gif2.1.gif")
+knitr::include_graphics("cap2_gif2.1.gif")
 
 ``` 
 
 ## Você sabia? Dados, anedotas e fakenews
 
-(Seção baseada no encontro realizado com os estudantes. Prevista para ser adicionada na correção final)  
+(Seção baseada no encontro realizado com os estudantes. Prevista para ser adicionada na correção final)
 
+## Referências {-}
 
-
-
-## Referências
 
 CÂMARA DOS DEPUTADOS DO BRASIL. Papel e história da câmara. Disponível em: https://www2.camara.leg.br/a-camara/conheca/o-papel-da-camara-dos-deputados
 
@@ -232,6 +232,3 @@ NIC.br (2014). Dados Abertos para um dia a dia melhor - com narração. Disponí
 
 Programa Bolsa Família : uma década de inclusão e cidadania / organizadores: Tereza Campello, Marcelo Côrtes Neri. –
 Brasília : Ipea, 2013. Disponível em:         https://www.ipea.gov.br/portal/index.php?option=com_content&id=20408
-
-
-
